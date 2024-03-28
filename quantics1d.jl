@@ -163,16 +163,16 @@ println(typeof(ci))
 
 # %% [markdown]
 # As we've seen before, `ci` is an object of `QuanticsTensorCI2{Float64}` in `QuanticsTCI.jl`, which is a thin wrapper of `TensorCI2{Float64}` in `TensorCrossInterpolation.jl`.
-# The undering object of `TensorCI2{Float64}` type can be accessed as `ci.tt`. This will be useful for obtaining more detailed information on the TCI results.
+# The undering object of `TensorCI2{Float64}` type can be accessed as `ci.tci`. This will be useful for obtaining more detailed information on the TCI results.
 #
-# For instance, `ci.tt.maxsamplevalue` is an estimate of the abosolute maximum value of the function, and `ci.tt.pivoterrors` stores the error as function of the bond dimension computed by prrLU.
+# For instance, `ci.tci.maxsamplevalue` is an estimate of the abosolute maximum value of the function, and `ci.tci.pivoterrors` stores the error as function of the bond dimension computed by prrLU.
 # In the following figure, we plot the normalized error vs. bond dimension, showing an exponential decay.
 #
 
 # %%
 # Plot error vs bond dimension obtained by prrLU
 fig, ax = plt.subplots()
-ax.plot(ci.tt.pivoterrors ./ ci.tt.maxsamplevalue, marker="x")
+ax.plot(ci.tci.pivoterrors ./ ci.tci.maxsamplevalue, marker="x")
 ax.set_xlabel("Bond dimension")
 ax.set_ylabel("Normalization error")
 ax.set_title("normalized error vs. bond dimension: $(nameof(f))")
@@ -268,7 +268,7 @@ end
 using PythonPlot: pyplot as plt
 
 fig, ax = plt.subplots()
-ax.plot(ci.tt.pivoterrors ./ ci.tt.maxsamplevalue, marker="x")
+ax.plot(ci.tci.pivoterrors ./ ci.tci.maxsamplevalue, marker="x")
 ax.set_xlabel("Bond dimension")
 ax.set_ylabel("Normalization error")
 ax.set_title("normalized error vs. bond dimension")

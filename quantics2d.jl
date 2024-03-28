@@ -77,7 +77,7 @@ p
 # %%
 # Construct 2D quantics
 qtci, ranks, errors = quanticscrossinterpolate(Float64, f, gr)
-p = plot(qtci.tt.pivoterrors ./ qtci.tt.maxsamplevalue, xaxis=L"\chi", yaxis="Normalized error", yscale=:log10, label="", xtickfontsize=10, ytickfontsize=10)
+p = plot(qtci.tci.pivoterrors ./ qtci.tci.maxsamplevalue, xaxis=L"\chi", yaxis="Normalized error", yscale=:log10, label="", xtickfontsize=10, ytickfontsize=10)
 p
 
 # %%

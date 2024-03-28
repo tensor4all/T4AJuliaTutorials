@@ -44,8 +44,11 @@ pages:
     - .jupyterbook
   after_script:
     - mv _build/html public
+    - mkdir -p notebooks
+    - mv _build/jupyter_execute/*.ipynb notebooks/
   artifacts:
     paths:
       - public
+      - notebooks
   only:
     - main

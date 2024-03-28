@@ -2,12 +2,13 @@
 # ---
 # jupyter:
 #   jupytext:
+#     custom_cell_magics: kql
 #     formats: ipynb,jl:percent
 #     text_representation:
 #       extension: .jl
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.16.1
+#       jupytext_version: 1.11.2
 #   kernelspec:
 #     display_name: julia 1.10.2
 #     language: julia
@@ -15,11 +16,8 @@
 # ---
 
 # %% [markdown]
-# #  Quantics TCI of univariate funciton
-
-# %%
-using Pkg
-Pkg.activate("../../docs")
+# # Quantics TCI of univariate funciton
+#
 
 # %%
 using PythonPlot: pyplot as plt
@@ -36,11 +34,12 @@ using QuanticsTCI: quanticscrossinterpolate
 # $$
 #
 # where $B = 2^{-30}$. In Julia, this can be written as below:
+#
 
 # %%
 B = 2^(-30) # global variable
 function f(x)
-    return cos(x/B) * cos(x/(4*sqrt(5)*B)) * exp(-x^2) + 2 * exp(-x)
+    return cos(x / B) * cos(x / (4 * sqrt(5) * B)) * exp(-x^2) + 2 * exp(-x)
 end
 
 println(f(0.2))
@@ -49,6 +48,7 @@ println(f(0.2))
 # Let's examine the behaviour of $f(x)$. This function involves structure on widely different scales: rapid, incommensurate oscillations and a slowly decaying envelope. We'll use [PythonPlot.jl](https://github.com/JuliaPy/PythonPlot.jl) visualisation library which uses Python library [matplotlib](https://matplotlib.org/) behind the scenes.
 #
 # For small $x$ we have:
+#
 
 # %%
 xs = LinRange(0, 2.0^(-23), 1000)
@@ -61,6 +61,7 @@ display(fig)
 
 # %% [markdown]
 # For $x \in (0, 3]$ we will get:
+#
 
 # %%
 xs2 = LinRange(2.0^(-23), 3, 100000)
@@ -74,6 +75,7 @@ display(fig)
 # ### QTT representation
 #
 # One can construct a QTT representation of this function on the domain $[0, 3]$ a quantics grid of size $2^\mathcal{R}$ where $\mathcal{R}$ is $40$:
+#
 
 # %%
 R = 40 # number of bits
@@ -93,6 +95,7 @@ ci, ranks, errors = quanticscrossinterpolate(Float64, f, qgrid; maxbonddim=15)
 
 # %% [markdown]
 # Here, we've created `ci` which is an object of `QuanticsTensorCI2{Float64}` in `QuanticsTCI.jl`. This can be evaluated at an linear index $i$ ($1 \le i \le 2^\mathcal{R}$) as follows:
+#
 
 # %%
 for i in [1, 2, 3, 2^R] # Linear indices
@@ -103,6 +106,7 @@ end
 
 # %% [markdown]
 # We see that `ci(i)` approximates the original `f` at `x = QG.grididx_to_origcoord(qgrid, i)`. Let's plot them together.
+#
 
 # %%
 xs = LinRange(0, 2.0^(-23), 1000)
@@ -127,6 +131,7 @@ display(fig)
 # Above, one can see that the original function is interpolated very accurately.
 #
 # Let's plot of $x$ vs interpolation error $\log(|f(x) - \mathrm{ci}(x)|)$ for small $x$
+#
 
 # %%
 fig, ax = plt.subplots()
@@ -151,6 +156,7 @@ display(fig)
 # ### About `ci::QuanticsTensorCI2{Float64}`
 #
 # Let's dive into the `ci` object:
+#
 
 # %%
 println(typeof(ci))
@@ -161,6 +167,7 @@ println(typeof(ci))
 #
 # For instance, `ci.tt.maxsamplevalue` is an estimate of the abosolute maximum value of the function, and `ci.tt.pivoterrors` stores the error as function of the bond dimension computed by prrLU.
 # In the following figure, we plot the normalized error vs. bond dimension, showing an exponential decay.
+#
 
 # %%
 # Plot error vs bond dimension obtained by prrLU
@@ -175,7 +182,9 @@ display(fig)
 
 # %% [markdown]
 # ### Function evaluations
+#
 # Our TCI algorithm does not call elements of the entire tensor, but constructs the TT (Tensor Train) from some elements chosen adaptively. On which points $x \in [0, 3]$ was the function evaluated to construct a QTT representation of the function $f(x)$? Let's find out. One can retrieve the information on the function evaluations as follows.
+#
 
 # %%
 import QuanticsTCI
@@ -186,6 +195,7 @@ evaluated = QuanticsTCI.cachedata(ci)
 
 # %% [markdown]
 # Let's plot `f` and the evaluated points together.
+#
 
 # %%
 f̂(x) = ci(QG.origcoord_to_quantics(qgrid, x))
@@ -219,6 +229,7 @@ display(fig)
 # $$
 #
 # One can construct a QTT representation of this function on the domain $[-10, 10]$ using a quantics grid of size $2^\mathcal{R}$ ($\mathcal{R}=20$):
+#
 
 # %%
 import QuanticsGrids as QG
@@ -250,6 +261,7 @@ end
 # Above, one can see that the original function is interpolated very accurately. The function `grididx_to_origcoord` transforms a linear index to a coordinate point $x$ in the original domain ($-10 \le x < 10$).
 #
 # In the following figure, we plot the normalized error vs. bond dimension, showing an exponential decay.
+#
 
 # %%
 # Plot error vs bond dimension obtained by prrLU

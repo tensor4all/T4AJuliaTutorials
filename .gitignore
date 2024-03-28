@@ -1,0 +1,12 @@
+*.gif
+*.jl.*.cov
+*.jl.cov
+*.jl.mem
+*.png
+.CondaPkg
+.DS_Store
+.ipynb_checkpoints
+/Manifest.toml
+/docs/Manifest.toml
+/docs/build/
+*.profraw

@@ -35,7 +35,7 @@ jupyterbook:
   except:
     - main
 pages:
-  image: julia:1.10
+  image: julia:1.10.2
   stage: deploy
   extends:
     - .jupyterbook

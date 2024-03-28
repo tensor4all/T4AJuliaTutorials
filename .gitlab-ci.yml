@@ -44,7 +44,7 @@ pages:
     - .jupyterbook
   after_script:
     - mkdir -p public
-    - mv _build/html public/dev
+    - mv _build/html public/
   artifacts:
     paths:
       - public

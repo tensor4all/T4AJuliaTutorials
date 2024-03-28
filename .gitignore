@@ -10,3 +10,4 @@
 /docs/Manifest.toml
 /docs/build/
 *.profraw
+_build

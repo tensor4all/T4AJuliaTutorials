@@ -28,8 +28,9 @@ cache:
 .jupyterbook:
   script:
     - |
-      julia --project=@. -e 'using Pkg; Pkg.instantiate()'
-      julia --project=@. run.jl
+      julia --project -e 'using Pkg; Pkg.instantiate()'
+      julia --project -e 'using IJulia; installkernel("Julia", "--project=@.")'
+      julia --project run.jl
 jupyterbook:
   image: julia:1.10.2
   extends:

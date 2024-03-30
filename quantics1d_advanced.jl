@@ -15,6 +15,10 @@
 # ---
 
 # %% [markdown]
+# Click [here](https://gitlab.com/api/v4/projects/56283350/jobs/artifacts/main/raw/notebooks/quantics1d_advanced.ipynb?job=pages) to download the notebook locally.
+#
+
+# %% [markdown]
 # # Quantics TCI of univariate funciton (advanced topics)
 #
 

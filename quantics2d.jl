@@ -17,6 +17,10 @@
 # ---
 
 # %% [markdown]
+# Click [here](https://gitlab.com/api/v4/projects/56283350/jobs/artifacts/main/raw/notebooks/quantics2d.ipynb?job=pages) to download the notebook locally.
+#
+
+# %% [markdown]
 # # Quantics TCI of multivariate funciton
 #
 

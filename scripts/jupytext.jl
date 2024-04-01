@@ -7,5 +7,6 @@ using PythonCall
 jupytext = joinpath(dirname(PythonCall.C.CTX.exe_path), "jupytext")
 
 for jlfile in ARGS
-	run(`$(jupytext) --to ipynb --set-kernel=julia-$(VERSION.major).$(VERSION.minor) $(jlfile)`)
+	destination = joinpath("ipynbs", splitext(jlfile)[begin] * ".ipynb")
+	run(`$(jupytext) --to ipynb --set-kernel=julia-$(VERSION.major).$(VERSION.minor) $(jlfile) --output $(destination)`)
 end

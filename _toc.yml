@@ -2,8 +2,8 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: index
+root: ipynbs/index
 chapters:
-- file: quantics1d
-- file: quantics2d
-- file: quantics1d_advanced
+- file: ipynbs/quantics1d
+- file: ipynbs/quantics2d
+- file: ipynbs/quantics1d_advanced

@@ -10,4 +10,5 @@
 /docs/Manifest.toml
 /docs/build/
 *.profraw
+*.ipynb
 _build

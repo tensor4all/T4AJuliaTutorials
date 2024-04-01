@@ -31,9 +31,9 @@ html:
   use_issues_button: true
   use_repository_button: true
 
-sphinx:
-  config:
-    nb_custom_formats:
-        .jl:
-          - jupytext.reads
-          - fmt: jl
+#sphinx:
+#  config:
+#    nb_custom_formats:
+#        .jl:
+#          - jupytext.reads
+#          - fmt: jl

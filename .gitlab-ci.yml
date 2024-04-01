@@ -1,5 +1,6 @@
 before_script:
   - which git || (apt-get update -qq && apt-get install --no-install-recommends -qqqy git)
+  - which make || (apt-get update -qq && apt-get install --no-install-recommends -qqqy build-essential)
   - git config --global url."https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/".insteadOf "git@gitlab.com:"
   - git config --global url."https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/".insteadOf "https://gitlab.com/" --add
   - |
@@ -30,7 +31,7 @@ cache:
     - |
       julia --project -e 'using Pkg; Pkg.instantiate()'
       julia --project -e 'using IJulia; installkernel("Julia", "--project=@.")'
-      julia --project run.jl
+      make
 jupyterbook:
   image: julia:1.10.2
   extends:

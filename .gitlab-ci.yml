@@ -30,7 +30,7 @@ cache:
     - |
       julia --project -e 'using Pkg; Pkg.instantiate()'
       julia --project -e 'using IJulia; installkernel("Julia", "--project=@.")'
-      julia --project run.jl
+      make
 jupyterbook:
   image: julia:1.10.2
   extends:

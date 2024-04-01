@@ -46,7 +46,7 @@ pages:
   after_script:
     - mv _build/html public
     - mkdir -p notebooks
-    - mv _build/jupyter_execute/*.ipynb notebooks/
+    - mv _build/jupyter_execute/ipynbs/*.ipynb notebooks/
   artifacts:
     paths:
       - public

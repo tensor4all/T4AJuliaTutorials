@@ -7,3 +7,4 @@ chapters:
 - file: ipynbs/quantics1d
 - file: ipynbs/quantics2d
 - file: ipynbs/quantics1d_advanced
+- file: ipynbs/interfacingwithitensors

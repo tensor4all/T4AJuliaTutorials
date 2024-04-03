@@ -20,6 +20,8 @@ cache:
   key:
     files:
       - Project.toml
+      - _toc.yml
+      - _config.yml
     prefix: ${CI_JOB_NAME}
   paths:
     - ${CI_JULIA_CACHE_DIR}

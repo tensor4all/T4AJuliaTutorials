@@ -61,7 +61,7 @@ fig, ax = plt.subplots()
 ax.plot(xs, f.(xs), label="$(nameof(f))")
 ax.set_title("$(nameof(f))")
 ax.legend()
-display(gcf());
+haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
 
 # %% [markdown]
 # For $x \in (0, 3]$ we will get:
@@ -73,7 +73,7 @@ fig, ax = plt.subplots()
 ax.plot(xs2, f.(xs2), label="$(nameof(f))")
 ax.set_title("$(nameof(f))")
 ax.legend()
-display(gcf());
+haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
 
 # %% [markdown]
 # ### QTT representation
@@ -129,7 +129,7 @@ ax.set_title("$(nameof(f)) and TCI")
 ax.set_xlabel("x")
 ax.set_ylabel("y")
 ax.legend()
-display(gcf());
+haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
 
 # %% [markdown]
 # Above, one can see that the original function is interpolated very accurately.
@@ -154,7 +154,7 @@ ax.set_title("x vs interpolation error: $(nameof(f))")
 ax.set_xlabel("x")
 ax.set_ylabel("interpolation error")
 ax.legend()
-display(gcf());
+haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
 
 # %% [markdown]
 # ### About `ci::QuanticsTensorCI2{Float64}`
@@ -182,7 +182,7 @@ ax.set_ylabel("Normalization error")
 ax.set_title("normalized error vs. bond dimension: $(nameof(f))")
 ax.set_yscale("log")
 
-display(gcf());
+haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
 
 # %% [markdown]
 # ### Function evaluations
@@ -216,7 +216,7 @@ ax.set_xlabel("x")
 ax.set_ylabel("y")
 ax.set_xlim(0, maximum(xs))
 ax.legend()
-display(gcf());
+haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
 
 # %% [markdown]
 # ## Example 2
@@ -278,4 +278,4 @@ ax.set_ylabel("Normalization error")
 ax.set_title("normalized error vs. bond dimension")
 ax.set_yscale("log")
 
-display(gcf());
+haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code

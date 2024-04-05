@@ -53,7 +53,7 @@ println(
 # Let us plot the original data and the TCI error on a 2D cut.
 
 # %%
-using PythonPlot: pyplot as plt
+using PythonPlot: pyplot as plt, gcf
 
 fig, axs = plt.subplots(1, 2; figsize=(12.8, 4.8))
 
@@ -67,7 +67,7 @@ c = axs[1].pcolor(log10.(abs.(errors[:, :, 1])))
 fig.colorbar(c, ax=axs[1])
 axs[1].set_title("log10 of abs error of TCI")
 
-display(fig)
+display(gcf())
 
 # %% [markdown]
 # ## QTCI
@@ -112,7 +112,7 @@ println(
 # Again, let us plot the original data and the TCI error on a 2D cut.
 
 # %%
-using PythonPlot: pyplot as plt
+using PythonPlot: pyplot as plt, gcf
 
 fig, axs = plt.subplots(1, 2; figsize=(12.8, 4.8))
 
@@ -126,7 +126,7 @@ c = axs[1].pcolor(log10.(abs.(qtterrors[:, :, 1])))
 fig.colorbar(c, ax=axs[1])
 axs[1].set_title("log10 of abs error of QTCI")
 
-display(fig)
+display(gcf())
 
 # %% [markdown]
 # ### QuanticsGrids.jl + TensorCrossInterpolation.jl

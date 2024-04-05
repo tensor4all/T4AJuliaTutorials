@@ -24,7 +24,7 @@
 
 # %%
 import QuanticsGrids as QG
-using PythonPlot: pyplot as plt
+using PythonPlot: pyplot as plt, gcf
 import TensorCrossInterpolation as TCI
 
 # %% [markdown]
@@ -86,7 +86,7 @@ nothing # hide
 
 # %%
 import QuanticsGrids as QG
-using PythonPlot: pyplot as plt
+using PythonPlot: pyplot as plt, gcf
 
 R = 40 # number of bits
 xmin = 0.0

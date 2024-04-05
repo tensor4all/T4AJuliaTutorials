@@ -67,7 +67,7 @@ c = axs[1].pcolor(log10.(abs.(errors[:, :, 1])))
 fig.colorbar(c, ax=axs[1])
 axs[1].set_title("log10 of abs error of TCI")
 
-display(gcf())
+display(gcf());
 
 # %% [markdown]
 # ## QTCI
@@ -126,7 +126,7 @@ c = axs[1].pcolor(log10.(abs.(qtterrors[:, :, 1])))
 fig.colorbar(c, ax=axs[1])
 axs[1].set_title("log10 of abs error of QTCI")
 
-display(gcf())
+display(gcf());
 
 # %% [markdown]
 # ### QuanticsGrids.jl + TensorCrossInterpolation.jl

@@ -1,93 +1,107 @@
 # T4FExample
 
+This repository provides source files for building JupyterBook, which explains how to use packages registered in Tensors4FieldsRegistry.
 
+## Prerequisites
 
-## Getting started
+- Install Julia (`julia`)
+- Install GNU Make (`make`)
+- Install Git (`git`)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Clone this repository
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.com/tensors4fields/T4FExample.git
-git branch -M main
-git push -uf origin main
+```sh
+$ cd path/to/your/workspace/directory
+$ git clone https://gitlab.com/tensors4fields/T4FExample.git
+$ cd T4FExample
 ```
 
-## Integrate with your tools
+## How to build a Jupyter Book
 
-- [ ] [Set up project integrations](https://gitlab.com/tensors4fields/T4FExample/-/settings/integrations)
+Just run `make` command:
 
-## Collaborate with your team
+```sh
+$ cd T4FExample
+$ make
+```
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Then we will get outputs as below:
 
-## Test and Deploy
+```
+julia --project scripts/jupytext.jl interfacingwithitensors.jl
+    CondaPkg Found dependencies: ~/work/T4FExamples/CondaPkg.toml
+    CondaPkg Found dependencies: ~/.julia/packages/PythonCall/bb3ax/CondaPkg.toml
+    CondaPkg Found dependencies: ~/.julia/packages/PythonPlot/f591M/CondaPkg.toml
+    CondaPkg Dependencies already up to date
+[jupytext] Reading interfacingwithitensors.jl in format jl
+[jupytext] Setting kernel julia-1.10
+[jupytext] Updating notebook metadata with '{"kernelspec": {"name": "julia-1.10", "language": "julia", "display_name": "Julia 1.10.2"}}'
+[jupytext] Writing ipynbs/interfacingwithitensors.ipynb (destination file replaced [use --update to preserve cell outputs and ids])
+julia --project scripts/jupyter_book.jl
+Running Jupyter-Book v1.0.0
+...
+...
+...
+writing additional pages... search done
+copying images... [ 14%] _build/jupyter_execute/be1f99ce1077b1647e50b2f08
+copying images... [ 29%] _build/jupyter_execute/7aa60660b8255c884e2161d94
+copying images... [ 43%] _build/jupyter_execute/083314408bcee871cc804aaa2
+copying images... [ 57%] _build/jupyter_execute/3ea4eb256bb802a9ddbc68d12
+copying images... [ 71%] _build/jupyter_execute/8fbf08bfdb19e3830535aed88
+copying images... [ 86%] _build/jupyter_execute/d4fa9a27b9cb8469ab97c9790
+copying images... [100%] _build/jupyter_execute/1bbf71e3285bcd1ea04054810a8b1af59e3ee8321a4f74108637e95eac2c1c50.svg
+dumping search index in English (code: en)... done
+dumping object inventory... done
+build succeeded, 4 warnings.
 
-Use the built-in continuous integration in GitLab.
+The HTML pages are in _build/html.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+===============================================================================
 
-***
+Finished generating HTML for book.
+Your book's HTML pages are here:
+    _build/html/
+You can look at your book by opening this file in a browser:
+    _build/html/index.html
+Or paste this line directly into your browser bar:
+    ./T4FExamples/_build/html/index.html
 
-# Editing this README
+===============================================================================
+```
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+You will find `_build/html/index.html` is generated. Open this file in a browser to confirm our Jupyter Book is generated properly.
 
 ## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+We do not want to commit in `ipynb` files, which are difficult for humans to read and could contain binary data. Instead, we commit files as `jl` which can be transformed into ipynb format via `jupytext`.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+### Edit source files from VS Code 
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+If you are familiar with using VS Code, you could use `code` command from your terminal. To install required extensions for our workflow, run the following command:
 
-## License
-For open source projects, say how it is licensed.
+```sh
+$ code --install-extension ms-toolsai.jupyter julialang.language-julia congyiwu.vscode-jupytext
+```
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Open VS Code by runnning 
+
+```
+$ cd /path/to/this/repository
+$ code .
+```
+
+On the left side of the workspace you can see the source files in `.jl` which will be converted to ipynb when building Jupyter Book for our project. To edit files Open a file, for example `quantics1d.jl` with a right click. Select `Open as Jupyter Notebook` to edit the file in Jupyter Notebook format. The `congyiwu.vscode-jupytext` extension allows us to synchronize the Jupyter Notebook file and the jl format file. Namely, if you edit a file of `ipynb`, the `jl` file corresponding to `ipynb` will be updated.
+
+### Edit source files from Web
+
+For those who want to edit files via Jupyter Notebook/Lab's client, run the following command:
+
+```sh
+$ pip3 install jupytext jupyterlab
+$ jupytext-config set-default-viewer
+$ jupyter lab
+```
+
+Here running `jupytext-config set-default-viewer` allows us to render jl files as Jupyter Notebook format. [See jupytext manual](https://jupytext.readthedocs.io/en/latest/text-notebooks.html#with-a-double-click) to learn more.
+
+By Clicking `quantics1d.jl` it will be converted to `quantics1d.ipynb` and Jupyter server will open `quantics1d.ipynb`. We are allowed to synchronize the Jupyter Notebook file and the jl format file.

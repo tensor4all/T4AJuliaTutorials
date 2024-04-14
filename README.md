@@ -4,11 +4,11 @@ This repository provides source files for building JupyterBook, which explains h
 
 ## Prerequisites
 
+- Install Git (`git`)
 - Install Julia (`julia`)
 - Install GNU Make (`make`)
-- Install Git (`git`)
 
-## Clone this repository
+### Clone this repository
 
 ```sh
 $ cd path/to/your/workspace/directory
@@ -16,12 +16,22 @@ $ git clone https://gitlab.com/tensors4fields/T4FExample.git
 $ cd T4FExample
 ```
 
+### Setup
+
+```sh
+$ ls 
+CondaPkg.toml README.md index.jl Makefile ... Project.toml
+$ julia --project -e 'using Pkg; Pkg.instantiate()'
+$ julia --project -e 'using Pkg; Pkg.build("IJulia")'
+```
+
 ## How to build a Jupyter Book
 
 Just run `make` command:
 
 ```sh
-$ cd T4FExample
+$ ls
+CondaPkg.toml README.md index.jl Makefile ... Project.toml
 $ make
 ```
 

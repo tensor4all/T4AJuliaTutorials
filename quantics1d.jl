@@ -25,6 +25,39 @@
 
 # %%
 using PythonPlot: pyplot as plt, gcf
+
+"""
+    @display(fig)
+
+Displays the matplotlib figure object `fig` and avoids duplicate plots.
+
+# Examples
+
+```
+using PythonPlot: pyplot as plt, gcf
+fig, ax = plt.subplots()
+ax.plot([1,2,3], [3,1,2])
+@display(fig)
+```
+"""
+macro display(ex)
+    fig = esc(ex)
+    if isinteractive()
+        #=
+        Usually this should be `isinteractive()==true` when we are running code from Jupyter Notebook/Book.
+        In this case you need to write `fig;` or `fig; nothing` to avoid duplicate plots.
+        =#
+        :($(fig); nothing)
+    else
+        #=
+        Editing source code from VS code with a kernel named "Julia release channel
+        runs in non-interactive mode, i.e. `isinteractive() == false`.
+        In this case you need to call `display(fig)` to avoid duplicate plots.
+        =#
+        :(display($(fig)))
+    end
+end
+
 import QuanticsGrids as QG
 using QuanticsTCI: quanticscrossinterpolate
 
@@ -61,7 +94,7 @@ fig, ax = plt.subplots()
 ax.plot(xs, f.(xs), label="$(nameof(f))")
 ax.set_title("$(nameof(f))")
 ax.legend()
-haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
+@display(fig)
 
 # %% [markdown]
 # For $x \in (0, 3]$ we will get:
@@ -73,7 +106,7 @@ fig, ax = plt.subplots()
 ax.plot(xs2, f.(xs2), label="$(nameof(f))")
 ax.set_title("$(nameof(f))")
 ax.legend()
-haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
+@display(fig)
 
 # %% [markdown]
 # ### QTT representation
@@ -129,7 +162,7 @@ ax.set_title("$(nameof(f)) and TCI")
 ax.set_xlabel("x")
 ax.set_ylabel("y")
 ax.legend()
-haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
+@display(fig)
 
 # %% [markdown]
 # Above, one can see that the original function is interpolated very accurately.
@@ -154,7 +187,7 @@ ax.set_title("x vs interpolation error: $(nameof(f))")
 ax.set_xlabel("x")
 ax.set_ylabel("interpolation error")
 ax.legend()
-haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
+@display(fig)
 
 # %% [markdown]
 # ### About `ci::QuanticsTensorCI2{Float64}`
@@ -181,8 +214,7 @@ ax.set_xlabel("Bond dimension")
 ax.set_ylabel("Normalization error")
 ax.set_title("normalized error vs. bond dimension: $(nameof(f))")
 ax.set_yscale("log")
-
-haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
+@display(fig)
 
 # %% [markdown]
 # ### Function evaluations
@@ -216,7 +248,7 @@ ax.set_xlabel("x")
 ax.set_ylabel("y")
 ax.set_xlim(0, maximum(xs))
 ax.legend()
-haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
+@display(fig)
 
 # %% [markdown]
 # ## Example 2
@@ -277,5 +309,4 @@ ax.set_xlabel("Bond dimension")
 ax.set_ylabel("Normalization error")
 ax.set_title("normalized error vs. bond dimension")
 ax.set_yscale("log")
-
-haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
+@display(fig)

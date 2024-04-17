@@ -9,7 +9,7 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.11.2
 #   kernelspec:
-#     display_name: julia 1.10.2
+#     display_name: Julia 1.10.2
 #     language: julia
 #     name: julia-1.10
 # ---
@@ -23,8 +23,14 @@
 #
 
 # %%
+using PythonCall: PythonCall
+using PythonPlot: pyplot as plt, Figure
+
+# Displays the matplotlib figure object `fig` and avoids duplicate plots.
+_display(fig::Figure) = isinteractive() ? (fig; plt.show(); nothing) : Base.display(fig)
+_display(fig::PythonCall.Py) = _display(Figure(fig))
+
 import QuanticsGrids as QG
-using PythonPlot: pyplot as plt, gcf
 import TensorCrossInterpolation as TCI
 
 # %% [markdown]

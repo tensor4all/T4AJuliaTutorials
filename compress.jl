@@ -18,6 +18,14 @@
 # %% [markdown]
 # # Compressing exisiting data
 
+# %%
+using PythonCall: PythonCall
+using PythonPlot: pyplot as plt, Figure
+
+# Displays the matplotlib figure object `fig` and avoids duplicate plots.
+_display(fig::Figure) = isinteractive() ? (fig; plt.show(); nothing) : Base.display(fig)
+_display(fig::PythonCall.Py) = _display(Figure(fig))
+
 # %% [markdown]
 # ## TCI
 #
@@ -53,8 +61,6 @@ println(
 # Let us plot the original data and the TCI error on a 2D cut.
 
 # %%
-using PythonPlot: pyplot as plt, gcf
-
 fig, axs = plt.subplots(1, 2; figsize=(12.8, 4.8))
 
 # Original data
@@ -67,7 +73,7 @@ c = axs[1].pcolor(log10.(abs.(errors[:, :, 1])))
 fig.colorbar(c, ax=axs[1])
 axs[1].set_title("log10 of abs error of TCI")
 
-haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
+_display(fig)
 
 # %% [markdown]
 # ## QTCI
@@ -126,7 +132,7 @@ c = axs[1].pcolor(log10.(abs.(qtterrors[:, :, 1])))
 fig.colorbar(c, ax=axs[1])
 axs[1].set_title("log10 of abs error of QTCI")
 
-haskey(ENV, "VSCODE_CWD") ? display(gcf()) : nothing # display for VS code
+_display(fig)
 
 # %% [markdown]
 # ### QuanticsGrids.jl + TensorCrossInterpolation.jl

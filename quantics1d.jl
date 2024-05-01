@@ -283,3 +283,48 @@ ax.set_ylabel("Normalization error")
 ax.set_title("normalized error vs. bond dimension")
 ax.set_yscale("log")
 _display(fig)
+
+# %% [markdown]
+# ## Example 3
+#
+# ### Control the error of the TCI by a tolerance
+#
+# We interpolate the same function as in Example 2, but this time we use a tolerance to control the error of the TCI. The tolerance is a positive number that determines the maximum error of the TCI, which is scaled by an estimate of the abosolute maximum of the function.
+# The TCI algorithm will adaptively increase the bond dimension until the error is below the tolerance.
+
+# %%
+tol = 1e-8 # Tolerance for the error
+
+# Convert to quantics format and sweep
+ci_tol, ranks_tol, errors_tol = quanticscrossinterpolate(
+    Float64, oscillation_fn, qgrid;
+    tolerance=tol,
+    normalizeerror=true, # Normalize the error by the maximum sample value,
+    verbosity=1, loginterval=1, # Log the error every `loginterval` iterations
+    )
+
+# %%
+println("Max abs sampled value is $(ci_tol.tci.maxsamplevalue)")
+
+# %%
+errors_tol ./ ci_tol.tci.maxsamplevalue
+
+# %% [markdown]
+# ### Estimate the error of the TCI
+# Wait!
+# Since we did not sample the function over the entire domain, we do not know the true error of the TCI.
+# In theory, we can estimate the error of the TCI by comparing the function values at the sampled points with the TCI values at the same points.
+# But, it is not practical to compare the function values with the TCI values at all points in the domain.
+# The function `estimatetrueerror` in `TensorCrossInterpolation.jl` provides a good estimate of the error of the TCI.
+# The algorithm finds indices (points) where the error is large by a randomized global search algorithm starting with a set of random initial points.
+
+# %%
+import TensorCrossInterpolation as TCI
+pivoterror_global = TCI.estimatetrueerror(TCI.TensorTrain(ci.tci), ci.quanticsfunction; nsearch=100) # Results are sorted in descending order of the error
+
+# %% [markdown]
+# Now, you can see the error estimate of the TCI is below the tolerance of $10^{-8}$ (or close to it).
+
+# %%
+println("The largest error found is $(pivoterror_global[1][2]) and the corresponding pivot is $(pivoterror_global[1][1]).")
+println("The tolenrance used is $(tol * ci_tol.tci.maxsamplevalue).")

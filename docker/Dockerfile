@@ -1,4 +1,4 @@
-FROM julia:1.10.2
+FROM julia:1.10.3
 
 RUN apt-get update && apt-get install -y --no-install-recommends make
 

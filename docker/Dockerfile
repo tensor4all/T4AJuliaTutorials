@@ -2,6 +2,7 @@ FROM julia:1.10.3
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	make \
+	git \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV JULIA_PROJECT=@.
@@ -30,6 +31,7 @@ RUN $HOME/.rye/shims/rye config --set-bool behavior.use-uv=true
 # https://jupytext.readthedocs.io/en/latest/index.html
 RUN $HOME/.rye/shims/rye tools install jupytext \
 	&& $HOME/.rye/shims/rye tools install ruff
+
 
 USER root
 COPY Project.toml /workspaces/T4FExamples/

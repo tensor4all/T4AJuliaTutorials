@@ -8,5 +8,6 @@ all: ipynbs/*.ipynb
 .PHONY: clean
 clean:
 	$(RM) ipynbs/*.ipynb
+	$(RM) -r .CondaPkg
 	$(RM) -r _build
 	$(RM) default.profraw

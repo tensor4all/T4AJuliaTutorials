@@ -16,7 +16,7 @@ jobs:
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1.10'
-      - uses: julia-actions/cache@v1
+      - uses: julia-actions/cache@v4
       - uses: julia-actions/julia-buildpkg@v1
         with:
           instantiate: false
@@ -29,7 +29,7 @@ jobs:
         run: |
           mv _build/html public
       - name: Upload public artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: public
           path: public

@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  jupyterbook:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10'
+      - uses: julia-actions/cache@v1
+      - uses: julia-actions/julia-buildpkg@v1
+        with:
+          instantiate: false
+          precompile: false
+      - name: Build Jupyter Book
+        run: |
+          julia --project -e 'using IJulia; installkernel("Julia", "--project=@.")'
+          make
+      - name: Move build artifacts to public
+        run: |
+          mv _build/html public
+      - name: Upload public artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: public
+          path: public
+
+  deploy:
+    needs: jupyterbook
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          persist-credentials: false
+      - name: Remove old files
+        run: rm -rf *
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: public
+          path: public
+      - name: Setup Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.DEPLOY_TOKEN }}@github.com/${{ github.repository }}.git
+      - name: Deploy
+        run: |
+          mv public/* .
+          rm -rf public
+          git add .
+          git commit -m 'Deploy to GitHub Pages'
+          git push --force origin gh-pages

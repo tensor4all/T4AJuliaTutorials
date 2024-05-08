@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+      - uses: julia-actions/cache@v1
+      - uses: julia-actions/julia-buildpkg@v1
+        with:
+          project: .
+          instantiate: true
+          compile: false
+
+  jupyterbook:
+    needs: setup
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+      - uses: julia-actions/cache@v1
+      - uses: julia-actions/julia-buildpkg@v1
+        with:
+          project: .
+          instantiate: true
+          compile: false
+
+      - name: Build Jupyter Book
+        run: make
+
+  deploy:
+    needs: setup
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+      - uses: julia-actions/cache@v1
+      - uses: julia-actions/julia-buildpkg@v1
+        with:
+          project: .
+          instantiate: true
+          compile: false
+
+      - name: Build Jupyter Book
+        run: make
+
+      - name: Move build artifacts to public
+        run: |
+          mv _build/html public
+          mkdir -p notebooks
+          mv _build/jupyter_execute/ipynbs/*.ipynb notebooks/
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: public
+          path: public
+          
+      - name: Upload notebooks
+        uses: actions/upload-artifact@v3
+        with:
+          name: notebooks
+          path: notebooks

@@ -496,7 +496,7 @@ f(x) = \cos\left(\frac{x}{B}\right) \cos\left(\frac{x}{4\sqrt{5}B}\right) e^{-x^
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (3.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 29290 entries), [19, 19, 19], [7.21164651610962e-7, 5.950443150922309e-7, 5.950443150922309e-7])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (3.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 27630 entries), [19, 19, 18], [7.843224834814682e-7, 8.072564960865504e-7, 8.625547039899372e-7])
 </pre></div>
 </div>
 </div>
@@ -516,7 +516,7 @@ f(x) = \cos\left(\frac{x}{B}\right) \cos\left(\frac{x}{4\sqrt{5}B}\right) e^{-x^
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x: 0.0, i: 1, tci: 3.0, ref: 3.0
 x: 2.7284841053187847e-12, i: 2, tci: 2.999995654819239, ref: 2.999995654819239
 x: 5.4569682106375694e-12, i: 3, tci: 2.9999826193274735, ref: 2.9999826193274735
-x: 2.9999999999972715, i: 1099511627776, tci: 0.09953873420117214, ref: 0.09953865971040611
+x: 2.9999999999972715, i: 1099511627776, tci: 0.09953863581402493, ref: 0.09953865971040611
 </pre></div>
 </div>
 </div>
@@ -545,7 +545,7 @@ x: 2.9999999999972715, i: 1099511627776, tci: 0.09953873420117214, ref: 0.099538
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1870eb495848a111b6a913fcad9a6b759b3f75e613e1c0249f0f4bcb01b701d7.png" src="../_images/1870eb495848a111b6a913fcad9a6b759b3f75e613e1c0249f0f4bcb01b701d7.png" />
+<img alt="../_images/0fc7dfed9155ae85be84fe7c43b6f4fe9710412f3ca95ca4adb00aabbacabe2f.png" src="../_images/0fc7dfed9155ae85be84fe7c43b6f4fe9710412f3ca95ca4adb00aabbacabe2f.png" />
 </div>
 </div>
 <p>Above, one can see that the original function is interpolated very accurately.</p>
@@ -573,7 +573,7 @@ x: 2.9999999999972715, i: 1099511627776, tci: 0.09953873420117214, ref: 0.099538
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a92da9abd207c516f436081c5f29e8c9683e90da47171c09472b10411509fe8e.png" src="../_images/a92da9abd207c516f436081c5f29e8c9683e90da47171c09472b10411509fe8e.png" />
+<img alt="../_images/73d4bc628c5cc0a90122fc3b27839161fb8d66fa069477b8eab6afb54ea05c9f.png" src="../_images/73d4bc628c5cc0a90122fc3b27839161fb8d66fa069477b8eab6afb54ea05c9f.png" />
 </div>
 </div>
 </section>
@@ -610,7 +610,7 @@ In the following figure, we plot the normalized error vs. bond dimension, showin
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6edf138cc6c8b6cdbc4386b4d05cf8246e8d1d14b89c5df5c58b0bf19c509d20.png" src="../_images/6edf138cc6c8b6cdbc4386b4d05cf8246e8d1d14b89c5df5c58b0bf19c509d20.png" />
+<img alt="../_images/97ef6c4d20e922da9e68ffa05ec29730a10bb1a11e1d945011e5cb02398fd15b.png" src="../_images/97ef6c4d20e922da9e68ffa05ec29730a10bb1a11e1d945011e5cb02398fd15b.png" />
 </div>
 </div>
 </section>
@@ -628,32 +628,32 @@ In the following figure, we plot the normalized error vs. bond dimension, showin
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dict{Float64, Float64} with 29290 entries:
-  4.12929e-8  =&gt; 2.22714
-  0.0029347   =&gt; 1.88871
-  0.434401    =&gt; 1.43189
-  0.00741649  =&gt; 2.12386
-  0.875976    =&gt; 1.11775
-  0.699283    =&gt; 0.534908
-  0.0160619   =&gt; 2.06911
-  1.17396     =&gt; 0.597193
-  0.339846    =&gt; 1.54143
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dict{Float64, Float64} with 27630 entries:
+  0.000117869 =&gt; 1.92474
+  0.739812    =&gt; 1.18544
+  0.00481517  =&gt; 1.46163
+  0.00453169  =&gt; 1.98808
+  0.00528784  =&gt; 1.79131
+  2.03211     =&gt; 0.269253
+  0.708612    =&gt; 0.732779
+  0.000126129 =&gt; 1.67707
+  0.398065    =&gt; 0.56909
   0.715576    =&gt; 1.05685
-  0.000400689 =&gt; 1.87444
-  2.0625      =&gt; 0.251989
-  2.69582     =&gt; 0.135257
-  0.767132    =&gt; 0.925303
-  2.68744     =&gt; 0.136809
+  0.980357    =&gt; 0.799637
+  2.75156     =&gt; 0.127651
+  0.0355681   =&gt; 1.41391
+  0.739903    =&gt; 1.03672
+  0.289322    =&gt; 1.20808
+  0.20692     =&gt; 1.59966
+  0.00478425  =&gt; 2.79873
+  0.000127918 =&gt; 2.88649
+  0.743207    =&gt; 0.586226
+  0.72441     =&gt; 1.36973
+  0.00484318  =&gt; 2.3705
+  0.74317     =&gt; 1.20882
+  2.30258     =&gt; 0.202806
   1.66438e-10 =&gt; 2.98388
-  0.00100714  =&gt; 1.71983
-  0.0732832   =&gt; 1.69169
-  0.000932695 =&gt; 2.19766
-  3.94184e-8  =&gt; 1.9983
-  1.17689     =&gt; 0.563873
-  0.699314    =&gt; 0.941683
-  2.95011     =&gt; 0.10453
-  2.70612     =&gt; 0.133443
-  0.00384464  =&gt; 1.91661
+  0.74316     =&gt; 0.459743
   ⋮           =&gt; ⋮
 </pre></div>
 </div>
@@ -681,7 +681,7 @@ In the following figure, we plot the normalized error vs. bond dimension, showin
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bc0509dde654384874a6e50a3cb4c7d750d7be8d36dce4e88aa40ae4e19af0b5.png" src="../_images/bc0509dde654384874a6e50a3cb4c7d750d7be8d36dce4e88aa40ae4e19af0b5.png" />
+<img alt="../_images/87564cb7a34bd456c3354232869b2bab1169865b42714c4905ae74e942c953b4.png" src="../_images/87564cb7a34bd456c3354232869b2bab1169865b42714c4905ae74e942c953b4.png" />
 </div>
 </div>
 </section>
@@ -723,7 +723,7 @@ f(x) &amp;= \sinc(x)+3e^{-0.3(x-4)^2}\sinc(x-4) \nonumber\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 14, QuanticsGrids.DiscretizedGrid{1}(20, (-10.0,), (10.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 3657 entries), [13, 14, 14, 14], [5.632836844481101e-9, 7.146939661507069e-9, 7.146939661507069e-9, 7.146939661507069e-9])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 14, QuanticsGrids.DiscretizedGrid{1}(20, (-10.0,), (10.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 3600 entries), [11, 14, 14, 14], [7.955930266340833e-9, 8.353104562742997e-9, 8.353104562742997e-9, 8.353104562742997e-9])
 </pre></div>
 </div>
 </div>
@@ -740,7 +740,7 @@ f(x) &amp;= \sinc(x)+3e^{-0.3(x-4)^2}\sinc(x-4) \nonumber\\
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x: -10.0, tci: -6.223187220679993, ref: -6.223187220679993
 x: -9.999980926513672, tci: -6.223066148054395, ref: -6.223066148054395
-x: 9.999980926513672, tci: -4.585194580210247, ref: -4.585194580210247
+x: 9.999980926513672, tci: -4.58519458021025, ref: -4.585194580210247
 </pre></div>
 </div>
 </div>
@@ -763,7 +763,7 @@ x: 9.999980926513672, tci: -4.585194580210247, ref: -4.585194580210247
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9cac15af366e8fd15b4281f1b8fc630433b1b9659493e59e58c544e6628d78e4.png" src="../_images/9cac15af366e8fd15b4281f1b8fc630433b1b9659493e59e58c544e6628d78e4.png" />
+<img alt="../_images/7f56346a0d3716551f5a04d0f001a34463b0612461207970d393f75830b38df3.png" src="../_images/7f56346a0d3716551f5a04d0f001a34463b0612461207970d393f75830b38df3.png" />
 </div>
 </div>
 </section>
@@ -788,14 +788,14 @@ The TCI algorithm will adaptively increase the bond dimension until the error is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iteration = 1, rank = 13, error= 5.480897427573112e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=4
-  Rejected 4 global pivots added in the previous iteration, errors are [1.6573240557704594e-9, 1.8706345916719158e-8, 1.5809886733109124e-10, 3.200744114195686e-10]
-iteration = 2, rank = 14, error= 4.6316023659817576e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iteration = 1, rank = 13, error= 6.210103957327599e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=5
+  Rejected 5 global pivots added in the previous iteration, errors are [9.136378542606849e-9, 1.0038720396621237e-8, 9.658574384729945e-9, 6.267875107823784e-12, 1.2673772253890547e-8]
+iteration = 2, rank = 14, error= 4.995358626489508e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=0
 iteration = 3, rank = 14, error= 4.449599701880746e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=0
 iteration = 4, rank = 14, error= 4.449599701880746e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=0
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 14, QuanticsGrids.DiscretizedGrid{1}(20, (-10.0,), (10.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 3982 entries), [13, 14, 14, 14], [8.807219248297381e-9, 7.442492410626325e-9, 7.150033486208613e-9, 7.150033486208613e-9])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 14, QuanticsGrids.DiscretizedGrid{1}(20, (-10.0,), (10.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 3743 entries), [13, 14, 14, 14], [9.978976587255936e-9, 8.027010034166508e-9, 7.150033486208613e-9, 7.150033486208613e-9])
 </pre></div>
 </div>
 </div>
@@ -820,8 +820,8 @@ iteration = 4, rank = 14, error= 4.449599701880746e-8, maxsamplevalue= 6.2231872
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4-element Vector{Float64}:
- 1.4152264645084932e-9
- 1.195929376171508e-9
+ 1.6035154067188031e-9
+ 1.2898551416695793e-9
  1.1489343374482868e-9
  1.1489343374482868e-9
 </pre></div>
@@ -845,33 +845,33 @@ The algorithm finds indices (points) where the error is large by a randomized gl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>88-element Vector{Tuple{Vector{Int64}, Float64}}:
- ([1, 2, 1, 1, 2, 1, 1, 2, 2, 2, 1, 2, 1, 2, 1, 1, 2, 2, 1, 2], 6.69875821479593e-8)
- ([1, 2, 1, 1, 2, 1, 1, 2, 2, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1], 6.694978615939817e-8)
- ([1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1], 6.217505799099854e-8)
- ([1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1], 6.15983211105231e-8)
- ([1, 1, 1, 1, 1, 1, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 2, 1, 2], 5.952546011656068e-8)
- ([1, 1, 1, 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 1, 2, 2, 1, 2], 5.901564703592044e-8)
- ([1, 1, 1, 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1], 5.9005198504991085e-8)
- ([1, 1, 1, 1, 1, 1, 2, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 1, 2], 5.867247487856275e-8)
- ([1, 1, 1, 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1], 5.809601999473557e-8)
- ([2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1], 5.806073422043312e-8)
- ([1, 2, 1, 1, 2, 1, 1, 2, 2, 2, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2], 5.761766264100743e-8)
- ([1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 2, 1], 5.6530781611385805e-8)
- ([2, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 1, 2], 5.449087470132952e-8)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>86-element Vector{Tuple{Vector{Int64}, Float64}}:
+ ([1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1], 9.844186887875139e-8)
+ ([1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 1, 1], 9.816504675796978e-8)
+ ([1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2], 9.712770054903785e-8)
+ ([1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1], 9.463180550284278e-8)
+ ([1, 1, 1, 1, 2, 2, 1, 2, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1], 9.427595215605322e-8)
+ ([1, 2, 1, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1], 9.421896596251145e-8)
+ ([1, 2, 1, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 1, 2, 2], 9.410362489248314e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 2], 9.33730177621328e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 1], 9.336075557087042e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 2, 2, 1, 2, 2, 1, 1, 2, 2], 9.277818691089124e-8)
+ ([1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 1, 2, 2], 9.00885277488328e-8)
+ ([1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2], 8.97996639270815e-8)
+ ([1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1], 8.978220766842071e-8)
  ⋮
- ([1, 2, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 2], 2.06751202824762e-8)
- ([2, 2, 1, 2, 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 2, 1, 1], 2.0641891418371472e-8)
- ([2, 1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 2, 1, 2], 2.0369763542582575e-8)
- ([1, 2, 1, 2, 1, 1, 1, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 2], 1.989389386558571e-8)
- ([1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 2, 2, 1, 1, 2, 1], 1.898847834524986e-8)
- ([2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 2], 1.8705970994403742e-8)
- ([2, 1, 2, 2, 1, 2, 1, 1, 2, 1, 1, 2, 2, 1, 2, 2, 1, 1, 1, 2], 1.7659016027238295e-8)
- ([2, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 2, 2, 2, 2], 1.742168842522318e-8)
- ([1, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 2, 2, 2], 1.7136909891135588e-8)
- ([2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 2, 2, 2, 2], 1.6763644250517018e-8)
- ([1, 2, 1, 2, 1, 2, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2], 1.6147684966938414e-8)
- ([2, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1], 1.3029450740553727e-8)
+ ([2, 2, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 2], 2.6686679088783194e-8)
+ ([2, 1, 2, 1, 1, 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1], 2.637225315904601e-8)
+ ([1, 2, 2, 2, 1, 1, 1, 2, 2, 1, 2, 1, 1, 1, 2, 2, 2, 2, 2, 1], 2.6013244891487375e-8)
+ ([2, 1, 1, 2, 2, 2, 2, 1, 1, 1, 2, 2, 1, 2, 1, 1, 2, 2, 2, 1], 2.559949008329454e-8)
+ ([1, 2, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 1, 2], 2.4772047302334954e-8)
+ ([2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 2, 1], 2.4304100065819512e-8)
+ ([2, 1, 2, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 1], 2.261547249471363e-8)
+ ([1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 2, 1, 2, 1, 2, 2, 1, 1, 2, 1], 2.060558035310578e-8)
+ ([1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 2, 1, 1, 1, 1, 2, 1], 1.7075183933457083e-8)
+ ([1, 2, 2, 2, 2, 1, 2, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1], 1.6721551809872892e-8)
+ ([2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 2, 2, 1, 1, 1, 2], 1.5522866769757115e-8)
+ ([2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 2], 1.401104499088035e-8)
 </pre></div>
 </div>
 </div>
@@ -885,7 +885,7 @@ The algorithm finds indices (points) where the error is large by a randomized gl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The largest error found is 6.69875821479593e-8 and the corresponding pivot is [1, 2, 1, 1, 2, 1, 1, 2, 2, 2, 1, 2, 1, 2, 1, 1, 2, 2, 1, 2].
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The largest error found is 9.844186887875139e-8 and the corresponding pivot is [1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1].
 The tolenrance used is 6.223187220679993e-8.
 </pre></div>
 </div>

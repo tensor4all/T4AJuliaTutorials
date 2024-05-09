@@ -57,18 +57,17 @@ jobs:
       - name: Build Jupyter Book
         run: make
 
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          branch: gh-pages
+          folder: _build/html
       - name: Move build artifacts to public
         run: |
           mv _build/html public
           mkdir -p notebooks
           mv _build/jupyter_execute/ipynbs/*.ipynb notebooks/
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: public
-          path: public
-          
       - name: Upload notebooks
         uses: actions/upload-artifact@v3
         with:

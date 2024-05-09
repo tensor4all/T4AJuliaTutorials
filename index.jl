@@ -1,20 +1,21 @@
 # ---
 # jupyter:
 #   jupytext:
+#     custom_cell_magics: kql
 #     formats: ipynb,jl:percent
 #     text_representation:
 #       extension: .jl
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.16.1
+#       jupytext_version: 1.11.2
 #   kernelspec:
-#     display_name: julia 1.10.2
+#     display_name: Julia 1.10.3
 #     language: julia
 #     name: julia-1.10
 # ---
 
 # %% [markdown]
-# # T4F Examples
+# # T4A Julia Tutorials
 # This documentation provides a comprehensive tutorials/examples
 # on quantics and tensor cross interpolation (TCI) and their combinations (QTCI).
 # These technologies allow us to reveal low-rank tensor network representation (TNR) hidden in data or a function,
@@ -28,7 +29,6 @@
 # * [QuanticsGrids.jl](https://gitlab.com/tensors4fields/quanticstci.jl/-/blob/main/README.md?ref_type=heads) provides utilities for handing quantics representations, e.g., creating a quantics grid and transformation between the original coordinate system and the quantics representation.
 # * [QuanticsTCI.jl](https://tensors4fields.gitlab.io/quanticstci.jl/dev/index.html) is a thin wrapper around `TensorCrossInterpolation.jl` and `QuanticsGrids.jl`, providing valuable functionalities for non-expert users' performing quantics TCI (QTCI).
 # * [TCIITensorConversion.jl](https://gitlab.com/tensors4fields/tciitensorconversion.jl) provides conversions of tensor trains between `TensorCrossInterpolation.jl` and `ITensors.jl`.
-# * [Quantics.jl](https://gitlab.com/tensors4fields/Quantics.jl) is an experimental library for performing various operations on quantics representations, e.g., Fourier transform, convolution, and multiplication. The interface is subject to change and not stable yet!
 #
 # This documentation provides examples of using these libraries to perform QTCI and other operations.
 #
@@ -99,12 +99,7 @@
 
 # %% [markdown]
 # ```sh
-# $ julia -e 'using Pkg; Pkg.add(PackageSpec(name="QuanticsTCI", version="0.4.3"))'
-# $ julia -e 'using Pkg; Pkg.add(PackageSpec(name="QuanticsGrids", version="0.2"))'
-# $ julia -e 'using Pkg; Pkg.add(PackageSpec(name="TensorCrossInterpolation", version="0.8"))'
-# $ julia -e 'using Pkg; Pkg.add(PackageSpec(name="TCIITensorConversion", version="0.1"))'
-# $ julia -e 'using Pkg; Pkg.add("ITensors")'
-# $ julia -e 'using Pkg; Pkg.add(["Plots", "PythonPlot", "LaTeXStrings"])'
+# $ julia -e 'using Pkg; Pkg.add(["QuanticsTCI", "QuanticsGrids", "TensorCrossInterpolation", "TCIITensorConversion", "ITensors", "Plots", "PythonPlot", "LaTeXStrings"])'
 # ```
 
 # %% [markdown]
@@ -119,25 +114,3 @@
 using Dates; now(UTC)
 VERSION # display Julia version
 using Pkg; Pkg.status()
-
-# %% [markdown]
-# ## Examples
-#
-# ```
-# Pages = [
-#     "quantics1d.md",
-#     "quantics2d.md",
-#     "interfacingwithitensors.md",
-# ]
-# Depth = 2
-# ```
-#
-# ## For developers
-#
-# For those who want to build documentation for `T4FExample.jl`, run the following command:
-#
-# ```sh
-# $ git clone https://gitlab.com/tensors4fields/T4ATutorials.jl.git
-# $ cd T4ATutorials.jl.git
-# $ julia --project=docs -e 'using Pkg; Pkg.develop(path=pwd()); using LiveServer; servedocs()'
-# ```

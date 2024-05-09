@@ -28,7 +28,9 @@ jobs:
           key: ${{ runner.os }}-jupyterbook-${{ hashFiles('_config.yml', '_toc.yml') }}
 
       - name: Build Jupyter Book
-        run: make
+        run: |
+          julia --project -e 'using Pkg; Pkg.build("IJulia")'
+          make
 
   deploy:
     runs-on: ubuntu-latest
@@ -46,7 +48,9 @@ jobs:
           key: ${{ runner.os }}-deploy-${{ hashFiles('_config.yml', '_toc.yml') }}
 
       - name: Build Jupyter Book
-        run: make
+        run: |
+          julia --project -e 'using Pkg; Pkg.build("IJulia")'
+          make
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4

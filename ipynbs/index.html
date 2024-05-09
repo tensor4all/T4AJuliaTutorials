@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>T4F Examples &#8212; T4AJuliaTutorials</title>
+    <title>T4A Julia Tutorials &#8212; T4AJuliaTutorials</title>
   
   
   
@@ -169,7 +169,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    T4F Examples
+                    T4A Julia Tutorials
                 </a>
             </li>
         </ul>
@@ -364,7 +364,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>T4F Examples</h1>
+    <h1>T4A Julia Tutorials</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -380,8 +380,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-out-the-status-of-the-project">Print out the status of the project</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-developers">For developers</a></li>
 </ul>
             </nav>
         </div>
@@ -393,8 +391,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="t4f-examples">
-<h1>T4F Examples<a class="headerlink" href="#t4f-examples" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="t4a-julia-tutorials">
+<h1>T4A Julia Tutorials<a class="headerlink" href="#t4a-julia-tutorials" title="Link to this heading">#</a></h1>
 <p>This documentation provides a comprehensive tutorials/examples
 on quantics and tensor cross interpolation (TCI) and their combinations (QTCI).
 These technologies allow us to reveal low-rank tensor network representation (TNR) hidden in data or a function,
@@ -407,7 +405,6 @@ The folowing list is given in the order of low-level to high-level libraries:</p
 <li><p><a class="reference external" href="https://gitlab.com/tensors4fields/quanticstci.jl/-/blob/main/README.md?ref_type=heads">QuanticsGrids.jl</a> provides utilities for handing quantics representations, e.g., creating a quantics grid and transformation between the original coordinate system and the quantics representation.</p></li>
 <li><p><a class="reference external" href="https://tensors4fields.gitlab.io/quanticstci.jl/dev/index.html">QuanticsTCI.jl</a> is a thin wrapper around <code class="docutils literal notranslate"><span class="pre">TensorCrossInterpolation.jl</span></code> and <code class="docutils literal notranslate"><span class="pre">QuanticsGrids.jl</span></code>, providing valuable functionalities for non-expert users’ performing quantics TCI (QTCI).</p></li>
 <li><p><a class="reference external" href="https://gitlab.com/tensors4fields/tciitensorconversion.jl">TCIITensorConversion.jl</a> provides conversions of tensor trains between <code class="docutils literal notranslate"><span class="pre">TensorCrossInterpolation.jl</span></code> and <code class="docutils literal notranslate"><span class="pre">ITensors.jl</span></code>.</p></li>
-<li><p><a class="reference external" href="https://gitlab.com/tensors4fields/Quantics.jl">Quantics.jl</a> is an experimental library for performing various operations on quantics representations, e.g., Fourier transform, convolution, and multiplication. The interface is subject to change and not stable yet!</p></li>
 </ul>
 <p>This documentation provides examples of using these libraries to perform QTCI and other operations.</p>
 <section id="preparation">
@@ -455,12 +452,7 @@ The folowing list is given in the order of low-level to high-level libraries:</p
 <section id="install-required-packages">
 <h3>Install required packages<a class="headerlink" href="#install-required-packages" title="Link to this heading">#</a></h3>
 <p>One can install required packages by running the following command on your shell:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>julia<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.add(PackageSpec(name=&quot;QuanticsTCI&quot;, version=&quot;0.4.3&quot;))&#39;</span>
-$<span class="w"> </span>julia<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.add(PackageSpec(name=&quot;QuanticsGrids&quot;, version=&quot;0.2&quot;))&#39;</span>
-$<span class="w"> </span>julia<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.add(PackageSpec(name=&quot;TensorCrossInterpolation&quot;, version=&quot;0.8&quot;))&#39;</span>
-$<span class="w"> </span>julia<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.add(PackageSpec(name=&quot;TCIITensorConversion&quot;, version=&quot;0.1&quot;))&#39;</span>
-$<span class="w"> </span>julia<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.add(&quot;ITensors&quot;)&#39;</span>
-$<span class="w"> </span>julia<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.add([&quot;Plots&quot;, &quot;PythonPlot&quot;, &quot;LaTeXStrings&quot;])&#39;</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>julia<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.add([&quot;QuanticsTCI&quot;, &quot;QuanticsGrids&quot;, &quot;TensorCrossInterpolation&quot;, &quot;TCIITensorConversion&quot;, &quot;ITensors&quot;, &quot;Plots&quot;, &quot;PythonPlot&quot;, &quot;LaTeXStrings&quot;])&#39;</span>
 </pre></div>
 </div>
 <p>This will install required packages to Julia’s global envrironment.</p>
@@ -498,26 +490,6 @@ $<span class="w"> </span>julia<span class="w"> </span>-e<span class="w"> </span>
 </div>
 </div>
 </section>
-</section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pages</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;quantics1d.md&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;quantics2d.md&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;interfacingwithitensors.md&quot;</span><span class="p">,</span>
-<span class="p">]</span>
-<span class="n">Depth</span> <span class="o">=</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</section>
-<section id="for-developers">
-<h2>For developers<a class="headerlink" href="#for-developers" title="Link to this heading">#</a></h2>
-<p>For those who want to build documentation for <code class="docutils literal notranslate"><span class="pre">T4FExample.jl</span></code>, run the following command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://gitlab.com/tensors4fields/T4ATutorials.jl.git
-$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>T4ATutorials.jl.git
-$<span class="w"> </span>julia<span class="w"> </span>--project<span class="o">=</span>docs<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.develop(path=pwd()); using LiveServer; servedocs()&#39;</span>
-</pre></div>
-</div>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -584,8 +556,6 @@ $<span class="w"> </span>julia<span class="w"> </span>--project<span class="o">=
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-out-the-status-of-the-project">Print out the status of the project</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-developers">For developers</a></li>
 </ul>
   </nav></div>
 

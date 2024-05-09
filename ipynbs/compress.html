@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -515,7 +515,7 @@ First, we create a test dataset on a 3D grid.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 6, QuanticsGrids.InherentDiscreteGrid{3}(8, (1, 1, 1), 2, :fused, (1, 1, 1)), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 16878 entries), [6, 6, 6], [5.951185724772934e-16, 6.38378239159465e-16, 6.38378239159465e-16])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 6, QuanticsGrids.InherentDiscreteGrid{3}(8, (1, 1, 1), 2, :fused, (1, 1, 1)), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 20692 entries), [6, 6, 6], [5.652427322225291e-16, 5.652427322225291e-16, 5.652427322225291e-16])
 </pre></div>
 </div>
 </div>
@@ -534,7 +534,7 @@ First, we create a test dataset on a 3D grid.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Quantics TCI compression of the dataset with tolerance 1.0e-5 has link dimensions [3, 6, 6, 6, 6, 6, 4], for a max error of 7.549516567451064e-15.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Quantics TCI compression of the dataset with tolerance 1.0e-5 has link dimensions [3, 6, 6, 6, 6, 6, 4], for a max error of 5.773159728050814e-15.
 </pre></div>
 </div>
 </div>
@@ -561,7 +561,7 @@ First, we create a test dataset on a 3D grid.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/00d30e77830ad574b1bddceacba0f08e97ee789f72fb824212ab6e641126d495.png" src="../_images/00d30e77830ad574b1bddceacba0f08e97ee789f72fb824212ab6e641126d495.png" />
+<img alt="../_images/fffea697613b1b116582c52143ab849bb97d0582799e9f59b378c8b51af68431.png" src="../_images/fffea697613b1b116582c52143ab849bb97d0582799e9f59b378c8b51af68431.png" />
 </div>
 </div>
 </section>
@@ -618,16 +618,16 @@ Optimal initial pivots are locations where the function intended for interpolati
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial pivot: [2, 2, 2, 2, 2, 2, 2, 2] -2.9996988186962037
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial pivot: [8, 1, 1, 1, 1, 1, 1, 1] 3.0
+Initial pivot: [2, 2, 2, 2, 2, 2, 2, 2] -2.999698818696203
 Initial pivot: [1, 1, 1, 1, 1, 1, 1, 1] -3.0
-Initial pivot: [6, 6, 6, 6, 6, 6, 6, 6] -2.999397637392406
-Initial pivot: [8, 1, 1, 1, 1, 1, 1, 1] 3.0
-Initial pivot: [2, 7, 7, 7, 7, 7, 7, 7] 2.999397637392406
-Initial pivot: [1, 1, 1, 1, 1, 1, 1, 1] -3.0
-Initial pivot: [2, 2, 2, 2, 2, 2, 2, 2] -2.9996988186962037
-Initial pivot: [6, 3, 3, 3, 3, 3, 3, 3] 2.9996988186962064
-Initial pivot: [2, 2, 2, 2, 2, 2, 2, 2] -2.9996988186962037
-Initial pivot: [1, 1, 1, 1, 1, 1, 1, 1] -3.0
+Initial pivot: [2, 7, 7, 7, 7, 7, 7, 7] 2.999397637392407
+Initial pivot: [3, 6, 6, 6, 6, 6, 6, 6] 2.9993976373924065
+Initial pivot: [6, 6, 6, 6, 6, 6, 6, 6] -2.9993976373924065
+Initial pivot: [3, 3, 3, 3, 3, 3, 3, 3] -2.999698818696206
+Initial pivot: [1, 8, 8, 8, 8, 8, 8, 8] 2.9990964560886133
+Initial pivot: [3, 6, 6, 6, 6, 6, 6, 6] 2.9993976373924065
+Initial pivot: [3, 6, 6, 6, 6, 6, 6, 6] 2.9993976373924065
 </pre></div>
 </div>
 </div>
@@ -641,7 +641,7 @@ Initial pivot: [1, 1, 1, 1, 1, 1, 1, 1] -3.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 6, [6, 6, 6], [2.1556830394805124e-15, 2.609024107869118e-15, 2.609024107869118e-15])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 6, [6, 6, 6], [1.93815820236203e-15, 1.5240471825811796e-15, 2.1097128673670146e-15])
 </pre></div>
 </div>
 </div>

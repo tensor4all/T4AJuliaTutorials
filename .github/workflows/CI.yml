@@ -1,74 +1,74 @@
 name: CI
-
 on:
   push:
     branches:
-      - '**'
+      - main
+    tags: ['*']
   pull_request:
-    branches:
-      - '**'
+  workflow_dispatch:
+concurrency:
+  # Skip intermediate builds: always.
+  # Cancel intermediate builds: only if it is a pull request build.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: julia-actions/setup-julia@v2
-      - uses: julia-actions/cache@v1
-      - uses: julia-actions/julia-buildpkg@v1
-        with:
-          project: .
-          instantiate: true
-          compile: false
-
   jupyterbook:
-    needs: setup
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/main'
 
     steps:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v2
-      - uses: julia-actions/cache@v1
+      - uses: julia-actions/cache@v2
       - uses: julia-actions/julia-buildpkg@v1
+      - name: Cache _build
+        uses: actions/cache@v3
         with:
-          project: .
-          instantiate: true
-          compile: false
+          path: ./_build
+          key: ${{ runner.os }}-jupyterbook-${{ hashFiles('_config.yml', '_toc.yml') }}
 
       - name: Build Jupyter Book
-        run: make
+        run: |
+          julia --project -e 'using Pkg; Pkg.build("IJulia")'
+          make
 
   deploy:
-    needs: setup
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 
     steps:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v2
-      - uses: julia-actions/cache@v1
+      - uses: julia-actions/cache@v2
       - uses: julia-actions/julia-buildpkg@v1
+      - name: Cache _build
+        uses: actions/cache@v3
         with:
-          project: .
-          instantiate: true
-          compile: false
+          path: ./_build
+          key: ${{ runner.os }}-deploy-${{ hashFiles('_config.yml', '_toc.yml') }}
 
       - name: Build Jupyter Book
-        run: make
+        run: |
+          julia --project -e 'using Pkg; Pkg.build("IJulia")'
+          make
 
+      - name: touch .nojekyll
+        run: touch _build/html/.nojekyll
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          branch: gh-pages
+          folder: _build/html
       - name: Move build artifacts to public
         run: |
           mv _build/html public
           mkdir -p notebooks
           mv _build/jupyter_execute/ipynbs/*.ipynb notebooks/
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: public
-          path: public
-          
       - name: Upload notebooks
         uses: actions/upload-artifact@v3
         with:

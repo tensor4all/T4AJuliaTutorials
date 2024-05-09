@@ -137,7 +137,7 @@ using Pkg; Pkg.status()
 # For those who want to build documentation for `T4FExample.jl`, run the following command:
 #
 # ```sh
-# $ git clone https://gitlab.com/tensors4fields/T4FExamples.jl.git
-# $ cd T4FExamples.jl.git
+# $ git clone https://gitlab.com/tensors4fields/T4ATutorials.jl.git
+# $ cd T4ATutorials.jl.git
 # $ julia --project=docs -e 'using Pkg; Pkg.develop(path=pwd()); using LiveServer; servedocs()'
 # ```

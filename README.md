@@ -1,6 +1,6 @@
-# T4FExample
+# T4AJuliaTutorials
 
-This repository provides source files for building JupyterBook, which explains how to use packages registered in Tensors4FieldsRegistry.
+This repository provides source files for building JupyterBook, which explains how to use packages registered in tensor4all organization.
 
 ## Prerequisites
 
@@ -12,8 +12,8 @@ This repository provides source files for building JupyterBook, which explains h
 
 ```sh
 $ cd path/to/your/workspace/directory
-$ git clone https://gitlab.com/tensors4fields/T4FExample.git
-$ cd T4FExample
+$ git clone https://github.com/tensor4all/T4AJuliaTutorials.git
+$ cd T4AJuliaTutorials
 ```
 
 ### Setup
@@ -39,7 +39,7 @@ Then we will get outputs as below:
 
 ```
 julia --project scripts/jupytext.jl interfacingwithitensors.jl
-    CondaPkg Found dependencies: ~/work/T4FExamples/CondaPkg.toml
+    CondaPkg Found dependencies: ~/work/T4AJuliaTutorials/CondaPkg.toml
     CondaPkg Found dependencies: ~/.julia/packages/PythonCall/bb3ax/CondaPkg.toml
     CondaPkg Found dependencies: ~/.julia/packages/PythonPlot/f591M/CondaPkg.toml
     CondaPkg Dependencies already up to date
@@ -74,7 +74,7 @@ Your book's HTML pages are here:
 You can look at your book by opening this file in a browser:
     _build/html/index.html
 Or paste this line directly into your browser bar:
-    ./T4FExamples/_build/html/index.html
+    ./T4AJuliaTutorials/_build/html/index.html
 
 ===============================================================================
 ```

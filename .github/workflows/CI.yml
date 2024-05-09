@@ -59,7 +59,7 @@ jobs:
         run: |
           mv _build/html public
           mkdir -p notebooks
-          mv _build/jupyter_execute/ipynbs/*.ipynb _build/html/sources/ipynbs
+          mv _build/jupyter_execute/ipynbs/*.ipynb _build/html/_sources/ipynbs/
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:

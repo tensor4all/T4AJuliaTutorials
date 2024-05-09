@@ -34,7 +34,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ./_build
-          key: ${{ runner.os }}-deploy-${{ hashFiles('_config.yml', '_toc.yml') }}
+          key: ${{ runner.os }}-jupyterbook-${{ hashFiles('_config.yml', '_toc.yml') }}
 
       - name: Build Jupyter Book
         run: make

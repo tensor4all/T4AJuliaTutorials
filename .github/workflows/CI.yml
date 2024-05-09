@@ -12,24 +12,15 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
 jobs:
-  setup:
+  jupyterbook:
     runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main'
+
     steps:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v2
       - uses: julia-actions/cache@v2
       - uses: julia-actions/julia-buildpkg@v1
-        with:
-          project: .
-          instantiate: true
-          compile: false
-
-  jupyterbook:
-    needs: setup
-    runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/main'
-
-    steps:
       - name: Cache _build
         uses: actions/cache@v3
         with:
@@ -40,11 +31,14 @@ jobs:
         run: make
 
   deploy:
-    needs: setup
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 
     steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+      - uses: julia-actions/cache@v2
+      - uses: julia-actions/julia-buildpkg@v1
       - name: Cache _build
         uses: actions/cache@v3
         with:

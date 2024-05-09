@@ -11,6 +11,7 @@ concurrency:
   # Cancel intermediate builds: only if it is a pull request build.
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
+
 jobs:
   jupyterbook:
     runs-on: ubuntu-latest
@@ -33,6 +34,8 @@ jobs:
           make
 
   deploy:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/main'
     # if: github.ref == 'refs/heads/main'

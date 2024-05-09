@@ -49,28 +49,19 @@ jobs:
         with:
           path: ./_build
           key: ${{ runner.os }}-deploy-${{ hashFiles('_config.yml', '_toc.yml') }}
-
       - name: Build Jupyter Book
         run: |
           julia --project -e 'using Pkg; Pkg.build("IJulia")'
           make
-
       - name: touch .nojekyll
         run: touch _build/html/.nojekyll
-
+      - name: Move build artifacts to sources
+        run: |
+          mv _build/html public
+          mkdir -p notebooks
+          mv _build/jupyter_execute/ipynbs/*.ipynb _build/html/sources/ipynbs
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
           branch: gh-pages
           folder: _build/html
-      - name: Move build artifacts to public
-        run: |
-          mv _build/html public
-          mkdir -p notebooks
-          mv _build/jupyter_execute/ipynbs/*.ipynb notebooks/
-
-      - name: Upload notebooks
-        uses: actions/upload-artifact@v3
-        with:
-          name: notebooks
-          path: notebooks

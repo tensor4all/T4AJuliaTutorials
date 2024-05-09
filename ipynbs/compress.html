@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Compressing exisiting data &#8212; T4FExamples</title>
+    <title>Compressing exisiting data &#8212; T4AJuliaTutorials</title>
   
   
   
@@ -148,7 +148,7 @@
   
   
   
-    <p class="title logo__title">T4FExamples</p>
+    <p class="title logo__title">T4AJuliaTutorials</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -515,7 +515,7 @@ First, we create a test dataset on a 3D grid.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 6, QuanticsGrids.InherentDiscreteGrid{3}(8, (1, 1, 1), 2, :fused, (1, 1, 1)), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 23699 entries), [6, 6, 6], [5.2313940668551745e-16, 5.224205580576143e-16, 5.224205580576143e-16])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 6, QuanticsGrids.InherentDiscreteGrid{3}(8, (1, 1, 1), 2, :fused, (1, 1, 1)), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 21137 entries), [6, 6, 6], [5.923182727304108e-16, 5.923182727304108e-16, 5.923182727304108e-16])
 </pre></div>
 </div>
 </div>
@@ -534,7 +534,7 @@ First, we create a test dataset on a 3D grid.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Quantics TCI compression of the dataset with tolerance 1.0e-5 has link dimensions [3, 6, 6, 6, 6, 6, 4], for a max error of 5.329070518200751e-15.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Quantics TCI compression of the dataset with tolerance 1.0e-5 has link dimensions [3, 6, 6, 6, 6, 6, 4], for a max error of 6.217248937900877e-15.
 </pre></div>
 </div>
 </div>
@@ -561,7 +561,7 @@ First, we create a test dataset on a 3D grid.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d19d780996cfa6f571a29b27ba3543642650393df2b1c8caf99a28d323edfa6a.png" src="../_images/d19d780996cfa6f571a29b27ba3543642650393df2b1c8caf99a28d323edfa6a.png" />
+<img alt="../_images/6101bce421cffe769450e88b5b49471c6ee336e53b85e4ac5943d46747f8d613.png" src="../_images/6101bce421cffe769450e88b5b49471c6ee336e53b85e4ac5943d46747f8d613.png" />
 </div>
 </div>
 </section>
@@ -618,16 +618,16 @@ Optimal initial pivots are locations where the function intended for interpolati
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial pivot: [6, 3, 3, 3, 3, 3, 3, 3] 2.999698818696205
-Initial pivot: [3, 6, 6, 6, 6, 6, 6, 6] 2.999397637392407
-Initial pivot: [4, 5, 5, 5, 5, 5, 5, 5] 2.9996988186962015
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial pivot: [3, 3, 3, 3, 3, 3, 3, 3] -2.999698818696205
+Initial pivot: [3, 3, 3, 3, 3, 3, 3, 3] -2.999698818696205
+Initial pivot: [3, 6, 6, 6, 6, 6, 6, 6] 2.9993976373924065
+Initial pivot: [2, 7, 7, 7, 7, 7, 7, 7] 2.999397637392408
+Initial pivot: [4, 4, 4, 4, 4, 4, 4, 4] -2.9993976373924074
+Initial pivot: [2, 7, 7, 7, 7, 7, 7, 7] 2.999397637392408
 Initial pivot: [3, 3, 3, 3, 3, 3, 3, 3] -2.999698818696205
 Initial pivot: [3, 3, 3, 3, 3, 3, 3, 3] -2.999698818696205
-Initial pivot: [6, 6, 6, 6, 6, 6, 6, 6] -2.999397637392407
-Initial pivot: [5, 4, 4, 4, 4, 4, 4, 4] 2.999397637392408
-Initial pivot: [7, 7, 7, 7, 7, 7, 7, 7] -2.999397637392407
-Initial pivot: [1, 1, 1, 1, 1, 1, 1, 1] -3.0
-Initial pivot: [2, 2, 2, 2, 2, 2, 2, 2] -2.999698818696204
+Initial pivot: [4, 4, 4, 4, 4, 4, 4, 4] -2.9993976373924074
+Initial pivot: [1, 8, 8, 8, 8, 8, 8, 8] 2.9990964560886133
 </pre></div>
 </div>
 </div>
@@ -641,7 +641,7 @@ Initial pivot: [2, 2, 2, 2, 2, 2, 2, 2] -2.999698818696204
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 6, [6, 6, 6], [1.4326737857404497e-15, 1.1881877665444306e-15, 1.1881877665444306e-15])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 6, [6, 6, 6], [1.4301606461173978e-15, 1.4064236940324838e-15, 1.4064236940324838e-15])
 </pre></div>
 </div>
 </div>
@@ -747,7 +747,7 @@ Initial pivot: [2, 2, 2, 2, 2, 2, 2, 2] -2.999698818696204
   <div class="footer-item">
     
 <p class="component-author">
-By Tensors4Group
+By Tensor4All collaboraltion
 </p>
 
   </div>

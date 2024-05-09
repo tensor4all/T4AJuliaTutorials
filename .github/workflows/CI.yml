@@ -57,7 +57,7 @@ jobs:
           make
 
       - name: touch .nojekyll
-        run: _/build/html/.nojekyll
+        run: touch _/build/html/.nojekyll
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4

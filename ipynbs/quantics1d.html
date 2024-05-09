@@ -1,0 +1,1028 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Quantics TCI of univariate funciton &#8212; T4FExamples</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ipynbs/quantics1d';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Quantics TCI of multivariate funciton" href="quantics2d.html" />
+    <link rel="prev" title="T4F Examples" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">T4FExamples</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    T4F Examples
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantics TCI of univariate funciton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantics2d.html">Quantics TCI of multivariate funciton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantics1d_advanced.html">Quantics TCI of univariate funciton (advanced topics)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compress.html">Compressing exisiting data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interfacingwithitensors.html">Interfacing with ITensors.jl</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fipynbs/quantics1d.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ipynbs/quantics1d.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Quantics TCI of univariate funciton</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qtt-representation">QTT representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#about-ci-quanticstensorci2-float64">About <code class="docutils literal notranslate"><span class="pre">ci::QuanticsTensorCI2{Float64}</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-evaluations">Function evaluations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-the-error-of-the-tci-by-a-tolerance">Control the error of the TCI by a tolerance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-the-error-of-the-tci">Estimate the error of the TCI</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p>Click <a class="reference external" href="https://gitlab.com/api/v4/projects/56283350/jobs/artifacts/main/raw/notebooks/quantics1d.ipynb?job=pages">here</a> to download the notebook locally.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="quantics-tci-of-univariate-funciton">
+<h1>Quantics TCI of univariate funciton<a class="headerlink" href="#quantics-tci-of-univariate-funciton" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">PythonCall</span><span class="o">:</span><span class="w"> </span><span class="n">PythonCall</span>
+<span class="k">using</span><span class="w"> </span><span class="n">PythonPlot</span><span class="o">:</span><span class="w"> </span><span class="n">pyplot</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">plt</span><span class="p">,</span><span class="w"> </span><span class="n">Figure</span>
+
+<span class="c"># Displays the matplotlib figure object `fig` and avoids duplicate plots.</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="o">::</span><span class="kt">Figure</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isinteractive</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="n">fig</span><span class="p">;</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span><span class="w"> </span><span class="nb">nothing</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Base</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="o">::</span><span class="kt">PythonCall</span><span class="o">.</span><span class="n">Py</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_display</span><span class="p">(</span><span class="n">Figure</span><span class="p">(</span><span class="n">fig</span><span class="p">))</span>
+
+<span class="k">import</span><span class="w"> </span><span class="n">QuanticsGrids</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">QG</span>
+<span class="k">using</span><span class="w"> </span><span class="n">QuanticsTCI</span><span class="o">:</span><span class="w"> </span><span class="n">quanticscrossinterpolate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="example-1">
+<h2>Example 1<a class="headerlink" href="#example-1" title="Link to this heading">#</a></h2>
+<p>The first example is taken from Fig. 1 in <a class="reference external" href="https://arxiv.org/abs/2303.11819">Ritter2024</a>.</p>
+<div class="math notranslate nohighlight">
+\[
+f(x) = \cos\left(\frac{x}{B}\right) \cos\left(\frac{x}{4\sqrt{5}B}\right) e^{-x^2} + 2e^{-x},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(B = 2^{-30}\)</span>. In Julia, this can be written as below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="c"># global variable</span>
+<span class="k">function</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">println</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mf">0.2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.7990930849034745
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s examine the behaviour of <span class="math notranslate nohighlight">\(f(x)\)</span>. This function involves structure on widely different scales: rapid, incommensurate oscillations and a slowly decaying envelope. We’ll use <a class="reference external" href="https://github.com/JuliaPy/PythonPlot.jl">PythonPlot.jl</a> visualisation library which uses Python library <a class="reference external" href="https://matplotlib.org/">matplotlib</a> behind the scenes.</p>
+<p>For small <span class="math notranslate nohighlight">\(x\)</span> we have:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">LinRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">23</span><span class="p">),</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;</span><span class="si">$</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b570644a97a63c1117eae32ebcbb99c0de940ee0edb21677993fd94f146c1070.png" src="../_images/b570644a97a63c1117eae32ebcbb99c0de940ee0edb21677993fd94f146c1070.png" />
+</div>
+</div>
+<p>For <span class="math notranslate nohighlight">\(x \in (0, 3]\)</span> we will get:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">xs2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">LinRange</span><span class="p">(</span><span class="mf">2.0</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">23</span><span class="p">),</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs2</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">xs2</span><span class="p">),</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;</span><span class="si">$</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b25ea1c0cc0908e83e17cf4cb81ac664c91bb5d7f3cff1fbbf3ebf08f4fc28c5.png" src="../_images/b25ea1c0cc0908e83e17cf4cb81ac664c91bb5d7f3cff1fbbf3ebf08f4fc28c5.png" />
+</div>
+</div>
+<section id="qtt-representation">
+<h3>QTT representation<a class="headerlink" href="#qtt-representation" title="Link to this heading">#</a></h3>
+<p>One can construct a QTT representation of this function on the domain <span class="math notranslate nohighlight">\([0, 3]\)</span> a quantics grid of size <span class="math notranslate nohighlight">\(2^\mathcal{R}\)</span> where <span class="math notranslate nohighlight">\(\mathcal{R}\)</span> is <span class="math notranslate nohighlight">\(40\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="c"># number of bits</span>
+<span class="n">xmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="n">xmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0</span>
+<span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="n">R</span><span class="w"> </span><span class="c"># size of the grid</span>
+<span class="c"># * Uniform grid (includeendpoint=false, default):</span>
+<span class="c">#   -xmin, -xmin+dx, ...., -xmin + (2^R-1)*dx</span>
+<span class="c">#     where dx = (xmax - xmin)/2^R.</span>
+<span class="c">#   Note that the grid does not include the end point xmin.</span>
+<span class="c">#</span>
+<span class="c"># * Uniform grid (includeendpoint=true):</span>
+<span class="c">#   -xmin, -xmin+dx, ...., xmin-dx, xmin,</span>
+<span class="c">#     where dx = (xmax - xmin)/(2^R-1).</span>
+<span class="n">qgrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="kt">DiscretizedGrid</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">xmin</span><span class="p">,</span><span class="w"> </span><span class="n">xmax</span><span class="p">;</span><span class="w"> </span><span class="n">includeendpoint</span><span class="o">=</span><span class="nb">false</span><span class="p">)</span>
+<span class="n">ci</span><span class="p">,</span><span class="w"> </span><span class="n">ranks</span><span class="p">,</span><span class="w"> </span><span class="n">errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quanticscrossinterpolate</span><span class="p">(</span><span class="kt">Float64</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">qgrid</span><span class="p">;</span><span class="w"> </span><span class="n">maxbonddim</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (3.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 27712 entries), [18, 19, 18], [6.646831306208604e-7, 1.056898416771731e-6, 9.251433207195127e-7])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, we’ve created <code class="docutils literal notranslate"><span class="pre">ci</span></code> which is an object of <code class="docutils literal notranslate"><span class="pre">QuanticsTensorCI2{Float64}</span></code> in <code class="docutils literal notranslate"><span class="pre">QuanticsTCI.jl</span></code>. This can be evaluated at an linear index <span class="math notranslate nohighlight">\(i\)</span> (<span class="math notranslate nohighlight">\(1 \le i \le 2^\mathcal{R}\)</span>) as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="n">R</span><span class="p">]</span><span class="w"> </span><span class="c"># Linear indices</span>
+<span class="w">    </span><span class="c"># restore original coordinate `x` from linear index `i`</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="n">grididx_to_origcoord</span><span class="p">(</span><span class="n">qgrid</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;x: </span><span class="si">$</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="s">, i: </span><span class="si">$</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="s">, tci: </span><span class="si">$</span><span class="p">(</span><span class="n">ci</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="s">, ref: </span><span class="si">$</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x: 0.0, i: 1, tci: 3.0, ref: 3.0
+x: 2.7284841053187847e-12, i: 2, tci: 2.999995654819239, ref: 2.999995654819239
+x: 5.4569682106375694e-12, i: 3, tci: 2.999982619327473, ref: 2.9999826193274735
+x: 2.9999999999972715, i: 1099511627776, tci: 0.09953874973204142, ref: 0.09953865971040611
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that <code class="docutils literal notranslate"><span class="pre">ci(i)</span></code> approximates the original <code class="docutils literal notranslate"><span class="pre">f</span></code> at <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">QG.grididx_to_origcoord(qgrid,</span> <span class="pre">i)</span></code>. Let’s plot them together.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">LinRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">23</span><span class="p">),</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">ys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
+<span class="n">yci</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">x</span>
+<span class="w">    </span><span class="c"># Convert a coordinate in the original coordinate system to the corresponding grid index</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="n">origcoord_to_grididx</span><span class="p">(</span><span class="n">qgrid</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+<span class="w">    </span><span class="n">ci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="n">ys</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;</span><span class="si">$</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="n">yci</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;tci&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">linestyle</span><span class="o">=</span><span class="s">&quot;dashed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="s"> and TCI&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0bb0d1c96f43a11e8119e1c7fc4a53bb7a803669c9244fc173476bf8454b5a25.png" src="../_images/0bb0d1c96f43a11e8119e1c7fc4a53bb7a803669c9244fc173476bf8454b5a25.png" />
+</div>
+</div>
+<p>Above, one can see that the original function is interpolated very accurately.</p>
+<p>Let’s plot of <span class="math notranslate nohighlight">\(x\)</span> vs interpolation error <span class="math notranslate nohighlight">\(\log(|f(x) - \mathrm{ci}(x)|)\)</span> for small <span class="math notranslate nohighlight">\(x\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">xs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">LinRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">23</span><span class="p">),</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">ys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">yci</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">x</span>
+<span class="w">    </span><span class="c"># Convert a coordinate in the original coordinate system to the corresponding grid index</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="n">origcoord_to_grididx</span><span class="p">(</span><span class="n">qgrid</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+<span class="w">    </span><span class="n">ci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">ys</span><span class="w"> </span><span class="o">.-</span><span class="w"> </span><span class="n">yci</span><span class="p">)),</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;log(|f(x) - ci(x)|)&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;x vs interpolation error: </span><span class="si">$</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;interpolation error&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/51927c0107ae21ca9b3e9c87b58e60ea9e56a34b2548ac14523b867c11518b17.png" src="../_images/51927c0107ae21ca9b3e9c87b58e60ea9e56a34b2548ac14523b867c11518b17.png" />
+</div>
+</div>
+</section>
+<section id="about-ci-quanticstensorci2-float64">
+<h3>About <code class="docutils literal notranslate"><span class="pre">ci::QuanticsTensorCI2{Float64}</span></code><a class="headerlink" href="#about-ci-quanticstensorci2-float64" title="Link to this heading">#</a></h3>
+<p>Let’s dive into the <code class="docutils literal notranslate"><span class="pre">ci</span></code> object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">println</span><span class="p">(</span><span class="n">typeof</span><span class="p">(</span><span class="n">ci</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>QuanticsTCI.QuanticsTensorCI2{Float64}
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we’ve seen before, <code class="docutils literal notranslate"><span class="pre">ci</span></code> is an object of <code class="docutils literal notranslate"><span class="pre">QuanticsTensorCI2{Float64}</span></code> in <code class="docutils literal notranslate"><span class="pre">QuanticsTCI.jl</span></code>, which is a thin wrapper of <code class="docutils literal notranslate"><span class="pre">TensorCI2{Float64}</span></code> in <code class="docutils literal notranslate"><span class="pre">TensorCrossInterpolation.jl</span></code>.
+The undering object of <code class="docutils literal notranslate"><span class="pre">TensorCI2{Float64}</span></code> type can be accessed as <code class="docutils literal notranslate"><span class="pre">ci.tci</span></code>. This will be useful for obtaining more detailed information on the TCI results.</p>
+<p>For instance, <code class="docutils literal notranslate"><span class="pre">ci.tci.maxsamplevalue</span></code> is an estimate of the abosolute maximum value of the function, and <code class="docutils literal notranslate"><span class="pre">ci.tci.pivoterrors</span></code> stores the error as function of the bond dimension computed by prrLU.
+In the following figure, we plot the normalized error vs. bond dimension, showing an exponential decay.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Plot error vs bond dimension obtained by prrLU</span>
+<span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">tci</span><span class="o">.</span><span class="n">pivoterrors</span><span class="w"> </span><span class="o">./</span><span class="w"> </span><span class="n">ci</span><span class="o">.</span><span class="n">tci</span><span class="o">.</span><span class="n">maxsamplevalue</span><span class="p">,</span><span class="w"> </span><span class="n">marker</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;Bond dimension&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;Normalization error&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;normalized error vs. bond dimension: </span><span class="si">$</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4a6d5787f71b2eff9f95d0a68ac2cd96ba1043b9dd10fabbbc1b1f6a870c5103.png" src="../_images/4a6d5787f71b2eff9f95d0a68ac2cd96ba1043b9dd10fabbbc1b1f6a870c5103.png" />
+</div>
+</div>
+</section>
+<section id="function-evaluations">
+<h3>Function evaluations<a class="headerlink" href="#function-evaluations" title="Link to this heading">#</a></h3>
+<p>Our TCI algorithm does not call elements of the entire tensor, but constructs the TT (Tensor Train) from some elements chosen adaptively. On which points <span class="math notranslate nohighlight">\(x \in [0, 3]\)</span> was the function evaluated to construct a QTT representation of the function <span class="math notranslate nohighlight">\(f(x)\)</span>? Let’s find out. One can retrieve the information on the function evaluations as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="n">QuanticsTCI</span>
+<span class="c"># Dict{Float64,Float64}</span>
+<span class="c"># key: `x`</span>
+<span class="c"># value: function value at `x`</span>
+<span class="n">evaluated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QuanticsTCI</span><span class="o">.</span><span class="n">cachedata</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dict{Float64, Float64} with 27712 entries:
+  0.237048  =&gt; 1.8209
+  0.0355396 =&gt; 0.991475
+  0.638094  =&gt; 0.869932
+  1.44707   =&gt; 0.388907
+  0.0355285 =&gt; 1.40678
+  0.744504  =&gt; 1.18202
+  0.0179636 =&gt; 1.52193
+  2.52548   =&gt; 0.1613
+  0.741602  =&gt; 0.9441
+  2.02744   =&gt; 0.264304
+  1.16647   =&gt; 0.46182
+  0.741916  =&gt; 1.18714
+  0.353292  =&gt; 1.15633
+  1.7872e-5 =&gt; 1.49209
+  2.42561   =&gt; 0.177905
+  0.152297  =&gt; 1.76506
+  0.848409  =&gt; 1.19654
+  0.0430943 =&gt; 2.1256
+  0.449954  =&gt; 1.03051
+  0.741601  =&gt; 0.460001
+  0.505371  =&gt; 1.59348
+  0.746979  =&gt; 1.15345
+  0.74168   =&gt; 0.884784
+  0.0179687 =&gt; 2.72519
+  1.49292   =&gt; 0.478027
+  ⋮         =&gt; ⋮
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s plot <code class="docutils literal notranslate"><span class="pre">f</span></code> and the evaluated points together.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f̂</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ci</span><span class="p">(</span><span class="n">QG</span><span class="o">.</span><span class="n">origcoord_to_quantics</span><span class="p">(</span><span class="n">qgrid</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
+<span class="n">xs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">LinRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">23</span><span class="p">),</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">xs_evaluated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">collect</span><span class="p">(</span><span class="n">keys</span><span class="p">(</span><span class="n">evaluated</span><span class="p">))</span>
+<span class="n">fs_evaluated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">evaluated</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">xs_evaluated</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;</span><span class="si">$</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs_evaluated</span><span class="p">,</span><span class="w"> </span><span class="n">fs_evaluated</span><span class="p">,</span><span class="w"> </span><span class="n">marker</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;evaluated points&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="s"> and TCI&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">maximum</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3ffcb88dec726ce51eb3b351295186673bf76614eab5a1e7cc6d35dec486f51c.png" src="../_images/3ffcb88dec726ce51eb3b351295186673bf76614eab5a1e7cc6d35dec486f51c.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="example-2">
+<h2>Example 2<a class="headerlink" href="#example-2" title="Link to this heading">#</a></h2>
+<p>We now consider the function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\newcommand{\sinc}{\mathrm{sinc}}
+\begin{align}
+f(x) &amp;= \sinc(x)+3e^{-0.3(x-4)^2}\sinc(x-4) \nonumber\\
+&amp;\quad - \cos(4x)^2-2\sinc(x+10)e^{-0.6(x+9)} + 4 \cos(2x) e^{-|x+5|}\nonumber \\
+&amp;\quad +\frac{6}{x-11}+ \sqrt{(|x|)}\arctan(x/15).\nonumber
+\end{align}
+\end{split}\]</div>
+<p>One can construct a QTT representation of this function on the domain <span class="math notranslate nohighlight">\([-10, 10]\)</span> using a quantics grid of size <span class="math notranslate nohighlight">\(2^\mathcal{R}\)</span> (<span class="math notranslate nohighlight">\(\mathcal{R}=20\)</span>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="n">QuanticsGrids</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">QG</span>
+<span class="k">using</span><span class="w"> </span><span class="n">QuanticsTCI</span>
+
+<span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="c"># number of bits</span>
+<span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="n">R</span><span class="w">  </span><span class="c"># size of the grid</span>
+
+<span class="n">qgrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="kt">DiscretizedGrid</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">includeendpoint</span><span class="o">=</span><span class="nb">false</span><span class="p">)</span>
+
+<span class="c"># Function of interest</span>
+<span class="k">function</span><span class="w"> </span><span class="n">oscillation_fn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="n">sinc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sinc</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span>
+<span class="w">        </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sinc</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">9</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">        </span><span class="mi">6</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">atan</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">15</span><span class="p">))</span>
+<span class="k">end</span>
+
+<span class="c"># Convert to quantics format and sweep</span>
+<span class="n">ci</span><span class="p">,</span><span class="w"> </span><span class="n">ranks</span><span class="p">,</span><span class="w"> </span><span class="n">errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quanticscrossinterpolate</span><span class="p">(</span><span class="kt">Float64</span><span class="p">,</span><span class="w"> </span><span class="n">oscillation_fn</span><span class="p">,</span><span class="w"> </span><span class="n">qgrid</span><span class="p">;</span><span class="w"> </span><span class="n">maxbonddim</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 14, QuanticsGrids.DiscretizedGrid{1}(20, (-10.0,), (10.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 2906 entries), [13, 14, 14, 14], [5.8900702154442174e-9, 8.34070424388171e-9, 8.34070424388171e-9, 8.34070424388171e-9])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="n">R</span><span class="p">]</span><span class="w"> </span><span class="c"># Linear indices</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="n">grididx_to_origcoord</span><span class="p">(</span><span class="n">qgrid</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;x: </span><span class="si">$</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="s">, tci: </span><span class="si">$</span><span class="p">(</span><span class="n">ci</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="s">, ref: </span><span class="si">$</span><span class="p">(</span><span class="n">oscillation_fn</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x: -10.0, tci: -6.223187220679993, ref: -6.223187220679993
+x: -9.999980926513672, tci: -6.223066148054395, ref: -6.223066148054395
+x: 9.999980926513672, tci: -4.5851945802102465, ref: -4.585194580210247
+</pre></div>
+</div>
+</div>
+</div>
+<p>Above, one can see that the original function is interpolated very accurately. The function <code class="docutils literal notranslate"><span class="pre">grididx_to_origcoord</span></code> transforms a linear index to a coordinate point <span class="math notranslate nohighlight">\(x\)</span> in the original domain (<span class="math notranslate nohighlight">\(-10 \le x &lt; 10\)</span>).</p>
+<p>In the following figure, we plot the normalized error vs. bond dimension, showing an exponential decay.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Plot error vs bond dimension obtained by prrLU</span>
+<span class="k">using</span><span class="w"> </span><span class="n">PythonPlot</span><span class="o">:</span><span class="w"> </span><span class="n">pyplot</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">plt</span><span class="p">,</span><span class="w"> </span><span class="n">gcf</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">tci</span><span class="o">.</span><span class="n">pivoterrors</span><span class="w"> </span><span class="o">./</span><span class="w"> </span><span class="n">ci</span><span class="o">.</span><span class="n">tci</span><span class="o">.</span><span class="n">maxsamplevalue</span><span class="p">,</span><span class="w"> </span><span class="n">marker</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;Bond dimension&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;Normalization error&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;normalized error vs. bond dimension&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f86aa497742abcf68af271ea64855872b2104db8ddc694ac36883655f4a65a49.png" src="../_images/f86aa497742abcf68af271ea64855872b2104db8ddc694ac36883655f4a65a49.png" />
+</div>
+</div>
+</section>
+<section id="example-3">
+<h2>Example 3<a class="headerlink" href="#example-3" title="Link to this heading">#</a></h2>
+<section id="control-the-error-of-the-tci-by-a-tolerance">
+<h3>Control the error of the TCI by a tolerance<a class="headerlink" href="#control-the-error-of-the-tci-by-a-tolerance" title="Link to this heading">#</a></h3>
+<p>We interpolate the same function as in Example 2, but this time we use a tolerance to control the error of the TCI. The tolerance is a positive number that determines the maximum error of the TCI, which is scaled by an estimate of the abosolute maximum of the function.
+The TCI algorithm will adaptively increase the bond dimension until the error is below the tolerance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">tol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-8</span><span class="w"> </span><span class="c"># Tolerance for the error</span>
+
+<span class="c"># Convert to quantics format and sweep</span>
+<span class="n">ci_tol</span><span class="p">,</span><span class="w"> </span><span class="n">ranks_tol</span><span class="p">,</span><span class="w"> </span><span class="n">errors_tol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quanticscrossinterpolate</span><span class="p">(</span>
+<span class="w">    </span><span class="kt">Float64</span><span class="p">,</span><span class="w"> </span><span class="n">oscillation_fn</span><span class="p">,</span><span class="w"> </span><span class="n">qgrid</span><span class="p">;</span>
+<span class="w">    </span><span class="n">tolerance</span><span class="o">=</span><span class="n">tol</span><span class="p">,</span>
+<span class="w">    </span><span class="n">normalizeerror</span><span class="o">=</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="c"># Normalize the error by the maximum sample value,</span>
+<span class="w">    </span><span class="n">verbosity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">loginterval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="c"># Log the error every `loginterval` iterations</span>
+<span class="w">    </span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iteration = 1, rank = 12, error= 6.210103957327599e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=5
+  Rejected 5 global pivots added in the previous iteration, errors are [1.0331882904779377e-8, 6.251996698125595e-9, 8.333232992541184e-9, 1.262507032251392e-8, 1.2235989998998775e-11]
+iteration = 2, rank = 14, error= 4.995358626489508e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=0
+iteration = 3, rank = 14, error= 4.449599701880746e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=0
+iteration = 4, rank = 14, error= 4.449599701880746e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=0
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 14, QuanticsGrids.DiscretizedGrid{1}(20, (-10.0,), (10.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 3722 entries), [12, 14, 14, 14], [9.978976587255936e-9, 8.027010034166508e-9, 7.150033486208613e-9, 7.150033486208613e-9])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Max abs sampled value is </span><span class="si">$</span><span class="p">(</span><span class="n">ci_tol</span><span class="o">.</span><span class="n">tci</span><span class="o">.</span><span class="n">maxsamplevalue</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Max abs sampled value is 6.223187220679993
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">errors_tol</span><span class="w"> </span><span class="o">./</span><span class="w"> </span><span class="n">ci_tol</span><span class="o">.</span><span class="n">tci</span><span class="o">.</span><span class="n">maxsamplevalue</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4-element Vector{Float64}:
+ 1.6035154067188031e-9
+ 1.2898551416695793e-9
+ 1.1489343374482868e-9
+ 1.1489343374482868e-9
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="estimate-the-error-of-the-tci">
+<h3>Estimate the error of the TCI<a class="headerlink" href="#estimate-the-error-of-the-tci" title="Link to this heading">#</a></h3>
+<p>Wait!
+Since we did not sample the function over the entire domain, we do not know the true error of the TCI.
+In theory, we can estimate the error of the TCI by comparing the function values at the sampled points with the TCI values at the same points.
+But, it is not practical to compare the function values with the TCI values at all points in the domain.
+The function <code class="docutils literal notranslate"><span class="pre">estimatetrueerror</span></code> in <code class="docutils literal notranslate"><span class="pre">TensorCrossInterpolation.jl</span></code> provides a good estimate of the error of the TCI.
+The algorithm finds indices (points) where the error is large by a randomized global search algorithm starting with a set of random initial points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="n">TensorCrossInterpolation</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">TCI</span>
+<span class="n">pivoterror_global</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TCI</span><span class="o">.</span><span class="n">estimatetrueerror</span><span class="p">(</span><span class="n">TCI</span><span class="o">.</span><span class="n">TensorTrain</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">tci</span><span class="p">),</span><span class="w"> </span><span class="n">ci</span><span class="o">.</span><span class="n">quanticsfunction</span><span class="p">;</span><span class="w"> </span><span class="n">nsearch</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="c"># Results are sorted in descending order of the error</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>88-element Vector{Tuple{Vector{Int64}, Float64}}:
+ ([1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1], 9.9328518299302e-8)
+ ([1, 1, 1, 1, 2, 2, 1, 2, 1, 1, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1], 9.690741364920541e-8)
+ ([1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1], 9.544277679296442e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 1], 9.43723472701663e-8)
+ ([1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2], 9.418310398245922e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2], 9.389218025290802e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 2, 2, 1, 2, 2, 2, 1, 1, 2], 9.387014454631526e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1], 9.353945795709251e-8)
+ ([1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1], 9.150380542166658e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 2], 8.915707194745437e-8)
+ ([1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2], 8.723828348600193e-8)
+ ([1, 2, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 2, 1, 2, 2, 1, 2, 1, 2], 8.042765209381741e-8)
+ ([2, 1, 2, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 2, 2, 1, 1, 2, 2], 7.938570478760454e-8)
+ ⋮
+ ([2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1], 2.776474489207814e-8)
+ ([1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1], 2.7047228456922312e-8)
+ ([2, 2, 1, 2, 2, 2, 2, 1, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1], 2.6870454306049396e-8)
+ ([1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1], 2.620953498677636e-8)
+ ([2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 2], 2.2570449731418307e-8)
+ ([2, 1, 1, 2, 1, 1, 2, 2, 2, 1, 2, 2, 1, 1, 2, 2, 2, 2, 1, 2], 2.1459361176923153e-8)
+ ([2, 2, 2, 2, 2, 1, 2, 2, 1, 1, 2, 1, 2, 1, 2, 2, 1, 1, 1, 2], 1.9662213190940747e-8)
+ ([2, 1, 2, 2, 1, 1, 2, 2, 2, 2, 1, 1, 2, 1, 2, 2, 1, 2, 1, 1], 1.874080846064885e-8)
+ ([1, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1], 1.7830243947969393e-8)
+ ([1, 2, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1], 1.7599351698205368e-8)
+ ([2, 2, 1, 1, 2, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2], 1.6081880549467797e-8)
+ ([2, 2, 2, 2, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1], 1.3734105630547333e-8)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, you can see the error estimate of the TCI is below the tolerance of <span class="math notranslate nohighlight">\(10^{-8}\)</span> (or close to it).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">println</span><span class="p">(</span><span class="s">&quot;The largest error found is </span><span class="si">$</span><span class="p">(</span><span class="n">pivoterror_global</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span><span class="s"> and the corresponding pivot is </span><span class="si">$</span><span class="p">(</span><span class="n">pivoterror_global</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="s">.&quot;</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;The tolenrance used is </span><span class="si">$</span><span class="p">(</span><span class="n">tol</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ci_tol</span><span class="o">.</span><span class="n">tci</span><span class="o">.</span><span class="n">maxsamplevalue</span><span class="p">)</span><span class="s">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The largest error found is 9.9328518299302e-8 and the corresponding pivot is [1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1].
+The tolenrance used is 6.223187220679993e-8.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.10"
+        },
+        kernelOptions: {
+            name: "julia-1.10",
+            path: "./ipynbs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.10'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">T4F Examples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="quantics2d.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quantics TCI of multivariate funciton</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qtt-representation">QTT representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#about-ci-quanticstensorci2-float64">About <code class="docutils literal notranslate"><span class="pre">ci::QuanticsTensorCI2{Float64}</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-evaluations">Function evaluations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-the-error-of-the-tci-by-a-tolerance">Control the error of the TCI by a tolerance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-the-error-of-the-tci">Estimate the error of the TCI</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tensors4Group
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

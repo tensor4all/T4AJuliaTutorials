@@ -34,9 +34,9 @@ RUN $HOME/.rye/shims/rye tools install jupytext \
 
 
 USER root
-COPY Project.toml /workspaces/T4FExamples/
-RUN chown -R ${NB_UID} /workspaces/T4FExamples
+COPY Project.toml /workspaces/T4A tutorials/
+RUN chown -R ${NB_UID} /workspaces/T4A tutorials
 USER ${NB_USER}
 
-RUN julia --project=/workspaces/T4FExamples/ -e 'using Pkg; Pkg.instantiate()' \
-	&& julia --project=/workspaces/T4FExamples -e 'using Pkg; Pkg.build("IJulia")'
+RUN julia --project=/workspaces/T4A tutorials/ -e 'using Pkg; Pkg.instantiate()' \
+	&& julia --project=/workspaces/T4A tutorials -e 'using Pkg; Pkg.build("IJulia")'

@@ -14,14 +14,14 @@
 # ---
 
 # %% [markdown]
-# # T4F Examples
+# # T4A Examples
 # This documentation provides a comprehensive tutorials/examples
 # on quantics and tensor cross interpolation (TCI) and their combinations (QTCI).
 # These technologies allow us to reveal low-rank tensor network representation (TNR) hidden in data or a function,
 # and peform computation such as Fourier transform and convolution.
 # Plesae refer [xfacpaper]() for a more detailed introduction of these concepts.
 #
-# The T4F group hosts various Julia libraries for performing such operations.
+# The T4A group hosts various Julia libraries for performing such operations.
 # The folowing list is given in the order of low-level to high-level libraries:
 #
 # * [TensorCrossInterpolation.jl](https://tensors4fields.gitlab.io/tensorcrossinterpolation.jl/dev/index.html) provides implementations of TCI.
@@ -134,10 +134,10 @@ using Pkg; Pkg.status()
 #
 # ## For developers
 #
-# For those who want to build documentation for `T4FExample.jl`, run the following command:
+# For those who want to build documentation for `T4AExample.jl`, run the following command:
 #
 # ```sh
-# $ git clone https://gitlab.com/tensors4fields/T4FExamples.jl.git
-# $ cd T4FExamples.jl.git
+# $ git clone https://gitlab.com/tensors4fields/T4A tutorials.jl.git
+# $ cd T4A tutorials.jl.git
 # $ julia --project=docs -e 'using Pkg; Pkg.develop(path=pwd()); using LiveServer; servedocs()'
 # ```

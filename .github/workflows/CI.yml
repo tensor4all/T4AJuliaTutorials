@@ -56,6 +56,9 @@ jobs:
           julia --project -e 'using Pkg; Pkg.build("IJulia")'
           make
 
+      - name: touch .nojekyll
+        run: _/build/html/.nojekyll
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:

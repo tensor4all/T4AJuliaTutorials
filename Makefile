@@ -9,4 +9,5 @@ all: ipynbs/*.ipynb
 clean:
 	$(RM) ipynbs/*.ipynb
 	$(RM) -r _build
+	$(RM) -r .CondaPkg
 	$(RM) default.profraw

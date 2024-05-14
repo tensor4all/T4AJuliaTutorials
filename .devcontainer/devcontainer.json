@@ -1,0 +1,28 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "T4FExamples",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"build": {
+        // Path is relative to the devcontainer.json file.
+        "dockerfile": "../docker/Dockerfile",
+		"context": "../"
+    },
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"julialang.language-julia",
+				"tamasfe.even-better-toml",
+				"ms-toolsai.jupyter",
+				"wdawson.better-kill-ring",
+				"congyiwu.vscode-jupytext",
+				"charliermarsh.ruff"
+			]
+		}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "julia --project scripts/setup.jl"
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

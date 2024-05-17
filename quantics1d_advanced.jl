@@ -38,7 +38,7 @@ import TensorCrossInterpolation as TCI
 #
 # ### Performance tips
 #
-# Let's recall again the function $f(x)$ from the [previous page](quantics1d.jl).
+# Let's recall again the function $f(x)$ from the [previous page](./quantics1d.ipynb).
 #
 # $$
 # f(x) = \cos\left(\frac{x}{B}\right) \cos\left(\frac{x}{4\sqrt{5}B}\right) e^{-x^2} + 2e^{-x},
@@ -46,7 +46,7 @@ import TensorCrossInterpolation as TCI
 #
 # where $B = 2^{-30}$.
 #
-# In the [previous page](quantics1d.jl), we implemented $f(x)$ as
+# In the [previous page](./quantics1d.ipynb), we implemented $f(x)$ as
 #
 
 # %% [markdown]

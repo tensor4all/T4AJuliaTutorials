@@ -15,7 +15,7 @@
 # ---
 
 # %% [markdown]
-# Click [here](https://gitlab.com/api/v4/projects/56283350/jobs/artifacts/main/raw/notebooks/interfacingwithitensors.ipynb?job=pages) to download the notebook locally.
+# Click [here](https://tensor4all.org/T4AJuliaTutorials/_sources/ipynbs/interfacingwithitensors.ipynb) to download the notebook locally.
 #
 
 # %% [markdown]

@@ -15,7 +15,7 @@
 # ---
 
 # %% [markdown]
-# Click [here](https://gitlab.com/api/v4/projects/56283350/jobs/artifacts/main/raw/notebooks/quantics1d_advanced.ipynb?job=pages) to download the notebook locally.
+# Click [here](https://tensor4all.org/T4AJuliaTutorials/_sources/ipynbs/quantics1d_advanced.ipynb) to download the notebook locally.
 #
 
 # %% [markdown]
@@ -38,7 +38,7 @@ import TensorCrossInterpolation as TCI
 #
 # ### Performance tips
 #
-# Let's recall again the function $f(x)$ from the [previous page](quantics1d.md).
+# Let's recall again the function $f(x)$ from the [previous page](quantics1d.jl).
 #
 # $$
 # f(x) = \cos\left(\frac{x}{B}\right) \cos\left(\frac{x}{4\sqrt{5}B}\right) e^{-x^2} + 2e^{-x},
@@ -46,7 +46,7 @@ import TensorCrossInterpolation as TCI
 #
 # where $B = 2^{-30}$.
 #
-# In the [previous page](quantics1d.md), we implemented $f(x)$ as
+# In the [previous page](quantics1d.jl), we implemented $f(x)$ as
 #
 
 # %% [markdown]

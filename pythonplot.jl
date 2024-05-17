@@ -15,6 +15,9 @@
 # ---
 
 # %% [markdown]
+# Click [here](https://tensor4all.org/T4AJuliaTutorials/_sources/ipynbs/pythonplot.ipynb) to download the notebook locally.
+
+# %% [markdown]
 # # PythonPlot
 #
 # [JuliaPy/PythonPlot.jl](https://github.com/JuliaPy/PythonPlot.jl) provides a Julia interface to the [Matplotlib](https://matplotlib.org/) plotting library from Python, and specifically to the matplotlib.pyplot module. This may be helpful for those who are new to Julia and come from Python.

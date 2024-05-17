@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -232,7 +232,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/tensor4all/T4AJuliaTutorials" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -249,7 +249,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fipynbs/pythonplot.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/tensor4all/T4AJuliaTutorials/issues/new?title=Issue%20on%20page%20%2Fipynbs/pythonplot.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -392,7 +392,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="pythonplot">
+  <p>Click <a class="reference external" href="https://tensor4all.org/T4AJuliaTutorials/_sources/ipynbs/pythonplot.ipynb">here</a> to download the notebook locally.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="pythonplot">
 <h1>PythonPlot<a class="headerlink" href="#pythonplot" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://github.com/JuliaPy/PythonPlot.jl">JuliaPy/PythonPlot.jl</a> provides a Julia interface to the <a class="reference external" href="https://matplotlib.org/">Matplotlib</a> plotting library from Python, and specifically to the matplotlib.pyplot module. This may be helpful for those who are new to Julia and come from Python.</p>
 <p>Consider that we have source code written in Python for plotting data like below:</p>
@@ -423,7 +424,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/253952f9d80885f4e129e814e010fb876ca19c78cdf6a33bf2719e5477969300.png" src="../_images/253952f9d80885f4e129e814e010fb876ca19c78cdf6a33bf2719e5477969300.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python: [&lt;matplotlib.lines.Line2D object at 0x7fdabfe33e60&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python: [&lt;matplotlib.lines.Line2D object at 0x7fa45f433fe0&gt;]
 </pre></div>
 </div>
 </div>
@@ -458,8 +459,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/654c1d259fa3719c5c13a8bc45f6a52336e4d69aebeed38f0d5528b3131adf2b.png" src="../_images/654c1d259fa3719c5c13a8bc45f6a52336e4d69aebeed38f0d5528b3131adf2b.png" />
-<img alt="../_images/654c1d259fa3719c5c13a8bc45f6a52336e4d69aebeed38f0d5528b3131adf2b.png" src="../_images/654c1d259fa3719c5c13a8bc45f6a52336e4d69aebeed38f0d5528b3131adf2b.png" />
+<img alt="../_images/6a321580390fdb7410c9ddae2b667d51ae67012f2df3b4321184305218b164fc.png" src="../_images/6a321580390fdb7410c9ddae2b667d51ae67012f2df3b4321184305218b164fc.png" />
+<img alt="../_images/6a321580390fdb7410c9ddae2b667d51ae67012f2df3b4321184305218b164fc.png" src="../_images/6a321580390fdb7410c9ddae2b667d51ae67012f2df3b4321184305218b164fc.png" />
 </div>
 </div>
 <p>The type of <code class="docutils literal notranslate"><span class="pre">fig</span></code> is <code class="docutils literal notranslate"><span class="pre">PyhonCall.Py</span></code> which handles generic Python objects. It seems that <code class="docutils literal notranslate"><span class="pre">PythonPlot.Figure</span></code> provides a better method to display figure object. Note that we can add <code class="docutils literal notranslate"><span class="pre">display(PythonPlot.gcf())</span></code> at the end of a cell instead of <code class="docutils literal notranslate"><span class="pre">display(Figure(fig))</span></code> since <code class="docutils literal notranslate"><span class="pre">gcf()</span></code> gets the current figure object as a value of <code class="docutils literal notranslate"><span class="pre">PythonCall.Figure</span></code>.</p>
@@ -535,8 +536,8 @@ However there is one enrivonment that outputs <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e6613bc9f5004fa075707196ffd7f2b28b277a85bd6f91444d2a65156433864f.png" src="../_images/e6613bc9f5004fa075707196ffd7f2b28b277a85bd6f91444d2a65156433864f.png" />
-<img alt="../_images/e6613bc9f5004fa075707196ffd7f2b28b277a85bd6f91444d2a65156433864f.png" src="../_images/e6613bc9f5004fa075707196ffd7f2b28b277a85bd6f91444d2a65156433864f.png" />
+<img alt="../_images/49de9f36588d4682d9093d5368ca1a7693e141714fcfd0112f9544f4d8879b30.png" src="../_images/49de9f36588d4682d9093d5368ca1a7693e141714fcfd0112f9544f4d8879b30.png" />
+<img alt="../_images/49de9f36588d4682d9093d5368ca1a7693e141714fcfd0112f9544f4d8879b30.png" src="../_images/49de9f36588d4682d9093d5368ca1a7693e141714fcfd0112f9544f4d8879b30.png" />
 </div>
 </div>
 <p>To avoid ambiguity in the resulting output by selecting the kernel of Julia, we should add the following conditional branch:</p>
@@ -564,7 +565,7 @@ However there is one enrivonment that outputs <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/78c962fbcf98fab3b8ff6a2036b62582979e3f594c4e35c6da4310d737c97df2.png" src="../_images/78c962fbcf98fab3b8ff6a2036b62582979e3f594c4e35c6da4310d737c97df2.png" />
+<img alt="../_images/b3ef08417bc098530a0bdd3ef8bf2ae153ea701514dcf925c480df2fbc71dc86.png" src="../_images/b3ef08417bc098530a0bdd3ef8bf2ae153ea701514dcf925c480df2fbc71dc86.png" />
 </div>
 </div>
 <p>This can be challenging for those who want to focus on research rather than writing code. To address this, we provide a function named <code class="docutils literal notranslate"><span class="pre">_display</span></code> that handles differences in output due to the environment.</p>
@@ -594,7 +595,7 @@ However there is one enrivonment that outputs <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/654f6ac32de16631cbe12a5353f8699aea47b9ba8b62e681f86d23c90d74eb4e.png" src="../_images/654f6ac32de16631cbe12a5353f8699aea47b9ba8b62e681f86d23c90d74eb4e.png" />
+<img alt="../_images/d178918c48db5eaef2e7be7b2836d1e45ee3cbeda807dfd130d062bc7cfeba70.png" src="../_images/d178918c48db5eaef2e7be7b2836d1e45ee3cbeda807dfd130d062bc7cfeba70.png" />
 </div>
 </div>
 </section>

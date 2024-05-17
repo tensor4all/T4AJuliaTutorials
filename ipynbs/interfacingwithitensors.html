@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -231,7 +231,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/tensor4all/T4AJuliaTutorials" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -248,7 +248,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fipynbs/interfacingwithitensors.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/tensor4all/T4AJuliaTutorials/issues/new?title=Issue%20on%20page%20%2Fipynbs/interfacingwithitensors.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -374,7 +374,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>Click <a class="reference external" href="https://gitlab.com/api/v4/projects/56283350/jobs/artifacts/main/raw/notebooks/interfacingwithitensors.ipynb?job=pages">here</a> to download the notebook locally.</p>
+  <p>Click <a class="reference external" href="https://tensor4all.org/T4AJuliaTutorials/_sources/ipynbs/interfacingwithitensors.ipynb">here</a> to download the notebook locally.</p>
 <section class="tex2jax_ignore mathjax_ignore" id="interfacing-with-itensors-jl">
 <h1>Interfacing with ITensors.jl<a class="headerlink" href="#interfacing-with-itensors-jl" title="Link to this heading">#</a></h1>
 <p>You can convert a TCI object to an ITensor MPS object using the <code class="docutils literal notranslate"><span class="pre">TCIITensorConversion.jl</span></code> library. This library provides conversions of tensor trains between <code class="docutils literal notranslate"><span class="pre">TensorCrossInterpolation.jl</span></code> and <code class="docutils literal notranslate"><span class="pre">ITensors.jl</span></code>.</p>
@@ -398,7 +398,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (3.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 29576 entries), [20, 18, 19], [4.792661786793327e-7, 9.737065948156875e-7, 9.737065948156875e-7])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (3.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 27555 entries), [18, 18, 18], [1.2648974357437661e-6, 1.034680999473718e-6, 4.607547617020793e-7])
 </pre></div>
 </div>
 </div>
@@ -423,46 +423,46 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MPS
-[1] ((dim=2|id=32|&quot;n=1&quot;), (dim=2|id=719|&quot;l=1,link&quot;))
-[2] ((dim=2|id=719|&quot;l=1,link&quot;), (dim=2|id=979|&quot;n=2&quot;), (dim=4|id=918|&quot;l=2,link&quot;))
-[3] ((dim=4|id=918|&quot;l=2,link&quot;), (dim=2|id=211|&quot;n=3&quot;), (dim=8|id=464|&quot;l=3,link&quot;))
-[4] ((dim=8|id=464|&quot;l=3,link&quot;), (dim=2|id=191|&quot;n=4&quot;), (dim=15|id=300|&quot;l=4,link&quot;))
-[5] ((dim=15|id=300|&quot;l=4,link&quot;), (dim=2|id=600|&quot;n=5&quot;), (dim=15|id=510|&quot;l=5,link&quot;))
-[6] ((dim=15|id=510|&quot;l=5,link&quot;), (dim=2|id=89|&quot;n=6&quot;), (dim=15|id=690|&quot;l=6,link&quot;))
-[7] ((dim=15|id=690|&quot;l=6,link&quot;), (dim=2|id=191|&quot;n=7&quot;), (dim=15|id=100|&quot;l=7,link&quot;))
-[8] ((dim=15|id=100|&quot;l=7,link&quot;), (dim=2|id=367|&quot;n=8&quot;), (dim=13|id=35|&quot;l=8,link&quot;))
-[9] ((dim=13|id=35|&quot;l=8,link&quot;), (dim=2|id=995|&quot;n=9&quot;), (dim=13|id=404|&quot;l=9,link&quot;))
-[10] ((dim=13|id=404|&quot;l=9,link&quot;), (dim=2|id=791|&quot;n=10&quot;), (dim=13|id=527|&quot;l=10,link&quot;))
-[11] ((dim=13|id=527|&quot;l=10,link&quot;), (dim=2|id=776|&quot;n=11&quot;), (dim=13|id=772|&quot;l=11,link&quot;))
-[12] ((dim=13|id=772|&quot;l=11,link&quot;), (dim=2|id=943|&quot;n=12&quot;), (dim=10|id=929|&quot;l=12,link&quot;))
-[13] ((dim=10|id=929|&quot;l=12,link&quot;), (dim=2|id=587|&quot;n=13&quot;), (dim=9|id=537|&quot;l=13,link&quot;))
-[14] ((dim=9|id=537|&quot;l=13,link&quot;), (dim=2|id=303|&quot;n=14&quot;), (dim=9|id=603|&quot;l=14,link&quot;))
-[15] ((dim=9|id=603|&quot;l=14,link&quot;), (dim=2|id=477|&quot;n=15&quot;), (dim=9|id=439|&quot;l=15,link&quot;))
-[16] ((dim=9|id=439|&quot;l=15,link&quot;), (dim=2|id=77|&quot;n=16&quot;), (dim=9|id=940|&quot;l=16,link&quot;))
-[17] ((dim=9|id=940|&quot;l=16,link&quot;), (dim=2|id=203|&quot;n=17&quot;), (dim=9|id=175|&quot;l=17,link&quot;))
-[18] ((dim=9|id=175|&quot;l=17,link&quot;), (dim=2|id=753|&quot;n=18&quot;), (dim=9|id=29|&quot;l=18,link&quot;))
-[19] ((dim=9|id=29|&quot;l=18,link&quot;), (dim=2|id=192|&quot;n=19&quot;), (dim=9|id=932|&quot;l=19,link&quot;))
-[20] ((dim=9|id=932|&quot;l=19,link&quot;), (dim=2|id=947|&quot;n=20&quot;), (dim=9|id=380|&quot;l=20,link&quot;))
-[21] ((dim=9|id=380|&quot;l=20,link&quot;), (dim=2|id=395|&quot;n=21&quot;), (dim=9|id=534|&quot;l=21,link&quot;))
-[22] ((dim=9|id=534|&quot;l=21,link&quot;), (dim=2|id=820|&quot;n=22&quot;), (dim=9|id=505|&quot;l=22,link&quot;))
-[23] ((dim=9|id=505|&quot;l=22,link&quot;), (dim=2|id=467|&quot;n=23&quot;), (dim=9|id=27|&quot;l=23,link&quot;))
-[24] ((dim=9|id=27|&quot;l=23,link&quot;), (dim=2|id=634|&quot;n=24&quot;), (dim=9|id=23|&quot;l=24,link&quot;))
-[25] ((dim=9|id=23|&quot;l=24,link&quot;), (dim=2|id=930|&quot;n=25&quot;), (dim=8|id=863|&quot;l=25,link&quot;))
-[26] ((dim=8|id=863|&quot;l=25,link&quot;), (dim=2|id=643|&quot;n=26&quot;), (dim=5|id=613|&quot;l=26,link&quot;))
-[27] ((dim=5|id=613|&quot;l=26,link&quot;), (dim=2|id=330|&quot;n=27&quot;), (dim=5|id=258|&quot;l=27,link&quot;))
-[28] ((dim=5|id=258|&quot;l=27,link&quot;), (dim=2|id=216|&quot;n=28&quot;), (dim=5|id=375|&quot;l=28,link&quot;))
-[29] ((dim=5|id=375|&quot;l=28,link&quot;), (dim=2|id=513|&quot;n=29&quot;), (dim=5|id=506|&quot;l=29,link&quot;))
-[30] ((dim=5|id=506|&quot;l=29,link&quot;), (dim=2|id=479|&quot;n=30&quot;), (dim=5|id=213|&quot;l=30,link&quot;))
-[31] ((dim=5|id=213|&quot;l=30,link&quot;), (dim=2|id=945|&quot;n=31&quot;), (dim=5|id=768|&quot;l=31,link&quot;))
-[32] ((dim=5|id=768|&quot;l=31,link&quot;), (dim=2|id=523|&quot;n=32&quot;), (dim=5|id=525|&quot;l=32,link&quot;))
-[33] ((dim=5|id=525|&quot;l=32,link&quot;), (dim=2|id=11|&quot;n=33&quot;), (dim=5|id=560|&quot;l=33,link&quot;))
-[34] ((dim=5|id=560|&quot;l=33,link&quot;), (dim=2|id=358|&quot;n=34&quot;), (dim=5|id=436|&quot;l=34,link&quot;))
-[35] ((dim=5|id=436|&quot;l=34,link&quot;), (dim=2|id=949|&quot;n=35&quot;), (dim=4|id=116|&quot;l=35,link&quot;))
-[36] ((dim=4|id=116|&quot;l=35,link&quot;), (dim=2|id=578|&quot;n=36&quot;), (dim=4|id=388|&quot;l=36,link&quot;))
-[37] ((dim=4|id=388|&quot;l=36,link&quot;), (dim=2|id=519|&quot;n=37&quot;), (dim=3|id=380|&quot;l=37,link&quot;))
-[38] ((dim=3|id=380|&quot;l=37,link&quot;), (dim=2|id=237|&quot;n=38&quot;), (dim=3|id=660|&quot;l=38,link&quot;))
-[39] ((dim=3|id=660|&quot;l=38,link&quot;), (dim=2|id=839|&quot;n=39&quot;), (dim=2|id=861|&quot;l=39,link&quot;))
-[40] ((dim=2|id=861|&quot;l=39,link&quot;), (dim=2|id=108|&quot;n=40&quot;))
+[1] ((dim=2|id=480|&quot;n=1&quot;), (dim=2|id=759|&quot;l=1,link&quot;))
+[2] ((dim=2|id=759|&quot;l=1,link&quot;), (dim=2|id=649|&quot;n=2&quot;), (dim=4|id=529|&quot;l=2,link&quot;))
+[3] ((dim=4|id=529|&quot;l=2,link&quot;), (dim=2|id=766|&quot;n=3&quot;), (dim=8|id=557|&quot;l=3,link&quot;))
+[4] ((dim=8|id=557|&quot;l=3,link&quot;), (dim=2|id=189|&quot;n=4&quot;), (dim=15|id=569|&quot;l=4,link&quot;))
+[5] ((dim=15|id=569|&quot;l=4,link&quot;), (dim=2|id=714|&quot;n=5&quot;), (dim=15|id=843|&quot;l=5,link&quot;))
+[6] ((dim=15|id=843|&quot;l=5,link&quot;), (dim=2|id=32|&quot;n=6&quot;), (dim=15|id=685|&quot;l=6,link&quot;))
+[7] ((dim=15|id=685|&quot;l=6,link&quot;), (dim=2|id=671|&quot;n=7&quot;), (dim=15|id=973|&quot;l=7,link&quot;))
+[8] ((dim=15|id=973|&quot;l=7,link&quot;), (dim=2|id=844|&quot;n=8&quot;), (dim=13|id=592|&quot;l=8,link&quot;))
+[9] ((dim=13|id=592|&quot;l=8,link&quot;), (dim=2|id=965|&quot;n=9&quot;), (dim=13|id=471|&quot;l=9,link&quot;))
+[10] ((dim=13|id=471|&quot;l=9,link&quot;), (dim=2|id=182|&quot;n=10&quot;), (dim=13|id=168|&quot;l=10,link&quot;))
+[11] ((dim=13|id=168|&quot;l=10,link&quot;), (dim=2|id=8|&quot;n=11&quot;), (dim=13|id=196|&quot;l=11,link&quot;))
+[12] ((dim=13|id=196|&quot;l=11,link&quot;), (dim=2|id=54|&quot;n=12&quot;), (dim=10|id=253|&quot;l=12,link&quot;))
+[13] ((dim=10|id=253|&quot;l=12,link&quot;), (dim=2|id=32|&quot;n=13&quot;), (dim=9|id=798|&quot;l=13,link&quot;))
+[14] ((dim=9|id=798|&quot;l=13,link&quot;), (dim=2|id=693|&quot;n=14&quot;), (dim=9|id=943|&quot;l=14,link&quot;))
+[15] ((dim=9|id=943|&quot;l=14,link&quot;), (dim=2|id=789|&quot;n=15&quot;), (dim=9|id=860|&quot;l=15,link&quot;))
+[16] ((dim=9|id=860|&quot;l=15,link&quot;), (dim=2|id=189|&quot;n=16&quot;), (dim=9|id=954|&quot;l=16,link&quot;))
+[17] ((dim=9|id=954|&quot;l=16,link&quot;), (dim=2|id=408|&quot;n=17&quot;), (dim=9|id=746|&quot;l=17,link&quot;))
+[18] ((dim=9|id=746|&quot;l=17,link&quot;), (dim=2|id=693|&quot;n=18&quot;), (dim=9|id=479|&quot;l=18,link&quot;))
+[19] ((dim=9|id=479|&quot;l=18,link&quot;), (dim=2|id=263|&quot;n=19&quot;), (dim=9|id=630|&quot;l=19,link&quot;))
+[20] ((dim=9|id=630|&quot;l=19,link&quot;), (dim=2|id=839|&quot;n=20&quot;), (dim=9|id=589|&quot;l=20,link&quot;))
+[21] ((dim=9|id=589|&quot;l=20,link&quot;), (dim=2|id=903|&quot;n=21&quot;), (dim=9|id=473|&quot;l=21,link&quot;))
+[22] ((dim=9|id=473|&quot;l=21,link&quot;), (dim=2|id=692|&quot;n=22&quot;), (dim=9|id=386|&quot;l=22,link&quot;))
+[23] ((dim=9|id=386|&quot;l=22,link&quot;), (dim=2|id=428|&quot;n=23&quot;), (dim=9|id=873|&quot;l=23,link&quot;))
+[24] ((dim=9|id=873|&quot;l=23,link&quot;), (dim=2|id=272|&quot;n=24&quot;), (dim=9|id=416|&quot;l=24,link&quot;))
+[25] ((dim=9|id=416|&quot;l=24,link&quot;), (dim=2|id=657|&quot;n=25&quot;), (dim=8|id=317|&quot;l=25,link&quot;))
+[26] ((dim=8|id=317|&quot;l=25,link&quot;), (dim=2|id=606|&quot;n=26&quot;), (dim=5|id=229|&quot;l=26,link&quot;))
+[27] ((dim=5|id=229|&quot;l=26,link&quot;), (dim=2|id=91|&quot;n=27&quot;), (dim=5|id=349|&quot;l=27,link&quot;))
+[28] ((dim=5|id=349|&quot;l=27,link&quot;), (dim=2|id=684|&quot;n=28&quot;), (dim=5|id=272|&quot;l=28,link&quot;))
+[29] ((dim=5|id=272|&quot;l=28,link&quot;), (dim=2|id=910|&quot;n=29&quot;), (dim=5|id=789|&quot;l=29,link&quot;))
+[30] ((dim=5|id=789|&quot;l=29,link&quot;), (dim=2|id=244|&quot;n=30&quot;), (dim=5|id=517|&quot;l=30,link&quot;))
+[31] ((dim=5|id=517|&quot;l=30,link&quot;), (dim=2|id=801|&quot;n=31&quot;), (dim=5|id=249|&quot;l=31,link&quot;))
+[32] ((dim=5|id=249|&quot;l=31,link&quot;), (dim=2|id=473|&quot;n=32&quot;), (dim=5|id=860|&quot;l=32,link&quot;))
+[33] ((dim=5|id=860|&quot;l=32,link&quot;), (dim=2|id=0|&quot;n=33&quot;), (dim=5|id=978|&quot;l=33,link&quot;))
+[34] ((dim=5|id=978|&quot;l=33,link&quot;), (dim=2|id=296|&quot;n=34&quot;), (dim=5|id=182|&quot;l=34,link&quot;))
+[35] ((dim=5|id=182|&quot;l=34,link&quot;), (dim=2|id=348|&quot;n=35&quot;), (dim=4|id=532|&quot;l=35,link&quot;))
+[36] ((dim=4|id=532|&quot;l=35,link&quot;), (dim=2|id=533|&quot;n=36&quot;), (dim=4|id=133|&quot;l=36,link&quot;))
+[37] ((dim=4|id=133|&quot;l=36,link&quot;), (dim=2|id=234|&quot;n=37&quot;), (dim=3|id=278|&quot;l=37,link&quot;))
+[38] ((dim=3|id=278|&quot;l=37,link&quot;), (dim=2|id=79|&quot;n=38&quot;), (dim=3|id=844|&quot;l=38,link&quot;))
+[39] ((dim=3|id=844|&quot;l=38,link&quot;), (dim=2|id=640|&quot;n=39&quot;), (dim=2|id=745|&quot;l=39,link&quot;))
+[40] ((dim=2|id=745|&quot;l=39,link&quot;), (dim=2|id=383|&quot;n=40&quot;))
 </pre></div>
 </div>
 </div>

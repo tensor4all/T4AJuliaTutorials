@@ -16,6 +16,7 @@
 
 # %% [markdown]
 # # T4A Julia Tutorials
+#
 # This documentation provides a comprehensive tutorials/examples
 # on quantics and tensor cross interpolation (TCI) and their combinations (QTCI).
 # These technologies allow us to reveal low-rank tensor network representation (TNR) hidden in data or a function,
@@ -25,10 +26,14 @@
 # The T4A group hosts various Julia libraries for performing such operations.
 # The folowing list is given in the order of low-level to high-level libraries:
 #
-# * [TensorCrossInterpolation.jl](https://github.com/tensor4all/TensorCrossInterpolation.jl/) provides implementations of TCI.
-# * [QuanticsGrids.jl](https://github.com/tensor4all/QuanticsGrids.jl/) provides utilities for handling quantics representations, e.g., creating a quantics grid and transformation between the original coordinate system and the quantics representation.
-# * [QuanticsTCI.jl](https://github.com/tensor4all/QuanticsTCI.jl/) is a thin wrapper around `TensorCrossInterpolation.jl` and `QuanticsGrids.jl`, providing valuable functionalities for non-expert users' performing quantics TCI (QTCI).
-# * [TCIITensorConversion.jl](https://github.com/tensor4all/TCIITensorConversion.jl/) provides conversions of tensor trains between `TensorCrossInterpolation.jl` and `ITensors.jl`.
+# - [TensorCrossInterpolation.jl](https://github.com/tensor4all/TensorCrossInterpolation.jl/) provides implementations of TCI.
+# - [QuanticsGrids.jl](https://github.com/tensor4all/QuanticsGrids.jl/) provides utilities for handling quantics representations, e.g., creating a quantics grid and transformation between the original coordinate system and the quantics representation.
+# - [QuanticsTCI.jl](https://github.com/tensor4all/QuanticsTCI.jl/) is a thin wrapper around `TensorCrossInterpolation.jl` and `QuanticsGrids.jl`, providing valuable functionalities for non-expert users' performing quantics TCI (QTCI).
+# - [TCIITensorConversion.jl](https://github.com/tensor4all/TCIITensorConversion.jl/) provides conversions of tensor trains between `TensorCrossInterpolation.jl` and `ITensors.jl`.
+#
+# Additionally, we provide some topics on Julia packages such as:
+#
+# - [PythonPlot.jl](pythonplot.ipynb). This may be helpful for those who are new to Julia and come from Python.
 #
 # This documentation provides examples of using these libraries to perform QTCI and other operations.
 #
@@ -39,21 +44,25 @@
 # Install `julia` command using [juliaup](https://github.com/JuliaLang/juliaup).
 #
 # On Windows Julia and Juliaup can be installed directly from the Windows store. One can also install exactly the same version by executing
+#
 
 # %% [markdown]
 # ```powershell
 # PS> winget install julia -s msstore
 # ```
+#
 
 # %% [markdown]
 # on a command line.
 #
 # Juliaup can be installed on Linux or Mac by executing
+#
 
 # %% [markdown]
 # ```sh
 # $ curl -fsSL https://install.julialang.org | sh
 # ```
+#
 
 # %% [markdown]
 # in a shell.
@@ -96,21 +105,27 @@
 # ### Install required packages
 #
 # One can install required packages by running the following command on your shell:
+#
 
 # %% [markdown]
 # ```sh
 # $ julia -e 'using Pkg; Pkg.add(["QuanticsTCI", "QuanticsGrids", "TensorCrossInterpolation", "TCIITensorConversion", "ITensors", "Plots", "PythonPlot", "LaTeXStrings"])'
 # ```
+#
 
 # %% [markdown]
 # This will install required packages to Julia's global envrironment.
+#
 
 # %% [markdown]
 # ### Print out the status of the project
 #
 # Having trouble? Try the following command in your Julia's REPL. On GitHub Actions instance we'll get:
+#
 
 # %%
-using Dates; now(UTC)
+using Dates;
+now(UTC);
 VERSION # display Julia version
-using Pkg; Pkg.status()
+using Pkg;
+Pkg.status();

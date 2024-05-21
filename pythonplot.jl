@@ -16,6 +16,7 @@
 
 # %% [markdown]
 # Click [here](https://tensor4all.org/T4AJuliaTutorials/_sources/ipynbs/pythonplot.ipynb) to download the notebook locally.
+#
 
 # %% [markdown]
 # # PythonPlot
@@ -53,6 +54,20 @@ ax.plot(x, y, marker="+")
 
 # %% [markdown]
 # As explained above, PythonPlot facilitates a smooth transition from Python to Julia for data visualization tasks. In this section, we provide valuable tips and tricks for experimenting with Julia and Jupyter Notebook or VS Code.
+#
+
+# %% [markdown]
+# ## TL;DR
+#
+# Place the following code snippet at the beginning of your Jupyter notebook cell.
+#
+# ```julia
+# using PythonPlot: PythonPlot, pyplot as plt, Figure
+# _display(fig::PythonPlot.Figure) = isinteractive() ? (fig; plt.show(); nothing) : display(fig)
+# _display(fig) = _display(Figure(fig))
+# ```
+#
+# The explanation for why we need the above snippet is provided below.
 #
 
 # %% [markdown]

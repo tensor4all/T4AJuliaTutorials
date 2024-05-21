@@ -407,6 +407,10 @@ The folowing list is given in the order of low-level to high-level libraries:</p
 <li><p><a class="reference external" href="https://github.com/tensor4all/QuanticsTCI.jl/">QuanticsTCI.jl</a> is a thin wrapper around <code class="docutils literal notranslate"><span class="pre">TensorCrossInterpolation.jl</span></code> and <code class="docutils literal notranslate"><span class="pre">QuanticsGrids.jl</span></code>, providing valuable functionalities for non-expert users’ performing quantics TCI (QTCI).</p></li>
 <li><p><a class="reference external" href="https://github.com/tensor4all/TCIITensorConversion.jl/">TCIITensorConversion.jl</a> provides conversions of tensor trains between <code class="docutils literal notranslate"><span class="pre">TensorCrossInterpolation.jl</span></code> and <code class="docutils literal notranslate"><span class="pre">ITensors.jl</span></code>.</p></li>
 </ul>
+<p>Additionally, we provide some topics on Julia packages such as:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pythonplot.html"><span class="std std-doc">PythonPlot.jl</span></a>. This may be helpful for those who are new to Julia and come from Python.</p></li>
+</ul>
 <p>This documentation provides examples of using these libraries to perform QTCI and other operations.</p>
 <section id="preparation">
 <h2>Preparation<a class="headerlink" href="#preparation" title="Link to this heading">#</a></h2>
@@ -463,9 +467,11 @@ The folowing list is given in the order of low-level to high-level libraries:</p
 <p>Having trouble? Try the following command in your Julia’s REPL. On GitHub Actions instance we’ll get:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Dates</span><span class="p">;</span><span class="w"> </span><span class="n">now</span><span class="p">(</span><span class="n">UTC</span><span class="p">)</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Dates</span><span class="p">;</span>
+<span class="n">now</span><span class="p">(</span><span class="n">UTC</span><span class="p">);</span>
 <span class="nb">VERSION</span><span class="w"> </span><span class="c"># display Julia version</span>
-<span class="k">using</span><span class="w"> </span><span class="n">Pkg</span><span class="p">;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
+<span class="k">using</span><span class="w"> </span><span class="n">Pkg</span><span class="p">;</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>

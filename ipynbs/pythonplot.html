@@ -373,6 +373,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preventing-slow-figure-rendering">Preventing slow figure rendering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workaround-converting-fig-to-figure-fig-pythonplot-figure">Workaround: Converting <code class="docutils literal notranslate"><span class="pre">fig</span></code> to <code class="docutils literal notranslate"><span class="pre">Figure(fig)::PythonPlot.Figure</span></code></a></li>
 </ul>
@@ -430,6 +431,16 @@ document.write(`
 </div>
 </div>
 <p>As explained above, PythonPlot facilitates a smooth transition from Python to Julia for data visualization tasks. In this section, we provide valuable tips and tricks for experimenting with Julia and Jupyter Notebook or VS Code.</p>
+<section id="tl-dr">
+<h2>TL;DR<a class="headerlink" href="#tl-dr" title="Link to this heading">#</a></h2>
+<p>Place the following code snippet at the beginning of your Jupyter notebook cell.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">PythonPlot</span><span class="o">:</span><span class="w"> </span><span class="n">PythonPlot</span><span class="p">,</span><span class="w"> </span><span class="n">pyplot</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">plt</span><span class="p">,</span><span class="w"> </span><span class="n">Figure</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="o">::</span><span class="kt">PythonPlot</span><span class="o">.</span><span class="n">Figure</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isinteractive</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="n">fig</span><span class="p">;</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span><span class="w"> </span><span class="nb">nothing</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_display</span><span class="p">(</span><span class="n">Figure</span><span class="p">(</span><span class="n">fig</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The explanation for why we need the above snippet is provided below.</p>
+</section>
 <section id="preventing-slow-figure-rendering">
 <h2>Preventing slow figure rendering<a class="headerlink" href="#preventing-slow-figure-rendering" title="Link to this heading">#</a></h2>
 <p>In some cases, Julia scripts using <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.pcolor.html"><code class="docutils literal notranslate"><span class="pre">pcolor</span></code></a> or <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.pcolormesh.html">pcolormesh</a> causes slow figure rendering. Below is a minimum working example to reproduce it:</p>
@@ -657,6 +668,7 @@ However there is one enrivonment that outputs <code class="docutils literal notr
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tl-dr">TL;DR</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preventing-slow-figure-rendering">Preventing slow figure rendering</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workaround-converting-fig-to-figure-fig-pythonplot-figure">Workaround: Converting <code class="docutils literal notranslate"><span class="pre">fig</span></code> to <code class="docutils literal notranslate"><span class="pre">Figure(fig)::PythonPlot.Figure</span></code></a></li>
 </ul>

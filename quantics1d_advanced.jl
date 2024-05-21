@@ -9,7 +9,7 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.11.2
 #   kernelspec:
-#     display_name: Julia 1.10.2
+#     display_name: Julia 1.10.3
 #     language: julia
 #     name: julia-1.10
 # ---
@@ -96,7 +96,7 @@ using PythonPlot: pyplot as plt, gcf
 
 R = 40 # number of bits
 xmin = 0.0
-xmax = 3.0
+xmax = log(20)
 qgrid = QG.DiscretizedGrid{1}(R, xmin, xmax; includeendpoint=false)
 
 # %% [markdown]
@@ -135,6 +135,12 @@ qf.(initialpivots) # Function values at initial pivots
 
 # %%
 ci, ranks, errors = TCI.crossinterpolate2(Float64, cf, localdims, initialpivots; maxbonddim=15)
+
+# %% [markdown]
+# The integral of $f(x)$ can be computed by summing all the elements in the QTT representation and multiplying by the interval length divided by $2^\mathcal{R}$.
+
+# %%
+TCI.sum(ci) * (log(20) - 0) / 2^R, 19/10
 
 # %% [markdown]
 # You can retrieve the results of the function evaluations during the TCI construction as follows.

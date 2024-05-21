@@ -19,14 +19,14 @@
 # This documentation provides a comprehensive tutorials/examples
 # on quantics and tensor cross interpolation (TCI) and their combinations (QTCI).
 # These technologies allow us to reveal low-rank tensor network representation (TNR) hidden in data or a function,
-# and peform computation such as Fourier transform and convolution.
-# Plesae refer [xfacpaper]() for a more detailed introduction of these concepts.
+# and perform computation such as Fourier transform and convolution.
+# Please refer [xfacpaper]() for a more detailed introduction of these concepts.
 #
 # The T4A group hosts various Julia libraries for performing such operations.
 # The folowing list is given in the order of low-level to high-level libraries:
 #
 # * [TensorCrossInterpolation.jl](https://github.com/tensor4all/TensorCrossInterpolation.jl/) provides implementations of TCI.
-# * [QuanticsGrids.jl](https://github.com/tensor4all/QuanticsGrids.jl/) provides utilities for handing quantics representations, e.g., creating a quantics grid and transformation between the original coordinate system and the quantics representation.
+# * [QuanticsGrids.jl](https://github.com/tensor4all/QuanticsGrids.jl/) provides utilities for handling quantics representations, e.g., creating a quantics grid and transformation between the original coordinate system and the quantics representation.
 # * [QuanticsTCI.jl](https://github.com/tensor4all/QuanticsTCI.jl/) is a thin wrapper around `TensorCrossInterpolation.jl` and `QuanticsGrids.jl`, providing valuable functionalities for non-expert users' performing quantics TCI (QTCI).
 # * [TCIITensorConversion.jl](https://github.com/tensor4all/TCIITensorConversion.jl/) provides conversions of tensor trains between `TensorCrossInterpolation.jl` and `ITensors.jl`.
 #

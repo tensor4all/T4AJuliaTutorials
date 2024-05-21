@@ -10,7 +10,7 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.11.2
 #   kernelspec:
-#     display_name: Julia 1.10.2
+#     display_name: Julia 1.10.3
 #     language: julia
 #     name: julia-1.10
 # ---
@@ -39,12 +39,15 @@ using QuanticsTCI: quanticscrossinterpolate
 #
 # The first example is taken from Fig. 1 in [Ritter2024](https://arxiv.org/abs/2303.11819).
 #
+# We are going to compute the integral $\mathrm{I}[f] = \int_0^{\ln 20} \mathrm{d}x f(x) $ of the function
 # $$
 # f(x) = \cos\left(\frac{x}{B}\right) \cos\left(\frac{x}{4\sqrt{5}B}\right) e^{-x^2} + 2e^{-x},
 # $$
 #
-# where $B = 2^{-30}$. In Julia, this can be written as below:
+# where $B = 2^{-30}$.
+# The integral evaluates to $\mathrm{I}[f] = 19/10 + O(e^{-1/(4B^2)})$.
 #
+# We first construct a QTT representation of the function $f(x)$ as follows:
 
 # %%
 B = 2^(-30) # global variable
@@ -84,13 +87,13 @@ _display(fig)
 # %% [markdown]
 # ### QTT representation
 #
-# One can construct a QTT representation of this function on the domain $[0, 3]$ a quantics grid of size $2^\mathcal{R}$ where $\mathcal{R}$ is $40$:
+# One can construct a QTT representation of this function on the domain $[0, \ln 20]$ a quantics grid of size $2^\mathcal{R}$ where $\mathcal{R}$ is $40$:
 #
 
 # %%
 R = 40 # number of bits
 xmin = 0.0
-xmax = 3.0
+xmax = log(20.)
 N = 2^R # size of the grid
 # * Uniform grid (includeendpoint=false, default):
 #   -xmin, -xmin+dx, ...., -xmin + (2^R-1)*dx
@@ -161,6 +164,18 @@ ax.set_xlabel("x")
 ax.set_ylabel("interpolation error")
 ax.legend()
 _display(fig)
+
+# %% [markdown]
+# We are now ready to compute the integral $\mathrm{I}[f] = \int_0^{\ln 20} \mathrm{d}x f(x) \simeq 19/10$ using the QTT representation of $f(x)$.
+
+# %%
+integral(ci), 19/10
+
+# %% [markdown]
+# `integral(ci)` is equivalent to calling `QuanticsTCI.sum(ci)` and multiplying the result by the interval length divided by $2^\mathcal{R}$.
+
+# %%
+QuanticsTCI.sum(ci) * (log(20) - 0) / 2^R, 19/10
 
 # %% [markdown]
 # ### About `ci::QuanticsTensorCI2{Float64}`

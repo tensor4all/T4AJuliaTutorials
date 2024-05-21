@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -459,13 +459,13 @@ f(x) = \cos\left(\frac{x}{B}\right) \cos\left(\frac{x}{4\sqrt{5}B}\right) e^{-x^
 
 <span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="c"># number of bits</span>
 <span class="n">xmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
-<span class="n">xmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0</span>
+<span class="n">xmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">qgrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="kt">DiscretizedGrid</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">xmin</span><span class="p">,</span><span class="w"> </span><span class="n">xmax</span><span class="p">;</span><span class="w"> </span><span class="n">includeendpoint</span><span class="o">=</span><span class="nb">false</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (3.0,), 2, :fused, false)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (2.995732273553991,), 2, :fused, false)
 </pre></div>
 </div>
 </div>
@@ -507,11 +507,11 @@ In the following code, we generate initial pivots by finding local maxima of <sp
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5-element Vector{Float64}:
- 2.953764579658403
- 2.8933919065474893
- 2.936390326503797
- 2.908260586230285
- 2.934135332250813
+ 2.896205808352574
+ 2.809651716105327
+ 2.8025669100664627
+ 2.8931686240973766
+ 2.9798995685068537
 </pre></div>
 </div>
 </div>
@@ -524,7 +524,20 @@ In the following code, we generate initial pivots by finding local maxima of <sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, [20, 19, 18], [6.459458443326437e-7, 8.524616269486109e-7, 1.1122178811310414e-6])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, [15, 15, 15], [2.0118351337990122e-8, 3.743056273955606e-8, 3.293441939051299e-8])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The integral of <span class="math notranslate nohighlight">\(f(x)\)</span> can be computed by summing all the elements in the QTT representation and multiplying by the interval length divided by <span class="math notranslate nohighlight">\(2^\mathcal{R}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">TCI</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="o">/</span><span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.8999999950459898, 1.9)
 </pre></div>
 </div>
 </div>
@@ -554,7 +567,7 @@ Just in case, we will check <code class="docutils literal notranslate"><span cla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f(x) = 1.7990930849034745, qf(q) = 1.798922004478571, cf(q) = 1.798922004478571, ci(q) = 1.7989220025291315
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f(x) = 1.7990930849034745, qf(q) = 1.798322002608539, cf(q) = 1.798322002608539, ci(q) = 1.7983219809529467
 </pre></div>
 </div>
 </div>

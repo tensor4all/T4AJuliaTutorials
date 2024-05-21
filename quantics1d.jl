@@ -40,6 +40,7 @@ using QuanticsTCI: quanticscrossinterpolate
 # The first example is taken from Fig. 1 in [Ritter2024](https://arxiv.org/abs/2303.11819).
 #
 # We are going to compute the integral $\mathrm{I}[f] = \int_0^{\ln 20} \mathrm{d}x f(x) $ of the function
+#
 # $$
 # f(x) = \cos\left(\frac{x}{B}\right) \cos\left(\frac{x}{4\sqrt{5}B}\right) e^{-x^2} + 2e^{-x},
 # $$

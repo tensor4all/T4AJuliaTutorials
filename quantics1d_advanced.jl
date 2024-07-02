@@ -165,3 +165,6 @@ x = 0.2
 # convert `x` in the original coordinate system to the corresponding `q` of quantics
 q = QG.origcoord_to_quantics(qgrid, x)
 println("f(x) = $(f(x)), qf(q) = $(qf(q)), cf(q) = $(cf(q)), ci(q) = $(ci(q))")
+
+# %%
+@show length(TCI.cachedata(cf))

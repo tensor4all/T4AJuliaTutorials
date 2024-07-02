@@ -10,7 +10,7 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.11.2
 #   kernelspec:
-#     display_name: Julia 1.10.3
+#     display_name: Julia 1.10.4
 #     language: julia
 #     name: julia-1.10
 # ---

@@ -9,9 +9,9 @@
 #       extension: .jl
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.16.1
+#       jupytext_version: 1.11.2
 #   kernelspec:
-#     display_name: Julia 1.10.2
+#     display_name: Julia 1.10.4
 #     language: julia
 #     name: julia-1.10
 # ---
@@ -132,38 +132,5 @@ ax.set_yticklabels([1.88, "1.88" * "\n" * "+1e-7"])
 
 _display(fig)
 
-# %% [markdown]
-# ## Low-rank structure in Fourier transform matrix
-#
-
 # %%
-import TensorCrossInterpolation as TCI
-import QuanticsGrids as QD
-
-R = 20 # R must be even
-
-# 1D grid with 2^R points starting at 0
-grid = QD.InherentDiscreteGrid{1}(R, 0)
-
-# Fourier transform matrix
-fkm(k::Int, m::Int) = exp(-2π * im * k * m / 2^R) / 2^(R ÷ 2)
-
-function fq(fused_quantics_index::Vector{Int})
-    # Compute quantics indices for k and m
-    kq, mq = QD.unfuse_dimensions(fused_quantics_index, 2)
-    reverse!(kq) # bit reversal
-    return fkm(
-        QD.quantics_to_origcoord(grid, kq),
-        QD.quantics_to_origcoord(grid, mq)
-    )
-end
-
-localdims = fill(2^2, R)
-firstpivots = [ones(Int, R)]
-qtci, ranks, errors = TCI.crossinterpolate2(ComplexF64, fq, localdims, firstpivots; tolerance=1e-8, verbosity=1, loginterval=1)
-
-fig, ax = plt.subplots()
-ax.plot(qtci.pivoterrors, label="pivot errors")
-ax.set_yscale("log")
-ax.legend()
-_display(fig)
+println("Number of sampled points ", length(TCI.cachedata(qtci.quanticsfunction)))

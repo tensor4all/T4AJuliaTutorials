@@ -1,0 +1,77 @@
+Traceback (most recent call last):
+  File "/home/runner/work/T4AJuliaTutorials/T4AJuliaTutorials/.CondaPkg/env/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/runner/work/T4AJuliaTutorials/T4AJuliaTutorials/.CondaPkg/env/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/T4AJuliaTutorials/T4AJuliaTutorials/.CondaPkg/env/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/T4AJuliaTutorials/T4AJuliaTutorials/.CondaPkg/env/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/work/T4AJuliaTutorials/T4AJuliaTutorials/.CondaPkg/env/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/work/T4AJuliaTutorials/T4AJuliaTutorials/.CondaPkg/env/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/work/T4AJuliaTutorials/T4AJuliaTutorials/.CondaPkg/env/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+using PythonPlot: pyplot as plt
+
+fig, ax = plt.subplots()
+x = [1, 2, 3]
+y = [3, 1, 2]
+ax.plot(x, y, marker="+")
+# use display(fig) as necessary.
+------------------
+
+
+InitError: Python: AttributeError: module 'matplotlib.cm' has no attribute 'get_cmap'
+during initialization of module PythonPlot
+
+Stacktrace:
+  [1] pythrow()
+    @ PythonCall.Core ~/.julia/packages/PythonCall/S5MOg/src/Core/err.jl:92
+  [2] errcheck
+    @ ~/.julia/packages/PythonCall/S5MOg/src/Core/err.jl:10 [inlined]
+  [3] pygetattr(x::PythonCall.Core.Py, k::String)
+    @ PythonCall.Core ~/.julia/packages/PythonCall/S5MOg/src/Core/builtins.jl:62
+  [4] getproperty
+    @ ~/.julia/packages/PythonCall/S5MOg/src/Core/Py.jl:257 [inlined]
+  [5] init_colormaps()
+    @ PythonPlot ~/.julia/packages/PythonPlot/f591M/src/colormaps.jl:51
+  [6] __init__()
+    @ PythonPlot ~/.julia/packages/PythonPlot/f591M/src/init.jl:179
+  [7] run_module_init(mod::Module, i::Int64)
+    @ Base ./loading.jl:1134
+  [8] register_restored_modules(sv::Core.SimpleVector, pkg::Base.PkgId, path::String)
+    @ Base ./loading.jl:1122
+  [9] _include_from_serialized(pkg::Base.PkgId, path::String, ocachepath::String, depmods::Vector{Any})
+    @ Base ./loading.jl:1067
+ [10] _require_search_from_serialized(pkg::Base.PkgId, sourcepath::String, build_id::UInt128)
+    @ Base ./loading.jl:1581
+ [11] _require(pkg::Base.PkgId, env::String)
+    @ Base ./loading.jl:1938
+ [12] __require_prelocked(uuidkey::Base.PkgId, env::String)
+    @ Base ./loading.jl:1812
+ [13] #invoke_in_world#3
+    @ ./essentials.jl:926 [inlined]
+ [14] invoke_in_world
+    @ ./essentials.jl:923 [inlined]
+ [15] _require_prelocked(uuidkey::Base.PkgId, env::String)
+    @ Base ./loading.jl:1803
+ [16] macro expansion
+    @ ./loading.jl:1790 [inlined]
+ [17] macro expansion
+    @ ./lock.jl:267 [inlined]
+ [18] __require(into::Module, mod::Symbol)
+    @ Base ./loading.jl:1753
+ [19] #invoke_in_world#3
+    @ ./essentials.jl:926 [inlined]
+ [20] invoke_in_world
+    @ ./essentials.jl:923 [inlined]
+ [21] require(into::Module, mod::Symbol)
+    @ Base ./loading.jl:1746
+

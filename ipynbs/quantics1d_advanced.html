@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -411,56 +411,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">InitError</span>: Python: AttributeError: module &#39;matplotlib.cm&#39; has no attribute &#39;get_cmap&#39;
-<span class="n">during</span> <span class="n">initialization</span> <span class="n">of</span> <span class="n">module</span> <span class="n">PythonPlot</span>
-
-<span class="ne">Stacktrace</span>:
-  <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">pythrow</span><span class="p">()</span>
-    <span class="o">@</span> <span class="n">PythonCall</span><span class="o">.</span><span class="n">Core</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonCall</span><span class="o">/</span><span class="n">S5MOg</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Core</span><span class="o">/</span><span class="n">err</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">92</span>
-  <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">errcheck</span>
-    <span class="o">@</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonCall</span><span class="o">/</span><span class="n">S5MOg</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Core</span><span class="o">/</span><span class="n">err</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">10</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
-  <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">pygetattr</span><span class="p">(</span><span class="n">x</span><span class="p">::</span><span class="n">PythonCall</span><span class="o">.</span><span class="n">Core</span><span class="o">.</span><span class="n">Py</span><span class="p">,</span> <span class="n">k</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">PythonCall</span><span class="o">.</span><span class="n">Core</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonCall</span><span class="o">/</span><span class="n">S5MOg</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Core</span><span class="o">/</span><span class="n">builtins</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">62</span>
-  <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">getproperty</span>
-    <span class="o">@</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonCall</span><span class="o">/</span><span class="n">S5MOg</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Core</span><span class="o">/</span><span class="n">Py</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">257</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
-  <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">init_colormaps</span><span class="p">()</span>
-    <span class="o">@</span> <span class="n">PythonPlot</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonPlot</span><span class="o">/</span><span class="n">f591M</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">colormaps</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">51</span>
-  <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="fm">__init__</span><span class="p">()</span>
-    <span class="o">@</span> <span class="n">PythonPlot</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonPlot</span><span class="o">/</span><span class="n">f591M</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">179</span>
-  <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="n">run_module_init</span><span class="p">(</span><span class="n">mod</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">i</span><span class="p">::</span><span class="n">Int64</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1134</span>
-  <span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="n">register_restored_modules</span><span class="p">(</span><span class="n">sv</span><span class="p">::</span><span class="n">Core</span><span class="o">.</span><span class="n">SimpleVector</span><span class="p">,</span> <span class="n">pkg</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">path</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1122</span>
-  <span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="n">_include_from_serialized</span><span class="p">(</span><span class="n">pkg</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">path</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">ocachepath</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">depmods</span><span class="p">::</span><span class="n">Vector</span><span class="p">{</span><span class="n">Any</span><span class="p">})</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1067</span>
- <span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="n">_require_search_from_serialized</span><span class="p">(</span><span class="n">pkg</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">sourcepath</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">build_id</span><span class="p">::</span><span class="n">UInt128</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1581</span>
- <span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="n">_require</span><span class="p">(</span><span class="n">pkg</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">env</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1938</span>
- <span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="n">__require_prelocked</span><span class="p">(</span><span class="n">uuidkey</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">env</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1812</span>
- <span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="c1">#invoke_in_world#3</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">926</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="n">invoke_in_world</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">923</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="n">_require_prelocked</span><span class="p">(</span><span class="n">uuidkey</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">env</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1803</span>
- <span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="n">macro</span> <span class="n">expansion</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1790</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">17</span><span class="p">]</span> <span class="n">macro</span> <span class="n">expansion</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">lock</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">267</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">18</span><span class="p">]</span> <span class="n">__require</span><span class="p">(</span><span class="n">into</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">mod</span><span class="p">::</span><span class="n">Symbol</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1753</span>
- <span class="p">[</span><span class="mi">19</span><span class="p">]</span> <span class="c1">#invoke_in_world#3</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">926</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">20</span><span class="p">]</span> <span class="n">invoke_in_world</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">923</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">21</span><span class="p">]</span> <span class="n">require</span><span class="p">(</span><span class="n">into</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">mod</span><span class="p">::</span><span class="n">Symbol</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1746</span>
-</pre></div>
-</div>
-</div>
 </div>
 <section id="example-1-continuation">
 <h2>Example 1 (continuation)<a class="headerlink" href="#example-1-continuation" title="Link to this heading">#</a></h2>
@@ -518,6 +468,11 @@ f(x) = \cos\left(\frac{x}{B}\right) \cos\left(\frac{x}{4\sqrt{5}B}\right) e^{-x^
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (2.995732273553991,), 2, :fused, false)
+</pre></div>
+</div>
+</div>
 </div>
 <p>We now define a function that takes a quantics index, which is named <code class="docutils literal notranslate"><span class="pre">qf</span></code>.</p>
 <div class="cell docutils container">
@@ -525,6 +480,11 @@ f(x) = \cos\left(\frac{x}{B}\right) \cos\left(\frac{x}{4\sqrt{5}B}\right) e^{-x^
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">localdims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fill</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">)</span><span class="w"> </span><span class="c"># Sizes of local indices</span>
 <span class="n">qf</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">QG</span><span class="o">.</span><span class="n">quantics_to_origcoord</span><span class="p">(</span><span class="n">qgrid</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">))</span>
 <span class="n">cf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TCI</span><span class="o">.</span><span class="kt">CachedFunction</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}(</span><span class="n">qf</span><span class="p">,</span><span class="w"> </span><span class="n">localdims</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(::TensorCrossInterpolation.CachedFunction{Float64, UInt128}) (generic function with 3 methods)
 </pre></div>
 </div>
 </div>
@@ -549,6 +509,16 @@ In the following code, we generate initial pivots by finding local maxima of <sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5-element Vector{Float64}:
+ 2.9020949178829003
+ 2.721942910579383
+ 2.777491747322593
+ 2.571559824185339
+ 2.9239070964516807
+</pre></div>
+</div>
+</div>
 </div>
 <p>We are ready to construct a QTT representation of <code class="docutils literal notranslate"><span class="pre">cf</span></code> via <code class="docutils literal notranslate"><span class="pre">TCI.crossinterpolate2</span></code>:</p>
 <div class="cell docutils container">
@@ -557,11 +527,21 @@ In the following code, we generate initial pivots by finding local maxima of <sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, [18, 15, 15], [2.672199525930981e-8, 4.112298604771157e-8, 4.1087449798077973e-8])
+</pre></div>
+</div>
+</div>
 </div>
 <p>The integral of <span class="math notranslate nohighlight">\(f(x)\)</span> can be computed by summing all the elements in the QTT representation and multiplying by the interval length divided by <span class="math notranslate nohighlight">\(2^\mathcal{R}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">TCI</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="o">/</span><span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.9000000018123449, 1.9)
 </pre></div>
 </div>
 </div>
@@ -590,10 +570,23 @@ Just in case, we will check <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f(x) = 1.7990930849034745, qf(q) = 1.798322002608539, cf(q) = 1.798322002608539, ci(q) = 1.7983219744902477
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@show</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">TCI</span><span class="o">.</span><span class="n">cachedata</span><span class="p">(</span><span class="n">cf</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length(TCI.cachedata(cf)) = 57206
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>57206
 </pre></div>
 </div>
 </div>

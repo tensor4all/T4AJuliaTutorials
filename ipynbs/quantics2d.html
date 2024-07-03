@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -406,56 +406,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">InitError</span>: Python: AttributeError: module &#39;matplotlib.cm&#39; has no attribute &#39;get_cmap&#39;
-<span class="n">during</span> <span class="n">initialization</span> <span class="n">of</span> <span class="n">module</span> <span class="n">PythonPlot</span>
-
-<span class="ne">Stacktrace</span>:
-  <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">pythrow</span><span class="p">()</span>
-    <span class="o">@</span> <span class="n">PythonCall</span><span class="o">.</span><span class="n">Core</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonCall</span><span class="o">/</span><span class="n">S5MOg</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Core</span><span class="o">/</span><span class="n">err</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">92</span>
-  <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">errcheck</span>
-    <span class="o">@</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonCall</span><span class="o">/</span><span class="n">S5MOg</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Core</span><span class="o">/</span><span class="n">err</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">10</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
-  <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">pygetattr</span><span class="p">(</span><span class="n">x</span><span class="p">::</span><span class="n">PythonCall</span><span class="o">.</span><span class="n">Core</span><span class="o">.</span><span class="n">Py</span><span class="p">,</span> <span class="n">k</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">PythonCall</span><span class="o">.</span><span class="n">Core</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonCall</span><span class="o">/</span><span class="n">S5MOg</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Core</span><span class="o">/</span><span class="n">builtins</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">62</span>
-  <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">getproperty</span>
-    <span class="o">@</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonCall</span><span class="o">/</span><span class="n">S5MOg</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Core</span><span class="o">/</span><span class="n">Py</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">257</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
-  <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">init_colormaps</span><span class="p">()</span>
-    <span class="o">@</span> <span class="n">PythonPlot</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonPlot</span><span class="o">/</span><span class="n">f591M</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">colormaps</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">51</span>
-  <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="fm">__init__</span><span class="p">()</span>
-    <span class="o">@</span> <span class="n">PythonPlot</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonPlot</span><span class="o">/</span><span class="n">f591M</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">179</span>
-  <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="n">run_module_init</span><span class="p">(</span><span class="n">mod</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">i</span><span class="p">::</span><span class="n">Int64</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1134</span>
-  <span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="n">register_restored_modules</span><span class="p">(</span><span class="n">sv</span><span class="p">::</span><span class="n">Core</span><span class="o">.</span><span class="n">SimpleVector</span><span class="p">,</span> <span class="n">pkg</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">path</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1122</span>
-  <span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="n">_include_from_serialized</span><span class="p">(</span><span class="n">pkg</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">path</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">ocachepath</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">depmods</span><span class="p">::</span><span class="n">Vector</span><span class="p">{</span><span class="n">Any</span><span class="p">})</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1067</span>
- <span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="n">_require_search_from_serialized</span><span class="p">(</span><span class="n">pkg</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">sourcepath</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">build_id</span><span class="p">::</span><span class="n">UInt128</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1581</span>
- <span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="n">_require</span><span class="p">(</span><span class="n">pkg</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">env</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1938</span>
- <span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="n">__require_prelocked</span><span class="p">(</span><span class="n">uuidkey</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">env</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1812</span>
- <span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="c1">#invoke_in_world#3</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">926</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="n">invoke_in_world</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">923</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="n">_require_prelocked</span><span class="p">(</span><span class="n">uuidkey</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">env</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1803</span>
- <span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="n">macro</span> <span class="n">expansion</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1790</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">17</span><span class="p">]</span> <span class="n">macro</span> <span class="n">expansion</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">lock</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">267</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">18</span><span class="p">]</span> <span class="n">__require</span><span class="p">(</span><span class="n">into</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">mod</span><span class="p">::</span><span class="n">Symbol</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1753</span>
- <span class="p">[</span><span class="mi">19</span><span class="p">]</span> <span class="c1">#invoke_in_world#3</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">926</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">20</span><span class="p">]</span> <span class="n">invoke_in_world</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">923</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">21</span><span class="p">]</span> <span class="n">require</span><span class="p">(</span><span class="n">into</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">mod</span><span class="p">::</span><span class="n">Symbol</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1746</span>
-</pre></div>
-</div>
-</div>
 </div>
 <section id="artificial-function-with-widely-different-length-scales">
 <h2>Artificial function with widely different length scales<a class="headerlink" href="#artificial-function-with-widely-different-length-scales" title="Link to this heading">#</a></h2>
@@ -466,6 +416,11 @@ document.write(`
 
 <span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span>
 <span class="n">gr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">DiscretizedGrid</span><span class="p">{</span><span class="mi">2</span><span class="p">}(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DiscretizedGrid{2}(40, (-5.0, -5.0), (5.0, 5.0), 2, :fused, false)
 </pre></div>
 </div>
 </div>
@@ -497,12 +452,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>myplotheatmap (generic function with 2 methods)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">myplotheatmap</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">xlim_box</span><span class="o">=</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mf">1.75</span><span class="p">),</span><span class="w"> </span><span class="n">ylim_box</span><span class="o">=</span><span class="p">(</span><span class="mf">1.25</span><span class="p">,</span><span class="w"> </span><span class="mf">2.75</span><span class="p">),</span><span class="w"> </span><span class="n">cmap</span><span class="o">=</span><span class="s">&quot;inferno&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/99e317dc67e161ecda16efd369a426a75a3736a733e9980bddf30b72b9adc0b4.png" src="../_images/99e317dc67e161ecda16efd369a426a75a3736a733e9980bddf30b72b9adc0b4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -511,12 +474,18 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/198e30a04f0bd00011db292052c70107af9682e89bffdd29c5951b5b2a8ac9cc.png" src="../_images/198e30a04f0bd00011db292052c70107af9682e89bffdd29c5951b5b2a8ac9cc.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">myplotheatmap</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mf">0.94</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mf">1.84</span><span class="p">,</span><span class="w"> </span><span class="mf">1.9</span><span class="p">),</span><span class="w"> </span><span class="n">xlim_box</span><span class="o">=</span><span class="p">(</span><span class="mf">0.97</span><span class="p">,</span><span class="w"> </span><span class="mf">0.97</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1e-7</span><span class="p">),</span><span class="w"> </span><span class="n">ylim_box</span><span class="o">=</span><span class="p">(</span><span class="mf">1.88</span><span class="p">,</span><span class="w"> </span><span class="mf">1.88</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1e-7</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cb1a2fcf607ef919e423efd967c15c5acc97e76aec82532935b378e8fc654dc8.png" src="../_images/cb1a2fcf607ef919e423efd967c15c5acc97e76aec82532935b378e8fc654dc8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -538,6 +507,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/6a3ada4335f407609c4fc51288b21c2b51b7585ac12fc3f8b5d7e300f4d9e99c.png" src="../_images/6a3ada4335f407609c4fc51288b21c2b51b7585ac12fc3f8b5d7e300f4d9e99c.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -552,6 +524,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/e3969ee502cc18a92699c2085759201393e7366f218f1642a950420ea21bbd74.png" src="../_images/e3969ee502cc18a92699c2085759201393e7366f218f1642a950420ea21bbd74.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -563,6 +538,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/33db34f26b57342ff0433776f87588b7786ac22990340de7ffa3c4006aceaad3.png" src="../_images/33db34f26b57342ff0433776f87588b7786ac22990340de7ffa3c4006aceaad3.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -570,12 +548,18 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/adbe957b30d16f65e33ebcfe2a937ee263f33a504c447d66fcdd67edccc618aa.png" src="../_images/adbe957b30d16f65e33ebcfe2a937ee263f33a504c447d66fcdd67edccc618aa.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">myplotheatmap</span><span class="p">(</span><span class="n">errflog10</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mf">0.94</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mf">1.84</span><span class="p">,</span><span class="w"> </span><span class="mf">1.9</span><span class="p">),</span><span class="w"> </span><span class="n">xlim_box</span><span class="o">=</span><span class="p">(</span><span class="mf">0.97</span><span class="p">,</span><span class="w"> </span><span class="mf">0.97</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1e-7</span><span class="p">),</span><span class="w"> </span><span class="n">ylim_box</span><span class="o">=</span><span class="p">(</span><span class="mf">1.88</span><span class="p">,</span><span class="w"> </span><span class="mf">1.88</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1e-7</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f3a57a9a0bb3f339d95dd68359add27863573ddb3d840d34ecaac19b59a1bb64.png" src="../_images/f3a57a9a0bb3f339d95dd68359add27863573ddb3d840d34ecaac19b59a1bb64.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -594,10 +578,18 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/c503415e66af4210f7816de95676992ba8659880bd03d349c0f40c60d7cf2845.png" src="../_images/c503415e66af4210f7816de95676992ba8659880bd03d349c0f40c60d7cf2845.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Number of sampled points &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">TCI</span><span class="o">.</span><span class="n">cachedata</span><span class="p">(</span><span class="n">qtci</span><span class="o">.</span><span class="n">quanticsfunction</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of sampled points 680480
 </pre></div>
 </div>
 </div>

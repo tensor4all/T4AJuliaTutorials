@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ipynbs/pythonplot';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -426,52 +428,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">InitError</span>: Python: AttributeError: module &#39;matplotlib.cm&#39; has no attribute &#39;get_cmap&#39;
-<span class="n">during</span> <span class="n">initialization</span> <span class="n">of</span> <span class="n">module</span> <span class="n">PythonPlot</span>
-
-<span class="ne">Stacktrace</span>:
-  <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">pythrow</span><span class="p">()</span>
-    <span class="o">@</span> <span class="n">PythonCall</span><span class="o">.</span><span class="n">Core</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonCall</span><span class="o">/</span><span class="n">S5MOg</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Core</span><span class="o">/</span><span class="n">err</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">92</span>
-  <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">errcheck</span>
-    <span class="o">@</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonCall</span><span class="o">/</span><span class="n">S5MOg</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Core</span><span class="o">/</span><span class="n">err</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">10</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
-  <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">pygetattr</span><span class="p">(</span><span class="n">x</span><span class="p">::</span><span class="n">PythonCall</span><span class="o">.</span><span class="n">Core</span><span class="o">.</span><span class="n">Py</span><span class="p">,</span> <span class="n">k</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">PythonCall</span><span class="o">.</span><span class="n">Core</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonCall</span><span class="o">/</span><span class="n">S5MOg</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Core</span><span class="o">/</span><span class="n">builtins</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">62</span>
-  <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">getproperty</span>
-    <span class="o">@</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonCall</span><span class="o">/</span><span class="n">S5MOg</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">Core</span><span class="o">/</span><span class="n">Py</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">257</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
-  <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">init_colormaps</span><span class="p">()</span>
-    <span class="o">@</span> <span class="n">PythonPlot</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonPlot</span><span class="o">/</span><span class="n">f591M</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">colormaps</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">51</span>
-  <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="fm">__init__</span><span class="p">()</span>
-    <span class="o">@</span> <span class="n">PythonPlot</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">PythonPlot</span><span class="o">/</span><span class="n">f591M</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">179</span>
-  <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="n">run_module_init</span><span class="p">(</span><span class="n">mod</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">i</span><span class="p">::</span><span class="n">Int64</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1134</span>
-  <span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="n">register_restored_modules</span><span class="p">(</span><span class="n">sv</span><span class="p">::</span><span class="n">Core</span><span class="o">.</span><span class="n">SimpleVector</span><span class="p">,</span> <span class="n">pkg</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">path</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1122</span>
-  <span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="n">_include_from_serialized</span><span class="p">(</span><span class="n">pkg</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">path</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">ocachepath</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">depmods</span><span class="p">::</span><span class="n">Vector</span><span class="p">{</span><span class="n">Any</span><span class="p">})</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1067</span>
- <span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="n">_require_search_from_serialized</span><span class="p">(</span><span class="n">pkg</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">sourcepath</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">build_id</span><span class="p">::</span><span class="n">UInt128</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1581</span>
- <span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="n">_require</span><span class="p">(</span><span class="n">pkg</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">env</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1938</span>
- <span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="n">__require_prelocked</span><span class="p">(</span><span class="n">uuidkey</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">env</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1812</span>
- <span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="c1">#invoke_in_world#3</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">926</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="n">invoke_in_world</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">923</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="n">_require_prelocked</span><span class="p">(</span><span class="n">uuidkey</span><span class="p">::</span><span class="n">Base</span><span class="o">.</span><span class="n">PkgId</span><span class="p">,</span> <span class="n">env</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1803</span>
- <span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="n">macro</span> <span class="n">expansion</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1790</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">17</span><span class="p">]</span> <span class="n">macro</span> <span class="n">expansion</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">lock</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">267</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">18</span><span class="p">]</span> <span class="n">__require</span><span class="p">(</span><span class="n">into</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">mod</span><span class="p">::</span><span class="n">Symbol</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1753</span>
- <span class="p">[</span><span class="mi">19</span><span class="p">]</span> <span class="c1">#invoke_in_world#3</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">926</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">20</span><span class="p">]</span> <span class="n">invoke_in_world</span>
-    <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">923</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">21</span><span class="p">]</span> <span class="n">require</span><span class="p">(</span><span class="n">into</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">mod</span><span class="p">::</span><span class="n">Symbol</span><span class="p">)</span>
-    <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1746</span>
+<img alt="../_images/4c8dc256058ff8ff0f80e4b00b2369919cb45664dea2b9b0b8c6b3bb0afafdff.png" src="../_images/4c8dc256058ff8ff0f80e4b00b2369919cb45664dea2b9b0b8c6b3bb0afafdff.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python: [&lt;matplotlib.lines.Line2D object at 0x7f5b35d81970&gt;]
 </pre></div>
 </div>
 </div>
@@ -515,6 +473,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/e5ec88398065268f43947af26a3d5f0434b77688efee82a94375de31e8bc6470.png" src="../_images/e5ec88398065268f43947af26a3d5f0434b77688efee82a94375de31e8bc6470.png" />
+<img alt="../_images/e5ec88398065268f43947af26a3d5f0434b77688efee82a94375de31e8bc6470.png" src="../_images/e5ec88398065268f43947af26a3d5f0434b77688efee82a94375de31e8bc6470.png" />
+</div>
 </div>
 <p>The type of <code class="docutils literal notranslate"><span class="pre">fig</span></code> is <code class="docutils literal notranslate"><span class="pre">PyhonCall.Py</span></code> which handles generic Python objects. It seems that <code class="docutils literal notranslate"><span class="pre">PythonPlot.Figure</span></code> provides a better method to display figure object. Note that we can add <code class="docutils literal notranslate"><span class="pre">display(PythonPlot.gcf())</span></code> at the end of a cell instead of <code class="docutils literal notranslate"><span class="pre">display(Figure(fig))</span></code> since <code class="docutils literal notranslate"><span class="pre">gcf()</span></code> gets the current figure object as a value of <code class="docutils literal notranslate"><span class="pre">PythonCall.Figure</span></code>.</p>
 <div class="cell docutils container">
@@ -523,6 +485,17 @@ document.write(`
 
 <span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="nd">@show</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">Figure</span><span class="p">(</span><span class="n">fig</span><span class="p">))</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">gcf</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>typeof(fig) = PythonCall.Core.Py
+typeof(Figure(fig)) = Figure
+typeof(gcf()) = Figure
+</pre></div>
+</div>
+<img alt="../_images/e90d8f2c9f70eecb88a02eac39b631f0c6b659a1fe7234099703577c13a60cca.png" src="../_images/e90d8f2c9f70eecb88a02eac39b631f0c6b659a1fe7234099703577c13a60cca.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Figure
 </pre></div>
 </div>
 </div>
@@ -544,11 +517,22 @@ tells us whether we are using interactive session or not.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">isinteractive</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Bool</span>
+</pre></div>
+</div>
+<p>Determine whether Julia is running an interactive session.</p>
+</div>
 </div>
 <p>Let’s see the output or <code class="docutils literal notranslate"><span class="pre">isinteractive()</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@show</span><span class="w"> </span><span class="n">isinteractive</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>isinteractive() = true
 </pre></div>
 </div>
 </div>
@@ -565,6 +549,10 @@ However there is one enrivonment that outputs <code class="docutils literal notr
 <span class="n">display</span><span class="p">(</span><span class="n">Figure</span><span class="p">(</span><span class="n">fig</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d894ade62796c2e0a2ca8acabeefe0cf6a5cca8baf1e2f3509ecb4d83f8278e0.png" src="../_images/d894ade62796c2e0a2ca8acabeefe0cf6a5cca8baf1e2f3509ecb4d83f8278e0.png" />
+<img alt="../_images/d894ade62796c2e0a2ca8acabeefe0cf6a5cca8baf1e2f3509ecb4d83f8278e0.png" src="../_images/d894ade62796c2e0a2ca8acabeefe0cf6a5cca8baf1e2f3509ecb4d83f8278e0.png" />
 </div>
 </div>
 <p>To avoid ambiguity in the resulting output by selecting the kernel of Julia, we should add the following conditional branch:</p>
@@ -591,6 +579,9 @@ However there is one enrivonment that outputs <code class="docutils literal notr
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/930d74787e5cd7c43c48195f1c29094f8728077f391c5b447d4d562ae06f69f8.png" src="../_images/930d74787e5cd7c43c48195f1c29094f8728077f391c5b447d4d562ae06f69f8.png" />
+</div>
 </div>
 <p>This can be challenging for those who want to focus on research rather than writing code. To address this, we provide a function named <code class="docutils literal notranslate"><span class="pre">_display</span></code> that handles differences in output due to the environment.</p>
 <div class="cell docutils container">
@@ -598,6 +589,11 @@ However there is one enrivonment that outputs <code class="docutils literal notr
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">PythonPlot</span><span class="o">:</span><span class="w"> </span><span class="n">PythonPlot</span><span class="p">,</span><span class="w"> </span><span class="n">pyplot</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">plt</span><span class="p">,</span><span class="w"> </span><span class="n">Figure</span>
 <span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="o">::</span><span class="kt">PythonPlot</span><span class="o">.</span><span class="n">Figure</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isinteractive</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="n">fig</span><span class="p">;</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span><span class="w"> </span><span class="nb">nothing</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 <span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_display</span><span class="p">(</span><span class="n">Figure</span><span class="p">(</span><span class="n">fig</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_display (generic function with 2 methods)
 </pre></div>
 </div>
 </div>
@@ -612,6 +608,9 @@ However there is one enrivonment that outputs <code class="docutils literal notr
 <span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/aee1b8ed9292d7fe06656ee768f4af5ef8696b0d85da58a915ebf5055a9d04b1.png" src="../_images/aee1b8ed9292d7fe06656ee768f4af5ef8696b0d85da58a915ebf5055a9d04b1.png" />
 </div>
 </div>
 </section>

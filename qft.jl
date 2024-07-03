@@ -188,3 +188,50 @@ ax2.set_ylabel(L"\mathrm{Im}~\hat{f}(k)")
 ax2.legend()
 
 _display(fig)
+
+# %% [markdown]
+# You may use ITensors.jl to compute the Fourier transform of the function $f(x)$.
+# The following code explains how to do this.
+
+# %%
+import TCIITensorConversion
+using ITensors
+import Quantics: fouriertransform
+
+sites_m = [Index(2, "Qubit,m=$m") for m in 1:R]
+sites_k = [Index(2, "Qubit,k=$k") for k in 1:R]
+
+fmps = MPS(ftt; sites=sites_m)
+
+# Apply T_{km} to the MPS representation of f(x) and reply the result by 1/sqrt(M)
+# tag="m" is used to indicate that the MPS is in the "m" basis.
+hfmps = (1/sqrt(2)^R) * fouriertransform(fmps; sign=1, tag="m", sitesdst=sites_k)
+
+# %%
+# Evaluate Ψ for a given index
+_evaluate(Ψ::MPS, sites, index::Vector{Int}) = only(reduce(*, Ψ[n] * onehot(sites[n] => index[n]) for n in 1:length(Ψ)))
+
+# %%
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+
+plotk = [10^n for n in 1:5]
+@assert maximum(plotk) <= 2^R-1
+y = [_evaluate(hfmps, reverse(sites_k), reverse(QG.origcoord_to_quantics(kgrid, x))) for x in plotk] # Note: revert the order of the quantics indices
+
+ax1.loglog(plotk, abs.(real.(y)), marker="+", label="QFT")
+ax1.loglog(plotk, abs.(real.(hfk.(plotk))), marker="x", label="Reference")
+ax1.set_xlabel(L"k")
+ax1.set_ylabel(L"\mathrm{Re}~\hat{f}(k)")
+ax1.legend()
+
+ax2.loglog(plotk, abs.(imag.(y)), marker="+", label="QFT")
+ax2.loglog(plotk, abs.(imag.(hfk.(plotk))), marker="x", label="Reference")
+ax2.set_xlabel(L"k")
+ax2.set_ylabel(L"\mathrm{Im}~\hat{f}(k)")
+ax2.legend()
+
+_display(fig)
+
+# %% [markdown]
+# ## TODO
+# * 2D Fourier transform

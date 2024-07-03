@@ -3,3 +3,4 @@ channels = ["conda-forge"]
 [deps]
 jupytext = "==1.16.1"
 jupyter-book = ""
+matplotlib = "3.8"

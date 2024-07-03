@@ -57,11 +57,11 @@ using QuanticsTCI: quanticscrossinterpolate, quanticsfouriermpo
 #
 # Thus, if the input function $f$ is given in the quantics representation as
 #
-# <img src="qft1.png" alt="qft1" width="30%">,
+# <img src="https://raw.githubusercontent.com/tensor4all/T4AJuliaTutorials/main/qft1.png" alt="qft1" width="30%">,
 #
 # $\hat{f} = T f$ can be computed by efficiently contracting the tensor trains for $T$ and $f$ and recompressing the result:
 #
-# <img src="qft2.png" alt="qft contraction" width="60%">.
+# <img src="https://raw.githubusercontent.com/tensor4all/T4AJuliaTutorials/main/qft2.png" alt="qft contraction" width="60%">.
 #
 # Note that after the Fourier transform, the quantics indices $\sigma_1,\cdots,\sigma_\mathcal{R}$ are ordered in the inverse order of the input indices $\sigma'_1,\cdots,\sigma'_\mathcal{R}$.
 # This allows construction of the DFT operator with small bond dimensions.

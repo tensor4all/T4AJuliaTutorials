@@ -18,64 +18,35 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-using PythonCall: PythonCall
-using PythonPlot: pyplot as plt, Figure
-using LaTeXStrings
+import TCIITensorConversion
+using ITensors
+import Quantics: fouriertransform
 
-# Displays the matplotlib figure object `fig` and avoids duplicate plots.
-_display(fig::Figure) = isinteractive() ? (fig; plt.show(); nothing) : Base.display(fig)
-_display(fig::PythonCall.Py) = _display(Figure(fig))
+sites_m = [Index(2, "Qubit,m=$m") for m in 1:R]
+sites_k = [Index(2, "Qubit,k=$k") for k in 1:R]
 
-import QuanticsGrids as QG
-import TensorCrossInterpolation as TCI
-using QuanticsTCI: quanticscrossinterpolate, quanticsfouriermpo
+fmps = MPS(ftt; sites=sites_m)
+
+# Apply T_{km} to the MPS representation of f(x) and reply the result by 1/sqrt(M)
+# tag="m" is used to indicate that the MPS is in the "m" basis.
+hfmps = (1/sqrt(2)^R) * fouriertransform(fmps; sign=1, tag="m", sitesdst=sites_k)
 ------------------
 
 
-InitError: Python: AttributeError: module 'matplotlib.cm' has no attribute 'get_cmap'
-during initialization of module PythonPlot
+ArgumentError: Package Quantics not found in current path.
+- Run `import Pkg; Pkg.add("Quantics")` to install the Quantics package.
 
 Stacktrace:
-  [1] pythrow()
-    @ PythonCall.Core ~/.julia/packages/PythonCall/S5MOg/src/Core/err.jl:92
-  [2] errcheck
-    @ ~/.julia/packages/PythonCall/S5MOg/src/Core/err.jl:10 [inlined]
-  [3] pygetattr(x::PythonCall.Core.Py, k::String)
-    @ PythonCall.Core ~/.julia/packages/PythonCall/S5MOg/src/Core/builtins.jl:62
-  [4] getproperty
-    @ ~/.julia/packages/PythonCall/S5MOg/src/Core/Py.jl:257 [inlined]
-  [5] init_colormaps()
-    @ PythonPlot ~/.julia/packages/PythonPlot/f591M/src/colormaps.jl:51
-  [6] __init__()
-    @ PythonPlot ~/.julia/packages/PythonPlot/f591M/src/init.jl:179
-  [7] run_module_init(mod::Module, i::Int64)
-    @ Base ./loading.jl:1134
-  [8] register_restored_modules(sv::Core.SimpleVector, pkg::Base.PkgId, path::String)
-    @ Base ./loading.jl:1122
-  [9] _include_from_serialized(pkg::Base.PkgId, path::String, ocachepath::String, depmods::Vector{Any})
-    @ Base ./loading.jl:1067
- [10] _require_search_from_serialized(pkg::Base.PkgId, sourcepath::String, build_id::UInt128)
-    @ Base ./loading.jl:1581
- [11] _require(pkg::Base.PkgId, env::String)
-    @ Base ./loading.jl:1938
- [12] __require_prelocked(uuidkey::Base.PkgId, env::String)
-    @ Base ./loading.jl:1812
- [13] #invoke_in_world#3
-    @ ./essentials.jl:926 [inlined]
- [14] invoke_in_world
-    @ ./essentials.jl:923 [inlined]
- [15] _require_prelocked(uuidkey::Base.PkgId, env::String)
-    @ Base ./loading.jl:1803
- [16] macro expansion
-    @ ./loading.jl:1790 [inlined]
- [17] macro expansion
-    @ ./lock.jl:267 [inlined]
- [18] __require(into::Module, mod::Symbol)
-    @ Base ./loading.jl:1753
- [19] #invoke_in_world#3
-    @ ./essentials.jl:926 [inlined]
- [20] invoke_in_world
-    @ ./essentials.jl:923 [inlined]
- [21] require(into::Module, mod::Symbol)
-    @ Base ./loading.jl:1746
+ [1] macro expansion
+   @ ./loading.jl:1772 [inlined]
+ [2] macro expansion
+   @ ./lock.jl:267 [inlined]
+ [3] __require(into::Module, mod::Symbol)
+   @ Base ./loading.jl:1753
+ [4] #invoke_in_world#3
+   @ ./essentials.jl:926 [inlined]
+ [5] invoke_in_world
+   @ ./essentials.jl:923 [inlined]
+ [6] require(into::Module, mod::Symbol)
+   @ Base ./loading.jl:1746
 

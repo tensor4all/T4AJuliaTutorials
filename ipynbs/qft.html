@@ -416,9 +416,9 @@ T_{km} =  \tfrac{1}{\sqrt{M}}  e^{- i 2 \pi k \cdot m /M} .
 <p>For a quantics grid, <span class="math notranslate nohighlight">\(M = 2^\mathcal{R}\)</span> is exponentially large and the (naive) DFT exponentially expensive to evaluate.
 However, the QTT representation of <span class="math notranslate nohighlight">\(T\)</span> is known to have a low-rank structure and can be represented as a tensor train with small bond dimensions.</p>
 <p>Thus, if the input function <span class="math notranslate nohighlight">\(f\)</span> is given in the quantics representation as</p>
-<p><img src="qft1.png" alt="qft1" width="30%">,</p>
+<p><img src="https://raw.githubusercontent.com/tensor4all/T4AJuliaTutorials/main/qft1.png" alt="qft1" width="30%">,</p>
 <p><span class="math notranslate nohighlight">\(\hat{f} = T f\)</span> can be computed by efficiently contracting the tensor trains for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(f\)</span> and recompressing the result:</p>
-<p><img src="qft2.png" alt="qft contraction" width="60%">.</p>
+<p><img src="https://raw.githubusercontent.com/tensor4all/T4AJuliaTutorials/main/qft2.png" alt="qft contraction" width="60%">.</p>
 <p>Note that after the Fourier transform, the quantics indices <span class="math notranslate nohighlight">\(\sigma_1,\cdots,\sigma_\mathcal{R}\)</span> are ordered in the inverse order of the input indices <span class="math notranslate nohighlight">\(\sigma'_1,\cdots,\sigma'_\mathcal{R}\)</span>.
 This allows construction of the DFT operator with small bond dimensions.</p>
 <p>We consider a function <span class="math notranslate nohighlight">\(f(x)\)</span>, which is the sum of exponential functions, defined on interval <span class="math notranslate nohighlight">\([0,1]\)</span>:</p>
@@ -478,7 +478,7 @@ f(x) = \sum_p \frac{c_p}{1 - e^{-\epsilon_p}} e^{-\epsilon_p x}.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 2, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (1.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 2676 entries), [2, 2, 2], [2.793464338512118e-16, 2.220446049250313e-16, 2.220446049250313e-16])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 2, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (1.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 2536 entries), [2, 2, 2], [2.793464338512118e-16, 2.220446049250313e-16, 2.220446049250313e-16])
 </pre></div>
 </div>
 </div>
@@ -508,18 +508,7 @@ This can be implemented as follows.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">MethodError</span>: no method matching contract(::TensorCrossInterpolation.TensorTrain{ComplexF64, 4}, ::TensorCrossInterpolation.TensorTrain{Float64, 3}; algorithm::Symbol, tolerance::Float64)
-
-<span class="n">Closest</span> <span class="n">candidates</span> <span class="n">are</span><span class="p">:</span>
-  <span class="n">contract</span><span class="p">(::</span><span class="n">TensorCrossInterpolation</span><span class="o">.</span><span class="n">TensorTrain</span><span class="p">{</span><span class="n">V</span><span class="p">,</span> <span class="mi">4</span><span class="p">},</span> <span class="p">::</span><span class="n">Union</span><span class="p">{</span><span class="n">TensorCrossInterpolation</span><span class="o">.</span><span class="n">TensorCI1</span><span class="p">{</span><span class="n">V</span><span class="p">},</span> <span class="n">TensorCrossInterpolation</span><span class="o">.</span><span class="n">TensorCI2</span><span class="p">{</span><span class="n">V</span><span class="p">},</span> <span class="n">TensorCrossInterpolation</span><span class="o">.</span><span class="n">TensorTrain</span><span class="p">{</span><span class="n">V</span><span class="p">,</span> <span class="mi">3</span><span class="p">}};</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span> <span class="n">where</span> <span class="n">V</span>
-   <span class="o">@</span> <span class="n">TensorCrossInterpolation</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">TensorCrossInterpolation</span><span class="o">/</span><span class="n">hDtWQ</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">contraction</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">550</span>
-  <span class="n">contract</span><span class="p">(::</span><span class="n">TensorCrossInterpolation</span><span class="o">.</span><span class="n">TensorTrain</span><span class="p">{</span><span class="n">ValueType</span><span class="p">,</span> <span class="mi">4</span><span class="p">},</span> <span class="p">::</span><span class="n">TensorCrossInterpolation</span><span class="o">.</span><span class="n">TensorTrain</span><span class="p">{</span><span class="n">ValueType</span><span class="p">,</span> <span class="mi">4</span><span class="p">};</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">maxbonddim</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span> <span class="n">where</span> <span class="n">ValueType</span>
-   <span class="o">@</span> <span class="n">TensorCrossInterpolation</span> <span class="o">~/.</span><span class="n">julia</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">TensorCrossInterpolation</span><span class="o">/</span><span class="n">hDtWQ</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">contraction</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">515</span>
-
-
-<span class="ne">Stacktrace</span>:
- <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
-   <span class="o">@</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span><span class="mi">7</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hftt = TensorCrossInterpolation.TensorTrain{ComplexF64, 3} of rank 18
 </pre></div>
 </div>
 </div>
@@ -553,6 +542,9 @@ This can be implemented as follows.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/8359de7d41b594c575c2a78c327b7f4f6aadf547860d07f629ff24683971f7b4.png" src="../_images/8359de7d41b594c575c2a78c327b7f4f6aadf547860d07f629ff24683971f7b4.png" />
+</div>
 </div>
 <p>The exponentially large quantics grid allows to compute the Fourier transform with high accuracy at high frequencies.
 To check this, let us compare the results at high frequencies.</p>
@@ -579,6 +571,9 @@ To check this, let us compare the results at high frequencies.</p>
 <span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7e3f8bb59a127421cfb6e170aa69e5d0e4565515344b270d466017da1775fa1f.png" src="../_images/7e3f8bb59a127421cfb6e170aa69e5d0e4565515344b270d466017da1775fa1f.png" />
 </div>
 </div>
 </section>

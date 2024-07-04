@@ -109,7 +109,8 @@
 
 # %% [markdown]
 # ```sh
-# $ julia -e 'using Pkg; Pkg.add(["QuanticsTCI", "QuanticsGrids", "TensorCrossInterpolation", "TCIITensorConversion", "ITensors", "Plots", "PythonPlot", "LaTeXStrings"])'
+# julia -e 'using Pkg; Pkg.Registry.add(RegistrySpec(url="https://github.com/tensor4all/T4ARegistry.git"))'
+# julia -e 'using Pkg; Pkg.add(["QuanticsTCI", "QuanticsGrids", "TensorCrossInterpolation", "TCIITensorConversion", "ITensors", "Quantics", "Plots", "PythonPlot", "LaTeXStrings"])'
 # ```
 #
 

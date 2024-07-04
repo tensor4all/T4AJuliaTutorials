@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'ipynbs/compress';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Quantum Fourier Transform" href="qft.html" />
+    <link rel="next" title="Interfacing with ITensors.jl" href="interfacingwithitensors.html" />
     <link rel="prev" title="Quantics TCI of univariate funciton (advanced topics)" href="quantics1d_advanced.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,8 +180,8 @@
 <li class="toctree-l1"><a class="reference internal" href="quantics2d.html">Quantics TCI of multivariate funciton</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quantics1d_advanced.html">Quantics TCI of univariate funciton (advanced topics)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Compressing exisiting data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qft.html">Quantum Fourier Transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interfacingwithitensors.html">Interfacing with ITensors.jl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qft.html">Quantum Fourier Transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pythonplot.html">PythonPlot</a></li>
 </ul>
 
@@ -520,7 +520,7 @@ First, we create a test dataset on a 3D grid.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 6, QuanticsGrids.InherentDiscreteGrid{3}(8, (1, 1, 1), 2, :fused, (1, 1, 1)), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 23955 entries), [6, 6, 6], [5.2313940668551745e-16, 5.224205580576143e-16, 5.224205580576143e-16])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 6, QuanticsGrids.InherentDiscreteGrid{3}(8, (1, 1, 1), 2, :fused, (1, 1, 1)), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 18652 entries), [6, 6, 6], [6.6519826688485155e-16, 6.6519826688485155e-16, 6.6519826688485155e-16])
 </pre></div>
 </div>
 </div>
@@ -566,7 +566,7 @@ First, we create a test dataset on a 3D grid.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2e707b28162c9bb6b39cb1fd7f4e1dae9932c651ec084bbc6ab6c865be40b6e3.png" src="../_images/2e707b28162c9bb6b39cb1fd7f4e1dae9932c651ec084bbc6ab6c865be40b6e3.png" />
+<img alt="../_images/51a823c2580c63a5de745458364cf6a6aba968066fa1251bdc21415cfd6217e3.png" src="../_images/51a823c2580c63a5de745458364cf6a6aba968066fa1251bdc21415cfd6217e3.png" />
 </div>
 </div>
 </section>
@@ -623,16 +623,16 @@ Optimal initial pivots are locations where the function intended for interpolati
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial pivot: [1, 1, 1, 1, 1, 1, 1, 1] -3.0
-Initial pivot: [3, 3, 3, 3, 3, 3, 3, 3] -2.999698818696205
-Initial pivot: [6, 3, 3, 3, 3, 3, 3, 3] 2.999698818696205
-Initial pivot: [4, 4, 4, 4, 4, 4, 4, 4] -2.999397637392408
-Initial pivot: [4, 4, 4, 4, 4, 4, 4, 4] -2.999397637392408
-Initial pivot: [1, 8, 8, 8, 8, 8, 8, 8] 2.9990964560886124
-Initial pivot: [1, 8, 8, 8, 8, 8, 8, 8] 2.9990964560886124
-Initial pivot: [8, 8, 8, 8, 8, 8, 8, 8] -2.9990964560886124
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initial pivot: [4, 4, 4, 4, 4, 4, 4, 4] -2.9993976373924083
+Initial pivot: [4, 5, 5, 5, 5, 5, 5, 5] 2.9996988186962046
+Initial pivot: [4, 5, 5, 5, 5, 5, 5, 5] 2.9996988186962046
 Initial pivot: [2, 2, 2, 2, 2, 2, 2, 2] -2.999698818696204
-Initial pivot: [8, 1, 1, 1, 1, 1, 1, 1] 3.0
+Initial pivot: [3, 3, 3, 3, 3, 3, 3, 3] -2.999698818696204
+Initial pivot: [2, 7, 7, 7, 7, 7, 7, 7] 2.9993976373924065
+Initial pivot: [6, 6, 6, 6, 6, 6, 6, 6] -2.999397637392408
+Initial pivot: [7, 7, 7, 7, 7, 7, 7, 7] -2.9993976373924065
+Initial pivot: [2, 2, 2, 2, 2, 2, 2, 2] -2.999698818696204
+Initial pivot: [2, 7, 7, 7, 7, 7, 7, 7] 2.9993976373924065
 </pre></div>
 </div>
 </div>
@@ -646,7 +646,7 @@ Initial pivot: [8, 1, 1, 1, 1, 1, 1, 1] 3.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 6, [6, 6, 6], [2.4702462297909733e-15, 1.1483869410966463e-15, 1.1483869410966463e-15])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 6, [6, 6, 6], [1.4894423552986718e-15, 1.2890289531243451e-15, 1.2890289531243451e-15])
 </pre></div>
 </div>
 </div>
@@ -708,11 +708,11 @@ Initial pivot: [8, 1, 1, 1, 1, 1, 1, 1] 3.0
       </div>
     </a>
     <a class="right-next"
-       href="qft.html"
+       href="interfacingwithitensors.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Quantum Fourier Transform</p>
+        <p class="prev-next-title">Interfacing with ITensors.jl</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

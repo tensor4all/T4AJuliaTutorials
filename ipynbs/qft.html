@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'ipynbs/qft';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Interfacing with ITensors.jl" href="interfacingwithitensors.html" />
-    <link rel="prev" title="Compressing exisiting data" href="compress.html" />
+    <link rel="next" title="PythonPlot" href="pythonplot.html" />
+    <link rel="prev" title="Interfacing with ITensors.jl" href="interfacingwithitensors.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,8 +180,8 @@
 <li class="toctree-l1"><a class="reference internal" href="quantics2d.html">Quantics TCI of multivariate funciton</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quantics1d_advanced.html">Quantics TCI of univariate funciton (advanced topics)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compress.html">Compressing exisiting data</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantum Fourier Transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interfacingwithitensors.html">Interfacing with ITensors.jl</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantum Fourier Transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pythonplot.html">PythonPlot</a></li>
 </ul>
 
@@ -378,7 +378,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo">TODO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-fourier-transform">1D Fourier transform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2D Fourier transform</a></li>
 </ul>
             </nav>
         </div>
@@ -410,6 +411,8 @@ document.write(`
 </div>
 </div>
 </div>
+<section id="d-fourier-transform">
+<h2>1D Fourier transform<a class="headerlink" href="#d-fourier-transform" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 %\newcommand{\hf}{\hat{f}}   %Fourier transform of \bff
@@ -439,18 +442,18 @@ f(x) = \sum_p \frac{c_p}{1 - e^{-\epsilon_p}} e^{-\epsilon_p x}.
 <p>Its Fourier transform is given by</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{f}(k) = \int_0^1 dx \, f(x) e^{i \omega_k x} = - \sum_p \frac{c_p}{i\omega_k - \epsilon_p}.
+\hat{f}_k = \int_0^1 dx \, f(x) e^{i \omega_k x} = - \sum_p \frac{c_p}{i\omega_k - \epsilon_p}.
 \]</div>
 <p>for <span class="math notranslate nohighlight">\(k = 0, 1, \cdots \)</span> and <span class="math notranslate nohighlight">\(\omega_k = 2\pi k\)</span>.</p>
 <p>If you are familiar with quantum field theory, you can think of <span class="math notranslate nohighlight">\(f(x)\)</span> as a bosonic correlation function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">coeffs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">]</span>
-<span class="n">ωs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">50.0</span><span class="p">]</span>
+<span class="n">ϵs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">50.0</span><span class="p">]</span>
 
-<span class="n">_exp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">ω</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">ω</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">ω</span><span class="p">))</span>
+<span class="n">_exp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">ϵ</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">ϵ</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">ϵ</span><span class="p">))</span>
 
-<span class="n">fx</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">coeffs</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">_exp</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">ωs</span><span class="p">))</span>
+<span class="n">fx</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">coeffs</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">_exp</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">ϵs</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -488,7 +491,7 @@ f(x) = \sum_p \frac{c_p}{1 - e^{-\epsilon_p}} e^{-\epsilon_p x}.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 2, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (1.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 2477 entries), [2, 2, 2], [2.793464338512118e-16, 2.220446049250313e-16, 2.220446049250313e-16])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 2, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (1.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 2585 entries), [2, 2, 2], [2.793464338512118e-16, 2.220446049250313e-16, 2.220446049250313e-16])
 </pre></div>
 </div>
 </div>
@@ -528,8 +531,8 @@ This can be implemented as follows.</p>
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">kgrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="kt">InherentDiscreteGrid</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c"># 0, 1, ..., 2^R-1</span>
 
-<span class="n">_expk</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">ω</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="nb">π</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">im</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ω</span><span class="p">)</span>
-<span class="n">hfk</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">coeffs</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">_expk</span><span class="o">.</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">ωs</span><span class="p">))</span><span class="w"> </span><span class="c"># k = 0, 1, 2, ..., 2^R-1</span>
+<span class="n">_expk</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">ϵ</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="nb">π</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">im</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ϵ</span><span class="p">)</span>
+<span class="n">hfk</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">coeffs</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">_expk</span><span class="o">.</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">ϵs</span><span class="p">))</span><span class="w"> </span><span class="c"># k = 0, 1, 2, ..., 2^R-1</span>
 
 <span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="w"> </span><span class="n">ax2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
 
@@ -592,7 +595,7 @@ The following code explains how to do this.</p>
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="n">TCIITensorConversion</span>
 <span class="k">using</span><span class="w"> </span><span class="n">ITensors</span>
-<span class="k">import</span><span class="w"> </span><span class="n">Quantics</span><span class="o">:</span><span class="w"> </span><span class="n">fouriertransform</span>
+<span class="k">import</span><span class="w"> </span><span class="n">Quantics</span><span class="o">:</span><span class="w"> </span><span class="n">fouriertransform</span><span class="p">,</span><span class="w"> </span><span class="n">Quantics</span>
 
 <span class="n">sites_m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">Index</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Qubit,m=</span><span class="si">$m</span><span class="s">&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">R</span><span class="p">]</span>
 <span class="n">sites_k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">Index</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Qubit,k=</span><span class="si">$k</span><span class="s">&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">R</span><span class="p">]</span>
@@ -659,11 +662,116 @@ The following code explains how to do this.</p>
 </div>
 </div>
 </div>
-<section id="todo">
-<h2>TODO<a class="headerlink" href="#todo" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>2D Fourier transform</p></li>
-</ul>
+</section>
+<section id="id1">
+<h2>2D Fourier transform<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>We now consider a two-dimensional function <span class="math notranslate nohighlight">\(f(x, y) = \frac{1}{(1 - e^{-\epsilon})(1 - e^{-\epsilon'})} e^{-\epsilon x - \epsilon' y}\)</span> defined on the interval <span class="math notranslate nohighlight">\([0,1]^2\)</span>.</p>
+<p>Its Fourier transform is given by
+$<span class="math notranslate nohighlight">\(
+\hat{f}_{kl} = \int_0^1  \int_0^1 dx dy \, f(x, y) e^{i \omega_k x + i\omega_l y} \approx \frac{1}{M^2} \sum_{m,n=0}^{M-1} f_{mn} e^{i 2 \pi (k m + l n) / M} =  \frac{1}{M} \sum_{m,n=0}^{M-1} T_{km} T_{ln} f_{mn}.
+\)</span>$</p>
+<p>The exact form of the Fourier transform is
+$<span class="math notranslate nohighlight">\(
+\hat{f}_{kl} = \frac{1}{(i\omega_k - \epsilon) (i\omega_l - \epsilon')}.
+\)</span>$</p>
+<p>for <span class="math notranslate nohighlight">\(k, l = 0, 1, \cdots \)</span>, <span class="math notranslate nohighlight">\(\omega_k = 2\pi k\)</span> and <span class="math notranslate nohighlight">\(\omega_l = 2\pi l\)</span>.</p>
+<p>The 2D Fourier transform can be numerically computed in QTT format (with interleaved representation) in a straightforward way using Quantics.jl.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">ϵ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span>
+<span class="n">ϵprime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0</span>
+<span class="n">fxy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_exp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">ϵ</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_exp</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">ϵprime</span><span class="p">)</span>
+
+<span class="c"># 2D quantics grid using interleaved unfolding scheme</span>
+<span class="n">xygrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="kt">DiscretizedGrid</span><span class="p">{</span><span class="mi">2</span><span class="p">}(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">unfoldingscheme</span><span class="o">=</span><span class="ss">:interleaved</span><span class="p">)</span>
+
+<span class="c"># Resultant QTT representation of f(x, y) has bond dimension of 1.</span>
+<span class="n">qtci_xy</span><span class="p">,</span><span class="w"> </span><span class="n">ranks_xy</span><span class="p">,</span><span class="w"> </span><span class="n">errors_xy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quanticscrossinterpolate</span><span class="p">(</span><span class="kt">Float64</span><span class="p">,</span><span class="w"> </span><span class="n">fxy</span><span class="p">,</span><span class="w"> </span><span class="n">xygrid</span><span class="p">;</span><span class="w"> </span><span class="n">tolerance</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># for discretizing `y`</span>
+<span class="n">sites_n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">Index</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Qubit,n=</span><span class="si">$n</span><span class="s">&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">R</span><span class="p">]</span>
+
+<span class="n">sites_l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">Index</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Qubit,l=</span><span class="si">$l</span><span class="s">&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">R</span><span class="p">]</span>
+
+<span class="n">sites_mn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">collect</span><span class="p">(</span><span class="n">Iterators</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">zip</span><span class="p">(</span><span class="n">sites_m</span><span class="p">,</span><span class="w"> </span><span class="n">sites_n</span><span class="p">)))</span>
+
+<span class="n">fmps2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPS</span><span class="p">(</span><span class="n">TCI</span><span class="o">.</span><span class="n">TensorTrain</span><span class="p">(</span><span class="n">qtci_xy</span><span class="o">.</span><span class="n">tci</span><span class="p">);</span><span class="w"> </span><span class="n">sites</span><span class="o">=</span><span class="n">sites_mn</span><span class="p">)</span>
+<span class="n">siteinds</span><span class="p">(</span><span class="n">fmps2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Fourier transform for x</span>
+<span class="n">tmp_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="n">R</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fouriertransform</span><span class="p">(</span><span class="n">fmps2</span><span class="p">;</span><span class="w"> </span><span class="n">sign</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="o">=</span><span class="s">&quot;m&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sitesdst</span><span class="o">=</span><span class="n">sites_k</span><span class="p">,</span><span class="w"> </span><span class="n">cutoff</span><span class="o">=</span><span class="mf">1e-20</span><span class="p">)</span>
+
+<span class="c"># Fourier transform for y</span>
+<span class="n">hfmps2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="n">R</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fouriertransform</span><span class="p">(</span><span class="n">tmp_</span><span class="p">;</span><span class="w"> </span><span class="n">sign</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">tag</span><span class="o">=</span><span class="s">&quot;n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sitesdst</span><span class="o">=</span><span class="n">sites_l</span><span class="p">,</span><span class="w"> </span><span class="n">cutoff</span><span class="o">=</span><span class="mf">1e-20</span><span class="p">)</span>
+
+<span class="n">siteinds</span><span class="p">(</span><span class="n">hfmps2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For convinience, we swap the order of the indices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Convert to fused representation and swap the order of the indices</span>
+<span class="n">hfmps2_fused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPS</span><span class="p">(</span><span class="n">reverse</span><span class="p">([</span><span class="n">hfmps2</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">hfmps2</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">R</span><span class="p">]))</span>
+
+<span class="c"># From fused to interleaved representation</span>
+<span class="n">sites_kl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">collect</span><span class="p">(</span><span class="n">Iterators</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">zip</span><span class="p">(</span><span class="n">sites_k</span><span class="p">,</span><span class="w"> </span><span class="n">sites_l</span><span class="p">)))</span>
+<span class="n">hfmps2_reverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Quantics</span><span class="o">.</span><span class="n">rearrange_siteinds</span><span class="p">(</span><span class="n">hfmps2_fused</span><span class="p">,</span><span class="w"> </span><span class="p">[[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">sites_kl</span><span class="p">])</span>
+<span class="n">siteinds</span><span class="p">(</span><span class="n">hfmps2_reverse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="w"> </span><span class="n">ax2</span><span class="p">,</span><span class="w"> </span><span class="n">ax3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">klgrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="kt">InherentDiscreteGrid</span><span class="p">{</span><span class="mi">2</span><span class="p">}(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="n">unfoldingscheme</span><span class="o">=</span><span class="ss">:interleaved</span><span class="p">)</span>
+
+<span class="n">sparse1dgrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">collect</span><span class="p">(</span><span class="mi">0</span><span class="o">:</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">reconstdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="n">_evaluate</span><span class="p">(</span><span class="n">hfmps2_reverse</span><span class="p">,</span><span class="w"> </span><span class="n">sites_kl</span><span class="p">,</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="n">origcoord_to_quantics</span><span class="p">(</span><span class="n">klgrid</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="p">)))</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">sparse1dgrid</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">sparse1dgrid</span><span class="p">]</span>
+
+<span class="n">hfkl</span><span class="p">(</span><span class="n">k</span><span class="o">::</span><span class="kt">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="o">::</span><span class="kt">Integer</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_expk</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">ϵ</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_expk</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">ϵprime</span><span class="p">)</span>
+
+<span class="n">exactdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">hfkl</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">sparse1dgrid</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">sparse1dgrid</span><span class="p">]</span>
+
+<span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ax1</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">real</span><span class="o">.</span><span class="p">(</span><span class="n">exactdata</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">L</span><span class="s">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">L</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Real part of Exact data&quot;</span><span class="p">)</span>
+
+<span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ax2</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">real</span><span class="o">.</span><span class="p">(</span><span class="n">reconstdata</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">L</span><span class="s">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">L</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Real part of Reconstructed data&quot;</span><span class="p">)</span>
+
+<span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ax3</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">exactdata</span><span class="w"> </span><span class="o">.-</span><span class="w"> </span><span class="n">reconstdata</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">L</span><span class="s">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">L</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Error&quot;</span><span class="p">)</span>
+
+<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -698,20 +806,20 @@ The following code explains how to do this.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="compress.html"
+       href="interfacingwithitensors.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Compressing exisiting data</p>
+        <p class="prev-next-title">Interfacing with ITensors.jl</p>
       </div>
     </a>
     <a class="right-next"
-       href="interfacingwithitensors.html"
+       href="pythonplot.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Interfacing with ITensors.jl</p>
+        <p class="prev-next-title">PythonPlot</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -731,7 +839,8 @@ The following code explains how to do this.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo">TODO</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-fourier-transform">1D Fourier transform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2D Fourier transform</a></li>
 </ul>
   </nav></div>
 

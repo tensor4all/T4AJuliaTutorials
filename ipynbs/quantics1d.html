@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -180,8 +180,8 @@
 <li class="toctree-l1"><a class="reference internal" href="quantics2d.html">Quantics TCI of multivariate funciton</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quantics1d_advanced.html">Quantics TCI of univariate funciton (advanced topics)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compress.html">Compressing exisiting data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="qft.html">Quantum Fourier Transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interfacingwithitensors.html">Interfacing with ITensors.jl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qft.html">Quantum Fourier Transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pythonplot.html">PythonPlot</a></li>
 </ul>
 
@@ -504,7 +504,7 @@ The integral evaluates to <span class="math notranslate nohighlight">\(\mathrm{I
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (2.995732273553991,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 45857 entries), [16, 15, 15], [2.853492867563817e-8, 2.6894171075050657e-8, 3.015185379583827e-8])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (2.995732273553991,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 44335 entries), [15, 15, 15], [3.3288722965493806e-8, 3.8903594327913835e-8, 3.625218108948404e-8])
 </pre></div>
 </div>
 </div>
@@ -524,7 +524,7 @@ The integral evaluates to <span class="math notranslate nohighlight">\(\mathrm{I
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x: 0.0, i: 1, tci: 3.0, ref: 3.0
 x: 2.724602630727523e-12, i: 2, tci: 2.999995667173124, ref: 2.999995667173124
 x: 5.449205261455046e-12, i: 3, tci: 2.9999826687427715, ref: 2.9999826687427715
-x: 2.9957322735512664, i: 1099511627776, tci: 0.10000643210468639, ref: 0.10000644010229391
+x: 2.9957322735512664, i: 1099511627776, tci: 0.10000644649627612, ref: 0.10000644010229391
 </pre></div>
 </div>
 </div>
@@ -553,7 +553,7 @@ x: 2.9957322735512664, i: 1099511627776, tci: 0.10000643210468639, ref: 0.100006
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ac87e21a8f7f38b0b5687d68bbc0f16fb80cbbd80c49c483afc354d96e2aeab2.png" src="../_images/ac87e21a8f7f38b0b5687d68bbc0f16fb80cbbd80c49c483afc354d96e2aeab2.png" />
+<img alt="../_images/930d88941085aab852267fa1c04072b9c8bfd9057601744a03a7312916d144cc.png" src="../_images/930d88941085aab852267fa1c04072b9c8bfd9057601744a03a7312916d144cc.png" />
 </div>
 </div>
 <p>Above, one can see that the original function is interpolated very accurately.</p>
@@ -581,7 +581,7 @@ x: 2.9957322735512664, i: 1099511627776, tci: 0.10000643210468639, ref: 0.100006
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ab23ca7758b8dcc8874b9f9916cadaf5e894c02a7db68df4f55800152119fe30.png" src="../_images/ab23ca7758b8dcc8874b9f9916cadaf5e894c02a7db68df4f55800152119fe30.png" />
+<img alt="../_images/942365dcae770c53654f3a363d075731d10b04a04dadf65b3260be7e03dc3aab.png" src="../_images/942365dcae770c53654f3a363d075731d10b04a04dadf65b3260be7e03dc3aab.png" />
 </div>
 </div>
 <p>We are now ready to compute the integral <span class="math notranslate nohighlight">\(\mathrm{I}[f] = \int_0^{\ln 20} \mathrm{d}x f(x) \simeq 19/10\)</span> using the QTT representation of <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>

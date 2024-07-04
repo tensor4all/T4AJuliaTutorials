@@ -20,7 +20,7 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 ------------------
 import TCIITensorConversion
 using ITensors
-import Quantics: fouriertransform
+import Quantics: fouriertransform, Quantics
 
 sites_m = [Index(2, "Qubit,m=$m") for m in 1:R]
 sites_k = [Index(2, "Qubit,k=$k") for k in 1:R]

@@ -20,6 +20,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v2
+      - name: Add Julia Registries
+        run: |
+          julia -e '
+          using Pkg
+          Pkg.Registry.add(
+            RegistrySpec(url = "https://github.com/tensor4all/T4ARegistry.git")
+          )'
       - uses: julia-actions/cache@v2
       - uses: julia-actions/julia-buildpkg@v1
       - name: Cache _build
@@ -42,6 +49,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v2
+      - name: Add Julia Registries
+        run: |
+          julia -e '
+          using Pkg
+          Pkg.Registry.add(
+            RegistrySpec(url = "https://github.com/tensor4all/T4ARegistry.git")
+          )'
       - uses: julia-actions/cache@v2
       - uses: julia-actions/julia-buildpkg@v1
       - name: Cache _build

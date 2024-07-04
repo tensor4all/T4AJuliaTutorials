@@ -37,6 +37,8 @@ import TensorCrossInterpolation as TCI
 using QuanticsTCI: quanticscrossinterpolate, quanticsfouriermpo
 
 # %% [markdown]
+# ## 1D Fourier transform
+#
 # $$
 # %\newcommand{\hf}{\hat{f}}   %Fourier transform of \bff
 # %\newcommand{\hF}{\hat{F}}
@@ -78,7 +80,7 @@ using QuanticsTCI: quanticscrossinterpolate, quanticsfouriermpo
 # Its Fourier transform is given by
 #
 # $$
-# \hat{f}(k) = \int_0^1 dx \, f(x) e^{i \omega_k x} = - \sum_p \frac{c_p}{i\omega_k - \epsilon_p}.
+# \hat{f}_k = \int_0^1 dx \, f(x) e^{i \omega_k x} = - \sum_p \frac{c_p}{i\omega_k - \epsilon_p}.
 # $$
 #
 # for $k = 0, 1, \cdots $ and $\omega_k = 2\pi k$.
@@ -87,11 +89,11 @@ using QuanticsTCI: quanticscrossinterpolate, quanticsfouriermpo
 
 # %%
 coeffs = [1.0, 1.0]
-ωs = [100.0, -50.0]
+ϵs = [100.0, -50.0]
 
-_exp(x, ω) = exp(-ω * x)/ (1 - exp(-ω))
+_exp(x, ϵ) = exp(-ϵ * x)/ (1 - exp(-ϵ))
 
-fx(x) = sum(coeffs .* _exp.(x, ωs))
+fx(x) = sum(coeffs .* _exp.(x, ϵs))
 
 # %%
 plotx = range(0, 1; length=1000)
@@ -142,8 +144,8 @@ hftt *= 1/sqrt(2)^R
 # %%
 kgrid = QG.InherentDiscreteGrid{1}(R, 0) # 0, 1, ..., 2^R-1
 
-_expk(k, ω) = -1 / (2π * k * im - ω)
-hfk(k) = sum(coeffs .* _expk.(k, ωs)) # k = 0, 1, 2, ..., 2^R-1
+_expk(k, ϵ) = -1 / (2π * k * im - ϵ)
+hfk(k) = sum(coeffs .* _expk.(k, ϵs)) # k = 0, 1, 2, ..., 2^R-1
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
 
@@ -196,7 +198,7 @@ _display(fig)
 # %%
 import TCIITensorConversion
 using ITensors
-import Quantics: fouriertransform
+import Quantics: fouriertransform, Quantics
 
 sites_m = [Index(2, "Qubit,m=$m") for m in 1:R]
 sites_k = [Index(2, "Qubit,k=$k") for k in 1:R]
@@ -233,5 +235,100 @@ ax2.legend()
 _display(fig)
 
 # %% [markdown]
-# ## TODO
-# * 2D Fourier transform
+# ## 2D Fourier transform
+#
+# We now consider a two-dimensional function $f(x, y) = \frac{1}{(1 - e^{-\epsilon})(1 - e^{-\epsilon'})} e^{-\epsilon x - \epsilon' y}$ defined on the interval $[0,1]^2$.
+#
+# Its Fourier transform is given by
+# $$
+# \hat{f}_{kl} = \int_0^1  \int_0^1 dx dy \, f(x, y) e^{i \omega_k x + i\omega_l y} \approx \frac{1}{M^2} \sum_{m,n=0}^{M-1} f_{mn} e^{i 2 \pi (k m + l n) / M} =  \frac{1}{M} \sum_{m,n=0}^{M-1} T_{km} T_{ln} f_{mn}.
+# $$
+#
+# The exact form of the Fourier transform is
+# $$
+# \hat{f}_{kl} = \frac{1}{(i\omega_k - \epsilon) (i\omega_l - \epsilon')}.
+# $$
+#
+# for $k, l = 0, 1, \cdots $, $\omega_k = 2\pi k$ and $\omega_l = 2\pi l$.
+#
+# The 2D Fourier transform can be numerically computed in QTT format (with interleaved representation) in a straightforward way using Quantics.jl.
+#
+
+# %%
+ϵ = 1.0
+ϵprime = 2.0
+fxy(x, y) = _exp(x, ϵ) * _exp(y, ϵprime)
+
+# 2D quantics grid using interleaved unfolding scheme
+xygrid = QG.DiscretizedGrid{2}(R, (0, 0), (1, 1); unfoldingscheme=:interleaved)
+
+# Resultant QTT representation of f(x, y) has bond dimension of 1.
+qtci_xy, ranks_xy, errors_xy = quanticscrossinterpolate(Float64, fxy, xygrid; tolerance=1e-10)
+
+# %%
+# for discretizing `y`
+sites_n = [Index(2, "Qubit,n=$n") for n in 1:R]
+
+sites_l = [Index(2, "Qubit,l=$l") for l in 1:R]
+
+sites_mn = collect(Iterators.flatten(zip(sites_m, sites_n)))
+
+fmps2 = MPS(TCI.TensorTrain(qtci_xy.tci); sites=sites_mn)
+siteinds(fmps2)
+
+# %%
+# Fourier transform for x
+tmp_ = (1/sqrt(2)^R) * fouriertransform(fmps2; sign=1, tag="m", sitesdst=sites_k, cutoff=1e-20)
+
+# Fourier transform for y
+hfmps2 = (1/sqrt(2)^R) * fouriertransform(tmp_; sign=1, tag="n", sitesdst=sites_l, cutoff=1e-20)
+
+siteinds(hfmps2)
+
+# %% [markdown]
+# For convinience, we swap the order of the indices.
+#
+
+# %%
+# Convert to fused representation and swap the order of the indices
+hfmps2_fused = MPS(reverse([hfmps2[2*n-1] * hfmps2[2*n] for n in 1:R]))
+
+# From fused to interleaved representation
+sites_kl = collect(Iterators.flatten(zip(sites_k, sites_l)))
+hfmps2_reverse = Quantics.rearrange_siteinds(hfmps2_fused, [[x] for x in sites_kl])
+siteinds(hfmps2_reverse)
+
+# %%
+fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(15, 4))
+
+klgrid = QG.InherentDiscreteGrid{2}(R, (0, 0); unfoldingscheme=:interleaved)
+
+sparse1dgrid = collect(0:4)
+
+reconstdata = [
+    _evaluate(hfmps2_reverse, sites_kl, QG.origcoord_to_quantics(klgrid, (k, l)))
+    for k in sparse1dgrid, l in sparse1dgrid]
+
+hfkl(k::Integer, l::Integer) = _expk(k, ϵ) * _expk(l, ϵprime)
+
+exactdata = [hfkl(k, l) for k in sparse1dgrid, l in sparse1dgrid]
+
+c = ax1.pcolor(real.(exactdata))
+fig.colorbar(c, ax=ax1)
+ax1.set_xlabel(L"k")
+ax1.set_ylabel(L"l")
+ax1.set_title("Real part of Exact data")
+
+c = ax2.pcolor(real.(reconstdata))
+fig.colorbar(c, ax=ax2)
+ax2.set_xlabel(L"k")
+ax2.set_ylabel(L"l")
+ax2.set_title("Real part of Reconstructed data")
+
+c = ax3.pcolor(abs.(exactdata .- reconstdata))
+fig.colorbar(c, ax=ax3)
+ax3.set_xlabel(L"k")
+ax3.set_ylabel(L"l")
+ax3.set_title("Error")
+
+_display(fig)

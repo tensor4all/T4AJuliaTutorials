@@ -32,7 +32,7 @@ _display(fig::Figure) = isinteractive() ? (fig; plt.show(); nothing) : Base.disp
 _display(fig::PythonCall.Py) = _display(Figure(fig))
 
 import QuanticsGrids as QG
-using QuanticsTCI: quanticscrossinterpolate
+using QuanticsTCI: quanticscrossinterpolate, integral
 
 # %% [markdown]
 # ## Example 1

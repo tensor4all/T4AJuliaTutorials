@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -491,7 +491,7 @@ f(x) = \sum_p \frac{c_p}{1 - e^{-\epsilon_p}} e^{-\epsilon_p x}.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 2, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (1.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 2585 entries), [2, 2, 2], [2.793464338512118e-16, 2.220446049250313e-16, 2.220446049250313e-16])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 2, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (1.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 2656 entries), [2, 2, 2], [2.793464338512118e-16, 2.220446049250313e-16, 2.220446049250313e-16])
 </pre></div>
 </div>
 </div>
@@ -609,22 +609,53 @@ The following code explains how to do this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">ArgumentError</span>: Package Quantics not found in current path.
-<span class="o">-</span> <span class="n">Run</span> <span class="err">`</span><span class="kn">import</span> <span class="nn">Pkg</span><span class="p">;</span> <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Quantics&quot;</span><span class="p">)</span><span class="err">`</span> <span class="n">to</span> <span class="n">install</span> <span class="n">the</span> <span class="n">Quantics</span> <span class="n">package</span><span class="o">.</span>
-
-<span class="ne">Stacktrace</span>:
- <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">macro</span> <span class="n">expansion</span>
-   <span class="o">@</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1772</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">macro</span> <span class="n">expansion</span>
-   <span class="o">@</span> <span class="o">./</span><span class="n">lock</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">267</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">__require</span><span class="p">(</span><span class="n">into</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">mod</span><span class="p">::</span><span class="n">Symbol</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1753</span>
- <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="c1">#invoke_in_world#3</span>
-   <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">926</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">invoke_in_world</span>
-   <span class="o">@</span> <span class="o">./</span><span class="n">essentials</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">923</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="n">require</span><span class="p">(</span><span class="n">into</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">mod</span><span class="p">::</span><span class="n">Symbol</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1746</span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Green">Precompiling</span> Quantics
+<span class=" -Color -Color-Green">  ✓ </span>LinearMaps → LinearMapsStatisticsExt
+  1 dependency successfully precompiled in 2 seconds. 109 already precompiled.
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">[ Info: </span>Precompiling Quantics [87f76fb3-a40a-40c9-a63c-29fcfe7b7547]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MPS
+[1] ((dim=2|id=778|&quot;l=1,link&quot;), (dim=2|id=347|&quot;Qubit,k=40&quot;))
+[2] ((dim=4|id=666|&quot;l=2,link&quot;), (dim=2|id=778|&quot;l=1,link&quot;), (dim=2|id=677|&quot;Qubit,k=39&quot;))
+[3] ((dim=7|id=948|&quot;l=3,link&quot;), (dim=4|id=666|&quot;l=2,link&quot;), (dim=2|id=433|&quot;Qubit,k=38&quot;))
+[4] ((dim=7|id=468|&quot;l=4,link&quot;), (dim=7|id=948|&quot;l=3,link&quot;), (dim=2|id=518|&quot;Qubit,k=37&quot;))
+[5] ((dim=7|id=561|&quot;l=5,link&quot;), (dim=7|id=468|&quot;l=4,link&quot;), (dim=2|id=682|&quot;Qubit,k=36&quot;))
+[6] ((dim=8|id=358|&quot;l=6,link&quot;), (dim=7|id=561|&quot;l=5,link&quot;), (dim=2|id=913|&quot;Qubit,k=35&quot;))
+[7] ((dim=8|id=52|&quot;l=7,link&quot;), (dim=8|id=358|&quot;l=6,link&quot;), (dim=2|id=573|&quot;Qubit,k=34&quot;))
+[8] ((dim=8|id=263|&quot;l=8,link&quot;), (dim=8|id=52|&quot;l=7,link&quot;), (dim=2|id=30|&quot;Qubit,k=33&quot;))
+[9] ((dim=8|id=903|&quot;l=9,link&quot;), (dim=8|id=263|&quot;l=8,link&quot;), (dim=2|id=552|&quot;Qubit,k=32&quot;))
+[10] ((dim=8|id=313|&quot;l=10,link&quot;), (dim=8|id=903|&quot;l=9,link&quot;), (dim=2|id=295|&quot;Qubit,k=31&quot;))
+[11] ((dim=7|id=529|&quot;l=11,link&quot;), (dim=8|id=313|&quot;l=10,link&quot;), (dim=2|id=450|&quot;Qubit,k=30&quot;))
+[12] ((dim=7|id=60|&quot;l=12,link&quot;), (dim=7|id=529|&quot;l=11,link&quot;), (dim=2|id=769|&quot;Qubit,k=29&quot;))
+[13] ((dim=7|id=306|&quot;l=13,link&quot;), (dim=7|id=60|&quot;l=12,link&quot;), (dim=2|id=951|&quot;Qubit,k=28&quot;))
+[14] ((dim=7|id=23|&quot;l=14,link&quot;), (dim=7|id=306|&quot;l=13,link&quot;), (dim=2|id=776|&quot;Qubit,k=27&quot;))
+[15] ((dim=7|id=4|&quot;l=15,link&quot;), (dim=7|id=23|&quot;l=14,link&quot;), (dim=2|id=585|&quot;Qubit,k=26&quot;))
+[16] ((dim=7|id=913|&quot;l=16,link&quot;), (dim=7|id=4|&quot;l=15,link&quot;), (dim=2|id=889|&quot;Qubit,k=25&quot;))
+[17] ((dim=7|id=351|&quot;l=17,link&quot;), (dim=7|id=913|&quot;l=16,link&quot;), (dim=2|id=801|&quot;Qubit,k=24&quot;))
+[18] ((dim=7|id=585|&quot;l=18,link&quot;), (dim=7|id=351|&quot;l=17,link&quot;), (dim=2|id=93|&quot;Qubit,k=23&quot;))
+[19] ((dim=7|id=827|&quot;l=19,link&quot;), (dim=7|id=585|&quot;l=18,link&quot;), (dim=2|id=103|&quot;Qubit,k=22&quot;))
+[20] ((dim=6|id=779|&quot;l=20,link&quot;), (dim=7|id=827|&quot;l=19,link&quot;), (dim=2|id=639|&quot;Qubit,k=21&quot;))
+[21] ((dim=6|id=846|&quot;l=21,link&quot;), (dim=6|id=779|&quot;l=20,link&quot;), (dim=2|id=155|&quot;Qubit,k=20&quot;))
+[22] ((dim=6|id=144|&quot;l=22,link&quot;), (dim=6|id=846|&quot;l=21,link&quot;), (dim=2|id=792|&quot;Qubit,k=19&quot;))
+[23] ((dim=6|id=951|&quot;l=23,link&quot;), (dim=6|id=144|&quot;l=22,link&quot;), (dim=2|id=512|&quot;Qubit,k=18&quot;))
+[24] ((dim=6|id=594|&quot;l=24,link&quot;), (dim=6|id=951|&quot;l=23,link&quot;), (dim=2|id=715|&quot;Qubit,k=17&quot;))
+[25] ((dim=6|id=343|&quot;l=25,link&quot;), (dim=6|id=594|&quot;l=24,link&quot;), (dim=2|id=254|&quot;Qubit,k=16&quot;))
+[26] ((dim=6|id=699|&quot;l=26,link&quot;), (dim=6|id=343|&quot;l=25,link&quot;), (dim=2|id=718|&quot;Qubit,k=15&quot;))
+[27] ((dim=6|id=424|&quot;l=27,link&quot;), (dim=6|id=699|&quot;l=26,link&quot;), (dim=2|id=716|&quot;Qubit,k=14&quot;))
+[28] ((dim=5|id=125|&quot;l=28,link&quot;), (dim=6|id=424|&quot;l=27,link&quot;), (dim=2|id=598|&quot;Qubit,k=13&quot;))
+[29] ((dim=5|id=410|&quot;l=29,link&quot;), (dim=5|id=125|&quot;l=28,link&quot;), (dim=2|id=967|&quot;Qubit,k=12&quot;))
+[30] ((dim=5|id=180|&quot;l=30,link&quot;), (dim=5|id=410|&quot;l=29,link&quot;), (dim=2|id=471|&quot;Qubit,k=11&quot;))
+[31] ((dim=5|id=543|&quot;l=31,link&quot;), (dim=5|id=180|&quot;l=30,link&quot;), (dim=2|id=93|&quot;Qubit,k=10&quot;))
+[32] ((dim=5|id=982|&quot;l=32,link&quot;), (dim=5|id=543|&quot;l=31,link&quot;), (dim=2|id=301|&quot;Qubit,k=9&quot;))
+[33] ((dim=5|id=637|&quot;l=33,link&quot;), (dim=5|id=982|&quot;l=32,link&quot;), (dim=2|id=359|&quot;Qubit,k=8&quot;))
+[34] ((dim=5|id=574|&quot;l=34,link&quot;), (dim=5|id=637|&quot;l=33,link&quot;), (dim=2|id=282|&quot;Qubit,k=7&quot;))
+[35] ((dim=4|id=797|&quot;l=35,link&quot;), (dim=5|id=574|&quot;l=34,link&quot;), (dim=2|id=840|&quot;Qubit,k=6&quot;))
+[36] ((dim=4|id=814|&quot;l=36,link&quot;), (dim=4|id=797|&quot;l=35,link&quot;), (dim=2|id=625|&quot;Qubit,k=5&quot;))
+[37] ((dim=4|id=891|&quot;l=37,link&quot;), (dim=4|id=814|&quot;l=36,link&quot;), (dim=2|id=400|&quot;Qubit,k=4&quot;))
+[38] ((dim=4|id=6|&quot;l=38,link&quot;), (dim=4|id=891|&quot;l=37,link&quot;), (dim=2|id=705|&quot;Qubit,k=3&quot;))
+[39] ((dim=2|id=496|&quot;l=39,link&quot;), (dim=4|id=6|&quot;l=38,link&quot;), (dim=2|id=659|&quot;Qubit,k=2&quot;))
+[40] ((dim=2|id=496|&quot;l=39,link&quot;), (dim=2|id=569|&quot;Qubit,k=1&quot;))
 </pre></div>
 </div>
 </div>
@@ -633,6 +664,11 @@ The following code explains how to do this.</p>
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Evaluate Ψ for a given index</span>
 <span class="n">_evaluate</span><span class="p">(</span><span class="n">Ψ</span><span class="o">::</span><span class="kt">MPS</span><span class="p">,</span><span class="w"> </span><span class="n">sites</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="kt">Int</span><span class="p">})</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">only</span><span class="p">(</span><span class="n">reduce</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">Ψ</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">onehot</span><span class="p">(</span><span class="n">sites</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">index</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">Ψ</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_evaluate (generic function with 1 method)
 </pre></div>
 </div>
 </div>
@@ -660,6 +696,9 @@ The following code explains how to do this.</p>
 <span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/191039389ef7c9076a169363dc00a0accbe40ef18daea0a7a37291e2afc6699b.png" src="../_images/191039389ef7c9076a169363dc00a0accbe40ef18daea0a7a37291e2afc6699b.png" />
 </div>
 </div>
 </section>
@@ -690,6 +729,11 @@ $<span class="math notranslate nohighlight">\(
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 1, QuanticsGrids.DiscretizedGrid{2}(40, (0.0, 0.0), (1.0, 1.0), 2, :interleaved, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 5381 entries), [1, 1, 1], [1.213634401775041e-16, 1.213634401775041e-16, 1.213634401775041e-16])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -702,6 +746,37 @@ $<span class="math notranslate nohighlight">\(
 
 <span class="n">fmps2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPS</span><span class="p">(</span><span class="n">TCI</span><span class="o">.</span><span class="n">TensorTrain</span><span class="p">(</span><span class="n">qtci_xy</span><span class="o">.</span><span class="n">tci</span><span class="p">);</span><span class="w"> </span><span class="n">sites</span><span class="o">=</span><span class="n">sites_mn</span><span class="p">)</span>
 <span class="n">siteinds</span><span class="p">(</span><span class="n">fmps2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80-element Vector{Index{Int64}}:
+ (dim=2|id=250|&quot;Qubit,m=1&quot;)
+ (dim=2|id=984|&quot;Qubit,n=1&quot;)
+ (dim=2|id=462|&quot;Qubit,m=2&quot;)
+ (dim=2|id=230|&quot;Qubit,n=2&quot;)
+ (dim=2|id=429|&quot;Qubit,m=3&quot;)
+ (dim=2|id=595|&quot;Qubit,n=3&quot;)
+ (dim=2|id=525|&quot;Qubit,m=4&quot;)
+ (dim=2|id=330|&quot;Qubit,n=4&quot;)
+ (dim=2|id=764|&quot;Qubit,m=5&quot;)
+ (dim=2|id=17|&quot;Qubit,n=5&quot;)
+ (dim=2|id=852|&quot;Qubit,m=6&quot;)
+ (dim=2|id=504|&quot;Qubit,n=6&quot;)
+ (dim=2|id=84|&quot;Qubit,m=7&quot;)
+ ⋮
+ (dim=2|id=750|&quot;Qubit,m=35&quot;)
+ (dim=2|id=698|&quot;Qubit,n=35&quot;)
+ (dim=2|id=250|&quot;Qubit,m=36&quot;)
+ (dim=2|id=271|&quot;Qubit,n=36&quot;)
+ (dim=2|id=876|&quot;Qubit,m=37&quot;)
+ (dim=2|id=555|&quot;Qubit,n=37&quot;)
+ (dim=2|id=252|&quot;Qubit,m=38&quot;)
+ (dim=2|id=784|&quot;Qubit,n=38&quot;)
+ (dim=2|id=77|&quot;Qubit,m=39&quot;)
+ (dim=2|id=292|&quot;Qubit,n=39&quot;)
+ (dim=2|id=751|&quot;Qubit,m=40&quot;)
+ (dim=2|id=551|&quot;Qubit,n=40&quot;)
 </pre></div>
 </div>
 </div>
@@ -718,6 +793,37 @@ $<span class="math notranslate nohighlight">\(
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80-element Vector{Index{Int64}}:
+ (dim=2|id=347|&quot;Qubit,k=40&quot;)
+ (dim=2|id=992|&quot;Qubit,l=40&quot;)
+ (dim=2|id=677|&quot;Qubit,k=39&quot;)
+ (dim=2|id=392|&quot;Qubit,l=39&quot;)
+ (dim=2|id=433|&quot;Qubit,k=38&quot;)
+ (dim=2|id=571|&quot;Qubit,l=38&quot;)
+ (dim=2|id=518|&quot;Qubit,k=37&quot;)
+ (dim=2|id=452|&quot;Qubit,l=37&quot;)
+ (dim=2|id=682|&quot;Qubit,k=36&quot;)
+ (dim=2|id=923|&quot;Qubit,l=36&quot;)
+ (dim=2|id=913|&quot;Qubit,k=35&quot;)
+ (dim=2|id=681|&quot;Qubit,l=35&quot;)
+ (dim=2|id=573|&quot;Qubit,k=34&quot;)
+ ⋮
+ (dim=2|id=840|&quot;Qubit,k=6&quot;)
+ (dim=2|id=952|&quot;Qubit,l=6&quot;)
+ (dim=2|id=625|&quot;Qubit,k=5&quot;)
+ (dim=2|id=54|&quot;Qubit,l=5&quot;)
+ (dim=2|id=400|&quot;Qubit,k=4&quot;)
+ (dim=2|id=32|&quot;Qubit,l=4&quot;)
+ (dim=2|id=705|&quot;Qubit,k=3&quot;)
+ (dim=2|id=565|&quot;Qubit,l=3&quot;)
+ (dim=2|id=659|&quot;Qubit,k=2&quot;)
+ (dim=2|id=773|&quot;Qubit,l=2&quot;)
+ (dim=2|id=569|&quot;Qubit,k=1&quot;)
+ (dim=2|id=90|&quot;Qubit,l=1&quot;)
+</pre></div>
+</div>
+</div>
 </div>
 <p>For convinience, we swap the order of the indices.</p>
 <div class="cell docutils container">
@@ -729,6 +835,37 @@ $<span class="math notranslate nohighlight">\(
 <span class="n">sites_kl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">collect</span><span class="p">(</span><span class="n">Iterators</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">zip</span><span class="p">(</span><span class="n">sites_k</span><span class="p">,</span><span class="w"> </span><span class="n">sites_l</span><span class="p">)))</span>
 <span class="n">hfmps2_reverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Quantics</span><span class="o">.</span><span class="n">rearrange_siteinds</span><span class="p">(</span><span class="n">hfmps2_fused</span><span class="p">,</span><span class="w"> </span><span class="p">[[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">sites_kl</span><span class="p">])</span>
 <span class="n">siteinds</span><span class="p">(</span><span class="n">hfmps2_reverse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80-element Vector{Index{Int64}}:
+ (dim=2|id=569|&quot;Qubit,k=1&quot;)
+ (dim=2|id=90|&quot;Qubit,l=1&quot;)
+ (dim=2|id=659|&quot;Qubit,k=2&quot;)
+ (dim=2|id=773|&quot;Qubit,l=2&quot;)
+ (dim=2|id=705|&quot;Qubit,k=3&quot;)
+ (dim=2|id=565|&quot;Qubit,l=3&quot;)
+ (dim=2|id=400|&quot;Qubit,k=4&quot;)
+ (dim=2|id=32|&quot;Qubit,l=4&quot;)
+ (dim=2|id=625|&quot;Qubit,k=5&quot;)
+ (dim=2|id=54|&quot;Qubit,l=5&quot;)
+ (dim=2|id=840|&quot;Qubit,k=6&quot;)
+ (dim=2|id=952|&quot;Qubit,l=6&quot;)
+ (dim=2|id=282|&quot;Qubit,k=7&quot;)
+ ⋮
+ (dim=2|id=913|&quot;Qubit,k=35&quot;)
+ (dim=2|id=681|&quot;Qubit,l=35&quot;)
+ (dim=2|id=682|&quot;Qubit,k=36&quot;)
+ (dim=2|id=923|&quot;Qubit,l=36&quot;)
+ (dim=2|id=518|&quot;Qubit,k=37&quot;)
+ (dim=2|id=452|&quot;Qubit,l=37&quot;)
+ (dim=2|id=433|&quot;Qubit,k=38&quot;)
+ (dim=2|id=571|&quot;Qubit,l=38&quot;)
+ (dim=2|id=677|&quot;Qubit,k=39&quot;)
+ (dim=2|id=392|&quot;Qubit,l=39&quot;)
+ (dim=2|id=347|&quot;Qubit,k=40&quot;)
+ (dim=2|id=992|&quot;Qubit,l=40&quot;)
 </pre></div>
 </div>
 </div>
@@ -770,6 +907,9 @@ $<span class="math notranslate nohighlight">\(
 <span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b71e4657c06c339a4c153a772909512d3fad7483e637943681afb2fa0aff4173.png" src="../_images/b71e4657c06c339a4c153a772909512d3fad7483e637943681afb2fa0aff4173.png" />
 </div>
 </div>
 </section>

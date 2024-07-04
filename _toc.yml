@@ -8,6 +8,6 @@ chapters:
 - file: ipynbs/quantics2d
 - file: ipynbs/quantics1d_advanced
 - file: ipynbs/compress
-- file: ipynbs/qft
 - file: ipynbs/interfacingwithitensors
+- file: ipynbs/qft
 - file: ipynbs/pythonplot

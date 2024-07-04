@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Quantics TCI of multivariate funciton &#8212; T4AJuliaTutorials</title>
+    <title>Quantics TCI of multivariate function &#8212; T4AJuliaTutorials</title>
   
   
   
@@ -61,7 +61,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Quantics TCI of univariate funciton (advanced topics)" href="quantics1d_advanced.html" />
-    <link rel="prev" title="Quantics TCI of univariate funciton" href="quantics1d.html" />
+    <link rel="prev" title="Quantics TCI of univariate function" href="quantics1d.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -174,8 +174,8 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="quantics1d.html">Quantics TCI of univariate funciton</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantics TCI of multivariate funciton</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantics1d.html">Quantics TCI of univariate function</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantics TCI of multivariate function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quantics1d_advanced.html">Quantics TCI of univariate funciton (advanced topics)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compress.html">Compressing exisiting data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interfacingwithitensors.html">Interfacing with ITensors.jl</a></li>
@@ -366,7 +366,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Quantics TCI of multivariate funciton</h1>
+    <h1>Quantics TCI of multivariate function</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -389,12 +389,12 @@ document.write(`
                 <article class="bd-article">
                   
   <p>Click <a class="reference external" href="https://tensor4all.org/T4AJuliaTutorials/_sources/ipynbs/quantics2d.ipynb">here</a> to download the notebook locally.</p>
-<section class="tex2jax_ignore mathjax_ignore" id="quantics-tci-of-multivariate-funciton">
-<h1>Quantics TCI of multivariate funciton<a class="headerlink" href="#quantics-tci-of-multivariate-funciton" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="quantics-tci-of-multivariate-function">
+<h1>Quantics TCI of multivariate function<a class="headerlink" href="#quantics-tci-of-multivariate-function" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="n">TensorCrossInterpolation</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">TCI</span>
-<span class="k">import</span><span class="w"> </span><span class="n">QuanticsGrids</span><span class="o">:</span><span class="w"> </span><span class="n">DiscretizedGrid</span><span class="p">,</span><span class="w"> </span><span class="n">origcoord_to_quantics</span><span class="p">,</span><span class="w"> </span><span class="n">origcoord_to_grididx</span>
+<span class="k">import</span><span class="w"> </span><span class="n">QuanticsGrids</span><span class="o">:</span><span class="w"> </span><span class="n">DiscretizedGrid</span><span class="p">,</span><span class="w"> </span><span class="n">origcoord_to_quantics</span><span class="p">,</span><span class="w"> </span><span class="n">origcoord_to_grididx</span><span class="p">,</span><span class="w"> </span><span class="n">grididx_to_origcoord</span>
 <span class="k">using</span><span class="w"> </span><span class="n">QuanticsTCI</span>
 <span class="k">using</span><span class="w"> </span><span class="n">PythonPlot</span><span class="o">:</span><span class="w"> </span><span class="n">pyplot</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">plt</span>
 <span class="k">using</span><span class="w"> </span><span class="n">PythonPlot</span><span class="o">:</span><span class="w"> </span><span class="n">Figure</span>
@@ -409,12 +409,27 @@ document.write(`
 </div>
 <section id="artificial-function-with-widely-different-length-scales">
 <h2>Artificial function with widely different length scales<a class="headerlink" href="#artificial-function-with-widely-different-length-scales" title="Link to this heading">#</a></h2>
+<p>As in the univariate case, we first demonstrate the multivariate case on an artificial function with widely different length scales:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">^</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-<span class="w">           </span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.05</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.001</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">0.2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.0005</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0001</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.7</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1e-5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1e-7</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">20</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
-
-<span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span>
+<span class="w">           </span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">           </span><span class="mf">0.05</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.001</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">0.2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">           </span><span class="mf">0.0005</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.0001</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.7</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">           </span><span class="mf">1e-5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1e-7</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">20</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+<p>To construct a 2D quantics grid, put <code class="docutils literal notranslate"><span class="pre">2</span></code> in the type parameter of <code class="docutils literal notranslate"><span class="pre">DiscretizedGrid</span></code>, and use tuples to specify lower and upper limits in each dimension:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span>
 <span class="n">gr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">DiscretizedGrid</span><span class="p">{</span><span class="mi">2</span><span class="p">}(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -425,16 +440,17 @@ document.write(`
 </div>
 </div>
 </div>
+<p>To illustrate the different length scales, we show a series of progressively smaller parts of the function domain in the following.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">myplotheatmap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">func</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="o">::</span><span class="kt">Tuple</span><span class="p">,</span><span class="w"> </span><span class="n">ylim</span><span class="o">::</span><span class="kt">Tuple</span><span class="p">;</span><span class="w"> </span><span class="n">xlim_box</span><span class="o">=</span><span class="nb">nothing</span><span class="p">,</span><span class="w"> </span><span class="n">ylim_box</span><span class="o">=</span><span class="nb">nothing</span><span class="p">,</span><span class="w"> </span><span class="n">cmap</span><span class="o">=</span><span class="s">&quot;inferno&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">LinRange</span><span class="p">(</span><span class="n">xlim</span><span class="o">...</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">)</span>
 <span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">LinRange</span><span class="p">(</span><span class="n">ylim</span><span class="o">...</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">)</span>
-<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">func</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">func</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">isnothing</span><span class="p">(</span><span class="n">xlim_box</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">isnothing</span><span class="p">(</span><span class="n">ylim_box</span><span class="p">)</span>
 <span class="w">        </span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-<span class="w">            </span><span class="p">[</span><span class="n">xlim_box</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">xlim_box</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">xlim_box</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">xlim_box</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">xlim_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
 <span class="w">            </span><span class="p">[</span><span class="n">ylim_box</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">ylim_box</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">ylim_box</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">ylim_box</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">ylim_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+<span class="w">            </span><span class="p">[</span><span class="n">xlim_box</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">xlim_box</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">xlim_box</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">xlim_box</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">xlim_box</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
 <span class="w">            </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;lightgreen&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
@@ -465,7 +481,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/99e317dc67e161ecda16efd369a426a75a3736a733e9980bddf30b72b9adc0b4.png" src="../_images/99e317dc67e161ecda16efd369a426a75a3736a733e9980bddf30b72b9adc0b4.png" />
+<img alt="../_images/b394ab8de4653c66d58d8a75cf061297ead6166fdef09707e5c5aaae48cd6bc8.png" src="../_images/b394ab8de4653c66d58d8a75cf061297ead6166fdef09707e5c5aaae48cd6bc8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -475,7 +491,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/198e30a04f0bd00011db292052c70107af9682e89bffdd29c5951b5b2a8ac9cc.png" src="../_images/198e30a04f0bd00011db292052c70107af9682e89bffdd29c5951b5b2a8ac9cc.png" />
+<img alt="../_images/4f903681f1f5ac8731e7adc3f89ab1e9c82400b4e79cbb410c337bb69aef1755.png" src="../_images/4f903681f1f5ac8731e7adc3f89ab1e9c82400b4e79cbb410c337bb69aef1755.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -485,7 +501,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cb1a2fcf607ef919e423efd967c15c5acc97e76aec82532935b378e8fc654dc8.png" src="../_images/cb1a2fcf607ef919e423efd967c15c5acc97e76aec82532935b378e8fc654dc8.png" />
+<img alt="../_images/793462779686a15e822b4dbce24bbdd0ed8d031bd82c8fdeb398500b67482e29.png" src="../_images/793462779686a15e822b4dbce24bbdd0ed8d031bd82c8fdeb398500b67482e29.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -511,6 +527,7 @@ document.write(`
 <img alt="../_images/6a3ada4335f407609c4fc51288b21c2b51b7585ac12fc3f8b5d7e300f4d9e99c.png" src="../_images/6a3ada4335f407609c4fc51288b21c2b51b7585ac12fc3f8b5d7e300f4d9e99c.png" />
 </div>
 </div>
+<p>We can now obtain a QTT for <code class="docutils literal notranslate"><span class="pre">f</span></code> in the same way as in the 1D case:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Construct 2D quantics</span>
@@ -525,13 +542,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8d3d1604e9bebda2c4ea2a593f1ca3944b5562476e6a0917f891718230f07924.png" src="../_images/8d3d1604e9bebda2c4ea2a593f1ca3944b5562476e6a0917f891718230f07924.png" />
+<img alt="../_images/cf3a815feeaf831ab7fd66d0a2da8d78430e723abfd98bd63891c9b9b1151eaa.png" src="../_images/cf3a815feeaf831ab7fd66d0a2da8d78430e723abfd98bd63891c9b9b1151eaa.png" />
 </div>
 </div>
+<p>Checking the error on the same slices as before, we see that the approximation is accurate everywhere:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Function that evaluates log10 of the interplation error at (x, y)</span>
-<span class="n">errflog10</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log10</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">qtci</span><span class="p">(</span><span class="n">origcoord_to_grididx</span><span class="p">(</span><span class="n">gr</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)))))</span>
+<span class="k">function</span><span class="w"> </span><span class="n">errflog10</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">origcoord_to_grididx</span><span class="p">(</span><span class="n">gr</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span>
+<span class="w">    </span><span class="n">log10</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">grididx_to_origcoord</span><span class="p">(</span><span class="n">gr</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">qtci</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+<span class="k">end</span>
 
 <span class="n">eps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-10</span>
 <span class="n">myplotheatmap</span><span class="p">(</span><span class="n">errflog10</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">eps</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">eps</span><span class="p">),</span><span class="w"> </span><span class="n">xlim_box</span><span class="o">=</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mf">1.75</span><span class="p">),</span><span class="w"> </span><span class="n">ylim_box</span><span class="o">=</span><span class="p">(</span><span class="mf">1.25</span><span class="p">,</span><span class="w"> </span><span class="mf">2.75</span><span class="p">))</span>
@@ -539,7 +560,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e8ac32a694de7c4acd2478a9454cacdbfbea1706189b537f3c813258c4c8668f.png" src="../_images/e8ac32a694de7c4acd2478a9454cacdbfbea1706189b537f3c813258c4c8668f.png" />
+<img alt="../_images/bfa53274f35de6d0eb065202d6b0eb8d96952608fdf153676a83eddbe5f9c201.png" src="../_images/bfa53274f35de6d0eb065202d6b0eb8d96952608fdf153676a83eddbe5f9c201.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -549,7 +570,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2cbd7ca40fe655b366693e24f38fb1e475ed4761af3c0f799413f71c149ea2c0.png" src="../_images/2cbd7ca40fe655b366693e24f38fb1e475ed4761af3c0f799413f71c149ea2c0.png" />
+<img alt="../_images/aab5ad048fa3c5fbedc7c8d831272f13ef678b442a3efa866827558eda581231.png" src="../_images/aab5ad048fa3c5fbedc7c8d831272f13ef678b442a3efa866827558eda581231.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -559,7 +580,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c618f27b43bc92ce7d995cdcdaa2dd9ed6aa3778bfea38272e806e4ea1c2ff8d.png" src="../_images/c618f27b43bc92ce7d995cdcdaa2dd9ed6aa3778bfea38272e806e4ea1c2ff8d.png" />
+<img alt="../_images/4a4c0a657ea7541a5689b6f3186b7a05a2c5d164249b577ac43547364031cef3.png" src="../_images/4a4c0a657ea7541a5689b6f3186b7a05a2c5d164249b577ac43547364031cef3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -579,7 +600,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4d8c29abecb92884320b88779097dc54e9fb8bf94a5c7a97010dcf52860b2731.png" src="../_images/4d8c29abecb92884320b88779097dc54e9fb8bf94a5c7a97010dcf52860b2731.png" />
+<img alt="../_images/9e69e657e183f7bc9f5523b96b223c70e074935495c83066991b84116f097900.png" src="../_images/9e69e657e183f7bc9f5523b96b223c70e074935495c83066991b84116f097900.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -589,7 +610,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of sampled points 662152
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of sampled points 649958
 </pre></div>
 </div>
 </div>
@@ -633,7 +654,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Quantics TCI of univariate funciton</p>
+        <p class="prev-next-title">Quantics TCI of univariate function</p>
       </div>
     </a>
     <a class="right-next"

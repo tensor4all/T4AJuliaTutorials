@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Quantics TCI of univariate funciton &#8212; T4AJuliaTutorials</title>
+    <title>Quantics TCI of univariate function &#8212; T4AJuliaTutorials</title>
   
   
   
@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'ipynbs/quantics1d';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Quantics TCI of multivariate funciton" href="quantics2d.html" />
+    <link rel="next" title="Quantics TCI of multivariate function" href="quantics2d.html" />
     <link rel="prev" title="T4A Julia Tutorials" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -176,8 +176,8 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantics TCI of univariate funciton</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quantics2d.html">Quantics TCI of multivariate funciton</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantics TCI of univariate function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantics2d.html">Quantics TCI of multivariate function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quantics1d_advanced.html">Quantics TCI of univariate funciton (advanced topics)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="compress.html">Compressing exisiting data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interfacingwithitensors.html">Interfacing with ITensors.jl</a></li>
@@ -368,7 +368,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Quantics TCI of univariate funciton</h1>
+    <h1>Quantics TCI of univariate function</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -402,8 +402,8 @@ document.write(`
                 <article class="bd-article">
                   
   <p>Click <a class="reference external" href="https://tensor4all.org/T4AJuliaTutorials/_sources/ipynbs/quantics1d.ipynb">here</a> to download the notebook locally.</p>
-<section class="tex2jax_ignore mathjax_ignore" id="quantics-tci-of-univariate-funciton">
-<h1>Quantics TCI of univariate funciton<a class="headerlink" href="#quantics-tci-of-univariate-funciton" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="quantics-tci-of-univariate-function">
+<h1>Quantics TCI of univariate function<a class="headerlink" href="#quantics-tci-of-univariate-function" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">PythonCall</span><span class="o">:</span><span class="w"> </span><span class="n">PythonCall</span>
@@ -414,7 +414,7 @@ document.write(`
 <span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="o">::</span><span class="kt">PythonCall</span><span class="o">.</span><span class="n">Py</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_display</span><span class="p">(</span><span class="n">Figure</span><span class="p">(</span><span class="n">fig</span><span class="p">))</span>
 
 <span class="k">import</span><span class="w"> </span><span class="n">QuanticsGrids</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">QG</span>
-<span class="k">using</span><span class="w"> </span><span class="n">QuanticsTCI</span><span class="o">:</span><span class="w"> </span><span class="n">quanticscrossinterpolate</span>
+<span class="k">using</span><span class="w"> </span><span class="n">QuanticsTCI</span>
 </pre></div>
 </div>
 </div>
@@ -483,7 +483,7 @@ The integral evaluates to <span class="math notranslate nohighlight">\(\mathrm{I
 </div>
 <section id="qtt-representation">
 <h3>QTT representation<a class="headerlink" href="#qtt-representation" title="Link to this heading">#</a></h3>
-<p>One can construct a QTT representation of this function on the domain <span class="math notranslate nohighlight">\([0, \ln 20]\)</span> a quantics grid of size <span class="math notranslate nohighlight">\(2^\mathcal{R}\)</span> where <span class="math notranslate nohighlight">\(\mathcal{R}\)</span> is <span class="math notranslate nohighlight">\(40\)</span>:</p>
+<p>We construct a QTT representation of this function on the domain <span class="math notranslate nohighlight">\([0, \ln 20]\)</span>, discretized on a quantics grid of size <span class="math notranslate nohighlight">\(2^\mathcal{R}\)</span> with <span class="math notranslate nohighlight">\(\mathcal{R} = 40\)</span> bits:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="c"># number of bits</span>
@@ -498,18 +498,30 @@ The integral evaluates to <span class="math notranslate nohighlight">\(\mathrm{I
 <span class="c"># * Uniform grid (includeendpoint=true):</span>
 <span class="c">#   -xmin, -xmin+dx, ...., xmin-dx, xmin,</span>
 <span class="c">#     where dx = (xmax - xmin)/(2^R-1).</span>
-<span class="n">qgrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="kt">DiscretizedGrid</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">xmin</span><span class="p">,</span><span class="w"> </span><span class="n">xmax</span><span class="p">;</span><span class="w"> </span><span class="n">includeendpoint</span><span class="o">=</span><span class="nb">false</span><span class="p">)</span>
+<span class="n">qgrid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="kt">DiscretizedGrid</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">xmin</span><span class="p">,</span><span class="w"> </span><span class="n">xmax</span><span class="p">;</span><span class="w"> </span><span class="n">includeendpoint</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 <span class="n">ci</span><span class="p">,</span><span class="w"> </span><span class="n">ranks</span><span class="p">,</span><span class="w"> </span><span class="n">errors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quanticscrossinterpolate</span><span class="p">(</span><span class="kt">Float64</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">qgrid</span><span class="p">;</span><span class="w"> </span><span class="n">maxbonddim</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (2.995732273553991,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 45163 entries), [16, 15, 15], [2.7073386794017427e-8, 3.121000362396967e-8, 4.3095520299609453e-8])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (2.995732273553991,), 2, :fused, true), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 45379 entries), [15, 15, 15], [2.6719475420839087e-8, 3.3408020909407795e-8, 3.989843498650588e-8])
 </pre></div>
 </div>
 </div>
 </div>
-<p>Here, we’ve created <code class="docutils literal notranslate"><span class="pre">ci</span></code> which is an object of <code class="docutils literal notranslate"><span class="pre">QuanticsTensorCI2{Float64}</span></code> in <code class="docutils literal notranslate"><span class="pre">QuanticsTCI.jl</span></code>. This can be evaluated at an linear index <span class="math notranslate nohighlight">\(i\)</span> (<span class="math notranslate nohighlight">\(1 \le i \le 2^\mathcal{R}\)</span>) as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">length</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">tci</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, we’ve created the object <code class="docutils literal notranslate"><span class="pre">ci</span></code> of type <code class="docutils literal notranslate"><span class="pre">QuanticsTensorCI2{Float64}</span></code>. This can be evaluated at an linear index <span class="math notranslate nohighlight">\(i\)</span> (<span class="math notranslate nohighlight">\(1 \le i \le 2^\mathcal{R}\)</span>) as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="n">R</span><span class="p">]</span><span class="w"> </span><span class="c"># Linear indices</span>
@@ -522,9 +534,9 @@ The integral evaluates to <span class="math notranslate nohighlight">\(\mathrm{I
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x: 0.0, i: 1, tci: 3.0, ref: 3.0
-x: 2.724602630727523e-12, i: 2, tci: 2.999995667173124, ref: 2.999995667173124
-x: 5.449205261455046e-12, i: 3, tci: 2.999982668742772, ref: 2.9999826687427715
-x: 2.9957322735512664, i: 1099511627776, tci: 0.10000644105274165, ref: 0.10000644010229391
+x: 2.724602630730001e-12, i: 2, tci: 2.999995667173124, ref: 2.999995667173124
+x: 5.449205261460002e-12, i: 3, tci: 2.9999826687427715, ref: 2.9999826687427715
+x: 2.995732273553991, i: 1099511627776, tci: 0.10000652563597098, ref: 0.1000065283433056
 </pre></div>
 </div>
 </div>
@@ -532,14 +544,12 @@ x: 2.9957322735512664, i: 1099511627776, tci: 0.10000644105274165, ref: 0.100006
 <p>We see that <code class="docutils literal notranslate"><span class="pre">ci(i)</span></code> approximates the original <code class="docutils literal notranslate"><span class="pre">f</span></code> at <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">QG.grididx_to_origcoord(qgrid,</span> <span class="pre">i)</span></code>. Let’s plot them together.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">LinRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">23</span><span class="p">),</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">ys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">maxindex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="n">origcoord_to_grididx</span><span class="p">(</span><span class="n">qgrid</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">23</span><span class="p">))</span>
+<span class="n">testindices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Int</span><span class="o">.</span><span class="p">(</span><span class="n">round</span><span class="o">.</span><span class="p">(</span><span class="kt">LinRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">maxindex</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">)))</span>
 
-<span class="n">yci</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">x</span>
-<span class="w">    </span><span class="c"># Convert a coordinate in the original coordinate system to the corresponding grid index</span>
-<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="n">origcoord_to_grididx</span><span class="p">(</span><span class="n">qgrid</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
-<span class="w">    </span><span class="n">ci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="k">end</span>
+<span class="n">xs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">QG</span><span class="o">.</span><span class="n">grididx_to_origcoord</span><span class="p">(</span><span class="n">qgrid</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">testindices</span><span class="p">]</span>
+<span class="n">ys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">yci</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ci</span><span class="o">.</span><span class="p">(</span><span class="n">testindices</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="n">ys</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;</span><span class="si">$</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
@@ -553,24 +563,19 @@ x: 2.9957322735512664, i: 1099511627776, tci: 0.10000644105274165, ref: 0.100006
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fc0c0eae3b9f46a6722c4518370bdd8b3ecc2a409a083ddde0e5a4523ac49621.png" src="../_images/fc0c0eae3b9f46a6722c4518370bdd8b3ecc2a409a083ddde0e5a4523ac49621.png" />
+<img alt="../_images/5a36b1f5970012b3bde77ad54d4083295994261c222e03483f232a27b9380b1e.png" src="../_images/5a36b1f5970012b3bde77ad54d4083295994261c222e03483f232a27b9380b1e.png" />
 </div>
 </div>
 <p>Above, one can see that the original function is interpolated very accurately.</p>
-<p>Let’s plot of <span class="math notranslate nohighlight">\(x\)</span> vs interpolation error <span class="math notranslate nohighlight">\(\log(|f(x) - \mathrm{ci}(x)|)\)</span> for small <span class="math notranslate nohighlight">\(x\)</span></p>
+<p>Let’s plot of <span class="math notranslate nohighlight">\(x\)</span> vs interpolation error <span class="math notranslate nohighlight">\(|f(x) - \mathrm{ci}(x)|\)</span> for small <span class="math notranslate nohighlight">\(x\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
-<span class="n">xs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">LinRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">23</span><span class="p">),</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">ys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-<span class="n">yci</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="n">x</span>
-<span class="w">    </span><span class="c"># Convert a coordinate in the original coordinate system to the corresponding grid index</span>
-<span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="n">origcoord_to_grididx</span><span class="p">(</span><span class="n">qgrid</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
-<span class="w">    </span><span class="n">ci</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-<span class="k">end</span>
+<span class="n">yci</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ci</span><span class="o">.</span><span class="p">(</span><span class="n">testindices</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="n">log</span><span class="o">.</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">ys</span><span class="w"> </span><span class="o">.-</span><span class="w"> </span><span class="n">yci</span><span class="p">)),</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;log(|f(x) - ci(x)|)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">ys</span><span class="w"> </span><span class="o">.-</span><span class="w"> </span><span class="n">yci</span><span class="p">),</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;log(|f(x) - ci(x)|)&quot;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;x vs interpolation error: </span><span class="si">$</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
@@ -581,9 +586,34 @@ x: 2.9957322735512664, i: 1099511627776, tci: 0.10000644105274165, ref: 0.100006
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ec4f5129f1675f670d8ad8b9a2a7d0b10de1c8ffbbbd104228259f7421d83fd7.png" src="../_images/ec4f5129f1675f670d8ad8b9a2a7d0b10de1c8ffbbbd104228259f7421d83fd7.png" />
+<img alt="../_images/2f2a65c921827f499754580fe67b6079c1d0b20a3339dfe78d1656c68f325db5.png" src="../_images/2f2a65c921827f499754580fe67b6079c1d0b20a3339dfe78d1656c68f325db5.png" />
 </div>
 </div>
+<p>… and for all <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">testindices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Int</span><span class="o">.</span><span class="p">(</span><span class="n">round</span><span class="o">.</span><span class="p">(</span><span class="kt">LinRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">)))</span>
+<span class="n">xs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">QG</span><span class="o">.</span><span class="n">grididx_to_origcoord</span><span class="p">(</span><span class="n">qgrid</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">testindices</span><span class="p">]</span>
+<span class="n">ys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">yci</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ci</span><span class="o">.</span><span class="p">(</span><span class="n">testindices</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">ys</span><span class="w"> </span><span class="o">.-</span><span class="w"> </span><span class="n">yci</span><span class="p">),</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;log(|f(x) - ci(x)|)&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;x vs interpolation error: </span><span class="si">$</span><span class="p">(</span><span class="n">nameof</span><span class="p">(</span><span class="n">f</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;interpolation error&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/355c809effd9af91c62758a1b72636b1b52e6823430d74864c14b5acf22845a2.png" src="../_images/355c809effd9af91c62758a1b72636b1b52e6823430d74864c14b5acf22845a2.png" />
+</div>
+</div>
+<p>The function is approximated with an accuracy <span class="math notranslate nohighlight">\(\approx 10^{-7}\)</span> over the entire domain.</p>
 <p>We are now ready to compute the integral <span class="math notranslate nohighlight">\(\mathrm{I}[f] = \int_0^{\ln 20} \mathrm{d}x f(x) \simeq 19/10\)</span> using the QTT representation of <span class="math notranslate nohighlight">\(f(x)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -592,11 +622,7 @@ x: 2.9957322735512664, i: 1099511627776, tci: 0.10000644105274165, ref: 0.100006
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">UndefVarError</span>: `integral` not defined
-
-<span class="ne">Stacktrace</span>:
- <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
-   <span class="o">@</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span><span class="mi">1</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.9000000000119497, 1.9)
 </pre></div>
 </div>
 </div>
@@ -604,7 +630,12 @@ x: 2.9957322735512664, i: 1099511627776, tci: 0.10000644105274165, ref: 0.100006
 <p><code class="docutils literal notranslate"><span class="pre">integral(ci)</span></code> is equivalent to calling <code class="docutils literal notranslate"><span class="pre">QuanticsTCI.sum(ci)</span></code> and multiplying the result by the interval length divided by <span class="math notranslate nohighlight">\(2^\mathcal{R}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">QuanticsTCI</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="o">/</span><span class="mi">10</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">sum</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="o">/</span><span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.9000000000102217, 1.9)
 </pre></div>
 </div>
 </div>
@@ -616,6 +647,11 @@ x: 2.9957322735512664, i: 1099511627776, tci: 0.10000644105274165, ref: 0.100006
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">println</span><span class="p">(</span><span class="n">typeof</span><span class="p">(</span><span class="n">ci</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>QuanticsTCI.QuanticsTensorCI2{Float64}
 </pre></div>
 </div>
 </div>
@@ -637,6 +673,9 @@ In the following figure, we plot the normalized error vs. bond dimension, showin
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/e61542e48ab305cf11c2c83526aa59af2f2958b8f602bc0a28cc3ecf79c3f753.png" src="../_images/e61542e48ab305cf11c2c83526aa59af2f2958b8f602bc0a28cc3ecf79c3f753.png" />
+</div>
 </div>
 </section>
 <section id="function-evaluations">
@@ -649,6 +688,37 @@ In the following figure, we plot the normalized error vs. bond dimension, showin
 <span class="c"># key: `x`</span>
 <span class="c"># value: function value at `x`</span>
 <span class="n">evaluated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QuanticsTCI</span><span class="o">.</span><span class="n">cachedata</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dict{Float64, Float64} with 45379 entries:
+  0.893503    =&gt; 1.00649
+  0.500834    =&gt; 0.566008
+  0.501191    =&gt; 1.90705
+  0.654188    =&gt; 0.958567
+  0.51195     =&gt; 1.21688
+  0.649477    =&gt; 0.622181
+  0.0359638   =&gt; 2.29112
+  0.501191    =&gt; 1.65868
+  0.0374765   =&gt; 2.42775
+  0.509641    =&gt; 1.05659
+  0.501191    =&gt; 1.37054
+  0.93123     =&gt; 1.11994
+  0.000731894 =&gt; 2.04006
+  2.05313     =&gt; 0.256546
+  0.472654    =&gt; 1.85561
+  0.649897    =&gt; 1.48016
+  0.511795    =&gt; 1.51778
+  0.000731894 =&gt; 1.9994
+  0.500631    =&gt; 1.96383
+  0.920809    =&gt; 0.517762
+  0.653168    =&gt; 0.686753
+  0.0134987   =&gt; 1.91986
+  1.96558     =&gt; 0.281671
+  0.500824    =&gt; 1.83094
+  0.511795    =&gt; 0.810059
+  ⋮           =&gt; ⋮
 </pre></div>
 </div>
 </div>
@@ -673,6 +743,9 @@ In the following figure, we plot the normalized error vs. bond dimension, showin
 <span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/009c22fb737fcab373719f77f180b24f18a21cb0345966e96380b55345c6d769.png" src="../_images/009c22fb737fcab373719f77f180b24f18a21cb0345966e96380b55345c6d769.png" />
 </div>
 </div>
 </section>
@@ -713,6 +786,11 @@ f(x) &amp;= \sinc(x)+3e^{-0.3(x-4)^2}\sinc(x-4) \nonumber\\
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 14, QuanticsGrids.DiscretizedGrid{1}(20, (-10.0,), (10.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 3531 entries), [13, 14, 14, 14], [6.355543820798831e-9, 7.68016116647768e-9, 7.68016116647768e-9, 7.68016116647768e-9])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -720,6 +798,13 @@ f(x) &amp;= \sinc(x)+3e^{-0.3(x-4)^2}\sinc(x-4) \nonumber\\
 <span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QG</span><span class="o">.</span><span class="n">grididx_to_origcoord</span><span class="p">(</span><span class="n">qgrid</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
 <span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;x: </span><span class="si">$</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="s">, tci: </span><span class="si">$</span><span class="p">(</span><span class="n">ci</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="s">, ref: </span><span class="si">$</span><span class="p">(</span><span class="n">oscillation_fn</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x: -10.0, tci: -6.223187220679993, ref: -6.223187220679993
+x: -9.999980926513672, tci: -6.223066148054395, ref: -6.223066148054395
+x: 9.999980926513672, tci: -4.585194580210247, ref: -4.585194580210247
 </pre></div>
 </div>
 </div>
@@ -740,6 +825,9 @@ f(x) &amp;= \sinc(x)+3e^{-0.3(x-4)^2}\sinc(x-4) \nonumber\\
 <span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e29dc608570c279e7126023362acec0f4f344d511693b694efd0400fcc69ae70.png" src="../_images/e29dc608570c279e7126023362acec0f4f344d511693b694efd0400fcc69ae70.png" />
 </div>
 </div>
 </section>
@@ -763,6 +851,18 @@ The TCI algorithm will adaptively increase the bond dimension until the error is
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>iteration = 1, rank = 13, error= 1.6630585588040198e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=5
+  Rejected 5 global pivots added in the previous iteration, errors are [1.072102040478029e-8, 9.663236877344161e-11, 2.567727919178253e-9, 8.475819213149549e-9, 5.146535420053056e-10]
+iteration = 2, rank = 14, error= 4.449599701880746e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=0
+iteration = 3, rank = 14, error= 4.449599701880746e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=0
+iteration = 4, rank = 14, error= 4.449599701880746e-8, maxsamplevalue= 6.223187220679993, nglobalpivot=0
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 14, QuanticsGrids.DiscretizedGrid{1}(20, (-10.0,), (10.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 3786 entries), [13, 14, 14, 14], [2.672358230325427e-9, 7.150033486208613e-9, 7.150033486208613e-9, 7.150033486208613e-9])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -770,10 +870,24 @@ The TCI algorithm will adaptively increase the bond dimension until the error is
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Max abs sampled value is 6.223187220679993
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">errors_tol</span><span class="w"> </span><span class="o">./</span><span class="w"> </span><span class="n">ci_tol</span><span class="o">.</span><span class="n">tci</span><span class="o">.</span><span class="n">maxsamplevalue</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4-element Vector{Float64}:
+ 4.294195458952342e-10
+ 1.1489343374482868e-9
+ 1.1489343374482868e-9
+ 1.1489343374482868e-9
 </pre></div>
 </div>
 </div>
@@ -794,12 +908,49 @@ The algorithm finds indices (points) where the error is large by a randomized gl
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>87-element Vector{Tuple{Vector{Int64}, Float64}}:
+ ([1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2], 9.216749141671698e-8)
+ ([1, 1, 1, 1, 2, 2, 1, 2, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1], 8.829704167823138e-8)
+ ([1, 1, 1, 1, 2, 2, 1, 2, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2], 8.823681407754691e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 2, 2, 2, 1, 2, 2, 1, 2, 2, 1], 8.752814562029698e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1], 8.71598118123984e-8)
+ ([1, 1, 1, 1, 2, 2, 1, 2, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2], 8.70808452013705e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 2, 2, 1, 2, 2, 1, 1, 2, 2], 8.705556275856452e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 2, 2, 2, 1, 2, 2, 1, 2, 2, 1], 8.692169828350416e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2], 8.544610796690222e-8)
+ ([1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1], 8.387109318164221e-8)
+ ([1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 2, 2, 1, 2, 1, 1], 8.362102899006629e-8)
+ ([1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2], 8.266039941418057e-8)
+ ([1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1], 8.248719662873327e-8)
+ ⋮
+ ([2, 1, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 1, 1, 2, 2, 2, 1], 2.659775755198268e-8)
+ ([1, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 1, 2, 1, 1, 2, 2, 1, 2], 2.6507789296914552e-8)
+ ([2, 2, 2, 1, 1, 2, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 1], 2.3785080571769868e-8)
+ ([2, 2, 2, 2, 2, 1, 2, 1, 1, 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 1], 2.160830359088095e-8)
+ ([2, 1, 2, 1, 1, 1, 2, 2, 2, 2, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2], 2.1337193234494123e-8)
+ ([2, 1, 1, 1, 1, 2, 1, 2, 2, 1, 2, 1, 1, 1, 2, 2, 2, 2, 1, 2], 2.0600861017072702e-8)
+ ([1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 2, 1, 2, 1, 2, 1, 2, 2, 2, 1], 2.014178690501467e-8)
+ ([2, 1, 2, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 2, 1, 1, 1, 2], 1.9548224372556433e-8)
+ ([1, 2, 2, 2, 2, 2, 1, 2, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2], 1.893767398496518e-8)
+ ([1, 2, 2, 2, 1, 1, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1], 1.86520701106474e-8)
+ ([1, 2, 1, 1, 1, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1], 1.4679392812411152e-8)
+ ([2, 2, 1, 1, 1, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2], 1.2654999270722556e-8)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now, you can see the error estimate of the TCI is below the tolerance of <span class="math notranslate nohighlight">\(10^{-8}\)</span> (or close to it).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">println</span><span class="p">(</span><span class="s">&quot;The largest error found is </span><span class="si">$</span><span class="p">(</span><span class="n">pivoterror_global</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span><span class="s"> and the corresponding pivot is </span><span class="si">$</span><span class="p">(</span><span class="n">pivoterror_global</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="s">.&quot;</span><span class="p">)</span>
-<span class="n">println</span><span class="p">(</span><span class="s">&quot;The tolenrance used is </span><span class="si">$</span><span class="p">(</span><span class="n">tol</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ci_tol</span><span class="o">.</span><span class="n">tci</span><span class="o">.</span><span class="n">maxsamplevalue</span><span class="p">)</span><span class="s">.&quot;</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;The tolerance used is </span><span class="si">$</span><span class="p">(</span><span class="n">tol</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ci_tol</span><span class="o">.</span><span class="n">tci</span><span class="o">.</span><span class="n">maxsamplevalue</span><span class="p">)</span><span class="s">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The largest error found is 9.216749141671698e-8 and the corresponding pivot is [1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 2, 1, 2, 2, 2].
+The tolerance used is 6.223187220679993e-8.
 </pre></div>
 </div>
 </div>
@@ -852,7 +1003,7 @@ The algorithm finds indices (points) where the error is large by a randomized gl
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Quantics TCI of multivariate funciton</p>
+        <p class="prev-next-title">Quantics TCI of multivariate function</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

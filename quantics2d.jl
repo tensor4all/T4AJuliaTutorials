@@ -21,12 +21,12 @@
 #
 
 # %% [markdown]
-# # Quantics TCI of multivariate funciton
+# # Quantics TCI of multivariate function
 #
 
 # %%
 import TensorCrossInterpolation as TCI
-import QuanticsGrids: DiscretizedGrid, origcoord_to_quantics, origcoord_to_grididx
+import QuanticsGrids: DiscretizedGrid, origcoord_to_quantics, origcoord_to_grididx, grididx_to_origcoord
 using QuanticsTCI
 using PythonPlot: pyplot as plt
 using PythonPlot: Figure
@@ -39,23 +39,35 @@ using LaTeXStrings
 # %% [markdown]
 # ## Artificial function with widely different length scales
 #
+# As in the univariate case, we first demonstrate the multivariate case on an artificial function with widely different length scales:
+#
 
 # %%
 f(x, y) = (exp(-0.4 * (x^2 + y^2)) + 1 + sin(x * y) * exp(-x^2) +
-           cos(3 * x * y) * exp(-y^2) + cos(x + y)) + 0.05 * cos(1 / 0.001 * (0.2 * x - 0.4 * y)) + 0.0005 * cos(1 / 0.0001 * (-0.2 * x + 0.7 * y)) + 1e-5 * cos(1 / 1e-7 * (20 * x))
+           cos(3 * x * y) * exp(-y^2) + cos(x + y)) +
+           0.05 * cos(1 / 0.001 * (0.2 * x - 0.4 * y)) +
+           0.0005 * cos(1 / 0.0001 * (-0.2 * x + 0.7 * y)) +
+           1e-5 * cos(1 / 1e-7 * (20 * x))
 
+# %% [markdown]
+# To construct a 2D quantics grid, put `2` in the type parameter of `DiscretizedGrid`, and use tuples to specify lower and upper limits in each dimension:
+
+# %%
 R = 40
 gr = DiscretizedGrid{2}(R, (-5, -5), (5, 5))
+
+# %% [markdown]
+# To illustrate the different length scales, we show a series of progressively smaller parts of the function domain in the following.
 
 # %%
 function myplotheatmap(ax, func, xlim::Tuple, ylim::Tuple; xlim_box=nothing, ylim_box=nothing, cmap="inferno")
     x = LinRange(xlim..., 400)
     y = LinRange(ylim..., 400)
-    s = ax.pcolormesh(x, y, func.(x, y'), cmap=cmap)
+    s = ax.pcolormesh(y, x, func.(x, y'), cmap=cmap)
     if !isnothing(xlim_box) && !isnothing(ylim_box)
         ax.plot(
-            [xlim_box[1], xlim_box[2], xlim_box[2], xlim_box[1], xlim_box[1]],
             [ylim_box[1], ylim_box[1], ylim_box[2], ylim_box[2], ylim_box[1]],
+            [xlim_box[1], xlim_box[2], xlim_box[2], xlim_box[1], xlim_box[1]],
             color="lightgreen", lw=2, label="",
         )
     end
@@ -96,6 +108,9 @@ ax.set_yticklabels([1.88, "1.88" * "\n" * "+1e-7"])
 
 _display(fig)
 
+# %% [markdown]
+# We can now obtain a QTT for `f` in the same way as in the 1D case:
+
 # %%
 # Construct 2D quantics
 fig, ax = plt.subplots()
@@ -106,9 +121,15 @@ ax.set_ylabel("Normalized error")
 ax.set_yscale("log")
 _display(fig)
 
+# %% [markdown]
+# Checking the error on the same slices as before, we see that the approximation is accurate everywhere:
+
 # %%
 # Function that evaluates log10 of the interplation error at (x, y)
-errflog10(x, y) = log10(abs(f(x, y) - qtci(origcoord_to_grididx(gr, (x, y)))))
+function errflog10(x, y)
+    i = origcoord_to_grididx(gr, (x, y))
+    log10(abs(f(grididx_to_origcoord(gr, i)...) - qtci(i)))
+end
 
 eps = 1e-10
 myplotheatmap(errflog10, (-5, 5 - eps), (-5, 5 - eps), xlim_box=(0.25, 1.75), ylim_box=(1.25, 2.75))
@@ -134,3 +155,5 @@ _display(fig)
 
 # %%
 println("Number of sampled points ", length(TCI.cachedata(qtci.quanticsfunction)))
+
+# %%

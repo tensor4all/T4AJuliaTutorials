@@ -20,7 +20,7 @@
 #
 
 # %% [markdown]
-# # Quantics TCI of univariate funciton
+# # Quantics TCI of univariate function
 #
 
 # %%
@@ -32,7 +32,7 @@ _display(fig::Figure) = isinteractive() ? (fig; plt.show(); nothing) : Base.disp
 _display(fig::PythonCall.Py) = _display(Figure(fig))
 
 import QuanticsGrids as QG
-using QuanticsTCI: quanticscrossinterpolate
+using QuanticsTCI
 
 # %% [markdown]
 # ## Example 1
@@ -88,7 +88,7 @@ _display(fig)
 # %% [markdown]
 # ### QTT representation
 #
-# One can construct a QTT representation of this function on the domain $[0, \ln 20]$ a quantics grid of size $2^\mathcal{R}$ where $\mathcal{R}$ is $40$:
+# We construct a QTT representation of this function on the domain $[0, \ln 20]$, discretized on a quantics grid of size $2^\mathcal{R}$ with $\mathcal{R} = 40$ bits:
 #
 
 # %%
@@ -104,11 +104,14 @@ N = 2^R # size of the grid
 # * Uniform grid (includeendpoint=true):
 #   -xmin, -xmin+dx, ...., xmin-dx, xmin,
 #     where dx = (xmax - xmin)/(2^R-1).
-qgrid = QG.DiscretizedGrid{1}(R, xmin, xmax; includeendpoint=false)
+qgrid = QG.DiscretizedGrid{1}(R, xmin, xmax; includeendpoint=true)
 ci, ranks, errors = quanticscrossinterpolate(Float64, f, qgrid; maxbonddim=15)
 
+# %%
+length(ci.tci)
+
 # %% [markdown]
-# Here, we've created `ci` which is an object of `QuanticsTensorCI2{Float64}` in `QuanticsTCI.jl`. This can be evaluated at an linear index $i$ ($1 \le i \le 2^\mathcal{R}$) as follows:
+# Here, we've created the object `ci` of type `QuanticsTensorCI2{Float64}`. This can be evaluated at an linear index $i$ ($1 \le i \le 2^\mathcal{R}$) as follows:
 #
 
 # %%
@@ -123,14 +126,12 @@ end
 #
 
 # %%
-xs = LinRange(0, 2.0^(-23), 1000)
-ys = f.(xs)
+maxindex = QG.origcoord_to_grididx(qgrid, 2.0^(-23))
+testindices = Int.(round.(LinRange(1, maxindex, 1000)))
 
-yci = map(xs) do x
-    # Convert a coordinate in the original coordinate system to the corresponding grid index
-    i = QG.origcoord_to_grididx(qgrid, x)
-    ci(i)
-end
+xs = [QG.grididx_to_origcoord(qgrid, i) for i in testindices]
+ys = f.(xs)
+yci = ci.(testindices)
 
 fig, ax = plt.subplots()
 ax.plot(xs, ys, label="$(nameof(f))")
@@ -144,21 +145,16 @@ _display(fig)
 # %% [markdown]
 # Above, one can see that the original function is interpolated very accurately.
 #
-# Let's plot of $x$ vs interpolation error $\log(|f(x) - \mathrm{ci}(x)|)$ for small $x$
+# Let's plot of $x$ vs interpolation error $|f(x) - \mathrm{ci}(x)|$ for small $x$
 #
 
 # %%
 fig, ax = plt.subplots()
 
-xs = LinRange(0, 2.0^(-23), 1000)
 ys = f.(xs)
-yci = map(xs) do x
-    # Convert a coordinate in the original coordinate system to the corresponding grid index
-    i = QG.origcoord_to_grididx(qgrid, x)
-    ci(i)
-end
+yci = ci.(testindices)
 
-ax.plot(xs, log.(abs.(ys .- yci)), label="log(|f(x) - ci(x)|)")
+ax.semilogy(xs, abs.(ys .- yci), label="log(|f(x) - ci(x)|)")
 
 ax.set_title("x vs interpolation error: $(nameof(f))")
 ax.set_xlabel("x")
@@ -167,6 +163,27 @@ ax.legend()
 _display(fig)
 
 # %% [markdown]
+# ... and for all $x$:
+
+# %%
+fig, ax = plt.subplots()
+
+testindices = Int.(round.(LinRange(1, 2^R, 1000)))
+xs = [QG.grididx_to_origcoord(qgrid, i) for i in testindices]
+ys = f.(xs)
+yci = ci.(testindices)
+
+ax.semilogy(xs, abs.(ys .- yci), label="log(|f(x) - ci(x)|)")
+
+ax.set_title("x vs interpolation error: $(nameof(f))")
+ax.set_xlabel("x")
+ax.set_ylabel("interpolation error")
+ax.legend()
+_display(fig)
+
+# %% [markdown]
+# The function is approximated with an accuracy $\approx 10^{-7}$ over the entire domain.
+#
 # We are now ready to compute the integral $\mathrm{I}[f] = \int_0^{\ln 20} \mathrm{d}x f(x) \simeq 19/10$ using the QTT representation of $f(x)$.
 
 # %%
@@ -176,7 +193,7 @@ integral(ci), 19/10
 # `integral(ci)` is equivalent to calling `QuanticsTCI.sum(ci)` and multiplying the result by the interval length divided by $2^\mathcal{R}$.
 
 # %%
-QuanticsTCI.sum(ci) * (log(20) - 0) / 2^R, 19/10
+sum(ci) * (log(20) - 0) / 2^R, 19/10
 
 # %% [markdown]
 # ### About `ci::QuanticsTensorCI2{Float64}`
@@ -343,4 +360,6 @@ pivoterror_global = TCI.estimatetrueerror(TCI.TensorTrain(ci.tci), ci.quanticsfu
 
 # %%
 println("The largest error found is $(pivoterror_global[1][2]) and the corresponding pivot is $(pivoterror_global[1][1]).")
-println("The tolenrance used is $(tol * ci_tol.tci.maxsamplevalue).")
+println("The tolerance used is $(tol * ci_tol.tci.maxsamplevalue).")
+
+# %%

@@ -491,7 +491,7 @@ f(x) = \sum_p \frac{c_p}{1 - e^{-\epsilon_p}} e^{-\epsilon_p x}.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 2, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (1.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 2463 entries), [2, 2, 2], [2.793464338512118e-16, 2.220446049250313e-16, 2.220446049250313e-16])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 2, QuanticsGrids.DiscretizedGrid{1}(40, (0.0,), (1.0,), 2, :fused, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 2850 entries), [2, 2, 2], [2.793464338512118e-16, 2.220446049250313e-16, 2.220446049250313e-16])
 </pre></div>
 </div>
 </div>
@@ -609,50 +609,47 @@ The following code explains how to do this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">[ Info: </span>Precompiling Quantics [87f76fb3-a40a-40c9-a63c-29fcfe7b7547]
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MPS
-[1] ((dim=2|id=437|&quot;l=1,link&quot;), (dim=2|id=575|&quot;Qubit,k=40&quot;))
-[2] ((dim=4|id=362|&quot;l=2,link&quot;), (dim=2|id=437|&quot;l=1,link&quot;), (dim=2|id=137|&quot;Qubit,k=39&quot;))
-[3] ((dim=7|id=912|&quot;l=3,link&quot;), (dim=4|id=362|&quot;l=2,link&quot;), (dim=2|id=655|&quot;Qubit,k=38&quot;))
-[4] ((dim=7|id=568|&quot;l=4,link&quot;), (dim=7|id=912|&quot;l=3,link&quot;), (dim=2|id=149|&quot;Qubit,k=37&quot;))
-[5] ((dim=7|id=882|&quot;l=5,link&quot;), (dim=7|id=568|&quot;l=4,link&quot;), (dim=2|id=360|&quot;Qubit,k=36&quot;))
-[6] ((dim=8|id=88|&quot;l=6,link&quot;), (dim=7|id=882|&quot;l=5,link&quot;), (dim=2|id=943|&quot;Qubit,k=35&quot;))
-[7] ((dim=8|id=95|&quot;l=7,link&quot;), (dim=8|id=88|&quot;l=6,link&quot;), (dim=2|id=513|&quot;Qubit,k=34&quot;))
-[8] ((dim=8|id=632|&quot;l=8,link&quot;), (dim=8|id=95|&quot;l=7,link&quot;), (dim=2|id=358|&quot;Qubit,k=33&quot;))
-[9] ((dim=8|id=696|&quot;l=9,link&quot;), (dim=8|id=632|&quot;l=8,link&quot;), (dim=2|id=942|&quot;Qubit,k=32&quot;))
-[10] ((dim=8|id=554|&quot;l=10,link&quot;), (dim=8|id=696|&quot;l=9,link&quot;), (dim=2|id=922|&quot;Qubit,k=31&quot;))
-[11] ((dim=7|id=576|&quot;l=11,link&quot;), (dim=8|id=554|&quot;l=10,link&quot;), (dim=2|id=911|&quot;Qubit,k=30&quot;))
-[12] ((dim=7|id=157|&quot;l=12,link&quot;), (dim=7|id=576|&quot;l=11,link&quot;), (dim=2|id=904|&quot;Qubit,k=29&quot;))
-[13] ((dim=7|id=176|&quot;l=13,link&quot;), (dim=7|id=157|&quot;l=12,link&quot;), (dim=2|id=337|&quot;Qubit,k=28&quot;))
-[14] ((dim=7|id=450|&quot;l=14,link&quot;), (dim=7|id=176|&quot;l=13,link&quot;), (dim=2|id=530|&quot;Qubit,k=27&quot;))
-[15] ((dim=7|id=357|&quot;l=15,link&quot;), (dim=7|id=450|&quot;l=14,link&quot;), (dim=2|id=677|&quot;Qubit,k=26&quot;))
-[16] ((dim=7|id=646|&quot;l=16,link&quot;), (dim=7|id=357|&quot;l=15,link&quot;), (dim=2|id=993|&quot;Qubit,k=25&quot;))
-[17] ((dim=7|id=732|&quot;l=17,link&quot;), (dim=7|id=646|&quot;l=16,link&quot;), (dim=2|id=638|&quot;Qubit,k=24&quot;))
-[18] ((dim=7|id=56|&quot;l=18,link&quot;), (dim=7|id=732|&quot;l=17,link&quot;), (dim=2|id=517|&quot;Qubit,k=23&quot;))
-[19] ((dim=7|id=882|&quot;l=19,link&quot;), (dim=7|id=56|&quot;l=18,link&quot;), (dim=2|id=570|&quot;Qubit,k=22&quot;))
-[20] ((dim=6|id=529|&quot;l=20,link&quot;), (dim=7|id=882|&quot;l=19,link&quot;), (dim=2|id=888|&quot;Qubit,k=21&quot;))
-[21] ((dim=6|id=46|&quot;l=21,link&quot;), (dim=6|id=529|&quot;l=20,link&quot;), (dim=2|id=323|&quot;Qubit,k=20&quot;))
-[22] ((dim=6|id=278|&quot;l=22,link&quot;), (dim=6|id=46|&quot;l=21,link&quot;), (dim=2|id=16|&quot;Qubit,k=19&quot;))
-[23] ((dim=6|id=463|&quot;l=23,link&quot;), (dim=6|id=278|&quot;l=22,link&quot;), (dim=2|id=417|&quot;Qubit,k=18&quot;))
-[24] ((dim=6|id=543|&quot;l=24,link&quot;), (dim=6|id=463|&quot;l=23,link&quot;), (dim=2|id=516|&quot;Qubit,k=17&quot;))
-[25] ((dim=6|id=398|&quot;l=25,link&quot;), (dim=6|id=543|&quot;l=24,link&quot;), (dim=2|id=317|&quot;Qubit,k=16&quot;))
-[26] ((dim=6|id=641|&quot;l=26,link&quot;), (dim=6|id=398|&quot;l=25,link&quot;), (dim=2|id=61|&quot;Qubit,k=15&quot;))
-[27] ((dim=6|id=378|&quot;l=27,link&quot;), (dim=6|id=641|&quot;l=26,link&quot;), (dim=2|id=324|&quot;Qubit,k=14&quot;))
-[28] ((dim=5|id=741|&quot;l=28,link&quot;), (dim=6|id=378|&quot;l=27,link&quot;), (dim=2|id=311|&quot;Qubit,k=13&quot;))
-[29] ((dim=5|id=447|&quot;l=29,link&quot;), (dim=5|id=741|&quot;l=28,link&quot;), (dim=2|id=246|&quot;Qubit,k=12&quot;))
-[30] ((dim=5|id=551|&quot;l=30,link&quot;), (dim=5|id=447|&quot;l=29,link&quot;), (dim=2|id=692|&quot;Qubit,k=11&quot;))
-[31] ((dim=5|id=209|&quot;l=31,link&quot;), (dim=5|id=551|&quot;l=30,link&quot;), (dim=2|id=797|&quot;Qubit,k=10&quot;))
-[32] ((dim=5|id=939|&quot;l=32,link&quot;), (dim=5|id=209|&quot;l=31,link&quot;), (dim=2|id=573|&quot;Qubit,k=9&quot;))
-[33] ((dim=5|id=391|&quot;l=33,link&quot;), (dim=5|id=939|&quot;l=32,link&quot;), (dim=2|id=497|&quot;Qubit,k=8&quot;))
-[34] ((dim=5|id=692|&quot;l=34,link&quot;), (dim=5|id=391|&quot;l=33,link&quot;), (dim=2|id=208|&quot;Qubit,k=7&quot;))
-[35] ((dim=4|id=547|&quot;l=35,link&quot;), (dim=5|id=692|&quot;l=34,link&quot;), (dim=2|id=622|&quot;Qubit,k=6&quot;))
-[36] ((dim=4|id=597|&quot;l=36,link&quot;), (dim=4|id=547|&quot;l=35,link&quot;), (dim=2|id=179|&quot;Qubit,k=5&quot;))
-[37] ((dim=4|id=774|&quot;l=37,link&quot;), (dim=4|id=597|&quot;l=36,link&quot;), (dim=2|id=75|&quot;Qubit,k=4&quot;))
-[38] ((dim=4|id=425|&quot;l=38,link&quot;), (dim=4|id=774|&quot;l=37,link&quot;), (dim=2|id=511|&quot;Qubit,k=3&quot;))
-[39] ((dim=2|id=42|&quot;l=39,link&quot;), (dim=4|id=425|&quot;l=38,link&quot;), (dim=2|id=224|&quot;Qubit,k=2&quot;))
-[40] ((dim=2|id=42|&quot;l=39,link&quot;), (dim=2|id=137|&quot;Qubit,k=1&quot;))
+[1] ((dim=2|id=959|&quot;l=1,link&quot;), (dim=2|id=673|&quot;Qubit,k=40&quot;))
+[2] ((dim=4|id=772|&quot;l=2,link&quot;), (dim=2|id=959|&quot;l=1,link&quot;), (dim=2|id=355|&quot;Qubit,k=39&quot;))
+[3] ((dim=7|id=259|&quot;l=3,link&quot;), (dim=4|id=772|&quot;l=2,link&quot;), (dim=2|id=715|&quot;Qubit,k=38&quot;))
+[4] ((dim=7|id=386|&quot;l=4,link&quot;), (dim=7|id=259|&quot;l=3,link&quot;), (dim=2|id=845|&quot;Qubit,k=37&quot;))
+[5] ((dim=7|id=804|&quot;l=5,link&quot;), (dim=7|id=386|&quot;l=4,link&quot;), (dim=2|id=754|&quot;Qubit,k=36&quot;))
+[6] ((dim=8|id=498|&quot;l=6,link&quot;), (dim=7|id=804|&quot;l=5,link&quot;), (dim=2|id=437|&quot;Qubit,k=35&quot;))
+[7] ((dim=8|id=525|&quot;l=7,link&quot;), (dim=8|id=498|&quot;l=6,link&quot;), (dim=2|id=567|&quot;Qubit,k=34&quot;))
+[8] ((dim=8|id=402|&quot;l=8,link&quot;), (dim=8|id=525|&quot;l=7,link&quot;), (dim=2|id=127|&quot;Qubit,k=33&quot;))
+[9] ((dim=8|id=945|&quot;l=9,link&quot;), (dim=8|id=402|&quot;l=8,link&quot;), (dim=2|id=332|&quot;Qubit,k=32&quot;))
+[10] ((dim=8|id=139|&quot;l=10,link&quot;), (dim=8|id=945|&quot;l=9,link&quot;), (dim=2|id=959|&quot;Qubit,k=31&quot;))
+[11] ((dim=7|id=754|&quot;l=11,link&quot;), (dim=8|id=139|&quot;l=10,link&quot;), (dim=2|id=975|&quot;Qubit,k=30&quot;))
+[12] ((dim=7|id=404|&quot;l=12,link&quot;), (dim=7|id=754|&quot;l=11,link&quot;), (dim=2|id=96|&quot;Qubit,k=29&quot;))
+[13] ((dim=7|id=30|&quot;l=13,link&quot;), (dim=7|id=404|&quot;l=12,link&quot;), (dim=2|id=415|&quot;Qubit,k=28&quot;))
+[14] ((dim=7|id=775|&quot;l=14,link&quot;), (dim=7|id=30|&quot;l=13,link&quot;), (dim=2|id=990|&quot;Qubit,k=27&quot;))
+[15] ((dim=7|id=694|&quot;l=15,link&quot;), (dim=7|id=775|&quot;l=14,link&quot;), (dim=2|id=19|&quot;Qubit,k=26&quot;))
+[16] ((dim=7|id=323|&quot;l=16,link&quot;), (dim=7|id=694|&quot;l=15,link&quot;), (dim=2|id=644|&quot;Qubit,k=25&quot;))
+[17] ((dim=7|id=0|&quot;l=17,link&quot;), (dim=7|id=323|&quot;l=16,link&quot;), (dim=2|id=387|&quot;Qubit,k=24&quot;))
+[18] ((dim=7|id=135|&quot;l=18,link&quot;), (dim=7|id=0|&quot;l=17,link&quot;), (dim=2|id=129|&quot;Qubit,k=23&quot;))
+[19] ((dim=7|id=195|&quot;l=19,link&quot;), (dim=7|id=135|&quot;l=18,link&quot;), (dim=2|id=714|&quot;Qubit,k=22&quot;))
+[20] ((dim=6|id=354|&quot;l=20,link&quot;), (dim=7|id=195|&quot;l=19,link&quot;), (dim=2|id=416|&quot;Qubit,k=21&quot;))
+[21] ((dim=6|id=180|&quot;l=21,link&quot;), (dim=6|id=354|&quot;l=20,link&quot;), (dim=2|id=895|&quot;Qubit,k=20&quot;))
+[22] ((dim=6|id=164|&quot;l=22,link&quot;), (dim=6|id=180|&quot;l=21,link&quot;), (dim=2|id=638|&quot;Qubit,k=19&quot;))
+[23] ((dim=6|id=81|&quot;l=23,link&quot;), (dim=6|id=164|&quot;l=22,link&quot;), (dim=2|id=125|&quot;Qubit,k=18&quot;))
+[24] ((dim=6|id=939|&quot;l=24,link&quot;), (dim=6|id=81|&quot;l=23,link&quot;), (dim=2|id=136|&quot;Qubit,k=17&quot;))
+[25] ((dim=6|id=310|&quot;l=25,link&quot;), (dim=6|id=939|&quot;l=24,link&quot;), (dim=2|id=94|&quot;Qubit,k=16&quot;))
+[26] ((dim=6|id=816|&quot;l=26,link&quot;), (dim=6|id=310|&quot;l=25,link&quot;), (dim=2|id=723|&quot;Qubit,k=15&quot;))
+[27] ((dim=6|id=154|&quot;l=27,link&quot;), (dim=6|id=816|&quot;l=26,link&quot;), (dim=2|id=743|&quot;Qubit,k=14&quot;))
+[28] ((dim=5|id=934|&quot;l=28,link&quot;), (dim=6|id=154|&quot;l=27,link&quot;), (dim=2|id=420|&quot;Qubit,k=13&quot;))
+[29] ((dim=5|id=414|&quot;l=29,link&quot;), (dim=5|id=934|&quot;l=28,link&quot;), (dim=2|id=309|&quot;Qubit,k=12&quot;))
+[30] ((dim=5|id=63|&quot;l=30,link&quot;), (dim=5|id=414|&quot;l=29,link&quot;), (dim=2|id=945|&quot;Qubit,k=11&quot;))
+[31] ((dim=5|id=576|&quot;l=31,link&quot;), (dim=5|id=63|&quot;l=30,link&quot;), (dim=2|id=272|&quot;Qubit,k=10&quot;))
+[32] ((dim=5|id=450|&quot;l=32,link&quot;), (dim=5|id=576|&quot;l=31,link&quot;), (dim=2|id=364|&quot;Qubit,k=9&quot;))
+[33] ((dim=5|id=833|&quot;l=33,link&quot;), (dim=5|id=450|&quot;l=32,link&quot;), (dim=2|id=57|&quot;Qubit,k=8&quot;))
+[34] ((dim=5|id=764|&quot;l=34,link&quot;), (dim=5|id=833|&quot;l=33,link&quot;), (dim=2|id=47|&quot;Qubit,k=7&quot;))
+[35] ((dim=4|id=323|&quot;l=35,link&quot;), (dim=5|id=764|&quot;l=34,link&quot;), (dim=2|id=176|&quot;Qubit,k=6&quot;))
+[36] ((dim=4|id=749|&quot;l=36,link&quot;), (dim=4|id=323|&quot;l=35,link&quot;), (dim=2|id=167|&quot;Qubit,k=5&quot;))
+[37] ((dim=4|id=965|&quot;l=37,link&quot;), (dim=4|id=749|&quot;l=36,link&quot;), (dim=2|id=284|&quot;Qubit,k=4&quot;))
+[38] ((dim=4|id=189|&quot;l=38,link&quot;), (dim=4|id=965|&quot;l=37,link&quot;), (dim=2|id=390|&quot;Qubit,k=3&quot;))
+[39] ((dim=2|id=875|&quot;l=39,link&quot;), (dim=4|id=189|&quot;l=38,link&quot;), (dim=2|id=425|&quot;Qubit,k=2&quot;))
+[40] ((dim=2|id=875|&quot;l=39,link&quot;), (dim=2|id=430|&quot;Qubit,k=1&quot;))
 </pre></div>
 </div>
 </div>
@@ -706,10 +703,11 @@ The following code explains how to do this.</p>
 $<span class="math notranslate nohighlight">\(
 \hat{f}_{kl} = \int_0^1  \int_0^1 dx dy \, f(x, y) e^{i \omega_k x + i\omega_l y} \approx \frac{1}{M^2} \sum_{m,n=0}^{M-1} f_{mn} e^{i 2 \pi (k m + l n) / M} =  \frac{1}{M} \sum_{m,n=0}^{M-1} T_{km} T_{ln} f_{mn}.
 \)</span>$</p>
-<p>The exact form of the Fourier transform is
-$<span class="math notranslate nohighlight">\(
+<p>The exact form of the Fourier transform is</p>
+<div class="math notranslate nohighlight">
+\[
 \hat{f}_{kl} = \frac{1}{(i\omega_k - \epsilon) (i\omega_l - \epsilon')}.
-\)</span>$</p>
+\]</div>
 <p>for <span class="math notranslate nohighlight">\(k, l = 0, 1, \cdots \)</span>, <span class="math notranslate nohighlight">\(\omega_k = 2\pi k\)</span> and <span class="math notranslate nohighlight">\(\omega_l = 2\pi l\)</span>.</p>
 <p>The 2D Fourier transform can be numerically computed in QTT format (with interleaved representation) in a straightforward way using Quantics.jl.</p>
 <div class="cell docutils container">
@@ -727,7 +725,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 1, QuanticsGrids.DiscretizedGrid{2}(40, (0.0, 0.0), (1.0, 1.0), 2, :interleaved, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 5381 entries), [1, 1, 1], [1.213634401775041e-16, 1.213634401775041e-16, 1.213634401775041e-16])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(QuanticsTCI.QuanticsTensorCI2{Float64}(TensorCrossInterpolation.TensorCI2{Float64} with rank 1, QuanticsGrids.DiscretizedGrid{2}(40, (0.0, 0.0), (1.0, 1.0), 2, :interleaved, false), TensorCrossInterpolation.CachedFunction{Float64, UInt128} with 5806 entries), [1, 1, 1], [1.213634401775041e-16, 1.213634401775041e-16, 1.213634401775041e-16])
 </pre></div>
 </div>
 </div>
@@ -748,32 +746,32 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80-element Vector{Index{Int64}}:
- (dim=2|id=921|&quot;Qubit,m=1&quot;)
- (dim=2|id=935|&quot;Qubit,n=1&quot;)
- (dim=2|id=859|&quot;Qubit,m=2&quot;)
- (dim=2|id=400|&quot;Qubit,n=2&quot;)
- (dim=2|id=763|&quot;Qubit,m=3&quot;)
- (dim=2|id=565|&quot;Qubit,n=3&quot;)
- (dim=2|id=264|&quot;Qubit,m=4&quot;)
- (dim=2|id=96|&quot;Qubit,n=4&quot;)
- (dim=2|id=466|&quot;Qubit,m=5&quot;)
- (dim=2|id=698|&quot;Qubit,n=5&quot;)
- (dim=2|id=105|&quot;Qubit,m=6&quot;)
- (dim=2|id=420|&quot;Qubit,n=6&quot;)
- (dim=2|id=100|&quot;Qubit,m=7&quot;)
+ (dim=2|id=239|&quot;Qubit,m=1&quot;)
+ (dim=2|id=819|&quot;Qubit,n=1&quot;)
+ (dim=2|id=357|&quot;Qubit,m=2&quot;)
+ (dim=2|id=313|&quot;Qubit,n=2&quot;)
+ (dim=2|id=142|&quot;Qubit,m=3&quot;)
+ (dim=2|id=337|&quot;Qubit,n=3&quot;)
+ (dim=2|id=511|&quot;Qubit,m=4&quot;)
+ (dim=2|id=626|&quot;Qubit,n=4&quot;)
+ (dim=2|id=806|&quot;Qubit,m=5&quot;)
+ (dim=2|id=811|&quot;Qubit,n=5&quot;)
+ (dim=2|id=554|&quot;Qubit,m=6&quot;)
+ (dim=2|id=627|&quot;Qubit,n=6&quot;)
+ (dim=2|id=368|&quot;Qubit,m=7&quot;)
  ⋮
- (dim=2|id=685|&quot;Qubit,m=35&quot;)
- (dim=2|id=100|&quot;Qubit,n=35&quot;)
- (dim=2|id=269|&quot;Qubit,m=36&quot;)
- (dim=2|id=669|&quot;Qubit,n=36&quot;)
- (dim=2|id=434|&quot;Qubit,m=37&quot;)
- (dim=2|id=452|&quot;Qubit,n=37&quot;)
- (dim=2|id=133|&quot;Qubit,m=38&quot;)
- (dim=2|id=181|&quot;Qubit,n=38&quot;)
- (dim=2|id=604|&quot;Qubit,m=39&quot;)
- (dim=2|id=467|&quot;Qubit,n=39&quot;)
- (dim=2|id=932|&quot;Qubit,m=40&quot;)
- (dim=2|id=376|&quot;Qubit,n=40&quot;)
+ (dim=2|id=279|&quot;Qubit,m=35&quot;)
+ (dim=2|id=433|&quot;Qubit,n=35&quot;)
+ (dim=2|id=139|&quot;Qubit,m=36&quot;)
+ (dim=2|id=376|&quot;Qubit,n=36&quot;)
+ (dim=2|id=327|&quot;Qubit,m=37&quot;)
+ (dim=2|id=621|&quot;Qubit,n=37&quot;)
+ (dim=2|id=813|&quot;Qubit,m=38&quot;)
+ (dim=2|id=781|&quot;Qubit,n=38&quot;)
+ (dim=2|id=322|&quot;Qubit,m=39&quot;)
+ (dim=2|id=586|&quot;Qubit,n=39&quot;)
+ (dim=2|id=242|&quot;Qubit,m=40&quot;)
+ (dim=2|id=529|&quot;Qubit,n=40&quot;)
 </pre></div>
 </div>
 </div>
@@ -792,32 +790,32 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80-element Vector{Index{Int64}}:
- (dim=2|id=575|&quot;Qubit,k=40&quot;)
- (dim=2|id=791|&quot;Qubit,l=40&quot;)
- (dim=2|id=137|&quot;Qubit,k=39&quot;)
- (dim=2|id=834|&quot;Qubit,l=39&quot;)
- (dim=2|id=655|&quot;Qubit,k=38&quot;)
- (dim=2|id=461|&quot;Qubit,l=38&quot;)
- (dim=2|id=149|&quot;Qubit,k=37&quot;)
- (dim=2|id=352|&quot;Qubit,l=37&quot;)
- (dim=2|id=360|&quot;Qubit,k=36&quot;)
- (dim=2|id=603|&quot;Qubit,l=36&quot;)
- (dim=2|id=943|&quot;Qubit,k=35&quot;)
- (dim=2|id=427|&quot;Qubit,l=35&quot;)
- (dim=2|id=513|&quot;Qubit,k=34&quot;)
+ (dim=2|id=673|&quot;Qubit,k=40&quot;)
+ (dim=2|id=128|&quot;Qubit,l=40&quot;)
+ (dim=2|id=355|&quot;Qubit,k=39&quot;)
+ (dim=2|id=685|&quot;Qubit,l=39&quot;)
+ (dim=2|id=715|&quot;Qubit,k=38&quot;)
+ (dim=2|id=680|&quot;Qubit,l=38&quot;)
+ (dim=2|id=845|&quot;Qubit,k=37&quot;)
+ (dim=2|id=696|&quot;Qubit,l=37&quot;)
+ (dim=2|id=754|&quot;Qubit,k=36&quot;)
+ (dim=2|id=76|&quot;Qubit,l=36&quot;)
+ (dim=2|id=437|&quot;Qubit,k=35&quot;)
+ (dim=2|id=214|&quot;Qubit,l=35&quot;)
+ (dim=2|id=567|&quot;Qubit,k=34&quot;)
  ⋮
- (dim=2|id=622|&quot;Qubit,k=6&quot;)
- (dim=2|id=484|&quot;Qubit,l=6&quot;)
- (dim=2|id=179|&quot;Qubit,k=5&quot;)
- (dim=2|id=99|&quot;Qubit,l=5&quot;)
- (dim=2|id=75|&quot;Qubit,k=4&quot;)
- (dim=2|id=252|&quot;Qubit,l=4&quot;)
- (dim=2|id=511|&quot;Qubit,k=3&quot;)
- (dim=2|id=984|&quot;Qubit,l=3&quot;)
- (dim=2|id=224|&quot;Qubit,k=2&quot;)
- (dim=2|id=444|&quot;Qubit,l=2&quot;)
- (dim=2|id=137|&quot;Qubit,k=1&quot;)
- (dim=2|id=945|&quot;Qubit,l=1&quot;)
+ (dim=2|id=176|&quot;Qubit,k=6&quot;)
+ (dim=2|id=806|&quot;Qubit,l=6&quot;)
+ (dim=2|id=167|&quot;Qubit,k=5&quot;)
+ (dim=2|id=355|&quot;Qubit,l=5&quot;)
+ (dim=2|id=284|&quot;Qubit,k=4&quot;)
+ (dim=2|id=741|&quot;Qubit,l=4&quot;)
+ (dim=2|id=390|&quot;Qubit,k=3&quot;)
+ (dim=2|id=226|&quot;Qubit,l=3&quot;)
+ (dim=2|id=425|&quot;Qubit,k=2&quot;)
+ (dim=2|id=489|&quot;Qubit,l=2&quot;)
+ (dim=2|id=430|&quot;Qubit,k=1&quot;)
+ (dim=2|id=912|&quot;Qubit,l=1&quot;)
 </pre></div>
 </div>
 </div>
@@ -837,32 +835,32 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>80-element Vector{Index{Int64}}:
- (dim=2|id=137|&quot;Qubit,k=1&quot;)
- (dim=2|id=945|&quot;Qubit,l=1&quot;)
- (dim=2|id=224|&quot;Qubit,k=2&quot;)
- (dim=2|id=444|&quot;Qubit,l=2&quot;)
- (dim=2|id=511|&quot;Qubit,k=3&quot;)
- (dim=2|id=984|&quot;Qubit,l=3&quot;)
- (dim=2|id=75|&quot;Qubit,k=4&quot;)
- (dim=2|id=252|&quot;Qubit,l=4&quot;)
- (dim=2|id=179|&quot;Qubit,k=5&quot;)
- (dim=2|id=99|&quot;Qubit,l=5&quot;)
- (dim=2|id=622|&quot;Qubit,k=6&quot;)
- (dim=2|id=484|&quot;Qubit,l=6&quot;)
- (dim=2|id=208|&quot;Qubit,k=7&quot;)
+ (dim=2|id=430|&quot;Qubit,k=1&quot;)
+ (dim=2|id=912|&quot;Qubit,l=1&quot;)
+ (dim=2|id=425|&quot;Qubit,k=2&quot;)
+ (dim=2|id=489|&quot;Qubit,l=2&quot;)
+ (dim=2|id=390|&quot;Qubit,k=3&quot;)
+ (dim=2|id=226|&quot;Qubit,l=3&quot;)
+ (dim=2|id=284|&quot;Qubit,k=4&quot;)
+ (dim=2|id=741|&quot;Qubit,l=4&quot;)
+ (dim=2|id=167|&quot;Qubit,k=5&quot;)
+ (dim=2|id=355|&quot;Qubit,l=5&quot;)
+ (dim=2|id=176|&quot;Qubit,k=6&quot;)
+ (dim=2|id=806|&quot;Qubit,l=6&quot;)
+ (dim=2|id=47|&quot;Qubit,k=7&quot;)
  ⋮
- (dim=2|id=943|&quot;Qubit,k=35&quot;)
- (dim=2|id=427|&quot;Qubit,l=35&quot;)
- (dim=2|id=360|&quot;Qubit,k=36&quot;)
- (dim=2|id=603|&quot;Qubit,l=36&quot;)
- (dim=2|id=149|&quot;Qubit,k=37&quot;)
- (dim=2|id=352|&quot;Qubit,l=37&quot;)
- (dim=2|id=655|&quot;Qubit,k=38&quot;)
- (dim=2|id=461|&quot;Qubit,l=38&quot;)
- (dim=2|id=137|&quot;Qubit,k=39&quot;)
- (dim=2|id=834|&quot;Qubit,l=39&quot;)
- (dim=2|id=575|&quot;Qubit,k=40&quot;)
- (dim=2|id=791|&quot;Qubit,l=40&quot;)
+ (dim=2|id=437|&quot;Qubit,k=35&quot;)
+ (dim=2|id=214|&quot;Qubit,l=35&quot;)
+ (dim=2|id=754|&quot;Qubit,k=36&quot;)
+ (dim=2|id=76|&quot;Qubit,l=36&quot;)
+ (dim=2|id=845|&quot;Qubit,k=37&quot;)
+ (dim=2|id=696|&quot;Qubit,l=37&quot;)
+ (dim=2|id=715|&quot;Qubit,k=38&quot;)
+ (dim=2|id=680|&quot;Qubit,l=38&quot;)
+ (dim=2|id=355|&quot;Qubit,k=39&quot;)
+ (dim=2|id=685|&quot;Qubit,l=39&quot;)
+ (dim=2|id=673|&quot;Qubit,k=40&quot;)
+ (dim=2|id=128|&quot;Qubit,l=40&quot;)
 </pre></div>
 </div>
 </div>

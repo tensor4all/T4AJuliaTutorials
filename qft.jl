@@ -245,6 +245,7 @@ _display(fig)
 # $$
 #
 # The exact form of the Fourier transform is
+#
 # $$
 # \hat{f}_{kl} = \frac{1}{(i\omega_k - \epsilon) (i\omega_l - \epsilon')}.
 # $$

@@ -16,7 +16,8 @@
 				"ms-toolsai.jupyter",
 				"wdawson.better-kill-ring",
 				"congyiwu.vscode-jupytext",
-				"charliermarsh.ruff"
+				"charliermarsh.ruff",
+				"ms-azuretools.vscode-docker"
 			]
 		}
 	},

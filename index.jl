@@ -21,7 +21,7 @@
 # on quantics and tensor cross interpolation (TCI) and their combinations (QTCI).
 # These technologies allow us to reveal low-rank tensor network representation (TNR) hidden in data or a function,
 # and perform computation such as Fourier transform and convolution.
-# Please refer [xfacpaper]() for a more detailed introduction of these concepts.
+# Please refer [xfacpaper](https://arxiv.org/abs/2407.02454) for a more detailed introduction of these concepts.
 #
 # The T4A group hosts various Julia libraries for performing such operations.
 # The folowing list is given in the order of low-level to high-level libraries:

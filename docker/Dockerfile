@@ -1,4 +1,4 @@
-FROM julia:1.10.3
+FROM julia:1.10.4
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	make \
@@ -25,18 +25,19 @@ RUN chown -R ${NB_UID} /workspaces/
 USER ${NB_USER}
 
 # https://rye-up.com/guide/installation/
-RUN curl -sSf https://rye-up.com/get | RYE_VERSION="0.32.0" RYE_INSTALL_OPTION="--yes" bash
+RUN curl -sSf https://rye.astral.sh/get | RYE_VERSION="0.36.0" RYE_INSTALL_OPTION="--yes" bash
 RUN $HOME/.rye/shims/rye config --set-bool behavior.use-uv=true
 
+# Required to open .jl files as jupyter notebooks
 # https://jupytext.readthedocs.io/en/latest/index.html
 RUN $HOME/.rye/shims/rye tools install jupytext \
 	&& $HOME/.rye/shims/rye tools install ruff
 
-
 USER root
-COPY Project.toml /workspaces/T4FExamples/
-RUN chown -R ${NB_UID} /workspaces/T4FExamples
+COPY Project.toml /workspaces/T4AJuliaTutorials/
+RUN chown -R ${NB_UID} /workspaces/T4AJuliaTutorials
 USER ${NB_USER}
 
-RUN julia --project=/workspaces/T4FExamples/ -e 'using Pkg; Pkg.instantiate()' \
-	&& julia --project=/workspaces/T4FExamples -e 'using Pkg; Pkg.build("IJulia")'
+RUN julia -e 'using Pkg; Pkg.Registry.add("General"); Pkg.Registry.add(RegistrySpec(url="https://github.com/tensor4all/T4ARegistry.git"))'
+RUN julia --project=/workspaces/T4AJuliaTutorials/ -e 'using Pkg; Pkg.instantiate()' \
+	&& julia --project=/workspaces/T4AJuliaTutorials -e 'using Pkg; Pkg.build("IJulia")'

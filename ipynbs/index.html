@@ -462,8 +462,10 @@ The folowing list is given in the order of low-level to high-level libraries:</p
 <section id="install-required-packages">
 <h3>Install required packages<a class="headerlink" href="#install-required-packages" title="Link to this heading">#</a></h3>
 <p>One can install required packages by running the following command on your shell:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>julia<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.Registry.add(RegistrySpec(url=&quot;https://github.com/tensor4all/T4ARegistry.git&quot;))&#39;</span>
-julia<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.add([&quot;QuanticsTCI&quot;, &quot;QuanticsGrids&quot;, &quot;TensorCrossInterpolation&quot;, &quot;TCIITensorConversion&quot;, &quot;ITensors&quot;, &quot;Quantics&quot;, &quot;Plots&quot;, &quot;PythonPlot&quot;, &quot;LaTeXStrings&quot;])&#39;</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:tensor4all/T4AJuliaTutorials.git
+<span class="nb">cd</span><span class="w"> </span>T4AJuliaTutorials
+julia<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.Registry.add(RegistrySpec(url=&quot;https://github.com/tensor4all/T4ARegistry.git&quot;))&#39;</span>
+julia<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.add([&quot;QuanticsTCI&quot;, &quot;QuanticsGrids&quot;, &quot;TensorCrossInterpolation&quot;, &quot;TCIITensorConversion&quot;, &quot;ITensors&quot;, &quot;Quantics&quot;, &quot;PythonPlot&quot;, &quot;LaTeXStrings&quot;])&#39;</span>
 </pre></div>
 </div>
 <p>This will install required packages to Julia’s global envrironment.</p>

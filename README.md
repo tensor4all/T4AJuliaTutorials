@@ -19,10 +19,9 @@ $ cd T4AJuliaTutorials
 ### Setup
 
 ```sh
-$ ls 
-CondaPkg.toml README.md index.jl Makefile ... Project.toml
-$ julia --project -e 'using Pkg; Pkg.instantiate()'
-$ julia --project -e 'using Pkg; Pkg.build("IJulia")'
+$ ls
+Project.toml CondaPkg.toml README.md index.jl Makefile # and so on
+$ julia --project scripts/setup.jl
 ```
 
 ## How to build a Jupyter Book
@@ -85,7 +84,7 @@ You will find `_build/html/index.html` is generated. Open this file in a browser
 
 We do not want to commit in `ipynb` files, which are difficult for humans to read and could contain binary data. Instead, we commit files as `jl` which can be transformed into ipynb format via `jupytext`.
 
-### Edit source files from VS Code 
+### Edit source files from VS Code
 
 If you are familiar with using VS Code, you could use `code` command from your terminal. To install required extensions for our workflow, run the following command:
 
@@ -93,7 +92,7 @@ If you are familiar with using VS Code, you could use `code` command from your t
 $ code --install-extension ms-toolsai.jupyter julialang.language-julia congyiwu.vscode-jupytext
 ```
 
-Open VS Code by runnning 
+Open VS Code by runnning
 
 ```
 $ cd /path/to/this/repository

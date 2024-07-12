@@ -111,6 +111,8 @@ $ julia --project -e 'using IJulia; IJulia.jupyterlab(dir=pwd())'
 install Jupyter via Conda, y/n? [y]: y # press y
 ```
 
+JupyterLab will be launched automatically. If you are familiar with Python, just run the command below:
+
 ```sh
 $ pip3 install jupytext jupyterlab
 $ jupytext-config set-default-viewer

@@ -114,3 +114,11 @@ $ jupyter lab
 Here running `jupytext-config set-default-viewer` allows us to render jl files as Jupyter Notebook format. [See jupytext manual](https://jupytext.readthedocs.io/en/latest/text-notebooks.html#with-a-double-click) to learn more.
 
 By Clicking `quantics1d.jl` it will be converted to `quantics1d.ipynb` and Jupyter server will open `quantics1d.ipynb`. We are allowed to synchronize the Jupyter Notebook file and the jl format file.
+
+
+### Update Project.toml and Manifest.toml together
+
+If one wants to update dependencies in `Project.toml`, please update `Manifest.toml` together. [This link](https://pkgdocs.julialang.org/v1/toml-files/#Manifest.toml) explains what Manifest.toml is:
+
+> The manifest file is an absolute record of the state of the packages in the environment. It includes exact information about (direct and indirect) dependencies of the project. Given a Project.toml + Manifest.toml pair, it is possible to instantiate the exact same package environment, which is very useful for reproducibility. 
+

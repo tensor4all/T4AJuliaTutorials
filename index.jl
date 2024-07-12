@@ -112,13 +112,19 @@
 # ```sh
 # git clone git@github.com:tensor4all/T4AJuliaTutorials.git
 # cd T4AJuliaTutorials
-# julia -e 'using Pkg; Pkg.Registry.add(RegistrySpec(url="https://github.com/tensor4all/T4ARegistry.git"))'
-# julia -e 'using Pkg; Pkg.add(["QuanticsTCI", "QuanticsGrids", "TensorCrossInterpolation", "TCIITensorConversion", "ITensors", "Quantics", "PythonPlot", "LaTeXStrings"])'
+# julia --project scripts/setup.jl
 # ```
 #
 
 # %% [markdown]
-# This will install required packages to Julia's global envrironment.
+# Here, the `--project` option activates our project, which is characterized by `Project.toml`, and `scripts/setup.jl` installs dependencies needed to run our notebooks.
+
+# %% [markdown]
+# Keep in mind that [Quantics.jl](https://github.com/tensor4all/Quantics.jl) is not registered in [Julia's General registry](https://github.com/JuliaRegistries/General/tree/master). To run `qft.jl`, we need to add [T4ARegistry](https://github.com/tensor4all/T4ARegistry).
+#
+# ```sh
+# julia --project -e 'using Pkg; Pkg.Registry.add(RegistrySpec(url="https://github.com/tensor4all/T4ARegistry.git"))'
+# ```
 #
 
 # %% [markdown]

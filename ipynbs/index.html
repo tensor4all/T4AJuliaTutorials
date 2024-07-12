@@ -464,11 +464,14 @@ The folowing list is given in the order of low-level to high-level libraries:</p
 <p>One can install required packages by running the following command on your shell:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:tensor4all/T4AJuliaTutorials.git
 <span class="nb">cd</span><span class="w"> </span>T4AJuliaTutorials
-julia<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.Registry.add(RegistrySpec(url=&quot;https://github.com/tensor4all/T4ARegistry.git&quot;))&#39;</span>
-julia<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.add([&quot;QuanticsTCI&quot;, &quot;QuanticsGrids&quot;, &quot;TensorCrossInterpolation&quot;, &quot;TCIITensorConversion&quot;, &quot;ITensors&quot;, &quot;Quantics&quot;, &quot;PythonPlot&quot;, &quot;LaTeXStrings&quot;])&#39;</span>
+julia<span class="w"> </span>--project<span class="w"> </span>scripts/setup.jl
 </pre></div>
 </div>
-<p>This will install required packages to Julia’s global envrironment.</p>
+<p>Here, the <code class="docutils literal notranslate"><span class="pre">--project</span></code> option activates our project, which is characterized by <code class="docutils literal notranslate"><span class="pre">Project.toml</span></code>, and <code class="docutils literal notranslate"><span class="pre">scripts/setup.jl</span></code> installs dependencies needed to run our notebooks.</p>
+<p>Keep in mind that <a class="reference external" href="https://github.com/tensor4all/Quantics.jl">Quantics.jl</a> is not registered in <a class="reference external" href="https://github.com/JuliaRegistries/General/tree/master">Julia’s General registry</a>. To run <code class="docutils literal notranslate"><span class="pre">qft.jl</span></code>, we need to add <a class="reference external" href="https://github.com/tensor4all/T4ARegistry">T4ARegistry</a>.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>julia<span class="w"> </span>--project<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.Registry.add(RegistrySpec(url=&quot;https://github.com/tensor4all/T4ARegistry.git&quot;))&#39;</span>
+</pre></div>
+</div>
 </section>
 <section id="print-out-the-status-of-the-project">
 <h3>Print out the status of the project<a class="headerlink" href="#print-out-the-status-of-the-project" title="Link to this heading">#</a></h3>

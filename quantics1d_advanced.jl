@@ -116,7 +116,7 @@ cf = TCI.CachedFunction{Float64}(qf, localdims)
 # This is useful if a function evaluation takes more than 100 ns or if you want to record function evaluations.
 #
 # Choosing good initial pivots is critical for numerical stability.
-# In the following code, we generate initial pivots by finding local maxima of $|f(x)|$. The function `optfirstpivot` maximizes the given function `qf` using single-index updates (zero-temperature Monte Calro).
+# In the following code, we generate initial pivots by finding local maxima of $|f(x)|$. The function `optfirstpivot` maximizes the given function `qf` using single-index updates (zero-temperature Monte Carlo).
 #
 
 # %%

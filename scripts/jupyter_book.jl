@@ -6,4 +6,4 @@ using PythonCall
 
 jbpath = joinpath(dirname(PythonCall.C.CTX.exe_path), "jupyter-book")
 
-run(`$(jbpath) build $(pwd())`)
+run(`$(jbpath) build $(pwd()) --warningiserror`)

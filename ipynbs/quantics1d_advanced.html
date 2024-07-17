@@ -495,7 +495,7 @@ The function <code class="docutils literal notranslate"><span class="pre">Quanti
 <code class="docutils literal notranslate"><span class="pre">cf</span></code> caches the pair of input and output that are used during constructing a QTT representation.
 This is useful if a function evaluation takes more than 100 ns or if you want to record function evaluations.</p>
 <p>Choosing good initial pivots is critical for numerical stability.
-In the following code, we generate initial pivots by finding local maxima of <span class="math notranslate nohighlight">\(|f(x)|\)</span>. The function <code class="docutils literal notranslate"><span class="pre">optfirstpivot</span></code> maximizes the given function <code class="docutils literal notranslate"><span class="pre">qf</span></code> using single-index updates (zero-temperature Monte Calro).</p>
+In the following code, we generate initial pivots by finding local maxima of <span class="math notranslate nohighlight">\(|f(x)|\)</span>. The function <code class="docutils literal notranslate"><span class="pre">optfirstpivot</span></code> maximizes the given function <code class="docutils literal notranslate"><span class="pre">qf</span></code> using single-index updates (zero-temperature Monte Carlo).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">nrandominitpivot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>

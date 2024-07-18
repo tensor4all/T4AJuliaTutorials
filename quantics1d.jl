@@ -269,7 +269,7 @@ _display(fig)
 # \end{align}
 # $$
 #
-# One can construct a QTT representation of this function on the domain $[-10, 10]$ using a quantics grid of size $2^\mathcal{R}$ ($\mathcal{R}=20$):
+# One can construct a QTT representation of this function on the domain $[-10, 10)$ using a quantics grid of size $2^\mathcal{R}$ ($\mathcal{R}=20$):
 #
 
 # %%

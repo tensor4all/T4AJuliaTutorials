@@ -1,7 +1,3 @@
-#using Pkg
-#Pkg.activate(@__DIR__)
-#Pkg.instantiate()
-#using IJulia; installkernel("Julia", "--project=@.")
 using PythonCall
 
 python = PythonCall.C.CTX.exe_path

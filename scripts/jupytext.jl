@@ -1,12 +1,8 @@
-#using Pkg
-#Pkg.activate(@__DIR__)
-#Pkg.instantiate()
-#using IJulia; installkernel("Julia", "--project=@.")
 using PythonCall
 
-jupytext = joinpath(dirname(PythonCall.C.CTX.exe_path), "jupytext")
+python = PythonCall.C.CTX.exe_path
 
 for jlfile in ARGS
 	destination = joinpath("ipynbs", splitext(jlfile)[begin] * ".ipynb")
-	run(`$(jupytext) --to ipynb --set-kernel=julia-$(VERSION.major).$(VERSION.minor) $(jlfile) --output $(destination)`)
+	run(`$(python) -m jupytext --to ipynb --set-kernel=julia-$(VERSION.major).$(VERSION.minor) $(jlfile) --output $(destination)`)
 end

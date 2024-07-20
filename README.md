@@ -16,14 +16,6 @@ $ git clone https://github.com/tensor4all/T4AJuliaTutorials.git
 $ cd T4AJuliaTutorials
 ```
 
-### Setup
-
-```sh
-$ ls
-Project.toml CondaPkg.toml README.md index.jl Makefile # and so on
-$ julia --project scripts/setup.jl
-```
-
 ## How to build a Jupyter Book
 
 Just run `make` command:
@@ -79,6 +71,14 @@ Or paste this line directly into your browser bar:
 ```
 
 You will find `_build/html/index.html` is generated. Open this file in a browser to confirm our Jupyter Book is generated properly.
+
+## Clean up
+
+Just run:
+
+```sh
+$ make clean
+```
 
 ## Contributing
 

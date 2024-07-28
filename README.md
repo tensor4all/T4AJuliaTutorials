@@ -89,7 +89,7 @@ We do not want to commit in `ipynb` files, which are difficult for humans to rea
 If you are familiar with using VS Code, you could use `code` command from your terminal. To install required extensions for our workflow, run the following command:
 
 ```sh
-$ code --install-extension ms-toolsai.jupyter julialang.language-julia congyiwu.vscode-jupytext
+$ code --install-extension ms-toolsai.jupyter --install-extension julialang.language-julia  --install-extension congyiwu.vscode-jupytext 
 ```
 
 Open VS Code by runnning

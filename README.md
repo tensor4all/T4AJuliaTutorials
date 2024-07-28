@@ -89,7 +89,7 @@ We do not want to commit in `ipynb` files, which are difficult for humans to rea
 If you are familiar with using VS Code, you could use `code` command from your terminal. To install required extensions for our workflow, run the following command:
 
 ```sh
-$ code --install-extension ms-toolsai.jupyter julialang.language-julia congyiwu.vscode-jupytext
+$ code --install-extension ms-toolsai.jupyter --install-extension julialang.language-julia --install-extension ms-python.python --install-extension congyiwu.vscode-jupytext 
 ```
 
 Open VS Code by runnning
@@ -136,3 +136,5 @@ Internally `scripts/jupytext.jl` calls `jupytext` commands installed by Python m
 If one wants to update dependencies in `Project.toml`, please update `Manifest.toml` together. [This link](https://pkgdocs.julialang.org/v1/toml-files/#Manifest.toml) explains what Manifest.toml is:
 
 > The manifest file is an absolute record of the state of the packages in the environment. It includes exact information about (direct and indirect) dependencies of the project. Given a Project.toml + Manifest.toml pair, it is possible to instantiate the exact same package environment, which is very useful for reproducibility.
+
+code --uninstall-extension ms-toolsai.jupyter --uninstall-extension julialang.language-julia ]--uninstall-extension ms-python.python --uninstall-extension congyiwu.vscode-jupytext

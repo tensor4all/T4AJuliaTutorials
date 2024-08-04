@@ -1,0 +1,52 @@
+name: UploadNotebooks
+on:
+  push:
+    branches:
+      - main
+    tags: ['*']
+  workflow_dispatch:
+concurrency:
+  # Skip intermediate builds: always.
+  # Cancel intermediate builds: only if it is a pull request build.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
+
+jobs:
+  deploy:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+      - name: Add Julia Registries
+        run: |
+          julia -e '
+          using Pkg
+          Pkg.Registry.add(
+            RegistrySpec(url = "https://github.com/tensor4all/T4ARegistry.git")
+          )'
+      - uses: julia-actions/cache@v2
+      - uses: julia-actions/julia-buildpkg@v1
+      - name: Cache _build
+        uses: actions/cache@v4
+        with:
+          path: ./_build
+          key: ${{ runner.os }}-deploy-${{ hashFiles('_config.yml', '_toc.yml') }}
+      - name: Build Jupyter Book
+        run: |
+          julia --project -e 'using Pkg; Pkg.build("IJulia")'
+          make
+      - name: Copy project files to ipynbs
+        run: |
+          cp Project.toml Manifest.toml _build/jupyter_execute/ipynbs/
+      - name: upload Notebooks to release page
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          omitBodyDuringUpdate: true
+          tag: ipynbs/latest
+          artifacts: _build/jupyter_execute/ipynbs/
+          token: ${{ secrets.GITHUB_TOKEN }}

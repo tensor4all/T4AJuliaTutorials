@@ -44,7 +44,6 @@ jobs:
           cp Project.toml Manifest.toml _build/jupyter_execute/ipynbs/
       - name: zip ipynbs
         run: |
-          cd _build/jupyter_execute/ipynbs/
           zip -r ipynbs.zip _build/jupyter_execute/ipynbs/
       - name: upload Notebooks to ipynbs/preview
         if: github.event_name == 'pull_request'

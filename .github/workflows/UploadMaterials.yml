@@ -1,4 +1,4 @@
-name: UploadNotebooks
+name: UploadMaterials
 on:
   push:
     branches:

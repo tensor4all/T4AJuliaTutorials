@@ -38,6 +38,5 @@ COPY Project.toml /workspaces/T4AJuliaTutorials/
 RUN chown -R ${NB_UID} /workspaces/T4AJuliaTutorials
 USER ${NB_USER}
 
-RUN julia -e 'using Pkg; Pkg.Registry.add("General"); Pkg.Registry.add(RegistrySpec(url="https://github.com/tensor4all/T4ARegistry.git"))'
 RUN julia --project=/workspaces/T4AJuliaTutorials/ -e 'using Pkg; Pkg.instantiate()' \
 	&& julia --project=/workspaces/T4AJuliaTutorials -e 'using Pkg; Pkg.build("IJulia")'

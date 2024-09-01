@@ -10,7 +10,7 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.11.2
 #   kernelspec:
-#     display_name: Julia 1.10.4
+#     display_name: Julia 1.10.5
 #     language: julia
 #     name: julia-1.10
 # ---
@@ -24,12 +24,8 @@
 #
 
 # %%
-using PythonCall: PythonCall
-using PythonPlot: pyplot as plt, Figure
-
-# Displays the matplotlib figure object `fig` and avoids duplicate plots.
-_display(fig::Figure) = isinteractive() ? (fig; plt.show(); nothing) : Base.display(fig)
-_display(fig::PythonCall.Py) = _display(Figure(fig))
+using Plots
+gr() # Use GR backend for plotting
 
 import QuanticsGrids as QG
 using QuanticsTCI: quanticscrossinterpolate, integral
@@ -66,11 +62,9 @@ println(f(0.2))
 # %%
 xs = LinRange(0, 2.0^(-23), 1000)
 
-fig, ax = plt.subplots()
-ax.plot(xs, f.(xs), label="$(nameof(f))")
-ax.set_title("$(nameof(f))")
-ax.legend()
-_display(fig)
+plt = plot(title="$(nameof(f))")
+plot!(plt, xs, f.(xs), label="$(nameof(f))", legend=true)
+plt
 
 # %% [markdown]
 # For $x \in (0, 3]$ we will get:
@@ -78,11 +72,9 @@ _display(fig)
 
 # %%
 xs2 = LinRange(2.0^(-23), 3, 100000)
-fig, ax = plt.subplots()
-ax.plot(xs2, f.(xs2), label="$(nameof(f))")
-ax.set_title("$(nameof(f))")
-ax.legend()
-_display(fig)
+plt = plot(title="$(nameof(f))")
+plot!(plt, xs2, f.(xs2), label="$(nameof(f))", legend=true)
+plt
 
 # %% [markdown]
 # ### QTT representation
@@ -93,7 +85,7 @@ _display(fig)
 # %%
 R = 40 # number of bits
 xmin = 0.0
-xmax = log(20.)
+xmax = log(20.0)
 N = 2^R # size of the grid
 # * Uniform grid (includeendpoint=false, default):
 #   -xmin, -xmin+dx, ...., -xmin + (2^R-1)*dx
@@ -132,14 +124,10 @@ xs = [QG.grididx_to_origcoord(qgrid, i) for i in testindices]
 ys = f.(xs)
 yci = ci.(testindices)
 
-fig, ax = plt.subplots()
-ax.plot(xs, ys, label="$(nameof(f))")
-ax.plot(xs, yci, label="tci", linestyle="dashed", alpha=0.7)
-ax.set_title("$(nameof(f)) and TCI")
-ax.set_xlabel("x")
-ax.set_ylabel("y")
-ax.legend()
-_display(fig)
+plt = plot(title="$(nameof(f)) and TCI", xlabel="x", ylabel="y")
+plot!(plt, xs, ys, label="$(nameof(f))", legend=true)
+plot!(plt, xs, yci, label="tci", linestyle=:dash, alpha=0.7, legend=true)
+plt
 
 # %% [markdown]
 # Above, one can see that the original function is interpolated very accurately.
@@ -148,37 +136,25 @@ _display(fig)
 #
 
 # %%
-fig, ax = plt.subplots()
-
 ys = f.(xs)
 yci = ci.(testindices)
-
-ax.semilogy(xs, abs.(ys .- yci), label="log(|f(x) - ci(x)|)")
-
-ax.set_title("x vs interpolation error: $(nameof(f))")
-ax.set_xlabel("x")
-ax.set_ylabel("interpolation error")
-ax.legend()
-_display(fig)
+plt = plot(title="x vs interpolation error: $(nameof(f))", xlabel="x", ylabel="interpolation error")
+plot!(xs, abs.(ys .- yci), label="log(|f(x) - ci(x)|)", yscale=:log10, legend=true, ylim=(1e-2, maximum(abs.(ys .- yci))))
+plt
 
 # %% [markdown]
 # ... and for all $x$:
 
 # %%
-fig, ax = plt.subplots()
+plt = plot(title="x vs interpolation error: $(nameof(f))", xlabel="x", ylabel="interpolation error")
 
 testindices = Int.(round.(LinRange(1, 2^R, 1000)))
 xs = [QG.grididx_to_origcoord(qgrid, i) for i in testindices]
 ys = f.(xs)
 yci = ci.(testindices)
 
-ax.semilogy(xs, abs.(ys .- yci), label="log(|f(x) - ci(x)|)")
-
-ax.set_title("x vs interpolation error: $(nameof(f))")
-ax.set_xlabel("x")
-ax.set_ylabel("interpolation error")
-ax.legend()
-_display(fig)
+plot!(xs, abs.(ys .- yci), label="log(|f(x) - ci(x)|)", yscale=:log10, legend=true, ylim=(1e-2, maximum(abs.(ys .- yci))))
+plt
 
 # %% [markdown]
 # The function is approximated with an accuracy $\approx 10^{-7}$ over the entire domain.
@@ -186,13 +162,13 @@ _display(fig)
 # We are now ready to compute the integral $\mathrm{I}[f] = \int_0^{\ln 20} \mathrm{d}x f(x) \simeq 19/10$ using the QTT representation of $f(x)$.
 
 # %%
-integral(ci), 19/10
+integral(ci), 19 / 10
 
 # %% [markdown]
 # `integral(ci)` is equivalent to calling `QuanticsTCI.sum(ci)` and multiplying the result by the interval length divided by $2^\mathcal{R}$.
 
 # %%
-sum(ci) * (log(20) - 0) / 2^R, 19/10
+sum(ci) * (log(20) - 0) / 2^R, 19 / 10
 
 # %% [markdown]
 # ### About `ci::QuanticsTensorCI2{Float64}`
@@ -213,13 +189,9 @@ println(typeof(ci))
 
 # %%
 # Plot error vs bond dimension obtained by prrLU
-fig, ax = plt.subplots()
-ax.plot(ci.tci.pivoterrors ./ ci.tci.maxsamplevalue, marker="x")
-ax.set_xlabel("Bond dimension")
-ax.set_ylabel("Normalization error")
-ax.set_title("normalized error vs. bond dimension: $(nameof(f))")
-ax.set_yscale("log")
-_display(fig)
+plt = plot(title="normalized error vs. bond dimension: $(nameof(f))", xlabel="Bond dimension", ylabel="Normalization error")
+plot!(ci.tci.pivoterrors ./ ci.tci.maxsamplevalue, marker=:x, yscale=:log10, ylim=(1e-10, 10))
+plt
 
 # %% [markdown]
 # ### Function evaluations
@@ -245,15 +217,10 @@ xs = LinRange(0, 2.0^(-23), 1000)
 xs_evaluated = collect(keys(evaluated))
 fs_evaluated = [evaluated[x] for x in xs_evaluated]
 
-fig, ax = plt.subplots()
-ax.plot(xs, f.(xs), label="$(nameof(f))")
-ax.scatter(xs_evaluated, fs_evaluated, marker="x", label="evaluated points")
-ax.set_title("$(nameof(f)) and TCI")
-ax.set_xlabel("x")
-ax.set_ylabel("y")
-ax.set_xlim(0, maximum(xs))
-ax.legend()
-_display(fig)
+plt = plot(title="$(nameof(f)) and TCI", xlabel="x", ylabel="y", xlim=(0, maximum(xs)))
+plot!(plt, xs, f.(xs), label="$(nameof(f))")
+scatter!(plt, xs_evaluated, fs_evaluated, marker=:x, label="evaluated points")
+plt
 
 # %% [markdown]
 # ## Example 2
@@ -306,15 +273,9 @@ end
 
 # %%
 # Plot error vs bond dimension obtained by prrLU
-using PythonPlot: pyplot as plt, gcf
-
-fig, ax = plt.subplots()
-ax.plot(ci.tci.pivoterrors ./ ci.tci.maxsamplevalue, marker="x")
-ax.set_xlabel("Bond dimension")
-ax.set_ylabel("Normalization error")
-ax.set_title("normalized error vs. bond dimension")
-ax.set_yscale("log")
-_display(fig)
+plt = plot(xlabel="Bond dimension", ylabel="Normalization error", title="normalized error vs. bond dimension")
+plot!(ci.tci.pivoterrors ./ ci.tci.maxsamplevalue, marker=:x, yscale=:log10, legend=true, ylim=(1e-10, 10))
+plt
 
 # %% [markdown]
 # ## Example 3
@@ -333,7 +294,7 @@ ci_tol, ranks_tol, errors_tol = quanticscrossinterpolate(
     tolerance=tol,
     normalizeerror=true, # Normalize the error by the maximum sample value,
     verbosity=1, loginterval=1, # Log the error every `loginterval` iterations
-    )
+)
 
 # %%
 println("Max abs sampled value is $(ci_tol.tci.maxsamplevalue)")
@@ -360,5 +321,3 @@ pivoterror_global = TCI.estimatetrueerror(TCI.TensorTrain(ci.tci), ci.quanticsfu
 # %%
 println("The largest error found is $(pivoterror_global[1][2]) and the corresponding pivot is $(pivoterror_global[1][1]).")
 println("The tolerance used is $(tol * ci_tol.tci.maxsamplevalue).")
-
-# %%

@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -511,11 +511,11 @@ In the following code, we generate initial pivots by finding local maxima of <sp
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5-element Vector{Float64}:
- 2.994806730146487
- 2.9009422628955637
- 2.839310974387282
- 2.904643795289786
- 2.9262977110959905
+ 2.839243568291781
+ 2.973551269410439
+ 2.9755269469864216
+ 2.895683103585105
+ 2.8211532605386402
 </pre></div>
 </div>
 </div>
@@ -528,7 +528,7 @@ In the following code, we generate initial pivots by finding local maxima of <sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, [17, 15, 15], [2.282530167524159e-8, 3.4151252846611324e-8, 3.562953044041842e-8])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, [16, 15, 15], [2.389115511082344e-8, 3.937811609971163e-8, 2.983915844757681e-8])
 </pre></div>
 </div>
 </div>
@@ -541,7 +541,7 @@ In the following code, we generate initial pivots by finding local maxima of <sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.9000000026315924, 1.9)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.899999998775494, 1.9)
 </pre></div>
 </div>
 </div>
@@ -571,7 +571,7 @@ Just in case, we will check <code class="docutils literal notranslate"><span cla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f(x) = 1.7990930849034745, qf(q) = 1.798322002608539, cf(q) = 1.798322002608539, ci(q) = 1.7983219311064855
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f(x) = 1.7990930849034745, qf(q) = 1.798322002608539, cf(q) = 1.798322002608539, ci(q) = 1.7983220233343062
 </pre></div>
 </div>
 </div>
@@ -583,10 +583,10 @@ Just in case, we will check <code class="docutils literal notranslate"><span cla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length(TCI.cachedata(cf)) = 51138
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length(TCI.cachedata(cf)) = 49685
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>51138
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49685
 </pre></div>
 </div>
 </div>

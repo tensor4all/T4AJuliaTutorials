@@ -32,9 +32,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -429,7 +429,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/253952f9d80885f4e129e814e010fb876ca19c78cdf6a33bf2719e5477969300.png" src="../_images/253952f9d80885f4e129e814e010fb876ca19c78cdf6a33bf2719e5477969300.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python: [&lt;matplotlib.lines.Line2D object at 0x7f3ce7b0c510&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python: [&lt;matplotlib.lines.Line2D object at 0x7f9447a8c110&gt;]
 </pre></div>
 </div>
 </div>
@@ -474,8 +474,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2b5c1c18bc089ef8c44d1fafad318bd631246751e916f198b4ff89d7e289ea94.png" src="../_images/2b5c1c18bc089ef8c44d1fafad318bd631246751e916f198b4ff89d7e289ea94.png" />
-<img alt="../_images/2b5c1c18bc089ef8c44d1fafad318bd631246751e916f198b4ff89d7e289ea94.png" src="../_images/2b5c1c18bc089ef8c44d1fafad318bd631246751e916f198b4ff89d7e289ea94.png" />
+<img alt="../_images/2c17e4a215a94c33baad6993266a6a82a85064ec8152ee6f5407b194c5e32312.png" src="../_images/2c17e4a215a94c33baad6993266a6a82a85064ec8152ee6f5407b194c5e32312.png" />
+<img alt="../_images/2c17e4a215a94c33baad6993266a6a82a85064ec8152ee6f5407b194c5e32312.png" src="../_images/2c17e4a215a94c33baad6993266a6a82a85064ec8152ee6f5407b194c5e32312.png" />
 </div>
 </div>
 <p>The type of <code class="docutils literal notranslate"><span class="pre">fig</span></code> is <code class="docutils literal notranslate"><span class="pre">PyhonCall.Py</span></code> which handles generic Python objects. It seems that <code class="docutils literal notranslate"><span class="pre">PythonPlot.Figure</span></code> provides a better method to display figure object. Note that we can add <code class="docutils literal notranslate"><span class="pre">display(PythonPlot.gcf())</span></code> at the end of a cell instead of <code class="docutils literal notranslate"><span class="pre">display(Figure(fig))</span></code> since <code class="docutils literal notranslate"><span class="pre">gcf()</span></code> gets the current figure object as a value of <code class="docutils literal notranslate"><span class="pre">PythonCall.Figure</span></code>.</p>
@@ -551,8 +551,8 @@ However there is one enrivonment that outputs <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e7ed31c770f724c1470a31eef3291f788b7aae55263faada5835c6f66b09166b.png" src="../_images/e7ed31c770f724c1470a31eef3291f788b7aae55263faada5835c6f66b09166b.png" />
-<img alt="../_images/e7ed31c770f724c1470a31eef3291f788b7aae55263faada5835c6f66b09166b.png" src="../_images/e7ed31c770f724c1470a31eef3291f788b7aae55263faada5835c6f66b09166b.png" />
+<img alt="../_images/51fc2cbeea00ee051fbe9e57b596e0544c81fcd560109c61ac624b96b730ae91.png" src="../_images/51fc2cbeea00ee051fbe9e57b596e0544c81fcd560109c61ac624b96b730ae91.png" />
+<img alt="../_images/51fc2cbeea00ee051fbe9e57b596e0544c81fcd560109c61ac624b96b730ae91.png" src="../_images/51fc2cbeea00ee051fbe9e57b596e0544c81fcd560109c61ac624b96b730ae91.png" />
 </div>
 </div>
 <p>To avoid ambiguity in the resulting output by selecting the kernel of Julia, we should add the following conditional branch:</p>
@@ -580,7 +580,7 @@ However there is one enrivonment that outputs <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a1cb18e05b12d9942e050eb95236ead4eb961bc54960e1ef8f591f066ddd6ec3.png" src="../_images/a1cb18e05b12d9942e050eb95236ead4eb961bc54960e1ef8f591f066ddd6ec3.png" />
+<img alt="../_images/b522b8c583e834a33ae3e0478fb8a64eafadb455f6abc5053b21ade65d7f3c9d.png" src="../_images/b522b8c583e834a33ae3e0478fb8a64eafadb455f6abc5053b21ade65d7f3c9d.png" />
 </div>
 </div>
 <p>This can be challenging for those who want to focus on research rather than writing code. To address this, we provide a function named <code class="docutils literal notranslate"><span class="pre">_display</span></code> that handles differences in output due to the environment.</p>
@@ -610,7 +610,7 @@ However there is one enrivonment that outputs <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8a84e0f6879d2d70b973318308677c6aef5b03ccbd7b2ee5c2217e1647235058.png" src="../_images/8a84e0f6879d2d70b973318308677c6aef5b03ccbd7b2ee5c2217e1647235058.png" />
+<img alt="../_images/c7848380f2d554fccdc7be4dab913e8303d895b2800035c660c22c8c48a05b09.png" src="../_images/c7848380f2d554fccdc7be4dab913e8303d895b2800035c660c22c8c48a05b09.png" />
 </div>
 </div>
 </section>

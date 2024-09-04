@@ -218,7 +218,7 @@ plot!(p2, plotk, abs.(imag.(hfk.(plotk))), marker=:x, label="Reference")
 xlabel!(p2, L"k")
 ylabel!(p2, L"\mathrm{Im}~\hat{f}(k)")
 
-plot(p1, p2)
+plot(p1, p2, size=(800, 500))
 
 # %% [markdown]
 # ## 2D Fourier transform

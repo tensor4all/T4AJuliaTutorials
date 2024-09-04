@@ -10,7 +10,7 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.11.2
 #   kernelspec:
-#     display_name: Julia 1.10.4
+#     display_name: Julia 1.10.5
 #     language: julia
 #     name: julia-1.10
 # ---
@@ -45,12 +45,12 @@ using QuanticsTCI: quanticscrossinterpolate, quanticsfouriermpo
 # $$
 #
 #
-# Consider a discrete function $f_m \in \mathbb{C}^M$, e.g. the 
-# discretization, $f_m = f(x(m))$, of a one-dimensional function $f(x)$ on a grid $x(m)$. 
+# Consider a discrete function $f_m \in \mathbb{C}^M$, e.g. the
+# discretization, $f_m = f(x(m))$, of a one-dimensional function $f(x)$ on a grid $x(m)$.
 # Its discrete Fourier transform (DFT) is
 #
 # $$
-# \hat{f}_k = \sum_{m=0}^{M-1}   T_{km} f_m , \qquad 
+# \hat{f}_k = \sum_{m=0}^{M-1}   T_{km} f_m , \qquad
 # T_{km} =  \tfrac{1}{\sqrt{M}}  e^{- i 2 \pi k \cdot m /M} .
 # $$
 #

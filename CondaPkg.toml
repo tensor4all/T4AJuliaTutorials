@@ -4,4 +4,3 @@ channels = ["conda-forge"]
 python = ">=3.11,<3.12"
 jupytext = ">=1.16"
 jupyter-book = ""
-matplotlib = ">=3.8,<3.9"

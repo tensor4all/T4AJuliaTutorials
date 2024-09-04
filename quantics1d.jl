@@ -8,7 +8,7 @@
 #       extension: .jl
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.11.2
+#       jupytext_version: 1.16.4
 #   kernelspec:
 #     display_name: Julia 1.10.5
 #     language: julia
@@ -29,6 +29,19 @@ gr() # Use GR backend for plotting
 
 import QuanticsGrids as QG
 using QuanticsTCI: quanticscrossinterpolate, integral
+
+# defines mutable struct `SemiLogy` and sets shorthands `semilogy` and `semilogy!`
+@userplot SemiLogy
+@recipe function f(t::SemiLogy)
+    x = t.args[begin]
+    y = t.args[end]
+    ε = nextfloat(0.0)
+
+    yscale := :log10
+    # Warning: Invalid negative or zero value 0.0 found at series index 16 for log10 based yscale
+    # prevent log10(0) from being -Inf
+    (x, ε .+ y)
+end
 # %% [markdown]
 # ## Example 1
 #
@@ -139,7 +152,7 @@ plt
 ys = f.(xs)
 yci = ci.(testindices)
 plt = plot(title="x vs interpolation error: $(nameof(f))", xlabel="x", ylabel="interpolation error")
-plot!(xs, abs.(ys .- yci), label="log(|f(x) - ci(x)|)", yscale=:log10, legend=true, ylim=(1e-2, maximum(abs.(ys .- yci))))
+semilogy!(xs, abs.(ys .- yci), label="log(|f(x) - ci(x)|)", yscale=:log10, legend=:bottomright, ylim=(1e-16, 1e-7), yticks=10.0 .^ collect(-16:1:-7))
 plt
 
 # %% [markdown]
@@ -152,8 +165,7 @@ testindices = Int.(round.(LinRange(1, 2^R, 1000)))
 xs = [QG.grididx_to_origcoord(qgrid, i) for i in testindices]
 ys = f.(xs)
 yci = ci.(testindices)
-
-plot!(xs, abs.(ys .- yci), label="log(|f(x) - ci(x)|)", yscale=:log10, legend=true, ylim=(1e-2, maximum(abs.(ys .- yci))))
+semilogy!(xs, abs.(ys .- yci), label="log(|f(x) - ci(x)|)", legend=true, ylim=(1e-16, 1e-6), yticks=10.0 .^ collect(-16:1:-6))
 plt
 
 # %% [markdown]
@@ -190,7 +202,7 @@ println(typeof(ci))
 # %%
 # Plot error vs bond dimension obtained by prrLU
 plt = plot(title="normalized error vs. bond dimension: $(nameof(f))", xlabel="Bond dimension", ylabel="Normalization error")
-plot!(ci.tci.pivoterrors ./ ci.tci.maxsamplevalue, marker=:x, yscale=:log10, ylim=(1e-10, 10))
+semilogy!(1:length(ci.tci.pivoterrors), ci.tci.pivoterrors ./ ci.tci.maxsamplevalue, marker=:x, ylim=(1e-8, 10), yticks=(10.0 .^ (-10:1:0)), legend=false)
 plt
 
 # %% [markdown]
@@ -274,7 +286,7 @@ end
 # %%
 # Plot error vs bond dimension obtained by prrLU
 plt = plot(xlabel="Bond dimension", ylabel="Normalization error", title="normalized error vs. bond dimension")
-plot!(ci.tci.pivoterrors ./ ci.tci.maxsamplevalue, marker=:x, yscale=:log10, legend=true, ylim=(1e-10, 10))
+semilogy!(1:length(ci.tci.pivoterrors), ci.tci.pivoterrors ./ ci.tci.maxsamplevalue, marker=:x, ylim=(1e-8, 10), yticks=(10.0 .^ (-10:1:0)), legend=false)
 plt
 
 # %% [markdown]

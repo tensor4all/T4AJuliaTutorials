@@ -10,4 +10,4 @@ chapters:
 - file: ipynbs/compress
 - file: ipynbs/interfacingwithitensors
 - file: ipynbs/qft
-- file: ipynbs/pythonplot
+- file: ipynbs/plots

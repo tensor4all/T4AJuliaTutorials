@@ -15,6 +15,9 @@
 #     name: julia-1.10
 # ---
 
+# %% [markdown]
+# # Plots.jl
+
 # %%
 using Plots
 using Plots.RecipesBase: @recipe

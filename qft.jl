@@ -24,13 +24,8 @@
 #
 
 # %%
-using PythonCall: PythonCall
-using PythonPlot: pyplot as plt, Figure
 using LaTeXStrings
-
-# Displays the matplotlib figure object `fig` and avoids duplicate plots.
-_display(fig::Figure) = isinteractive() ? (fig; plt.show(); nothing) : Base.display(fig)
-_display(fig::PythonCall.Py) = _display(Figure(fig))
+using Plots
 
 import QuanticsGrids as QG
 import TensorCrossInterpolation as TCI
@@ -98,12 +93,9 @@ fx(x) = sum(coeffs .* _exp.(x, ϵs))
 # %%
 plotx = range(0, 1; length=1000)
 
-fig, ax = plt.subplots()
-
-ax.plot(plotx, fx.(plotx))
-ax.set_xlabel(L"x")
-ax.set_ylabel(L"f(x)")
-_display(fig)
+plot(plotx, fx.(plotx))
+xlabel!(L"x")
+ylabel!(L"f(x)")
 
 # %% [markdown]
 # First, we construct a QTT representation of the function $f(x)$.
@@ -147,49 +139,46 @@ kgrid = QG.InherentDiscreteGrid{1}(R, 0) # 0, 1, ..., 2^R-1
 _expk(k, ϵ) = -1 / (2π * k * im - ϵ)
 hfk(k) = sum(coeffs .* _expk.(k, ϵs)) # k = 0, 1, 2, ..., 2^R-1
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
-
 plotk = collect(0:300)
 y = [hftt(reverse(QG.origcoord_to_quantics(kgrid, x))) for x in plotk] # Note: revert the order of the quantics indices
+p1 = plot()
+plot!(p1, plotk, real.(y), marker=:+, label="QFT")
+plot!(p1, plotk, real.(hfk.(plotk)), marker=:x, label="Reference")
+xlabel!(p1, L"k")
+ylabel!(p1, L"\mathrm{Re}~\hat{f}(k)")
 
-ax1.plot(plotk, real.(y), marker="+", label="QFT")
-ax1.plot(plotk, real.(hfk.(plotk)), marker="x", label="Reference")
-ax1.set_xlabel(L"k")
-ax1.set_ylabel(L"\mathrm{Re}~\hat{f}(k)")
-ax1.legend()
+p2 = plot()
+plot!(p2, plotk, imag.(y), marker=:+, label="QFT")
+plot!(p2, plotk, imag.(hfk.(plotk)), marker=:x, label="Reference")
+xlabel!(L"k")
+ylabel!(L"\mathrm{Im}~\hat{f}(k)")
 
-ax2.plot(plotk, imag.(y), marker="+", label="QFT")
-ax2.plot(plotk, imag.(hfk.(plotk)), marker="x", label="Reference")
-ax2.set_xlabel(L"k")
-ax2.set_ylabel(L"\mathrm{Im}~\hat{f}(k)")
-ax2.legend()
-
-_display(fig)
+plot(p1, p2, size=(800, 500))
 
 # %% [markdown]
 # The exponentially large quantics grid allows to compute the Fourier transform with high accuracy at high frequencies.
 # To check this, let us compare the results at high frequencies.
 
 # %%
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
-
 plotk = [10^n for n in 1:5]
 @assert maximum(plotk) <= 2^R-1
 y = [hftt(reverse(QG.origcoord_to_quantics(kgrid, x))) for x in plotk] # Note: revert the order of the quantics indices
 
-ax1.loglog(plotk, abs.(real.(y)), marker="+", label="QFT")
-ax1.loglog(plotk, abs.(real.(hfk.(plotk))), marker="x", label="Reference")
-ax1.set_xlabel(L"k")
-ax1.set_ylabel(L"\mathrm{Re}~\hat{f}(k)")
-ax1.legend()
+p1 = plot()
 
-ax2.loglog(plotk, abs.(imag.(y)), marker="+", label="QFT")
-ax2.loglog(plotk, abs.(imag.(hfk.(plotk))), marker="x", label="Reference")
-ax2.set_xlabel(L"k")
-ax2.set_ylabel(L"\mathrm{Im}~\hat{f}(k)")
-ax2.legend()
+plot!(p1, plotk, abs.(real.(y)), marker=:+, label="QFT", xscale=:log10, yscale=:log10)
+plot!(p1, plotk, abs.(real.(hfk.(plotk))), marker=:x, label="Reference", xscale=:log10, yscale=:log10)
+xlabel!(p1, L"k")
+ylabel!(p1, L"\mathrm{Re}~\hat{f}(k)")
 
-_display(fig)
+p2 = plot()
+
+plot!(p2, plotk, abs.(imag.(y)), marker=:+, label="QFT", xscale=:log10, yscale=:log10)
+plot!(p2, plotk, abs.(imag.(hfk.(plotk))), marker=:x, label="Reference", xscale=:log10, yscale=:log10)
+xlabel!(p2, L"k")
+ylabel!(p2, L"\mathrm{Im}~\hat{f}(k)")
+
+plot(p1, p2, size=(800, 500))
 
 # %% [markdown]
 # You may use ITensors.jl to compute the Fourier transform of the function $f(x)$.
@@ -214,25 +203,22 @@ hfmps = (1/sqrt(2)^R) * fouriertransform(fmps; sign=1, tag="m", sitesdst=sites_k
 _evaluate(Ψ::MPS, sites, index::Vector{Int}) = only(reduce(*, Ψ[n] * onehot(sites[n] => index[n]) for n in 1:length(Ψ)))
 
 # %%
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
-
-plotk = [10^n for n in 1:5]
 @assert maximum(plotk) <= 2^R-1
 y = [_evaluate(hfmps, reverse(sites_k), reverse(QG.origcoord_to_quantics(kgrid, x))) for x in plotk] # Note: revert the order of the quantics indices
 
-ax1.loglog(plotk, abs.(real.(y)), marker="+", label="QFT")
-ax1.loglog(plotk, abs.(real.(hfk.(plotk))), marker="x", label="Reference")
-ax1.set_xlabel(L"k")
-ax1.set_ylabel(L"\mathrm{Re}~\hat{f}(k)")
-ax1.legend()
+p1 = plot()
+plot!(p1, plotk, abs.(real.(y)), marker=:+, label="QFT")
+plot!(p1, plotk, abs.(real.(hfk.(plotk))), marker=:x, label="Reference")
+xlabel!(p1, L"k")
+ylabel!(p1, L"\mathrm{Re}~\hat{f}(k)")
 
-ax2.loglog(plotk, abs.(imag.(y)), marker="+", label="QFT")
-ax2.loglog(plotk, abs.(imag.(hfk.(plotk))), marker="x", label="Reference")
-ax2.set_xlabel(L"k")
-ax2.set_ylabel(L"\mathrm{Im}~\hat{f}(k)")
-ax2.legend()
+p2 = plot()
+plot!(p2, plotk, abs.(imag.(y)), marker=:+, label="QFT")
+plot!(p2, plotk, abs.(imag.(hfk.(plotk))), marker=:x, label="Reference")
+xlabel!(p2, L"k")
+ylabel!(p2, L"\mathrm{Im}~\hat{f}(k)")
 
-_display(fig)
+plot(p1, p2)
 
 # %% [markdown]
 # ## 2D Fourier transform
@@ -301,8 +287,6 @@ hfmps2_reverse = Quantics.rearrange_siteinds(hfmps2_fused, [[x] for x in sites_k
 siteinds(hfmps2_reverse)
 
 # %%
-fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(15, 4))
-
 klgrid = QG.InherentDiscreteGrid{2}(R, (0, 0); unfoldingscheme=:interleaved)
 
 sparse1dgrid = collect(0:4)
@@ -315,22 +299,19 @@ hfkl(k::Integer, l::Integer) = _expk(k, ϵ) * _expk(l, ϵprime)
 
 exactdata = [hfkl(k, l) for k in sparse1dgrid, l in sparse1dgrid]
 
-c = ax1.pcolor(real.(exactdata))
-fig.colorbar(c, ax=ax1)
-ax1.set_xlabel(L"k")
-ax1.set_ylabel(L"l")
-ax1.set_title("Real part of Exact data")
+c1 = heatmap(real.(exactdata))
+xlabel!(L"k")
+ylabel!(L"l")
+title!("Real part of Exact data")
 
-c = ax2.pcolor(real.(reconstdata))
-fig.colorbar(c, ax=ax2)
-ax2.set_xlabel(L"k")
-ax2.set_ylabel(L"l")
-ax2.set_title("Real part of Reconstructed data")
+c2 = heatmap(real.(reconstdata))
+xlabel!(L"k")
+ylabel!(L"l")
+title!("Real part of Reconstructed data")
 
-c = ax3.pcolor(abs.(exactdata .- reconstdata))
-fig.colorbar(c, ax=ax3)
-ax3.set_xlabel(L"k")
-ax3.set_ylabel(L"l")
-ax3.set_title("Error")
+c3 = heatmap(abs.(exactdata .- reconstdata))
+xlabel!(L"k")
+ylabel!(L"l")
+title!("Error")
 
-_display(fig)
+plot(c1, c2, c3, size=(1500, 400), layout=(1, 3))

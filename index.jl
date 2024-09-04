@@ -34,7 +34,7 @@
 #
 # Additionally, we provide some topics on Julia packages such as:
 #
-# - [PythonPlot.jl](pythonplot.ipynb). This may be helpful for those who are new to Julia and come from Python.
+# - [Plots.jl](plots.ipynb). Basic tutorial for plotting using Plots.jl.
 #
 # This documentation provides examples of using these libraries to perform QTCI and other operations.
 #

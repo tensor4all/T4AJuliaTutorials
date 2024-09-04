@@ -39,4 +39,5 @@ RUN chown -R ${NB_UID} /workspaces/T4AJuliaTutorials
 USER ${NB_USER}
 
 RUN julia -e 'using Pkg; Pkg.Registry.add("General")'
-RUN julia --project=/workspaces/T4AJuliaTutorials/ -e 'using Pkg; Pkg.instantiate()'
+RUN julia --project=/workspaces/T4AJuliaTutorials/ -e 'using Pkg; Pkg.instantiate()' \
+	&& julia --project=/workspaces/T4AJuliaTutorials -e 'using Pkg; Pkg.build("IJulia")'

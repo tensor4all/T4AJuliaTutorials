@@ -2,7 +2,7 @@
 
 julia_version = "1.10.5"
 manifest_format = "2.0"
-project_hash = "1512693369576c0f49d16625139a28d6fe3bdae6"
+project_hash = "c82873ba2784b85749d16d952260ef4df9094980"
 
 [[deps.Accessors]]
 deps = ["CompositionsBase", "ConstructionBase", "Dates", "InverseFunctions", "LinearAlgebra", "MacroTools", "Markdown", "Test"]
@@ -526,9 +526,9 @@ version = "1.25.0"
 
 [[deps.ITensorTDVP]]
 deps = ["Adapt", "Compat", "ITensors", "KrylovKit", "LinearAlgebra", "NDTensors", "PackageExtensionCompat", "Printf", "TimerOutputs"]
-git-tree-sha1 = "f34114040f987bbea4f34ffda75c3e48fa0ed27f"
+git-tree-sha1 = "2ae8e9830c2eac0499954a4f267f5235b61677c5"
 uuid = "25707e16-a4db-4a07-99d9-4d67b7af0342"
-version = "0.4.8"
+version = "0.4.9"
 
     [deps.ITensorTDVP.extensions]
     ITensorTDVPObserversExt = "Observers"
@@ -1370,9 +1370,9 @@ version = "0.1.1"
 
 [[deps.TensorCrossInterpolation]]
 deps = ["EllipsisNotation", "LinearAlgebra", "QuadGK"]
-git-tree-sha1 = "84f3622e59bf87189a8c7a60de2ff91dc53dcc2a"
+git-tree-sha1 = "0e284d808f27b1ae9ec1bfa5cb7b94c85c4e6ee4"
 uuid = "b261b2ec-6378-4871-b32e-9173bb050604"
-version = "0.9.11"
+version = "0.9.12"
 
 [[deps.Test]]
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]

@@ -1,4 +1,4 @@
-FROM julia:1.10.4
+FROM julia:1.10.5
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	make \
@@ -38,5 +38,6 @@ COPY Project.toml /workspaces/T4AJuliaTutorials/
 RUN chown -R ${NB_UID} /workspaces/T4AJuliaTutorials
 USER ${NB_USER}
 
+RUN julia -e 'using Pkg; Pkg.Registry.add("General")'
 RUN julia --project=/workspaces/T4AJuliaTutorials/ -e 'using Pkg; Pkg.instantiate()' \
 	&& julia --project=/workspaces/T4AJuliaTutorials -e 'using Pkg; Pkg.build("IJulia")'

@@ -9,7 +9,7 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.11.2
 #   kernelspec:
-#     display_name: Julia 1.10.3
+#     display_name: Julia 1.10.5
 #     language: julia
 #     name: julia-1.10
 # ---
@@ -23,15 +23,10 @@
 #
 
 # %%
-using PythonCall: PythonCall
-using PythonPlot: pyplot as plt, Figure
-
-# Displays the matplotlib figure object `fig` and avoids duplicate plots.
-_display(fig::Figure) = isinteractive() ? (fig; plt.show(); nothing) : Base.display(fig)
-_display(fig::PythonCall.Py) = _display(Figure(fig))
-
 import QuanticsGrids as QG
 import TensorCrossInterpolation as TCI
+
+using Plots
 
 # %% [markdown]
 # ## Example 1 (continuation)
@@ -92,7 +87,6 @@ nothing # hide
 
 # %%
 import QuanticsGrids as QG
-using PythonPlot: pyplot as plt, gcf
 
 R = 40 # number of bits
 xmin = 0.0
@@ -140,7 +134,7 @@ ci, ranks, errors = TCI.crossinterpolate2(Float64, cf, localdims, initialpivots;
 # The integral of $f(x)$ can be computed by summing all the elements in the QTT representation and multiplying by the interval length divided by $2^\mathcal{R}$.
 
 # %%
-TCI.sum(ci) * (log(20) - 0) / 2^R, 19/10
+TCI.sum(ci) * (log(20) - 0) / 2^R, 19 / 10
 
 # %% [markdown]
 # You can retrieve the results of the function evaluations during the TCI construction as follows.
@@ -168,3 +162,5 @@ println("f(x) = $(f(x)), qf(q) = $(qf(q)), cf(q) = $(cf(q)), ci(q) = $(ci(q))")
 
 # %%
 @show length(TCI.cachedata(cf))
+
+# %%

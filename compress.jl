@@ -10,7 +10,7 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.11.2
 #   kernelspec:
-#     display_name: Julia 1.10.2
+#     display_name: Julia 1.10.5
 #     language: julia
 #     name: julia-1.10
 # ---
@@ -19,12 +19,10 @@
 # # Compressing exisiting data
 
 # %%
-using PythonCall: PythonCall
-using PythonPlot: pyplot as plt, Figure
+using Plots
 
-# Displays the matplotlib figure object `fig` and avoids duplicate plots.
-_display(fig::Figure) = isinteractive() ? (fig; plt.show(); nothing) : Base.display(fig)
-_display(fig::PythonCall.Py) = _display(Figure(fig))
+import TensorCrossInterpolation as TCI
+using QuanticsTCI
 
 # %% [markdown]
 # ## TCI
@@ -42,8 +40,6 @@ size(dataset)
 # We now construct a TCI.
 
 # %%
-import TensorCrossInterpolation as TCI
-
 # Construct TCI
 tolerance = 1e-5
 tt, ranks, errors = TCI.crossinterpolate2(
@@ -54,26 +50,23 @@ ttdataset = [tt([i, j, k]) for i in axes(grid, 1), j in axes(grid, 1), k in axes
 errors = abs.(ttdataset .- dataset)
 println(
     "TCI of the dataset with tolerance $tolerance has link dimensions $(TCI.linkdims(tt)), "
-    * "for a max error of $(maximum(errors))."
+    *
+    "for a max error of $(maximum(errors))."
 )
 
 # %% [markdown]
 # Let us plot the original data and the TCI error on a 2D cut.
 
 # %%
-fig, axs = plt.subplots(1, 2; figsize=(12.8, 4.8))
-
 # Original data
-c = axs[0].pcolor(dataset[:, :, 1])
-fig.colorbar(c, ax=axs[0])
-axs[0].set_title("Original data")
+c1 = heatmap(dataset[:, :, 1], aspect_ratio=1)
+title!("Original data")
 
 # TCI error
-c = axs[1].pcolor(log10.(abs.(errors[:, :, 1])))
-fig.colorbar(c, ax=axs[1])
-axs[1].set_title("log10 of abs error of TCI")
+c2 = heatmap(log10.(abs.(errors[:, :, 1])), aspect_ratio=1)
+title!("log10 of abs error of TCI")
 
-_display(fig)
+plot(c1, c2, size=(800, 500))
 
 # %% [markdown]
 # ## QTCI
@@ -85,7 +78,7 @@ _display(fig)
 R = 8
 
 # Replace with your dataset
-grid = range(-pi, pi; length=2^R+1)[1:end-1] # exclude the end point
+grid = range(-pi, pi; length=2^R + 1)[1:end-1] # exclude the end point
 dataset = [cos(x) + cos(y) + cos(z) for x in grid, y in grid, z in grid]
 size(dataset)
 
@@ -94,9 +87,6 @@ size(dataset)
 # Let us first use `quanticscrossinterpolate` function in `QuanticsTCI.jl`.
 
 # %%
-using QuanticsTCI
-import TensorCrossInterpolation as TCI
-
 # Perform QTCI
 tolerance = 1e-5
 qtt, ranks, errors = quanticscrossinterpolate(
@@ -118,21 +108,14 @@ println(
 # Again, let us plot the original data and the TCI error on a 2D cut.
 
 # %%
-using PythonPlot: pyplot as plt, gcf
-
-fig, axs = plt.subplots(1, 2; figsize=(12.8, 4.8))
-
 # Original data
-c = axs[0].pcolor(qttdataset[:, :, 1])
-fig.colorbar(c, ax=axs[0])
-axs[0].set_title("Original data")
+c1 = heatmap(qttdataset[:, :, 1], aspect_ratio=1)
+title!("Original data")
 
-# TCI error
-c = axs[1].pcolor(log10.(abs.(qtterrors[:, :, 1])))
-fig.colorbar(c, ax=axs[1])
-axs[1].set_title("log10 of abs error of QTCI")
+c2 = heatmap(log10.(abs.(qtterrors[:, :, 1])), aspect_ratio=1)
+title!("log10 of abs error of QTCI")
 
-_display(fig)
+plot(c1, c2, size=(800, 500))
 
 # %% [markdown]
 # ### QuanticsGrids.jl + TensorCrossInterpolation.jl

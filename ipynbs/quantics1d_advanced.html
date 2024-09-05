@@ -182,7 +182,7 @@
 <li class="toctree-l1"><a class="reference internal" href="compress.html">Compressing exisiting data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interfacingwithitensors.html">Interfacing with ITensors.jl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qft.html">Quantum Fourier Transform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pythonplot.html">PythonPlot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html">Plots.jl</a></li>
 </ul>
 
     </div>
@@ -399,15 +399,10 @@ document.write(`
 <h1>Quantics TCI of univariate funciton (advanced topics)<a class="headerlink" href="#quantics-tci-of-univariate-funciton-advanced-topics" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">PythonCall</span><span class="o">:</span><span class="w"> </span><span class="n">PythonCall</span>
-<span class="k">using</span><span class="w"> </span><span class="n">PythonPlot</span><span class="o">:</span><span class="w"> </span><span class="n">pyplot</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">plt</span><span class="p">,</span><span class="w"> </span><span class="n">Figure</span>
-
-<span class="c"># Displays the matplotlib figure object `fig` and avoids duplicate plots.</span>
-<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="o">::</span><span class="kt">Figure</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isinteractive</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="n">fig</span><span class="p">;</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span><span class="w"> </span><span class="nb">nothing</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Base</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
-<span class="n">_display</span><span class="p">(</span><span class="n">fig</span><span class="o">::</span><span class="kt">PythonCall</span><span class="o">.</span><span class="n">Py</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_display</span><span class="p">(</span><span class="n">Figure</span><span class="p">(</span><span class="n">fig</span><span class="p">))</span>
-
-<span class="k">import</span><span class="w"> </span><span class="n">QuanticsGrids</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">QG</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="n">QuanticsGrids</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">QG</span>
 <span class="k">import</span><span class="w"> </span><span class="n">TensorCrossInterpolation</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">TCI</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">Plots</span>
 </pre></div>
 </div>
 </div>
@@ -459,7 +454,6 @@ f(x) = \cos\left(\frac{x}{B}\right) \cos\left(\frac{x}{4\sqrt{5}B}\right) e^{-x^
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">import</span><span class="w"> </span><span class="n">QuanticsGrids</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">QG</span>
-<span class="k">using</span><span class="w"> </span><span class="n">PythonPlot</span><span class="o">:</span><span class="w"> </span><span class="n">pyplot</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">plt</span><span class="p">,</span><span class="w"> </span><span class="n">gcf</span>
 
 <span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="c"># number of bits</span>
 <span class="n">xmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
@@ -511,11 +505,11 @@ In the following code, we generate initial pivots by finding local maxima of <sp
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5-element Vector{Float64}:
- 2.839243568291781
- 2.973551269410439
- 2.9755269469864216
- 2.895683103585105
- 2.8211532605386402
+ 2.9938215448411176
+ 2.9692013425823065
+ 2.9677212644390307
+ 2.4973355254268017
+ 2.8436075439441373
 </pre></div>
 </div>
 </div>
@@ -528,7 +522,7 @@ In the following code, we generate initial pivots by finding local maxima of <sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, [16, 15, 15], [2.389115511082344e-8, 3.937811609971163e-8, 2.983915844757681e-8])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, [20, 15, 15], [3.182986040736725e-8, 3.1417678751128866e-8, 3.1417678751128866e-8])
 </pre></div>
 </div>
 </div>
@@ -536,12 +530,12 @@ In the following code, we generate initial pivots by finding local maxima of <sp
 <p>The integral of <span class="math notranslate nohighlight">\(f(x)\)</span> can be computed by summing all the elements in the QTT representation and multiplying by the interval length divided by <span class="math notranslate nohighlight">\(2^\mathcal{R}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">TCI</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="o">/</span><span class="mi">10</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">TCI</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ci</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.899999998775494, 1.9)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.899999999675659, 1.9)
 </pre></div>
 </div>
 </div>
@@ -571,7 +565,7 @@ Just in case, we will check <code class="docutils literal notranslate"><span cla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f(x) = 1.7990930849034745, qf(q) = 1.798322002608539, cf(q) = 1.798322002608539, ci(q) = 1.7983220233343062
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f(x) = 1.7990930849034745, qf(q) = 1.798322002608539, cf(q) = 1.798322002608539, ci(q) = 1.7983219877056584
 </pre></div>
 </div>
 </div>
@@ -583,10 +577,10 @@ Just in case, we will check <code class="docutils literal notranslate"><span cla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length(TCI.cachedata(cf)) = 49685
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length(TCI.cachedata(cf)) = 55457
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49685
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55457
 </pre></div>
 </div>
 </div>

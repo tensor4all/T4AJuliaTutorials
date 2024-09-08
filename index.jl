@@ -104,14 +104,20 @@
 # %% [markdown]
 # ## Run notebooks
 #
-# 1. Run all the notebooks as [a zip file](https://github.com/tensor4all/T4AJuliaTutorials/releases/download/ipynbs%2Fpreview/ipynbs.zip).
-# 2. Unzip the zip file. You will get a directory named `ipynbs`.
-# 3. Open a terminal and change the directory to the `ipynbs` directory. Then, open a Julia REPL using the `ipynbs` directory as the project directory.
-# ```sh
-# $ cd ipynbs
-# $ julia --project=@.
-# ```
-# 4. Run the following commands in the Julia REPL to install the required packages, which are registered in `ipynbs/Project.toml`, and open the Jupyter notebook.
+# 1. Download all the notebooks as [a zip file](https://github.com/tensor4all/T4AJuliaTutorials/releases/download/ipynbs%2Fpreview/ipynbs.zip).
+# 1. Double click `ipynbs.zip` to extract the zip file. You will get a directory named `ipynbs`.
+# 1. Open a terminal and change the directory to the `ipynbs` directory. Then, open a Julia REPL using the `ipynbs` directory as the project directory.
+#     ```sh
+#     $ cd ipynbs
+#    $ ls
+#        Manifest.toml                 plots.ipynb
+#        Project.toml                  qft.ipynb
+#        compress.ipynb                quantics1d.ipynb
+#        index.ipynb                   quantics1d_advanced.ipynb
+#        interfacingwithitensors.ipynb quantics2d.ipynb
+#     $ julia --project=@.
+#     ```
+# 1. Run the following commands in the Julia REPL to install the required packages, which are registered in `ipynbs/Project.toml`, and open the Jupyter notebook.
 #
 # ```julia-repl
 # julia> using Pkg
@@ -140,7 +146,6 @@
 # ## Print out the status of the project
 #
 # Having trouble? Try the following command in your Julia's REPL:
-#     
 #
 #
 

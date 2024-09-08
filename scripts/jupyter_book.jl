@@ -1,7 +1,7 @@
 using Conda
 
 if Sys.iswindows()
-    jbpath = joinpath(Conda.SCRIPTDIR, "jb.exe")
+    jbpath = joinpath(Conda.SCRIPTDIR, "jupyter-book.exe")
     #=
     We omit --warningiserror flag on Windows because of the following warning happens, which is not related to our Julia project:
 
@@ -10,7 +10,7 @@ if Sys.iswindows()
     Use `asyncio.set_event_loop_policy(WindowsSelectorEventLoopPolicy())` to avoid this warning. self._get_loop()
 
     =#
-    run(`$jbpath build $(pwd())`)
+    run(`$(jbpath) build $(pwd())`)
 else
     # jbpath = joinpath(dirname(PythonCall.C.CTX.exe_path), "jupyter-book")
     jbpath = joinpath(Conda.SCRIPTDIR, "jupyter-book")

@@ -6,13 +6,13 @@ Pkg.instantiate()
 using Conda
 
 if Sys.iswindows()
-	isfile(joinpath(Conda.PYTHONDIR, "jupyter.exe")) || Conda.add("jupyter")
-	isfile(joinpath(Conda.PYTHONDIR, "jupytext.exe")) || Conda.add("jupytext")
-	isfile(joinpath(Conda.PYTHONDIR, "jb.exe")) || Conda.add("jupyter-book")
+	isfile(joinpath(Conda.SCRIPTDIR, "jupyter.exe")) || Conda.add("jupyter")
+	isfile(joinpath(Conda.SCRIPTDIR, "jupytext.exe")) || Conda.add("jupytext")
+	isfile(joinpath(Conda.SCRIPTDIR, "jupyter-book.exe")) || Conda.add("jupyter-book")
 else
-	isfile(joinpath(Conda.PYTHONDIR, "jupyter")) || Conda.add("jupyter")
-	isfile(joinpath(Conda.PYTHONDIR, "jupytext")) || Conda.add("jupytext")
-	isfile(joinpath(Conda.PYTHONDIR, "jupyter-book")) || Conda.add("jupyter-book")
+	isfile(joinpath(Conda.SCRIPTDIR, "jupyter")) || Conda.add("jupyter")
+	isfile(joinpath(Conda.SCRIPTDIR, "jupytext")) || Conda.add("jupytext")
+	isfile(joinpath(Conda.SCRIPTDIR, "jupyter-book")) || Conda.add("jupyter-book")
 end
 
 Pkg.build("IJulia")

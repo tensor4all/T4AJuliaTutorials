@@ -1,6 +1,0 @@
-channels = ["conda-forge"]
-
-[deps]
-python = ">=3.11,<3.12"
-jupytext = ">=1.16"
-jupyter-book = ""

@@ -1,10 +1,12 @@
 using Pkg
 
-using Conda
-
 Pkg.Registry.add("General")
 Pkg.instantiate()
-Pkg.build("IJulia")
 
+using Conda
+
+Conda.add("jupyter")
 Conda.add("jupytext")
 Conda.add("jupyter-book")
+
+Pkg.build("IJulia")

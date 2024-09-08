@@ -379,12 +379,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation">Preparation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-julia">Install Julia</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-required-packages">Install required packages</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-out-the-status-of-the-project">Print out the status of the project</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-installing-julia">Preparation - Installing Julia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-notebooks">Run notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#print-out-the-status-of-the-project">Print out the status of the project</a></li>
 </ul>
             </nav>
         </div>
@@ -417,10 +414,8 @@ The folowing list is given in the order of low-level to high-level libraries:</p
 <li><p><a class="reference internal" href="plots.html"><span class="std std-doc">Plots.jl</span></a>. Basic tutorial for plotting using Plots.jl.</p></li>
 </ul>
 <p>This documentation provides examples of using these libraries to perform QTCI and other operations.</p>
-<section id="preparation">
-<h2>Preparation<a class="headerlink" href="#preparation" title="Link to this heading">#</a></h2>
-<section id="install-julia">
-<h3>Install Julia<a class="headerlink" href="#install-julia" title="Link to this heading">#</a></h3>
+<section id="preparation-installing-julia">
+<h2>Preparation - Installing Julia<a class="headerlink" href="#preparation-installing-julia" title="Link to this heading">#</a></h2>
 <p>Install <code class="docutils literal notranslate"><span class="pre">julia</span></code> command using <a class="reference external" href="https://github.com/JuliaLang/juliaup">juliaup</a>.</p>
 <p>On Windows Julia and Juliaup can be installed directly from the Windows store. One can also install exactly the same version by executing</p>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="n">PS</span><span class="p">&gt;</span> <span class="n">winget</span> <span class="n">install</span> <span class="n">julia</span> <span class="n">-s</span> <span class="n">msstore</span>
@@ -459,23 +454,45 @@ The folowing list is given in the order of low-level to high-level libraries:</p
 </div>
 <p>See the official documentation at <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">The Julia REPL</a> to learn more.</p>
 </section>
-<section id="install-required-packages">
-<h3>Install required packages<a class="headerlink" href="#install-required-packages" title="Link to this heading">#</a></h3>
-<p>One can install required packages by running the following command on your shell:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:tensor4all/T4AJuliaTutorials.git
-<span class="nb">cd</span><span class="w"> </span>T4AJuliaTutorials
-julia<span class="w"> </span>--project<span class="w"> </span>scripts/setup.jl
+<section id="run-notebooks">
+<h2>Run notebooks<a class="headerlink" href="#run-notebooks" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Download all the notebooks as <a class="reference external" href="https://github.com/tensor4all/T4AJuliaTutorials/releases/download/ipynbs%2Fpreview/ipynbs.zip">a zip file</a>.</p></li>
+<li><p>Double click <code class="docutils literal notranslate"><span class="pre">ipynbs.zip</span></code> to extract the zip file. You will get a directory named <code class="docutils literal notranslate"><span class="pre">ipynbs</span></code>.</p></li>
+<li><p>Open a terminal and change the directory to the <code class="docutils literal notranslate"><span class="pre">ipynbs</span></code> directory. Then, open a Julia REPL using the <code class="docutils literal notranslate"><span class="pre">ipynbs</span></code> directory as the project directory.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>ipynbs
+$<span class="w"> </span>ls
+<span class="w">   </span>Manifest.toml<span class="w">                 </span>plots.ipynb
+<span class="w">   </span>Project.toml<span class="w">                  </span>qft.ipynb
+<span class="w">   </span>compress.ipynb<span class="w">                </span>quantics1d.ipynb
+<span class="w">   </span>index.ipynb<span class="w">                   </span>quantics1d_advanced.ipynb
+<span class="w">   </span>interfacingwithitensors.ipynb<span class="w"> </span>quantics2d.ipynb
+$<span class="w"> </span>julia<span class="w"> </span>--project<span class="o">=</span>@.
 </pre></div>
 </div>
-<p>Here, the <code class="docutils literal notranslate"><span class="pre">--project</span></code> option activates our project, which is characterized by <code class="docutils literal notranslate"><span class="pre">Project.toml</span></code>, and <code class="docutils literal notranslate"><span class="pre">scripts/setup.jl</span></code> installs dependencies needed to run our notebooks.</p>
-<p>Keep in mind that <a class="reference external" href="https://github.com/tensor4all/Quantics.jl">Quantics.jl</a> is not registered in <a class="reference external" href="https://github.com/JuliaRegistries/General/tree/master">Julia’s General registry</a>. To run <code class="docutils literal notranslate"><span class="pre">qft.jl</span></code>, we need to add <a class="reference external" href="https://github.com/tensor4all/T4ARegistry">T4ARegistry</a>.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>julia<span class="w"> </span>--project<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;using Pkg; Pkg.Registry.add(RegistrySpec(url=&quot;https://github.com/tensor4all/T4ARegistry.git&quot;))&#39;</span>
+</li>
+<li><p>Run the following commands in the Julia REPL to install the required packages, which are registered in <code class="docutils literal notranslate"><span class="pre">ipynbs/Project.toml</span></code>, and open the Jupyter notebook.</p></li>
+</ol>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span><span class="w"> </span><span class="c"># Install the required packages. This may take a while.</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">IJulia</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">IJulia</span><span class="o">.</span><span class="n">notebook</span><span class="p">(;</span><span class="n">dir</span><span class="o">=</span><span class="n">pwd</span><span class="p">())</span><span class="w"> </span><span class="c"># Open the Jupyter notebook.</span>
+</pre></div>
+</div>
+<p>Here, the <code class="docutils literal notranslate"><span class="pre">--project</span></code> option activates our project, which is characterized by <code class="docutils literal notranslate"><span class="pre">ipynbs/Project.toml</span></code>, and <code class="docutils literal notranslate"><span class="pre">Pkg.instantiate()</span></code> installs dependencies needed to run our notebooks.
+<code class="docutils literal notranslate"><span class="pre">Pkg.instantiate()</span></code> may take a while to complete, as it downloads and installs the required packages.
+This command only needs to be run once, unless the <code class="docutils literal notranslate"><span class="pre">Project.toml</span></code> file is modified.</p>
+<p>We do not recommend to run the notebook in Safari because it may cause some issues.
+If you want to use another browser to open the notebook, you can use the following command:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">browser</span><span class="o">=</span><span class="s">&quot;chrome&quot;</span><span class="w">  </span><span class="c"># specify your browser name: see https://docs.python.org/3/library/webbrowser.html#webbrowser.register</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">$</span><span class="p">(</span><span class="n">IJulia</span><span class="o">.</span><span class="n">JUPYTER</span><span class="p">)</span><span class="sb"> notebook --browser=</span><span class="si">$</span><span class="p">(</span><span class="n">browser</span><span class="p">)</span><span class="sb">`</span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">run</span><span class="p">(</span><span class="kt">Cmd</span><span class="p">(</span><span class="n">cmd</span><span class="p">;</span><span class="w"> </span><span class="n">dir</span><span class="o">=</span><span class="n">pwd</span><span class="p">());</span><span class="w"> </span><span class="n">wait</span><span class="o">=</span><span class="nb">false</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="print-out-the-status-of-the-project">
-<h3>Print out the status of the project<a class="headerlink" href="#print-out-the-status-of-the-project" title="Link to this heading">#</a></h3>
-<p>Having trouble? Try the following command in your Julia’s REPL. On GitHub Actions instance we’ll get:</p>
+<h2>Print out the status of the project<a class="headerlink" href="#print-out-the-status-of-the-project" title="Link to this heading">#</a></h2>
+<p>Having trouble? Try the following command in your Julia’s REPL:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Dates</span><span class="p">;</span>
@@ -505,7 +522,6 @@ julia<span class="w"> </span>--project<span class="w"> </span>scripts/setup.jl
 </div>
 </div>
 </div>
-</section>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -566,12 +582,9 @@ julia<span class="w"> </span>--project<span class="w"> </span>scripts/setup.jl
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation">Preparation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-julia">Install Julia</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-required-packages">Install required packages</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-out-the-status-of-the-project">Print out the status of the project</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-installing-julia">Preparation - Installing Julia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-notebooks">Run notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#print-out-the-status-of-the-project">Print out the status of the project</a></li>
 </ul>
   </nav></div>
 

@@ -72,7 +72,7 @@ x = 1:3
 y = 1:20
 
 f(x, y) = 2x + y
-@show size(f.(x, y'))
-heatmap(x, y, f.(x, y'))
+@show size(f.(x', y))
+heatmap(x, y, f.(x', y))
 
 # %%

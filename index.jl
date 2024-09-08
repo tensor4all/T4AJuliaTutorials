@@ -38,9 +38,7 @@
 #
 # This documentation provides examples of using these libraries to perform QTCI and other operations.
 #
-# ## Preparation
-#
-# ### Install Julia
+# ## Preparation - Installing Julia
 #
 # Install `julia` command using [juliaup](https://github.com/JuliaLang/juliaup).
 #
@@ -102,35 +100,53 @@
 # ```
 #
 # See the official documentation at [The Julia REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) to learn more.
-#
-# ### Install required packages
-#
-# One can install required packages by running the following command on your shell:
-#
 
 # %% [markdown]
-# ```sh
-# git clone git@github.com:tensor4all/T4AJuliaTutorials.git
-# cd T4AJuliaTutorials
-# julia --project scripts/setup.jl
+# ## Run notebooks
+#
+# 1. Download all the notebooks as [a zip file](https://github.com/tensor4all/T4AJuliaTutorials/releases/download/ipynbs%2Fpreview/ipynbs.zip).
+# 1. Double click `ipynbs.zip` to extract the zip file. You will get a directory named `ipynbs`.
+# 1. Open a terminal and change the directory to the `ipynbs` directory. Then, open a Julia REPL using the `ipynbs` directory as the project directory.
+#     ```sh
+#     $ cd ipynbs
+#    $ ls
+#        Manifest.toml                 plots.ipynb
+#        Project.toml                  qft.ipynb
+#        compress.ipynb                quantics1d.ipynb
+#        index.ipynb                   quantics1d_advanced.ipynb
+#        interfacingwithitensors.ipynb quantics2d.ipynb
+#     $ julia --project=@.
+#     ```
+# 1. Run the following commands in the Julia REPL to install the required packages, which are registered in `ipynbs/Project.toml`, and open the Jupyter notebook.
+#
+# ```julia-repl
+# julia> using Pkg
+# julia> Pkg.instantiate() # Install the required packages. This may take a while.
+# julia> using IJulia
+# julia> IJulia.notebook(;dir=pwd()) # Open the Jupyter notebook.
 # ```
 #
 
 # %% [markdown]
-# Here, the `--project` option activates our project, which is characterized by `Project.toml`, and `scripts/setup.jl` installs dependencies needed to run our notebooks.
+# Here, the `--project` option activates our project, which is characterized by `ipynbs/Project.toml`, and `Pkg.instantiate()` installs dependencies needed to run our notebooks.
+# `Pkg.instantiate()` may take a while to complete, as it downloads and installs the required packages.
+# This command only needs to be run once, unless the `Project.toml` file is modified.
 
 # %% [markdown]
-# Keep in mind that [Quantics.jl](https://github.com/tensor4all/Quantics.jl) is not registered in [Julia's General registry](https://github.com/JuliaRegistries/General/tree/master). To run `qft.jl`, we need to add [T4ARegistry](https://github.com/tensor4all/T4ARegistry).
+# We do not recommend to run the notebook in Safari because it may cause some issues.
+# If you want to use another browser to open the notebook, you can use the following command:
 #
-# ```sh
-# julia --project -e 'using Pkg; Pkg.Registry.add(RegistrySpec(url="https://github.com/tensor4all/T4ARegistry.git"))'
+# ```julia-repl
+# julia> browser="chrome"  # specify your browser name: see https://docs.python.org/3/library/webbrowser.html#webbrowser.register
+# julia> cmd = `$(IJulia.JUPYTER) notebook --browser=$(browser)`
+# julia> run(Cmd(cmd; dir=pwd()); wait=false)
 # ```
-#
 
 # %% [markdown]
-# ### Print out the status of the project
+# ## Print out the status of the project
 #
-# Having trouble? Try the following command in your Julia's REPL. On GitHub Actions instance we'll get:
+# Having trouble? Try the following command in your Julia's REPL:
+#
 #
 
 # %%

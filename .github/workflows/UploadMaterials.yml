@@ -39,9 +39,6 @@ jobs:
         run: |
           julia --project -e 'using Pkg; Pkg.build("IJulia")'
           make
-      - name: Remove depencdencies related to Python
-        run: |
-          julia --project -e 'using Pkg; Pkg.rm(["PythonCall", "CondaPkg"])'
       - name: Copy project files to ipynbs
         run: |
           cp Project.toml Manifest.toml _build/jupyter_execute/ipynbs/

@@ -1,5 +1,5 @@
-using PythonCall
+using Conda
 
-jupytext_config = joinpath(dirname(PythonCall.C.CTX.exe_path), "jupytext-config")
+jupytext_config = joinpath(Conda.SCRIPTDIR, "jupytext-config")
 
 run(`$(jupytext_config) set-default-viewer`)

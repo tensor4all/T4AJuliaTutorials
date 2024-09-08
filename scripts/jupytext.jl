@@ -1,6 +1,5 @@
-using PythonCall
-
-python = PythonCall.C.CTX.exe_path
+using Conda
+python = joinpath(Conda.PYTHONDIR, "python")
 
 for jlfile in ARGS
 	destination = joinpath("ipynbs", splitext(jlfile)[begin] * ".ipynb")

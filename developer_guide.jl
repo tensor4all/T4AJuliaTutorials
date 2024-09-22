@@ -80,52 +80,6 @@
 # Finally, we use `script/jupyter_book.jl` to invode `jupyter-book build .` command. This will build our page on your computer.
 
 # %% [markdown]
-# The output of running `make` in your terminal is:
-#
-# ```sh
-# julia --project scripts/jupytext.jl interfacingwithitensors.jl
-#     CondaPkg Found dependencies: ~/work/T4AJuliaTutorials/CondaPkg.toml
-#     CondaPkg Found dependencies: ~/.julia/packages/PythonCall/bb3ax/CondaPkg.toml
-#     CondaPkg Found dependencies: ~/.julia/packages/PythonPlot/f591M/CondaPkg.toml
-#     CondaPkg Dependencies already up to date
-# [jupytext] Reading interfacingwithitensors.jl in format jl
-# [jupytext] Setting kernel julia-1.10
-# [jupytext] Updating notebook metadata with '{"kernelspec": {"name": "julia-1.10", "language": "julia", "display_name": "Julia 1.10.2"}}'
-# [jupytext] Writing ipynbs/interfacingwithitensors.ipynb (destination file replaced [use --update to preserve cell outputs and ids])
-# julia --project scripts/jupyter_book.jl
-# Running Jupyter-Book v1.0.0
-# ...
-# ...
-# ...
-# writing additional pages... search done
-# copying images... [ 14%] _build/jupyter_execute/be1f99ce1077b1647e50b2f08
-# copying images... [ 29%] _build/jupyter_execute/7aa60660b8255c884e2161d94
-# copying images... [ 43%] _build/jupyter_execute/083314408bcee871cc804aaa2
-# copying images... [ 57%] _build/jupyter_execute/3ea4eb256bb802a9ddbc68d12
-# copying images... [ 71%] _build/jupyter_execute/8fbf08bfdb19e3830535aed88
-# copying images... [ 86%] _build/jupyter_execute/d4fa9a27b9cb8469ab97c9790
-# copying images... [100%] _build/jupyter_execute/1bbf71e3285bcd1ea04054810a8b1af59e3ee8321a4f74108637e95eac2c1c50.svg
-# dumping search index in English (code: en)... done
-# dumping object inventory... done
-# build succeeded, 4 warnings.
-#
-# The HTML pages are in _build/html.
-#
-# ===============================================================================
-#
-# Finished generating HTML for book.
-# Your book's HTML pages are here:
-#     _build/html/
-# You can look at your book by opening this file in a browser:
-#     _build/html/index.html
-# Or paste this line directly into your browser bar:
-#     ./T4AJuliaTutorials/_build/html/index.html
-#
-# ===============================================================================
-# ```
-#
-
-# %% [markdown]
 # You will find `_build/html/index.html` is generated. Open this file in a browser to confirm our Jupyter Book is generated properly.
 
 # %% [markdown]

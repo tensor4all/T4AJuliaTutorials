@@ -36,7 +36,9 @@
 #
 # - [Plots.jl](plots.ipynb). Basic tutorial for plotting using Plots.jl.
 #
-# This documentation provides examples of using these libraries to perform QTCI and other operations.
+# To build our page locally, refer [developer guilde](developer_guide.ipynb).
+#
+# A detailed guide to setting up the software is available at [T4AJuliaTutorials/Wiki](https://github.com/tensor4all/T4AJuliaTutorials/wiki).
 #
 # ## Preparation - Installing Julia
 #

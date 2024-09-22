@@ -11,3 +11,4 @@ chapters:
 - file: ipynbs/interfacingwithitensors
 - file: ipynbs/qft
 - file: ipynbs/plots
+- file: ipynbs/developer_guide

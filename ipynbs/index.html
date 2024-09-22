@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -184,6 +184,7 @@
 <li class="toctree-l1"><a class="reference internal" href="interfacingwithitensors.html">Interfacing with ITensors.jl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qft.html">Quantum Fourier Transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plots.html">Introduction to Plots.jl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer guide</a></li>
 </ul>
 
     </div>
@@ -413,7 +414,8 @@ The folowing list is given in the order of low-level to high-level libraries:</p
 <ul class="simple">
 <li><p><a class="reference internal" href="plots.html"><span class="std std-doc">Plots.jl</span></a>. Basic tutorial for plotting using Plots.jl.</p></li>
 </ul>
-<p>This documentation provides examples of using these libraries to perform QTCI and other operations.</p>
+<p>To build our page locally, refer <a class="reference internal" href="developer_guide.html"><span class="std std-doc">developer guilde</span></a>.</p>
+<p>A detailed guide to setting up the software is available at <a class="reference external" href="https://github.com/tensor4all/T4AJuliaTutorials/wiki">T4AJuliaTutorials/Wiki</a>.</p>
 <section id="preparation-installing-julia">
 <h2>Preparation - Installing Julia<a class="headerlink" href="#preparation-installing-julia" title="Link to this heading">#</a></h2>
 <p>Install <code class="docutils literal notranslate"><span class="pre">julia</span></code> command using <a class="reference external" href="https://github.com/JuliaLang/juliaup">juliaup</a>.</p>
@@ -507,7 +509,7 @@ If you want to use another browser to open the notebook, you can use the followi
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Green">Status</span> `~/work/T4AJuliaTutorials/T4AJuliaTutorials/Project.toml`
   [992eb4ea] CondaPkg v0.2.23
   [7073ff75] IJulia v1.25.0
-  [9136182c] ITensors v0.6.17
+<span class=" -Color -Color-Green">⌃</span> [9136182c] ITensors v0.6.17
   [b964fa9f] LaTeXStrings v1.3.1
   [16fef848] LiveServer v1.3.1
   [91a5bcdd] Plots v1.40.8
@@ -518,6 +520,7 @@ If you want to use another browser to open the notebook, you can use the followi
   [9f0aa9f4] TCIITensorConversion v0.1.4
   [b261b2ec] TensorCrossInterpolation v0.9.12
   [de0858da] Printf
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">Info</span> Packages marked with <span class=" -Color -Color-Green">⌃</span> have new versions available and may be upgradable.
 </pre></div>
 </div>
 </div>

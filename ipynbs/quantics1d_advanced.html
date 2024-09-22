@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -183,6 +183,7 @@
 <li class="toctree-l1"><a class="reference internal" href="interfacingwithitensors.html">Interfacing with ITensors.jl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qft.html">Quantum Fourier Transform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plots.html">Introduction to Plots.jl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer guide</a></li>
 </ul>
 
     </div>
@@ -505,11 +506,11 @@ In the following code, we generate initial pivots by finding local maxima of <sp
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5-element Vector{Float64}:
- 2.9938215448411176
- 2.9692013425823065
- 2.9677212644390307
- 2.4973355254268017
- 2.8436075439441373
+ 2.9406532035419737
+ 2.893923384904509
+ 2.948118770983026
+ 2.9499472668266655
+ 2.8674355046307207
 </pre></div>
 </div>
 </div>
@@ -522,7 +523,7 @@ In the following code, we generate initial pivots by finding local maxima of <sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, [20, 15, 15], [3.182986040736725e-8, 3.1417678751128866e-8, 3.1417678751128866e-8])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(TensorCrossInterpolation.TensorCI2{Float64} with rank 15, [16, 15, 15], [2.9865254505135e-8, 4.104921090948056e-8, 3.102416890302096e-8])
 </pre></div>
 </div>
 </div>
@@ -535,7 +536,7 @@ In the following code, we generate initial pivots by finding local maxima of <sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.899999999675659, 1.9)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.8999999975487998, 1.9)
 </pre></div>
 </div>
 </div>
@@ -565,7 +566,7 @@ Just in case, we will check <code class="docutils literal notranslate"><span cla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f(x) = 1.7990930849034745, qf(q) = 1.798322002608539, cf(q) = 1.798322002608539, ci(q) = 1.7983219877056584
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f(x) = 1.7990930849034745, qf(q) = 1.798322002608539, cf(q) = 1.798322002608539, ci(q) = 1.7983219791426448
 </pre></div>
 </div>
 </div>
@@ -577,10 +578,10 @@ Just in case, we will check <code class="docutils literal notranslate"><span cla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length(TCI.cachedata(cf)) = 55457
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>length(TCI.cachedata(cf)) = 49615
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55457
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49615
 </pre></div>
 </div>
 </div>

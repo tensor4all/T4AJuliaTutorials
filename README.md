@@ -10,7 +10,7 @@ Website: https://tensor4all.org/T4AJuliaTutorials/ipynbs/index.html
 
 [This repository](https://github.com/tensor4all/T4AJuliaTutorials) provides source files for building Jupyter Book, which explains how to use packages registered in the [tensor4all organization](https://tensor4all.org/).
 
-## Pre build Jupyter Notebooks
+## Pre-built Jupyter Notebooks
 
 You can obtain pre-built Jupyter notebooks from the [ipynbs/latest](https://github.com/tensor4all/T4AJuliaTutorials/releases/tag/ipynbs%2Flatest) release page.
 
